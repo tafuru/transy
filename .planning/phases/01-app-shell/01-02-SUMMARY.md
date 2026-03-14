@@ -38,11 +38,11 @@ key-files:
 key-decisions:
   - ".menuBarExtraStyle(.menu) is required — omitting it produces a floating .window panel, not a native dropdown"
   - "Settings scene (not WindowGroup) used for single-instance management, Cmd+, binding, and activation-policy safety"
-  - "NSApp.activate(ignoringOtherApps: true) added before openSettings() — on macOS 15 the Settings window silently opens behind other apps without it"
+  - "NSApp.activate() added before openSettings() — on macOS 15 the Settings window silently opens behind other apps without it"
   - "character.bubble SF Symbol chosen as menu bar icon — quiet, translation-appropriate, renders as adaptive template image"
 
 patterns-established:
-  - "NSApp.activate before openSettings: always call NSApp.activate(ignoringOtherApps: true) before openSettings() in an LSUIElement app on macOS 15+"
+  - "NSApp.activate before openSettings: always call NSApp.activate() before openSettings() in an LSUIElement app on macOS 15+"
   - "Settings scene pattern: use Settings { ... } scene for any panel that must be single-instance and bound to Cmd+,"
 
 requirements-completed: [APP-01]
@@ -90,7 +90,7 @@ Each task was committed atomically:
 
 ## Decisions Made
 - **`.menuBarExtraStyle(.menu)` required:** Without it MenuBarExtra opens a floating `.window` panel instead of a native dropdown. This is not obvious from SwiftUI docs — locked in as a known-pitfall pattern.
-- **`NSApp.activate` before `openSettings()`:** On macOS 15, calling `openSettings()` from an LSUIElement app without first activating the app causes the Settings window to open silently behind other windows. Fix: call `NSApp.activate(ignoringOtherApps: true)` immediately before `openSettings()`.
+- **`NSApp.activate` before `openSettings()`:** On macOS 15, calling `openSettings()` from an LSUIElement app without first activating the app causes the Settings window to open silently behind other windows. Fix: call `NSApp.activate()` immediately before `openSettings()`.
 - **`Settings` scene over `WindowGroup`:** The `Settings` scene provides single-instance management, automatic Cmd+, binding, and safe activation-policy behavior — `WindowGroup` would require manual equivalents and risks Dock icon flashes.
 
 ## Deviations from Plan
@@ -100,7 +100,7 @@ Each task was committed atomically:
 **1. [Rule 1 - Bug] NSApp.activate() before openSettings() to surface Settings window**
 - **Found during:** Task 2 runtime verification (smoke test)
 - **Issue:** Clicking "Settings…" in the menu caused the Settings window to open behind other apps without gaining focus. The window was created but invisible to the user unless they used Exposé or clicked the window in Mission Control.
-- **Fix:** Added `NSApp.activate(ignoringOtherApps: true)` immediately before `openSettings()` in `MenuBarView.swift`
+- **Fix:** Added `NSApp.activate()` immediately before `openSettings()` in `MenuBarView.swift`
 - **Files modified:** `Transy/MenuBar/MenuBarView.swift`
 - **Verification:** Settings window surfaces correctly on top of all other windows after click; re-verified in runtime smoke test, user approved
 - **Committed in:** `bd9e03a`
@@ -111,7 +111,7 @@ Each task was committed atomically:
 **Impact on plan:** Single-line fix in MenuBarView only. Essential for correct UX — without it the Settings window is effectively unreachable via normal interaction. No scope added.
 
 ## Issues Encountered
-- **Settings window focus on macOS 15:** `openSettings()` alone is insufficient for LSUIElement apps on macOS 15 — window opens silently in background. Required `NSApp.activate(ignoringOtherApps: true)` prefix. This is a known macOS 15 behavior change; pattern documented for all future settings-triggering code in the app.
+- **Settings window focus on macOS 15:** `openSettings()` alone is insufficient for LSUIElement apps on macOS 15 — window opens silently in background. Required `NSApp.activate()` prefix. This is a known macOS 15 behavior change; pattern documented for all future settings-triggering code in the app.
 
 ## User Setup Required
 None — no external service configuration required.

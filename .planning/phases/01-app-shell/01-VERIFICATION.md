@@ -88,7 +88,7 @@ Two deviations occurred during execution, both auto-fixed and committed:
 | Plan | Deviation | Fix | Commit | Impact |
 |------|-----------|-----|--------|--------|
 | 01-01 | Test targets lacked `GENERATE_INFOPLIST_FILE`; code-signing failed on `xcodebuild test` | Added `GENERATE_INFOPLIST_FILE: YES` to both test targets in `project.yml`, regenerated xcodeproj | `29c5437` | Minimal; test targets now compile and sign correctly |
-| 01-02 | Settings window opened silently behind other windows on macOS 15 without app activation | Added `NSApp.activate(ignoringOtherApps: true)` before `openSettings()` in MenuBarView | `bd9e03a` | Essential UX fix; pattern documented for Phase 2+ settings-triggering code |
+| 01-02 | Settings window opened silently behind other windows on macOS 15 without app activation | Added `NSApp.activate()` before `openSettings()` in MenuBarView | `bd9e03a` | Essential UX fix; pattern documented for Phase 2+ settings-triggering code |
 
 Both deviations were caught, fixed, and verified within their respective plans before human checkpoint.
 
