@@ -1,0 +1,534 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		204F94D0D810F1E162F9E613 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D1B48CD36755DAA5C8B67 /* MenuBarView.swift */; };
+		322E587F4D84EAAFF6FB26D4 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F06D9CC4AACA6666A41CE /* AppState.swift */; };
+		516C2D67132E2957E22DA18B /* TransyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895E14D771A487A2C547A4BB /* TransyUITests.swift */; };
+		780C1255E3206502BC4CBF49 /* TransyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A08DBC760C4F5F1CC6378D /* TransyTests.swift */; };
+		83ADDBAA20196C7AED7EDDF4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADCD09A92D4AC4AF67A3CE3 /* SettingsView.swift */; };
+		9DA5CE1EDDA26F6501B86520 /* TransyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D819EE00E612AFCFF2C9FC8 /* TransyApp.swift */; };
+		DEDAA0798E3B1F676501EF2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE40CB96A1C0949349DCFD1 /* AppDelegate.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B1F1D3C49D035201248C0C99 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6630DBE2462214A6C0C09B06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2471A5D144F9EB04206961F;
+			remoteInfo = Transy;
+		};
+		C30BAFEB81303B1712913C8E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6630DBE2462214A6C0C09B06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2471A5D144F9EB04206961F;
+			remoteInfo = Transy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4277C7E00D8451B1A02EFEC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		45A08DBC760C4F5F1CC6378D /* TransyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransyTests.swift; sourceTree = "<group>"; };
+		7FE40CB96A1C0949349DCFD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		895E14D771A487A2C547A4BB /* TransyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransyUITests.swift; sourceTree = "<group>"; };
+		8D5AA159B41AD22A8AB861C4 /* Transy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Transy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		91500453A398C8FCB016D0A4 /* TransyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		995D1B48CD36755DAA5C8B67 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		9D819EE00E612AFCFF2C9FC8 /* TransyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransyApp.swift; sourceTree = "<group>"; };
+		CE0F06D9CC4AACA6666A41CE /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		DADCD09A92D4AC4AF67A3CE3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		FB4416C4AFCA05548E910704 /* TransyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		038E99AA6A6ADC92CF08DC4F = {
+			isa = PBXGroup;
+			children = (
+				24468B74DC769E65A05B9580 /* Transy */,
+				9580D0521C0CCD109F281C00 /* TransyTests */,
+				BE4990502FA3C95963EE1B43 /* TransyUITests */,
+				B87897352AA80E8425F7F9F1 /* Products */,
+			);
+			indentWidth = 4;
+			sourceTree = "<group>";
+			tabWidth = 4;
+		};
+		24468B74DC769E65A05B9580 /* Transy */ = {
+			isa = PBXGroup;
+			children = (
+				7FE40CB96A1C0949349DCFD1 /* AppDelegate.swift */,
+				CE0F06D9CC4AACA6666A41CE /* AppState.swift */,
+				4277C7E00D8451B1A02EFEC8 /* Info.plist */,
+				9D819EE00E612AFCFF2C9FC8 /* TransyApp.swift */,
+				495047D65C6D9F570C1F1557 /* MenuBar */,
+				CDF49B714D3263E606CA5225 /* Settings */,
+			);
+			path = Transy;
+			sourceTree = "<group>";
+		};
+		495047D65C6D9F570C1F1557 /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				995D1B48CD36755DAA5C8B67 /* MenuBarView.swift */,
+			);
+			path = MenuBar;
+			sourceTree = "<group>";
+		};
+		9580D0521C0CCD109F281C00 /* TransyTests */ = {
+			isa = PBXGroup;
+			children = (
+				45A08DBC760C4F5F1CC6378D /* TransyTests.swift */,
+			);
+			path = TransyTests;
+			sourceTree = "<group>";
+		};
+		B87897352AA80E8425F7F9F1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D5AA159B41AD22A8AB861C4 /* Transy.app */,
+				91500453A398C8FCB016D0A4 /* TransyTests.xctest */,
+				FB4416C4AFCA05548E910704 /* TransyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BE4990502FA3C95963EE1B43 /* TransyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				895E14D771A487A2C547A4BB /* TransyUITests.swift */,
+			);
+			path = TransyUITests;
+			sourceTree = "<group>";
+		};
+		CDF49B714D3263E606CA5225 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DADCD09A92D4AC4AF67A3CE3 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		02884DC975F16BAA537AF77D /* TransyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 790BF0208E06B94053782DCA /* Build configuration list for PBXNativeTarget "TransyUITests" */;
+			buildPhases = (
+				676E9E42908D2078999820C2 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7D27FE7A5C7E2BD960DDAD94 /* PBXTargetDependency */,
+			);
+			name = TransyUITests;
+			packageProductDependencies = (
+			);
+			productName = TransyUITests;
+			productReference = FB4416C4AFCA05548E910704 /* TransyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		449CF4F36553A3FD3870CAD8 /* TransyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0BE294C06E2F49F64CDB144D /* Build configuration list for PBXNativeTarget "TransyTests" */;
+			buildPhases = (
+				7D16C94B88061453702994FE /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DAE6F52A415247B6EF8B75F /* PBXTargetDependency */,
+			);
+			name = TransyTests;
+			packageProductDependencies = (
+			);
+			productName = TransyTests;
+			productReference = 91500453A398C8FCB016D0A4 /* TransyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F2471A5D144F9EB04206961F /* Transy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1016FDD8C6BB64B2C0C10C3 /* Build configuration list for PBXNativeTarget "Transy" */;
+			buildPhases = (
+				C8229835FD9E0E02B9347D30 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Transy;
+			packageProductDependencies = (
+			);
+			productName = Transy;
+			productReference = 8D5AA159B41AD22A8AB861C4 /* Transy.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6630DBE2462214A6C0C09B06 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					02884DC975F16BAA537AF77D = {
+						TestTargetID = F2471A5D144F9EB04206961F;
+					};
+					F2471A5D144F9EB04206961F = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 682754719760AB9319303163 /* Build configuration list for PBXProject "Transy" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 038E99AA6A6ADC92CF08DC4F;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = B87897352AA80E8425F7F9F1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F2471A5D144F9EB04206961F /* Transy */,
+				449CF4F36553A3FD3870CAD8 /* TransyTests */,
+				02884DC975F16BAA537AF77D /* TransyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		676E9E42908D2078999820C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				516C2D67132E2957E22DA18B /* TransyUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7D16C94B88061453702994FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				780C1255E3206502BC4CBF49 /* TransyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8229835FD9E0E02B9347D30 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEDAA0798E3B1F676501EF2F /* AppDelegate.swift in Sources */,
+				322E587F4D84EAAFF6FB26D4 /* AppState.swift in Sources */,
+				204F94D0D810F1E162F9E613 /* MenuBarView.swift in Sources */,
+				83ADDBAA20196C7AED7EDDF4 /* SettingsView.swift in Sources */,
+				9DA5CE1EDDA26F6501B86520 /* TransyApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7D27FE7A5C7E2BD960DDAD94 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2471A5D144F9EB04206961F /* Transy */;
+			targetProxy = C30BAFEB81303B1712913C8E /* PBXContainerItemProxy */;
+		};
+		9DAE6F52A415247B6EF8B75F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2471A5D144F9EB04206961F /* Transy */;
+			targetProxy = B1F1D3C49D035201248C0C99 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0F0A8B7518676513ABEDD3A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tafuru.TransyTests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Transy.app/Contents/MacOS/Transy";
+			};
+			name = Debug;
+		};
+		3A7D464C2ECBAD9A0DC6F473 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3B95E6B16CB687BA71FDFDF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tafuru.TransyUITests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+				TEST_TARGET_NAME = Transy;
+			};
+			name = Debug;
+		};
+		6ED8DBE9FAC6FD507F49BBB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_APP_SANDBOX = NO;
+				INFOPLIST_FILE = Transy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tafuru.transy;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		89A62C324E3A469E8490E297 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_APP_SANDBOX = NO;
+				INFOPLIST_FILE = Transy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tafuru.transy;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		B3F2C5E25B7F3876001CCFA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		C3923477B76B700D72BC897F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tafuru.TransyUITests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+				TEST_TARGET_NAME = Transy;
+			};
+			name = Release;
+		};
+		C8C0AACE14108A946990543C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tafuru.TransyTests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Transy.app/Contents/MacOS/Transy";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0BE294C06E2F49F64CDB144D /* Build configuration list for PBXNativeTarget "TransyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F0A8B7518676513ABEDD3A2 /* Debug */,
+				C8C0AACE14108A946990543C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		682754719760AB9319303163 /* Build configuration list for PBXProject "Transy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A7D464C2ECBAD9A0DC6F473 /* Debug */,
+				B3F2C5E25B7F3876001CCFA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		790BF0208E06B94053782DCA /* Build configuration list for PBXNativeTarget "TransyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B95E6B16CB687BA71FDFDF9 /* Debug */,
+				C3923477B76B700D72BC897F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E1016FDD8C6BB64B2C0C10C3 /* Build configuration list for PBXNativeTarget "Transy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6ED8DBE9FAC6FD507F49BBB8 /* Debug */,
+				89A62C324E3A469E8490E297 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6630DBE2462214A6C0C09B06 /* Project object */;
+}
