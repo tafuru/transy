@@ -13,7 +13,7 @@ Transy is built in four dependency-constrained phases. Phase 1 establishes the m
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: App Shell** - Runnable menu bar app with no Dock icon, correct entitlements, and project scaffold (completed 2026-03-14)
-- [ ] **Phase 2: Trigger & Popup** - Double-Cmd+C fires a non-focus-stealing popup showing source text as a skeleton placeholder
+- [x] **Phase 2: Trigger & Popup** - Double-Cmd+C fires a non-focus-stealing popup showing source text as a skeleton placeholder (completed 2026-03-14)
 - [ ] **Phase 3: Translation Loop** - Skeleton resolves to an on-device Apple Translation result in the same popup
 - [ ] **Phase 4: Settings** - Target language and model availability are configurable from a dedicated settings window
 
@@ -90,6 +90,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. App Shell | 2/2 | Complete   | 2026-03-14 |
-| 2. Trigger & Popup | 1/3 | In Progress|  |
+| 2. Trigger & Popup | 3/3 | Complete   | 2026-03-14 |
 | 3. Translation Loop | 0/2 | Not started | - |
 | 4. Settings | 0/2 | Not started | - |

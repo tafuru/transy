@@ -15,9 +15,9 @@ Requirements for the initial release. Each maps to roadmap phases.
 
 ### Popup Experience
 
-- [ ] **POP-01**: User sees a floating translation popup that does not take focus away from the current app.
-- [ ] **POP-02**: User sees the selected source text immediately in a muted loading-state style while translation is in progress.
-- [ ] **POP-03**: User can dismiss the popup with `Escape` or by clicking outside it.
+- [x] **POP-01**: User sees a floating translation popup that does not take focus away from the current app.
+- [x] **POP-02**: User sees the selected source text immediately in a muted loading-state style while translation is in progress.
+- [x] **POP-03**: User can dismiss the popup with `Escape` or by clicking outside it.
 
 ### Translation
 
@@ -72,9 +72,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TRIG-01 | Phase 2 — Trigger & Popup | Complete |
 | TRIG-02 | Phase 2 — Trigger & Popup | Complete |
 | TRIG-03 | Phase 2 — Trigger & Popup | Complete |
-| POP-01 | Phase 2 — Trigger & Popup | Pending |
-| POP-02 | Phase 2 — Trigger & Popup | Pending |
-| POP-03 | Phase 2 — Trigger & Popup | Pending |
+| POP-01 | Phase 2 — Trigger & Popup | Complete |
+| POP-02 | Phase 2 — Trigger & Popup | Complete |
+| POP-03 | Phase 2 — Trigger & Popup | Complete |
 | TRAN-01 | Phase 3 — Translation Loop | Pending |
 | TRAN-02 | Phase 3 — Translation Loop | Pending |
 | TRAN-03 | Phase 3 — Translation Loop | Pending |
