@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Phase 1 completed and verified
-last_updated: "2026-03-14T06:10:00Z"
-last_activity: 2026-03-14 — Phase 1 completed, verified, and marked complete
+status: ready
+stopped_at: Phase 2 verified and PR prepared
+last_updated: "2026-03-14T13:20:00Z"
+last_activity: 2026-03-14 — Phase 2 verified and PR prepared
 progress:
   total_phases: 4
-  completed_phases: 1
-  total_plans: 2
-  completed_plans: 2
-  percent: 25
+  completed_phases: 2
+  total_plans: 5
+  completed_plans: 5
+  percent: 50
 ---
 
 # Project State
@@ -21,32 +21,33 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-14)
 
 **Core value:** Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
-**Current focus:** Phase 2 — Trigger & Popup
+**Current focus:** Phase 3 — Translation Loop (next)
 
 ## Current Position
 
-Phase: 2 of 4 (Trigger & Popup)
-Plan: 0 of 3 in current phase
-Status: Ready to plan
-Last activity: 2026-03-14 — Phase 1 completed, verified, and marked complete
+Phase: 2 of 4 complete (Trigger & Popup)
+Plan: 3 of 3 in current phase (3 complete)
+Status: Phase 2 Complete — PR ready, Phase 3 next
+Last activity: 2026-03-14 — Phase 2 verified and PR prepared
 
-Progress: [██░░░░░░░░] 25%
+Progress: [█████░░░░░] 50%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
-- Average duration: 17.5 min
-- Total execution time: 35 min
+- Total plans completed: 5
+- Average duration: 15.8 min
+- Total execution time: 79 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1. App Shell | 2 | 35 min | 17.5 min |
+| 2. Trigger & Popup | 3 | 44 min | 14.7 min |
 
 **Recent Trend:**
-- Last 2 plans: 15 min, 20 min
+- Last 2 plans: 8 min, 35 min
 - Trend: Stable
 
 *Updated after each plan completion*
@@ -68,19 +69,33 @@ Recent decisions affecting current work:
 - [Phase 01-app-shell]: `.menuBarExtraStyle(.menu)` is required to get a native dropdown instead of a floating panel
 - [Phase 01-app-shell]: `NSApp.activate()` must precede `openSettings()` in an `LSUIElement` app so the Settings window surfaces above the current app
 - [Phase 01-app-shell]: Use a SwiftUI `Settings` scene, not `WindowGroup`, for the single-instance settings window and Cmd+, behavior
+- [Phase 02-trigger-popup]: `NSEvent.addGlobalMonitorForEvents` with Accessibility-only permission is the chosen monitoring path; no Input Monitoring flow is planned
+- [Phase 02-trigger-popup]: First-time missing Accessibility guidance is surfaced on explicit menu open, not at app launch
+- [Phase 02-trigger-popup]: After Accessibility is granted from System Settings, monitoring should auto-start without requiring a relaunch
+- [Phase 02-trigger-popup]: `DoublePressDetector.record()` must use explicit state updates rather than `defer`, so a rapid triple-press fires exactly once
+- [Phase 02-trigger-popup]: Swift 6 plans should use `MainActor.assumeIsolated` in NSEvent/Timer callbacks when the runtime guarantee is main-thread delivery
+- [Phase 02-trigger-popup]: showIfNeeded() re-raises guidance window on every failed trigger attempt — no suppression after first show
+- [Phase 02-trigger-popup]: AXIsProcessTrusted() used directly; AXIsProcessTrustedWithOptions(prompt:true) avoided to prevent generic macOS system prompt replacing custom guidance
+- [Phase 02-trigger-popup]: DoublePressDetector.record() uses explicit nil-reset (not defer) so triple-press fires exactly once
+- [Phase 02-trigger-popup]: HotkeyMonitor uses .intersection(.deviceIndependentFlagsMask) == .command to exclude Cmd+Shift+C
+- [Phase 02-trigger-popup]: orderFrontRegardless() used for LSUIElement background-app popup visibility (orderFront(nil) is a silent no-op when app is not active)
+- [Phase 02-trigger-popup]: Clipboard snapshot taken at first Cmd+C keyDown (before Task.sleep(80ms)) so restore yields original clipboard, not trigger selection
 
 ### Pending Todos
 
-None yet.
+- ✅ 02-01-PLAN.md complete (permissions guidance)
+- ✅ 02-02-PLAN.md complete (trigger subsystem)
+- ✅ 02-03-PLAN.md complete (popup wiring + human smoke test)
+- Execute Phase 3: Translation Loop plans when ready
 
 ### Blockers/Concerns
 
-- Phase 2: Accessibility is required, and any additional privacy permissions depend on the final monitoring API; onboarding must validate and explain the chosen path explicitly
-- Phase 2: Clipboard read must be delayed ~80ms after trigger fires because the source app has not written selection contents yet when the monitor first fires
+- Phase 3: Translation Loop needs to preserve the non-focus-stealing popup behavior while swapping muted source text for translated output
+- Phase 3: Apple Translation integration still needs real runtime validation for model availability, failure handling, and request cancellation
 - Phase 3: Apple Translation framework requires macOS 15+ — this remains the hard deployment-target floor
 
 ## Session Continuity
 
-Last session: 2026-03-14T06:10:00Z
-Stopped at: Phase 1 completed and verified
+Last session: 2026-03-14T13:20:00Z
+Stopped at: Phase 2 verified and PR prepared
 Resume file: None
