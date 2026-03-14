@@ -10,7 +10,7 @@ Requirements for the initial release. Each maps to roadmap phases.
 ### Trigger & Capture
 
 - [ ] **TRIG-01**: User can trigger translation of selected text in another macOS app by pressing `Command+C` twice within the supported interval.
-- [ ] **TRIG-02**: User is guided to grant the required macOS permissions when the trigger cannot monitor key events.
+- [x] **TRIG-02**: User is guided to grant the required macOS permissions when the trigger cannot monitor key events.
 - [ ] **TRIG-03**: User can keep their previous clipboard contents after translation is triggered.
 
 ### Popup Experience
@@ -70,7 +70,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 |-------------|-------|--------|
 | APP-01 | Phase 1 — App Shell | Complete |
 | TRIG-01 | Phase 2 — Trigger & Popup | Pending |
-| TRIG-02 | Phase 2 — Trigger & Popup | Pending |
+| TRIG-02 | Phase 2 — Trigger & Popup | Complete |
 | TRIG-03 | Phase 2 — Trigger & Popup | Pending |
 | POP-01 | Phase 2 — Trigger & Popup | Pending |
 | POP-02 | Phase 2 — Trigger & Popup | Pending |

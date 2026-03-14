@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Phase 2 planning verified
-last_updated: "2026-03-14T09:16:59Z"
-last_activity: 2026-03-14 — Phase 2 planning completed and verified
+stopped_at: Completed 02-01-PLAN.md
+last_updated: "2026-03-14T09:23:12.805Z"
+last_activity: 2026-03-14 — 02-01-PLAN.md complete (permissions guidance subsystem)
 progress:
   total_phases: 4
   completed_phases: 1
   total_plans: 5
-  completed_plans: 2
-  percent: 25
+  completed_plans: 3
+  percent: 60
 ---
 
 # Project State
@@ -26,18 +26,18 @@ See: .planning/PROJECT.md (updated 2026-03-14)
 ## Current Position
 
 Phase: 2 of 4 (Trigger & Popup)
-Plan: 3 of 3 in current phase
-Status: Planning complete — ready to execute
-Last activity: 2026-03-14 — Phase 2 planning completed and verified
+Plan: 1 of 3 in current phase (1 complete)
+Status: Executing
+Last activity: 2026-03-14 — 02-01-PLAN.md complete (permissions guidance subsystem)
 
-Progress: [██░░░░░░░░] 25%
+Progress: [██████░░░░] 60%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
-- Average duration: 17.5 min
-- Total execution time: 35 min
+- Total plans completed: 3
+- Average duration: 12 min
+- Total execution time: 36 min
 
 **By Phase:**
 
@@ -50,6 +50,7 @@ Progress: [██░░░░░░░░] 25%
 - Trend: Stable
 
 *Updated after each plan completion*
+| Phase 02-trigger-popup P01 | 1 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -73,10 +74,13 @@ Recent decisions affecting current work:
 - [Phase 02-trigger-popup]: After Accessibility is granted from System Settings, monitoring should auto-start without requiring a relaunch
 - [Phase 02-trigger-popup]: `DoublePressDetector.record()` must use explicit state updates rather than `defer`, so a rapid triple-press fires exactly once
 - [Phase 02-trigger-popup]: Swift 6 plans should use `MainActor.assumeIsolated` in NSEvent/Timer callbacks when the runtime guarantee is main-thread delivery
+- [Phase 02-trigger-popup]: showIfNeeded() re-raises guidance window on every failed trigger attempt — no suppression after first show
+- [Phase 02-trigger-popup]: AXIsProcessTrusted() used directly; AXIsProcessTrustedWithOptions(prompt:true) avoided to prevent generic macOS system prompt replacing custom guidance
 
 ### Pending Todos
 
-- Execute Wave 1 plans in parallel: `02-01-PLAN.md` (permissions guidance) and `02-02-PLAN.md` (trigger subsystem + Wave 0 tests)
+- ✅ 02-01-PLAN.md complete (permissions guidance)
+- Execute Wave 1: `02-02-PLAN.md` (trigger subsystem + Wave 0 tests)
 - Execute Wave 2 plan after Wave 1 passes: `02-03-PLAN.md` (popup wiring + human smoke test)
 
 ### Blockers/Concerns
@@ -88,6 +92,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-14T09:16:59Z
-Stopped at: Phase 2 planning verified
-Resume file: .planning/phases/02-trigger-popup/02-01-PLAN.md
+Last session: 2026-03-14T09:23:07.695Z
+Stopped at: Completed 02-01-PLAN.md
+Resume file: None
