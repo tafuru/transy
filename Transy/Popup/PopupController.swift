@@ -1,6 +1,11 @@
 import AppKit
 import SwiftUI
 
+// NSWindowStyleMaskNonactivatingPanel (1<<7) is not exposed as a named Swift member.
+private extension NSWindow.StyleMask {
+    static let nonActivatingPanel = NSWindow.StyleMask(rawValue: 1 << 7)
+}
+
 /// Hosts the popup NSPanel. Non-activating, floating, fade-in, dismiss on Escape or outside click.
 @MainActor
 final class PopupController {
@@ -10,17 +15,18 @@ final class PopupController {
     private var onDismiss: (() -> Void)?
 
     private func makePanel() -> NSPanel {
+        let styleMask: NSWindow.StyleMask = [.borderless, .nonActivatingPanel]
         let panel = NSPanel(
             contentRect: NSRect(x: 0, y: 0, width: 380, height: 80),
-            styleMask: [.borderless, .nonActivatingPanel],
+            styleMask: styleMask,
             backing: .buffered,
             defer: false
         )
-        panel.level = .floating
-        panel.collectionBehavior = [.canJoinAllSpaces, .stationary, .ignoresCycle]
+        panel.level = NSWindow.Level.floating
+        panel.collectionBehavior = NSWindow.CollectionBehavior([.canJoinAllSpaces, .stationary, .ignoresCycle])
         panel.isMovableByWindowBackground = true
         panel.hidesOnDeactivate = false   // CRITICAL: without this, panel vanishes when source app regains focus
-        panel.backgroundColor = .clear
+        panel.backgroundColor = NSColor.clear
         panel.isOpaque = false
         panel.hasShadow = true
         return panel

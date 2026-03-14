@@ -4,17 +4,22 @@ struct MenuBarView: View {
     @Environment(\.openSettings) private var openSettings
 
     var body: some View {
-        Button("Settings…") {
-            NSApp.activate()
-            openSettings()
-        }
-        .keyboardShortcut(",", modifiers: .command)
+        Group {
+            Button("Settings…") {
+                NSApp.activate()
+                openSettings()
+            }
+            .keyboardShortcut(",", modifiers: .command)
 
-        Divider()
+            Divider()
 
-        Button("Quit Transy") {
-            NSApplication.shared.terminate(nil)
+            Button("Quit Transy") {
+                NSApplication.shared.terminate(nil)
+            }
+            .keyboardShortcut("q", modifiers: .command)
         }
-        .keyboardShortcut("q", modifiers: .command)
+        .onAppear {
+            GuidanceWindowController.shared.showIfNeeded()
+        }
     }
 }

@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		204F94D0D810F1E162F9E613 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D1B48CD36755DAA5C8B67 /* MenuBarView.swift */; };
+		23528C1A8D6C4E3E817D396B /* PopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A903E7EC95F736D96FDA48 /* PopupController.swift */; };
 		322E587F4D84EAAFF6FB26D4 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F06D9CC4AACA6666A41CE /* AppState.swift */; };
 		3DEE1277FF710809E66CD471 /* ClipboardManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B00BA499960D4DE3272F9B /* ClipboardManagerTests.swift */; };
+		47CFCB32F5FA2997EDDE2455 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D36133B86B37DA3B2E3B98 /* PopupView.swift */; };
 		4B63656FAA41CE78F78098F9 /* HotkeyMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B37DED22B25AA672F1F1C28 /* HotkeyMonitor.swift */; };
 		4DB043F93E151B9628FA5F0D /* ClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6419329179F1E05CAA17FA /* ClipboardManager.swift */; };
 		516C2D67132E2957E22DA18B /* TransyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895E14D771A487A2C547A4BB /* TransyUITests.swift */; };
@@ -52,6 +54,8 @@
 		895E14D771A487A2C547A4BB /* TransyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransyUITests.swift; sourceTree = "<group>"; };
 		8D5AA159B41AD22A8AB861C4 /* Transy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Transy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91500453A398C8FCB016D0A4 /* TransyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		91A903E7EC95F736D96FDA48 /* PopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupController.swift; sourceTree = "<group>"; };
+		93D36133B86B37DA3B2E3B98 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		995D1B48CD36755DAA5C8B67 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
 		9D819EE00E612AFCFF2C9FC8 /* TransyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransyApp.swift; sourceTree = "<group>"; };
 		A12AAA728534FE1C2113D892 /* DoublePressDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublePressDetector.swift; sourceTree = "<group>"; };
@@ -85,6 +89,7 @@
 				9D819EE00E612AFCFF2C9FC8 /* TransyApp.swift */,
 				495047D65C6D9F570C1F1557 /* MenuBar */,
 				CBE8E291D5C848DEC9D093C5 /* Permissions */,
+				F7DAF462089262F957AB1225 /* Popup */,
 				CDF49B714D3263E606CA5225 /* Settings */,
 				92BE44F66D967FF5D641739B /* Trigger */,
 			);
@@ -153,6 +158,15 @@
 				DADCD09A92D4AC4AF67A3CE3 /* SettingsView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		F7DAF462089262F957AB1225 /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				91A903E7EC95F736D96FDA48 /* PopupController.swift */,
+				93D36133B86B37DA3B2E3B98 /* PopupView.swift */,
+			);
+			path = Popup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +295,8 @@
 				9ADEE4B3B3252FABABAF0B51 /* GuidanceWindowController.swift in Sources */,
 				4B63656FAA41CE78F78098F9 /* HotkeyMonitor.swift in Sources */,
 				204F94D0D810F1E162F9E613 /* MenuBarView.swift in Sources */,
+				23528C1A8D6C4E3E817D396B /* PopupController.swift in Sources */,
+				47CFCB32F5FA2997EDDE2455 /* PopupView.swift in Sources */,
 				83ADDBAA20196C7AED7EDDF4 /* SettingsView.swift in Sources */,
 				9DA5CE1EDDA26F6501B86520 /* TransyApp.swift in Sources */,
 			);
