@@ -1,7 +1,7 @@
 # Feature Research
 
 **Domain:** macOS menu-bar selected-text translation utility (Japanese/English reading assistance)
-**Researched:** 2025-01-30
+**Researched:** 2026-03-14
 **Confidence:** HIGH — domain is well-understood; competitors (DeepL for Mac, Bob, PopClip + translation plugins, Elytra) are established reference points
 
 ## Feature Landscape
@@ -55,12 +55,12 @@ Features that seem good but create problems.
 ```
 [Double-Cmd+C Trigger]
     └──requires──> [Validated trigger monitor / Clipboard Monitoring]
-                       └──requires──> [Accessibility Permission (TCC)]
+                       └──requires──> [Required privacy permission(s) for chosen monitoring API]
 
 [Translation Popup]
     └──requires──> [NSPanel / NSWindow (non-activating)]
-    └──requires──> [Translation API Integration]
-                       └──requires──> [API Key Configuration in Settings]
+    └──requires──> [Apple Translation integration]
+                       └──requires──> [Model availability guidance in settings/runtime]
 
 [Source Text as Skeleton Placeholder]
     └──requires──> [Translation Popup]
@@ -173,7 +173,7 @@ Features to defer until product-market fit is established.
 | Translation history | Yes | Yes | No | No — out of scope |
 | Dock icon | No (menu bar) | No (menu bar) | N/A (PopClip extension) | No — LSUIElement |
 | Shortcut customization | Yes | Yes | Via PopClip settings | No for v1 |
-| Free tier | Yes (limited) | Freemium | Paid (PopClip itself) | Self-hosted API key |
+| Free tier | Yes (limited) | Freemium | Paid (PopClip itself) | Built-in on-device translation with system-managed models |
 
 ## Sources
 
@@ -188,4 +188,5 @@ Features to defer until product-market fit is established.
 
 ---
 *Feature research for: macOS selected-text translation utility (Japanese/English reading assistant)*
-*Researched: 2025-01-30*
+*Researched: 2026-03-14*
+*Reconciled after backend selection: Apple Translation framework*

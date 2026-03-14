@@ -45,7 +45,7 @@ Recent decisions affecting current work:
 - [Pre-phase]: Apple Translation framework chosen as backend (not DeepL) — on-device speed, privacy, macOS-native integration
 - [Pre-phase]: Apple Translation is sandbox-compatible, but the chosen global-monitoring approach and its capability model must be validated in Phase 1 before locking the final sandbox configuration
 - [Pre-phase]: LSUIElement set via Info.plist, not entitlements (common mistake to avoid)
-- [Pre-phase]: Popup must be NSPanel with `.nonActivatingPanel` styleMask from day one — SwiftUI WindowGroup is a hard anti-pattern here
+- [Pre-phase]: Popup must be NSPanel with `.nonactivatingPanel` styleMask from day one — SwiftUI WindowGroup is a hard anti-pattern here
 
 ### Pending Todos
 
