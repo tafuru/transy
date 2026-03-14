@@ -45,12 +45,12 @@ Plans:
   4. Pressing Escape or clicking outside the popup dismisses it
   5. Any text previously in the clipboard before the trigger is restored after the source text is captured; no clipboard content is lost
   6. On first launch (or when permissions are missing), the user is guided to grant the privacy permissions required by the chosen monitoring approach with clear instructions
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 02-01: Permissions onboarding — validate the chosen monitoring API, check Accessibility and any additional required privacy permissions, present first-launch guidance UI, graceful degradation
-- [ ] 02-02: HotkeyMonitor + DoublePressDetector — NSEvent global monitor, ~400ms double-press gate, isARepeat filtering, clipboard timing delay (80ms), save/restore
-- [ ] 02-03: TranslationPopup (NSPanel) — borderless non-activating panel, NSHostingView, SwiftUI skeleton state (.redacted), Escape + click-outside dismissal, screen clamping
+- [ ] 02-01-PLAN.md — Permissions guidance: GuidanceView + GuidanceWindowController, AXIsProcessTrusted() gate, deep-link to Accessibility pane
+- [ ] 02-02-PLAN.md — Trigger logic: DoublePressDetector (TDD), ClipboardManager (TDD), HotkeyMonitor (NSEvent global monitor, Cmd+C filter, 80ms clipboard delay)
+- [ ] 02-03-PLAN.md — Popup + wiring: PopupView (muted source text), PopupController (NSPanel .nonActivatingPanel, fade-in, dismiss monitors), AppDelegate full wiring, smoke-test checkpoint
 
 ### Phase 3: Translation Loop
 **Goal**: The skeleton placeholder in the popup resolves to a real on-device translation using Apple's Translation framework, with automatic source-language detection and graceful error handling
