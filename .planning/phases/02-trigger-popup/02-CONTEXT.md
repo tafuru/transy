@@ -16,9 +16,11 @@ Implement the selected-text trigger and popup shell for Transy: pressing `Comman
 ### Permission Guidance Flow
 - Do not show permission guidance on first launch.
 - Show permission guidance the first time a trigger attempt fails because the required monitoring permission is missing.
+- Because macOS does not deliver the global `Cmd+C` events before Accessibility permission exists, opening the Transy menu is the first-time fallback that should surface the same guidance window when permission is still missing.
 - Present the guidance as a small dedicated guidance window rather than an alert or menu popover.
 - Keep the guidance copy short and matter-of-fact.
 - If permissions are still missing, show the guidance window again on each failed trigger attempt rather than suppressing it after the first dismissal.
+- After the user grants permission from System Settings, Transy should retry starting the monitor automatically without requiring a quit/relaunch.
 
 ### Popup Placement
 - Phase 2 uses a fixed placement rule; near-selection or near-cursor positioning is deferred.
@@ -63,7 +65,7 @@ Implement the selected-text trigger and popup shell for Transy: pressing `Comman
 - `Transy/TransyApp.swift`: already hosts the menu bar app scene and remains the shell entry point for Phase 2 additions.
 - `Transy/AppDelegate.swift`: already contains explicit Phase 2 hook comments for attaching the hotkey monitor and configuring the popup host.
 - `Transy/AppState.swift`: already reserves Phase 2 concepts (`isPopupVisible`, `triggerMonitor`) and is the natural coordinator for trigger/popup state.
-- `Transy/MenuBar/MenuBarView.swift`: provides the existing menu bar commands and should remain minimal while trigger/popup behavior is added elsewhere.
+- `Transy/MenuBar/MenuBarView.swift`: provides the existing menu bar commands and can remain minimal while also acting as the explicit permission-guidance fallback when the menu is opened.
 
 ### Established Patterns
 - The app is an `LSUIElement` menu bar agent with no Dock icon and `NSApp.setActivationPolicy(.accessory)`.

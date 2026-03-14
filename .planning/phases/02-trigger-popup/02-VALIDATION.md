@@ -63,7 +63,8 @@ created: 2026-03-14
 
 | Behavior | Requirement | Why Manual | Test Instructions |
 |----------|-------------|------------|-------------------|
-| Permission guidance appears when monitoring permission is missing | TRIG-02 | Requires live Accessibility permission state in macOS System Settings | Remove Accessibility permission if granted, launch Transy, press `Cmd+C` twice in another app, confirm the guidance window appears with short instructions |
+| Permission guidance appears when monitoring permission is missing | TRIG-02 | Requires live Accessibility permission state in macOS System Settings | Remove Accessibility permission if granted, launch Transy, open the menu bar menu, and confirm the guidance window appears with short instructions |
+| Granting Accessibility permission enables monitoring without relaunch | TRIG-02 | Requires live System Settings interaction and runtime permission change | With Transy still running and guidance already shown, grant Accessibility access in System Settings, return to the app, wait a couple of seconds, then confirm `Cmd+C` twice now opens the popup without quitting/relaunching |
 | Popup appears without stealing focus from the source app | POP-01 | Requires live interaction between Transy and another foreground app | In TextEdit or another app, select text and press `Cmd+C` twice, confirm popup appears while the source app remains active |
 | Popup shows source text immediately in muted style | POP-02 | Visual presentation must be checked by a human | Trigger the popup and confirm source text appears right away in a readable muted/loading treatment |
 | Escape dismisses popup | POP-03 | Popup keyboard dismissal depends on live event handling | Trigger the popup, press `Escape`, and confirm it disappears |

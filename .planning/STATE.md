@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Phase 2 context gathered
-last_updated: "2026-03-14T08:22:38.414Z"
-last_activity: 2026-03-14 — Phase 1 completed, verified, and marked complete
+stopped_at: Phase 2 planning verified
+last_updated: "2026-03-14T09:16:59Z"
+last_activity: 2026-03-14 — Phase 2 planning completed and verified
 progress:
   total_phases: 4
   completed_phases: 1
-  total_plans: 2
+  total_plans: 5
   completed_plans: 2
   percent: 25
 ---
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-03-14)
 ## Current Position
 
 Phase: 2 of 4 (Trigger & Popup)
-Plan: 0 of 3 in current phase
-Status: Ready to plan
-Last activity: 2026-03-14 — Phase 1 completed, verified, and marked complete
+Plan: 3 of 3 in current phase
+Status: Planning complete — ready to execute
+Last activity: 2026-03-14 — Phase 2 planning completed and verified
 
 Progress: [██░░░░░░░░] 25%
 
@@ -68,19 +68,26 @@ Recent decisions affecting current work:
 - [Phase 01-app-shell]: `.menuBarExtraStyle(.menu)` is required to get a native dropdown instead of a floating panel
 - [Phase 01-app-shell]: `NSApp.activate()` must precede `openSettings()` in an `LSUIElement` app so the Settings window surfaces above the current app
 - [Phase 01-app-shell]: Use a SwiftUI `Settings` scene, not `WindowGroup`, for the single-instance settings window and Cmd+, behavior
+- [Phase 02-trigger-popup]: `NSEvent.addGlobalMonitorForEvents` with Accessibility-only permission is the chosen monitoring path; no Input Monitoring flow is planned
+- [Phase 02-trigger-popup]: First-time missing Accessibility guidance is surfaced on explicit menu open, not at app launch
+- [Phase 02-trigger-popup]: After Accessibility is granted from System Settings, monitoring should auto-start without requiring a relaunch
+- [Phase 02-trigger-popup]: `DoublePressDetector.record()` must use explicit state updates rather than `defer`, so a rapid triple-press fires exactly once
+- [Phase 02-trigger-popup]: Swift 6 plans should use `MainActor.assumeIsolated` in NSEvent/Timer callbacks when the runtime guarantee is main-thread delivery
 
 ### Pending Todos
 
-None yet.
+- Execute Wave 1 plans in parallel: `02-01-PLAN.md` (permissions guidance) and `02-02-PLAN.md` (trigger subsystem + Wave 0 tests)
+- Execute Wave 2 plan after Wave 1 passes: `02-03-PLAN.md` (popup wiring + human smoke test)
 
 ### Blockers/Concerns
 
-- Phase 2: Accessibility is required, and any additional privacy permissions depend on the final monitoring API; onboarding must validate and explain the chosen path explicitly
+- Phase 2: Human smoke-test remains required for focus non-theft, popup dismissal, clipboard restore, and permission guidance behavior
+- Phase 2: Validate the Accessibility System Settings deep link and the post-grant auto-retry path on macOS 15 during execution
 - Phase 2: Clipboard read must be delayed ~80ms after trigger fires because the source app has not written selection contents yet when the monitor first fires
 - Phase 3: Apple Translation framework requires macOS 15+ — this remains the hard deployment-target floor
 
 ## Session Continuity
 
-Last session: 2026-03-14T08:22:38.409Z
-Stopped at: Phase 2 context gathered
-Resume file: .planning/phases/02-trigger-popup/02-CONTEXT.md
+Last session: 2026-03-14T09:16:59Z
+Stopped at: Phase 2 planning verified
+Resume file: .planning/phases/02-trigger-popup/02-01-PLAN.md
