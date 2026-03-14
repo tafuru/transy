@@ -42,7 +42,10 @@ final class PopupController {
         panel.contentView = NSHostingView(rootView: view)
         panel.setFrameOrigin(topCenterOrigin(for: panel))
         panel.alphaValue = 0
-        panel.orderFront(nil)   // NOT makeKeyAndOrderFront — preserves source app as key window (POP-01)
+        // orderFrontRegardless() is required for background/accessory apps (Transy never activates).
+        // orderFront(nil) is a documented no-op when the app is not active.
+        // orderFrontRegardless() shows the panel without making it key or activating the app (POP-01).
+        panel.orderFrontRegardless()
         NSAnimationContext.runAnimationGroup { ctx in
             ctx.duration = 0.15   // subtle fade-in (CONTEXT.md: "subtle fade-in, not strong motion")
             panel.animator().alphaValue = 1
@@ -61,14 +64,18 @@ final class PopupController {
 
     private func attachDismissMonitors() {
         let esc = NSEvent.addGlobalMonitorForEvents(matching: .keyDown) { [weak self] event in
-            if event.keyCode == 53 { self?.dismiss() }   // 53 = Escape
+            MainActor.assumeIsolated {
+                if event.keyCode == 53 { self?.dismiss() }   // 53 = Escape
+            }
         }
         let click = NSEvent.addGlobalMonitorForEvents(
             matching: [.leftMouseDown, .rightMouseDown]
         ) { [weak self] event in
-            guard let self else { return }
-            if !self.panel.frame.contains(NSEvent.mouseLocation) {
-                self.dismiss()
+            MainActor.assumeIsolated {
+                guard let self else { return }
+                if !self.panel.frame.contains(NSEvent.mouseLocation) {
+                    self.dismiss()
+                }
             }
         }
         dismissMonitors = [esc, click].compactMap { $0 }
