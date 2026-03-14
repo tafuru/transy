@@ -61,11 +61,11 @@ Plans:
   2. The user does not need to select or specify the source language; it is detected automatically
   3. If translation fails or a model is unavailable, the popup shows a readable error state (not a crash or silent blank)
   4. Rapid double-triggers do not display a stale translation from an earlier request (race condition handled)
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 03-01: TranslationService protocol + AppleTranslationClient — Translation framework integration, async translate(), cancellable Task with token pattern, auto language detection
-- [ ] 03-02: TranslationCoordinator wiring — source text → show popup (skeleton) → call service → push result/error back to popup; SwiftUI state machine (.loading → .result | .error); input normalization (trim, whitespace)
+- [ ] 03-01-PLAN.md — Translation foundation: normalization, availability preflight, short error mapping, request-scoped coordinator, and Swift Testing coverage
+- [ ] 03-02-PLAN.md — Popup translation wiring: view-scoped Apple Translation in PopupView, AppDelegate lifecycle integration, and live smoke verification
 
 ### Phase 4: Settings
 **Goal**: User can choose the target translation language in a dedicated settings window and is guided to download any required on-device Apple Translation models that are not yet available

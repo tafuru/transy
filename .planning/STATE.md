@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: ready
-stopped_at: Phase 2 verified and PR prepared
-last_updated: "2026-03-14T13:20:00Z"
-last_activity: 2026-03-14 — Phase 2 verified and PR prepared
+stopped_at: Phase 3 planning verified and ready for execution
+last_updated: "2026-03-14T15:45:00Z"
+last_activity: 2026-03-14 — Phase 3 planning verified
 progress:
   total_phases: 4
   completed_phases: 2
-  total_plans: 5
+  total_plans: 7
   completed_plans: 5
   percent: 50
 ---
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-14)
 
 **Core value:** Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
-**Current focus:** Phase 3 — Translation Loop (next)
+**Current focus:** Phase 3 — Translation Loop (planned, ready to execute)
 
 ## Current Position
 
 Phase: 2 of 4 complete (Trigger & Popup)
-Plan: 3 of 3 in current phase (3 complete)
-Status: Phase 2 Complete — PR ready, Phase 3 next
-Last activity: 2026-03-14 — Phase 2 verified and PR prepared
+Plan: 0 of 2 in current phase (2 planned, execution not started)
+Status: Phase 3 Planned — ready to execute
+Last activity: 2026-03-14 — Phase 3 planning verified
 
 Progress: [█████░░░░░] 50%
 
@@ -86,16 +86,18 @@ Recent decisions affecting current work:
 - ✅ 02-01-PLAN.md complete (permissions guidance)
 - ✅ 02-02-PLAN.md complete (trigger subsystem)
 - ✅ 02-03-PLAN.md complete (popup wiring + human smoke test)
-- Execute Phase 3: Translation Loop plans when ready
+- 03-01-PLAN.md ready (translation foundation)
+- 03-02-PLAN.md ready (popup translation wiring + smoke verification)
+- Execute Phase 3: Translation Loop
 
 ### Blockers/Concerns
 
-- Phase 3: Translation Loop needs to preserve the non-focus-stealing popup behavior while swapping muted source text for translated output
-- Phase 3: Apple Translation integration still needs real runtime validation for model availability, failure handling, and request cancellation
+- Phase 3: Execution must preserve the non-focus-stealing popup behavior while swapping muted source text for translated output
+- Phase 3: Apple Translation integration still needs real runtime validation for model availability, ambiguous-source handling, failure handling, and request cancellation
 - Phase 3: Apple Translation framework requires macOS 15+ — this remains the hard deployment-target floor
 
 ## Session Continuity
 
-Last session: 2026-03-14T13:20:00Z
-Stopped at: Phase 2 verified and PR prepared
+Last session: 2026-03-14T15:45:00Z
+Stopped at: Phase 3 planning verified and ready for execution
 Resume file: None
