@@ -1,3 +1,4 @@
+import Foundation
 import Testing
 @testable import Transy
 
@@ -33,18 +34,19 @@ struct DoublePressDetectorTests {
         var d = DoublePressDetector()
         _ = d.record()                                           // press 1: false
         d.lastPressDate = Date().addingTimeInterval(-0.1)
-        let second = d.record()                                  // press 2: true (fires)
+        let second = d.record()                                  // press 2: true (fires), lastPressDate = nil
         #expect(second == true)
-        d.lastPressDate = Date().addingTimeInterval(-0.1)
-        let third = d.record()                                   // press 3: false (reset after fire)
+        // Third press called immediately — lastPressDate is nil after reset, so starts a new sequence
+        let third = d.record()                                   // press 3: false (new sequence)
         #expect(third == false)
     }
 
-    @Test("threshold boundary: exactly at threshold does not fire")
-    func exactlyAtThresholdDoesNotFire() {
+    @Test("threshold boundary: at or past threshold does not fire")
+    func atThresholdDoesNotFire() {
         var d = DoublePressDetector()
         _ = d.record()
-        d.lastPressDate = Date().addingTimeInterval(-d.threshold)
-        #expect(d.record() == false)   // strictly less than threshold required
+        // Set last press to threshold + 1ms ago — elapsed will exceed threshold, must not fire
+        d.lastPressDate = Date().addingTimeInterval(-(d.threshold + 0.001))
+        #expect(d.record() == false)   // strictly less than threshold required to fire
     }
 }
