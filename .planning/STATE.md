@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 01-app-shell-01-PLAN.md
-last_updated: "2026-03-14T05:25:20.643Z"
+stopped_at: Completed 01-app-shell-02-PLAN.md
+last_updated: "2026-03-14T05:45:11.712Z"
 last_activity: 2026-03-14 — Roadmap created, 4 phases defined, 12/12 v1 requirements mapped
 progress:
   total_phases: 4
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 2
-  completed_plans: 1
+  completed_plans: 2
   percent: 0
 ---
 
@@ -51,6 +51,7 @@ Progress: [░░░░░░░░░░] 0%
 
 *Updated after each plan completion*
 | Phase 01-app-shell P01 | 15 | 2 tasks | 10 files |
+| Phase 01-app-shell P02 | 20 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -66,6 +67,9 @@ Recent decisions affecting current work:
 - [Phase 01-app-shell]: xcodegen is single source of truth for Transy.xcodeproj — never edit xcodeproj directly
 - [Phase 01-app-shell]: GENERATE_INFOPLIST_FILE: YES required on test targets when no explicit Info.plist path set
 - [Phase 01-app-shell]: ENABLE_APP_SANDBOX: NO + no entitlements file — global event monitoring unblocked for Phase 2
+- [Phase 01-app-shell]: .menuBarExtraStyle(.menu) required — omitting it produces a floating panel, not a native dropdown
+- [Phase 01-app-shell]: NSApp.activate(ignoringOtherApps:true) must precede openSettings() in LSUIElement apps on macOS 15+ for window to surface
+- [Phase 01-app-shell]: Settings scene (not WindowGroup) used for single-instance settings window with automatic Cmd+, binding
 
 ### Pending Todos
 
@@ -80,6 +84,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-14T05:25:14.860Z
-Stopped at: Completed 01-app-shell-01-PLAN.md
+Last session: 2026-03-14T05:45:11.709Z
+Stopped at: Completed 01-app-shell-02-PLAN.md
 Resume file: None
