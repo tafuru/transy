@@ -6,6 +6,16 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		204F94D0D810F1E162F9E613 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D1B48CD36755DAA5C8B67 /* MenuBarView.swift */; };
+		322E587F4D84EAAFF6FB26D4 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F06D9CC4AACA6666A41CE /* AppState.swift */; };
+		516C2D67132E2957E22DA18B /* TransyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895E14D771A487A2C547A4BB /* TransyUITests.swift */; };
+		780C1255E3206502BC4CBF49 /* TransyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A08DBC760C4F5F1CC6378D /* TransyTests.swift */; };
+		83ADDBAA20196C7AED7EDDF4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADCD09A92D4AC4AF67A3CE3 /* SettingsView.swift */; };
+		9DA5CE1EDDA26F6501B86520 /* TransyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D819EE00E612AFCFF2C9FC8 /* TransyApp.swift */; };
+		DEDAA0798E3B1F676501EF2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE40CB96A1C0949349DCFD1 /* AppDelegate.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		B1F1D3C49D035201248C0C99 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -25,8 +35,15 @@
 
 /* Begin PBXFileReference section */
 		4277C7E00D8451B1A02EFEC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		45A08DBC760C4F5F1CC6378D /* TransyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransyTests.swift; sourceTree = "<group>"; };
+		7FE40CB96A1C0949349DCFD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		895E14D771A487A2C547A4BB /* TransyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransyUITests.swift; sourceTree = "<group>"; };
 		8D5AA159B41AD22A8AB861C4 /* Transy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Transy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91500453A398C8FCB016D0A4 /* TransyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		995D1B48CD36755DAA5C8B67 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		9D819EE00E612AFCFF2C9FC8 /* TransyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransyApp.swift; sourceTree = "<group>"; };
+		CE0F06D9CC4AACA6666A41CE /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		DADCD09A92D4AC4AF67A3CE3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		FB4416C4AFCA05548E910704 /* TransyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -46,14 +63,28 @@
 		24468B74DC769E65A05B9580 /* Transy */ = {
 			isa = PBXGroup;
 			children = (
+				7FE40CB96A1C0949349DCFD1 /* AppDelegate.swift */,
+				CE0F06D9CC4AACA6666A41CE /* AppState.swift */,
 				4277C7E00D8451B1A02EFEC8 /* Info.plist */,
+				9D819EE00E612AFCFF2C9FC8 /* TransyApp.swift */,
+				495047D65C6D9F570C1F1557 /* MenuBar */,
+				CDF49B714D3263E606CA5225 /* Settings */,
 			);
 			path = Transy;
+			sourceTree = "<group>";
+		};
+		495047D65C6D9F570C1F1557 /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				995D1B48CD36755DAA5C8B67 /* MenuBarView.swift */,
+			);
+			path = MenuBar;
 			sourceTree = "<group>";
 		};
 		9580D0521C0CCD109F281C00 /* TransyTests */ = {
 			isa = PBXGroup;
 			children = (
+				45A08DBC760C4F5F1CC6378D /* TransyTests.swift */,
 			);
 			path = TransyTests;
 			sourceTree = "<group>";
@@ -71,8 +102,17 @@
 		BE4990502FA3C95963EE1B43 /* TransyUITests */ = {
 			isa = PBXGroup;
 			children = (
+				895E14D771A487A2C547A4BB /* TransyUITests.swift */,
 			);
 			path = TransyUITests;
+			sourceTree = "<group>";
+		};
+		CDF49B714D3263E606CA5225 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DADCD09A92D4AC4AF67A3CE3 /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				516C2D67132E2957E22DA18B /* TransyUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				780C1255E3206502BC4CBF49 /* TransyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +230,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEDAA0798E3B1F676501EF2F /* AppDelegate.swift in Sources */,
+				322E587F4D84EAAFF6FB26D4 /* AppState.swift in Sources */,
+				204F94D0D810F1E162F9E613 /* MenuBarView.swift in Sources */,
+				83ADDBAA20196C7AED7EDDF4 /* SettingsView.swift in Sources */,
+				9DA5CE1EDDA26F6501B86520 /* TransyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +259,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -293,6 +341,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -407,6 +456,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -425,6 +475,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
