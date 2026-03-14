@@ -5,6 +5,7 @@ struct MenuBarView: View {
 
     var body: some View {
         Button("Settings…") {
+            NSApp.activate()
             openSettings()
         }
         .keyboardShortcut(",", modifiers: .command)
