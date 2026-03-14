@@ -1,0 +1,62 @@
+name: Transy
+options:
+  bundleIdPrefix: com.tafuru
+  deploymentTarget:
+    macOS: "15.0"
+  xcodeVersion: "16.0"
+  indentWidth: 4
+  tabWidth: 4
+
+targets:
+  Transy:
+    type: application
+    platform: macOS
+    deploymentTarget: "15.0"
+    sources:
+      - path: Transy
+    settings:
+      base:
+        SWIFT_VERSION: 6.0
+        MACOSX_DEPLOYMENT_TARGET: "15.0"
+        PRODUCT_BUNDLE_IDENTIFIER: com.tafuru.transy
+        INFOPLIST_FILE: Transy/Info.plist
+        CODE_SIGN_STYLE: Automatic
+        ENABLE_APP_SANDBOX: NO
+        CODE_SIGN_ENTITLEMENTS: ""
+    info:
+      path: Transy/Info.plist
+      properties:
+        CFBundleName: Transy
+        CFBundleDisplayName: Transy
+        CFBundleIdentifier: com.tafuru.transy
+        CFBundleShortVersionString: "0.1.0"
+        CFBundleVersion: "1"
+        LSMinimumSystemVersion: "15.0"
+        LSUIElement: true
+        NSHumanReadableCopyright: ""
+
+  TransyTests:
+    type: bundle.unit-test
+    platform: macOS
+    deploymentTarget: "15.0"
+    sources:
+      - path: TransyTests
+    settings:
+      base:
+        SWIFT_VERSION: 6.0
+        MACOSX_DEPLOYMENT_TARGET: "15.0"
+    dependencies:
+      - target: Transy
+
+  TransyUITests:
+    type: bundle.ui-testing
+    platform: macOS
+    deploymentTarget: "15.0"
+    sources:
+      - path: TransyUITests
+    settings:
+      base:
+        SWIFT_VERSION: 6.0
+        MACOSX_DEPLOYMENT_TARGET: "15.0"
+    dependencies:
+      - target: Transy
