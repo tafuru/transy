@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Completed 02-01-PLAN.md
-last_updated: "2026-03-14T09:23:12.805Z"
+status: executing
+stopped_at: Completed 02-02-PLAN.md
+last_updated: "2026-03-14T09:30:34.379Z"
 last_activity: 2026-03-14 — 02-01-PLAN.md complete (permissions guidance subsystem)
 progress:
   total_phases: 4
   completed_phases: 1
   total_plans: 5
-  completed_plans: 3
+  completed_plans: 4
   percent: 60
 ---
 
@@ -51,6 +51,7 @@ Progress: [██████░░░░] 60%
 
 *Updated after each plan completion*
 | Phase 02-trigger-popup P01 | 1 | 2 tasks | 2 files |
+| Phase 02-trigger-popup P02 | 8 | 3 tasks | 9 files |
 
 ## Accumulated Context
 
@@ -76,6 +77,8 @@ Recent decisions affecting current work:
 - [Phase 02-trigger-popup]: Swift 6 plans should use `MainActor.assumeIsolated` in NSEvent/Timer callbacks when the runtime guarantee is main-thread delivery
 - [Phase 02-trigger-popup]: showIfNeeded() re-raises guidance window on every failed trigger attempt — no suppression after first show
 - [Phase 02-trigger-popup]: AXIsProcessTrusted() used directly; AXIsProcessTrustedWithOptions(prompt:true) avoided to prevent generic macOS system prompt replacing custom guidance
+- [Phase 02-trigger-popup]: DoublePressDetector.record() uses explicit nil-reset (not defer) so triple-press fires exactly once
+- [Phase 02-trigger-popup]: HotkeyMonitor uses .intersection(.deviceIndependentFlagsMask) == .command to exclude Cmd+Shift+C
 
 ### Pending Todos
 
@@ -92,6 +95,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-14T09:23:07.695Z
-Stopped at: Completed 02-01-PLAN.md
+Last session: 2026-03-14T09:30:34.377Z
+Stopped at: Completed 02-02-PLAN.md
 Resume file: None
