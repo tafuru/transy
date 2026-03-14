@@ -8,6 +8,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private let hotkeyMonitor = HotkeyMonitor()
     private let popupController = PopupController()
     private let clipboardManager = ClipboardManager()
+    private var restoreSession = ClipboardRestoreSession()
     private var isMonitoring = false
 
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -46,7 +47,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         // before the source app wrote the selected text to the clipboard. Using it here
         // ensures we restore the user's original clipboard (e.g., "AAA"), not the selection
         // that triggered the capture (e.g., "BBB").
-        let saved = preSnapshot
+        let saved = restoreSession.snapshotForSession(preSnapshot)
 
         Task { @MainActor in
             // 80ms delay: source app processes keyDown and writes selection to NSPasteboard.
@@ -56,14 +57,20 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             guard let text = clipboardManager.readSelectedText(), !text.isEmpty else {
                 // Permissions are OK but nothing was captured — stay completely silent.
                 // CONTEXT.md locked decision: "if permissions are fine but capture fails, stay silent"
-                clipboardManager.restore(saved)
+                if !appState.isPopupVisible,
+                   let restoreSnapshot = restoreSession.consumeRestoreSnapshot() {
+                    clipboardManager.restore(restoreSnapshot)
+                }
                 return
             }
 
             appState.isPopupVisible = true
             popupController.show(sourceText: text) { [weak self] in
-                self?.appState.isPopupVisible = false
-                self?.clipboardManager.restore(saved)
+                guard let self else { return }
+                self.appState.isPopupVisible = false
+                if let restoreSnapshot = self.restoreSession.consumeRestoreSnapshot() {
+                    self.clipboardManager.restore(restoreSnapshot)
+                }
             }
         }
     }

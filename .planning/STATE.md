@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: Completed 02-03-PLAN.md — Phase 2 complete
-last_updated: "2026-03-14T10:46:57.741Z"
-last_activity: 2026-03-14 — 02-01-PLAN.md complete (permissions guidance subsystem)
+status: ready
+stopped_at: Phase 2 verified and PR prepared
+last_updated: "2026-03-14T13:20:00Z"
+last_activity: 2026-03-14 — Phase 2 verified and PR prepared
 progress:
   total_phases: 4
   completed_phases: 2
   total_plans: 5
   completed_plans: 5
-  percent: 100
+  percent: 50
 ---
 
 # Project State
@@ -21,38 +21,36 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-14)
 
 **Core value:** Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
-**Current focus:** Phase 2 — Trigger & Popup
+**Current focus:** Phase 3 — Translation Loop (next)
 
 ## Current Position
 
-Phase: 2 of 4 (Trigger & Popup)
+Phase: 2 of 4 complete (Trigger & Popup)
 Plan: 3 of 3 in current phase (3 complete)
-Status: Phase 2 Complete — Ready for Phase 3
-Last activity: 2026-03-14 — 02-03-PLAN.md complete (popup wiring + human smoke test — Phase 2 complete)
+Status: Phase 2 Complete — PR ready, Phase 3 next
+Last activity: 2026-03-14 — Phase 2 verified and PR prepared
 
-Progress: [██████████] 100%
+Progress: [█████░░░░░] 50%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
-- Average duration: 12 min
-- Total execution time: 36 min
+- Total plans completed: 5
+- Average duration: 15.8 min
+- Total execution time: 79 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1. App Shell | 2 | 35 min | 17.5 min |
+| 2. Trigger & Popup | 3 | 44 min | 14.7 min |
 
 **Recent Trend:**
-- Last 2 plans: 15 min, 20 min
+- Last 2 plans: 8 min, 35 min
 - Trend: Stable
 
 *Updated after each plan completion*
-| Phase 02-trigger-popup P01 | 1 | 2 tasks | 2 files |
-| Phase 02-trigger-popup P02 | 8 | 3 tasks | 9 files |
-| Phase 02-trigger-popup P03 | 35 | 3 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -92,13 +90,12 @@ Recent decisions affecting current work:
 
 ### Blockers/Concerns
 
-- Phase 2: Human smoke-test remains required for focus non-theft, popup dismissal, clipboard restore, and permission guidance behavior
-- Phase 2: Validate the Accessibility System Settings deep link and the post-grant auto-retry path on macOS 15 during execution
-- Phase 2: Clipboard read must be delayed ~80ms after trigger fires because the source app has not written selection contents yet when the monitor first fires
+- Phase 3: Translation Loop needs to preserve the non-focus-stealing popup behavior while swapping muted source text for translated output
+- Phase 3: Apple Translation integration still needs real runtime validation for model availability, failure handling, and request cancellation
 - Phase 3: Apple Translation framework requires macOS 15+ — this remains the hard deployment-target floor
 
 ## Session Continuity
 
-Last session: 2026-03-14T10:46:57.740Z
-Stopped at: Completed 02-03-PLAN.md — Phase 2 complete
+Last session: 2026-03-14T13:20:00Z
+Stopped at: Phase 2 verified and PR prepared
 Resume file: None

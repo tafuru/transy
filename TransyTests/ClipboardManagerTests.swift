@@ -8,11 +8,14 @@ struct ClipboardManagerTests {
     @Test("save and restore preserves string content")
     @MainActor
     func saveRestorePreservesString() {
+        let mgr = ClipboardManager()
+        let originalClipboard = mgr.saveCurrentContents()
+        defer { mgr.restore(originalClipboard) }
+
         let pb = NSPasteboard.general
         pb.clearContents()
         pb.setString("original clipboard content", forType: .string)
 
-        let mgr = ClipboardManager()
         let saved = mgr.saveCurrentContents()
 
         // Overwrite clipboard to simulate source app writing selection
@@ -28,22 +31,28 @@ struct ClipboardManagerTests {
     @Test("readSelectedText returns current pasteboard string")
     @MainActor
     func readSelectedTextReturnsCurrent() {
+        let mgr = ClipboardManager()
+        let originalClipboard = mgr.saveCurrentContents()
+        defer { mgr.restore(originalClipboard) }
+
         let pb = NSPasteboard.general
         pb.clearContents()
         pb.setString("hello world", forType: .string)
 
-        let mgr = ClipboardManager()
         #expect(mgr.readSelectedText() == "hello world")
     }
 
     @Test("restore with empty items clears clipboard")
     @MainActor
     func restoreEmptyItemsClearsClipboard() {
+        let mgr = ClipboardManager()
+        let originalClipboard = mgr.saveCurrentContents()
+        defer { mgr.restore(originalClipboard) }
+
         let pb = NSPasteboard.general
         pb.clearContents()
         pb.setString("something", forType: .string)
 
-        let mgr = ClipboardManager()
         mgr.restore([])    // restore to empty state
 
         // After clearing and writing nothing, string should be nil
@@ -57,6 +66,10 @@ struct ClipboardManagerTests {
     @Test("snapshot taken before source-app copy restores original clipboard (regression)")
     @MainActor
     func snapshotBeforeSourceAppCopyRestoresOriginal() {
+        let mgr = ClipboardManager()
+        let originalClipboard = mgr.saveCurrentContents()
+        defer { mgr.restore(originalClipboard) }
+
         let pb = NSPasteboard.general
 
         // 1. User's pre-existing clipboard ("AAA")
@@ -64,7 +77,6 @@ struct ClipboardManagerTests {
         pb.setString("AAA", forType: .string)
 
         // 2. HotkeyMonitor fires on first Cmd+C — snapshot captured here (clipboard still "AAA")
-        let mgr = ClipboardManager()
         let firstPressSnapshot = mgr.saveCurrentContents()
 
         // 3. Source app processes first Cmd+C and writes selection ("BBB") to clipboard

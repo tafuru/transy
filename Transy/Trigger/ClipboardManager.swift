@@ -1,12 +1,12 @@
 import AppKit
 
 /// Saves, reads, and restores NSPasteboard.general contents around a trigger capture.
-/// All methods run on @MainActor (called exclusively from AppDelegate trigger flow).
+/// All methods run on @MainActor and are used from HotkeyMonitor/AppDelegate during the trigger flow.
 @MainActor
 final class ClipboardManager {
 
     /// Snapshot the current clipboard contents before the source app writes the selection.
-    /// Call this at the moment of second Cmd+C detection (before the 80ms delay).
+    /// Call this on the first Cmd+C keyDown so the user's original clipboard is preserved.
     func saveCurrentContents() -> [NSPasteboardItem] {
         let pb = NSPasteboard.general
         return (pb.pasteboardItems ?? []).compactMap { item in
