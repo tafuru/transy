@@ -5,7 +5,7 @@ struct SettingsView: View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Transy")
                 .font(.headline)
-            Text("Settings coming soon.")
+            Text("Settings will be available once translation is set up.")
                 .foregroundStyle(.secondary)
         }
         .padding(24)
