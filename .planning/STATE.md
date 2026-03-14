@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: "01-01 Task 2 build verification blocked: Xcode.app required"
-last_updated: "2026-03-14T05:11:10.637Z"
+stopped_at: Completed 01-app-shell-01-PLAN.md
+last_updated: "2026-03-14T05:25:20.643Z"
 last_activity: 2026-03-14 — Roadmap created, 4 phases defined, 12/12 v1 requirements mapped
 progress:
   total_phases: 4
   completed_phases: 0
   total_plans: 2
-  completed_plans: 0
+  completed_plans: 1
   percent: 0
 ---
 
@@ -50,6 +50,7 @@ Progress: [░░░░░░░░░░] 0%
 - Trend: —
 
 *Updated after each plan completion*
+| Phase 01-app-shell P01 | 15 | 2 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -62,6 +63,9 @@ Recent decisions affecting current work:
 - [Pre-phase]: Apple Translation is sandbox-compatible, but the chosen global-monitoring approach and its capability model must be validated in Phase 1 before locking the final sandbox configuration
 - [Pre-phase]: LSUIElement set via Info.plist, not entitlements (common mistake to avoid)
 - [Pre-phase]: Popup must be NSPanel with `.nonactivatingPanel` styleMask from day one — SwiftUI WindowGroup is a hard anti-pattern here
+- [Phase 01-app-shell]: xcodegen is single source of truth for Transy.xcodeproj — never edit xcodeproj directly
+- [Phase 01-app-shell]: GENERATE_INFOPLIST_FILE: YES required on test targets when no explicit Info.plist path set
+- [Phase 01-app-shell]: ENABLE_APP_SANDBOX: NO + no entitlements file — global event monitoring unblocked for Phase 2
 
 ### Pending Todos
 
@@ -76,6 +80,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-14T05:11:10.635Z
-Stopped at: 01-01 Task 2 build verification blocked: Xcode.app required
+Last session: 2026-03-14T05:25:14.860Z
+Stopped at: Completed 01-app-shell-01-PLAN.md
 Resume file: None

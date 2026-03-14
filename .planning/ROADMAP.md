@@ -89,7 +89,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. App Shell | 0/2 | Not started | - |
+| 1. App Shell | 1/2 | In Progress|  |
 | 2. Trigger & Popup | 0/3 | Not started | - |
 | 3. Translation Loop | 0/2 | Not started | - |
 | 4. Settings | 0/2 | Not started | - |

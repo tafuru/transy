@@ -1,0 +1,142 @@
+---
+phase: 01-app-shell
+plan: 01
+subsystem: infra
+tags: [xcodegen, xcode, swift6, macos, xctest, menubar, lsuielement]
+
+# Dependency graph
+requires: []
+provides:
+  - Compilable Transy.xcodeproj generated from project.yml (xcodegen source-of-truth)
+  - Transy/Info.plist with LSUIElement=YES (no-dock menu bar agent)
+  - No App Sandbox entitlement — global event monitoring unblocked for Phase 2
+  - Swift 6 / macOS 15.0 deployment target set project-wide
+  - All 7 Swift source stubs: TransyApp, AppDelegate, AppState, MenuBarView, SettingsView, TransyTests, TransyUITests
+  - Passing xcodebuild build and xcodebuild test (zero failures, zero errors)
+affects:
+  - 01-02-menu-shell (depends on this project scaffold)
+  - 02-hotkey-monitor (depends on no-sandbox, AppDelegate hook points)
+  - All subsequent plans (xcodeproj is the build foundation)
+
+# Tech tracking
+tech-stack:
+  added: [xcodegen, xcodebuild, swift6, xctest, swift-testing]
+  patterns:
+    - xcodegen as single source of truth for project structure (project.yml over xcodeproj edits)
+    - LSUIElement via Info.plist boolean (not entitlement, not runtime-only policy)
+    - GENERATE_INFOPLIST_FILE: YES on test targets (avoids code-signing failure)
+    - @MainActor isolation on AppDelegate and AppState from day one (Swift 6 compliance)
+
+key-files:
+  created:
+    - project.yml
+    - Transy/Info.plist
+    - Transy/TransyApp.swift
+    - Transy/AppDelegate.swift
+    - Transy/AppState.swift
+    - Transy/MenuBar/MenuBarView.swift
+    - Transy/Settings/SettingsView.swift
+    - TransyTests/TransyTests.swift
+    - TransyUITests/TransyUITests.swift
+  modified:
+    - Transy.xcodeproj/project.pbxproj
+
+key-decisions:
+  - "xcodegen is the single source of truth — never edit Transy.xcodeproj directly"
+  - "GENERATE_INFOPLIST_FILE: YES on test targets is required for code-signing when no explicit Info.plist exists"
+  - "LSUIElement=true in Info.plist plus NSApp.setActivationPolicy(.accessory) in AppDelegate are belt-and-suspenders — both kept"
+  - "ENABLE_APP_SANDBOX: NO and CODE_SIGN_ENTITLEMENTS: '' set at project level to prevent sandbox from being re-added accidentally"
+  - "Swift 6 concurrency mode enforced from day one — @MainActor isolation applied to AppDelegate and AppState stubs"
+
+patterns-established:
+  - "project.yml-first: all Xcode project changes go through xcodegen generate, never manual xcodeproj edits"
+  - "Test targets always include GENERATE_INFOPLIST_FILE: YES when no explicit Info.plist path is given"
+  - "@MainActor annotation on NSApplicationDelegate and Observable coordinator for Swift 6 compliance"
+
+requirements-completed: [APP-01]
+
+# Metrics
+duration: ~15min (continuation session)
+completed: 2026-03-14
+---
+
+# Phase 01 Plan 01: App Shell Scaffold Summary
+
+**xcodegen-driven Transy.xcodeproj with LSUIElement menu bar agent, no-sandbox entitlements, Swift 6 isolation, and all test targets passing under xcodebuild**
+
+## Performance
+
+- **Duration:** ~15 min (continuation after Xcode installation gate)
+- **Started:** 2026-03-14T05:20:00Z (continuation)
+- **Completed:** 2026-03-14T05:24:02Z
+- **Tasks:** 2 (+ 1 auto-fix deviation)
+- **Files modified:** 10
+
+## Accomplishments
+- Transy.xcodeproj generated from `project.yml` via xcodegen; project.yml is now the permanent single source of truth
+- LSUIElement=YES in Info.plist + `.accessory` activation policy in AppDelegate — no Dock presence at any launch state
+- No App Sandbox: `ENABLE_APP_SANDBOX: NO`, no `.entitlements` file — unblocks Phase 2 global event monitoring
+- All 7 Swift stub files compile cleanly under Swift 6 strict concurrency
+- `xcodebuild build` → BUILD SUCCEEDED; `xcodebuild test` → TEST SUCCEEDED (zero failures)
+
+## Task Commits
+
+Each task was committed atomically:
+
+1. **Task 1: Create xcodegen spec and generate Xcode project** — `cd9dedd` (feat)
+2. **Task 2: Create Swift source stubs** — `14cbb04` (feat)
+3. **Blocker note: Record Xcode installation gate** — `ac9763c` (chore)
+4. **Deviation fix: GENERATE_INFOPLIST_FILE for test targets** — `29c5437` (fix)
+
+**Plan metadata:** _(pending — this commit)_
+
+## Files Created/Modified
+- `project.yml` — xcodegen spec: targets, settings, LSUIElement info block
+- `Transy/Info.plist` — CFBundle metadata, LSUIElement=YES, no sandbox
+- `Transy/TransyApp.swift` — `@main` App with MenuBarExtra + Settings scenes, NSApplicationDelegateAdaptor
+- `Transy/AppDelegate.swift` — @MainActor NSApplicationDelegate stub with activation policy + Phase 2 hook comments
+- `Transy/AppState.swift` — @MainActor @Observable coordinator stub; grows in Phase 2–4
+- `Transy/MenuBar/MenuBarView.swift` — SwiftUI menu content: Settings… button + Quit
+- `Transy/Settings/SettingsView.swift` — Placeholder settings VStack (320×120)
+- `TransyTests/TransyTests.swift` — Swift Testing struct stub (zero tests)
+- `TransyUITests/TransyUITests.swift` — XCTestCase stub (zero tests)
+- `Transy.xcodeproj/project.pbxproj` — regenerated by xcodegen after GENERATE_INFOPLIST_FILE fix
+
+## Decisions Made
+- **xcodegen as source of truth:** Xcodeproj is regenerated artifact; all project structure changes flow through `project.yml` + `xcodegen generate`
+- **GENERATE_INFOPLIST_FILE: YES on test targets:** Required when no explicit INFOPLIST_FILE path is set; without it code-signing fails at test time even though build succeeds
+- **Belt-and-suspenders LSUIElement:** Info.plist boolean (primary) + `NSApp.setActivationPolicy(.accessory)` in AppDelegate (runtime guard) — both are kept per project decision
+
+## Deviations from Plan
+
+### Auto-fixed Issues
+
+**1. [Rule 3 - Blocking] Added GENERATE_INFOPLIST_FILE to test targets in project.yml**
+- **Found during:** Task 2 verification (`xcodebuild test`)
+- **Issue:** `TransyTests` and `TransyUITests` had no `INFOPLIST_FILE` setting and no auto-generation flag. Code-signing step failed with: "Cannot code sign because the target does not have an Info.plist file and one is not being generated automatically."
+- **Fix:** Added `GENERATE_INFOPLIST_FILE: YES` to `base` settings of both test targets in `project.yml`, then ran `xcodegen generate` to regenerate `Transy.xcodeproj`
+- **Files modified:** `project.yml`, `Transy.xcodeproj/project.pbxproj`
+- **Verification:** `xcodebuild test -scheme Transy -destination 'platform=macOS'` → TEST SUCCEEDED
+- **Committed in:** `29c5437`
+
+---
+
+**Total deviations:** 1 auto-fixed (Rule 3 - blocking)
+**Impact on plan:** Minimal surgical fix in project.yml only; no source files changed, no scope added. Required for `xcodebuild test` to pass.
+
+## Issues Encountered
+- **Auth gate (Xcode installation):** Task 2 build verification was blocked by missing Xcode.app. Recorded in STATE.md as blocker, resumed after user installed Xcode 26.3 and ran `xcodebuild -runFirstLaunch`. Not a deviation — documented as normal human-action gate.
+
+## User Setup Required
+None — no external service configuration required. Xcode is installed and first-launch completed.
+
+## Next Phase Readiness
+- Transy.xcodeproj compiles cleanly under Swift 6 and macOS 15.0 ✅
+- LSUIElement + no-sandbox config locked in ✅
+- AppDelegate and AppState have Phase 2 hook comment placeholders ✅
+- Plan 01-02 (menu bar shell finalization) can proceed immediately
+- Phase 2 (hotkey monitor) has the AppDelegate attachment point and sandbox-free entitlement config it needs
+
+---
+*Phase: 01-app-shell*
+*Completed: 2026-03-14*

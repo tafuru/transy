@@ -27,7 +27,7 @@ Requirements for the initial release. Each maps to roadmap phases.
 
 ### App Shell & Settings
 
-- [ ] **APP-01**: User can access Transy from the macOS menu bar without a Dock icon.
+- [x] **APP-01**: User can access Transy from the macOS menu bar without a Dock icon.
 - [ ] **APP-02**: User can choose the target translation language in a settings window.
 - [ ] **APP-03**: User is guided to download any Apple translation models required for the selected language pair when they are not yet available on the device.
 
@@ -68,7 +68,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| APP-01 | Phase 1 — App Shell | Pending |
+| APP-01 | Phase 1 — App Shell | Complete |
 | TRIG-01 | Phase 2 — Trigger & Popup | Pending |
 | TRIG-02 | Phase 2 — Trigger & Popup | Pending |
 | TRIG-03 | Phase 2 — Trigger & Popup | Pending |
