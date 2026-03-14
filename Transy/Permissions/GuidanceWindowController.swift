@@ -39,10 +39,10 @@ final class GuidanceWindowController: NSWindowController {
     private func startTrustPolling() {
         guard trustPollTimer == nil else { return }
 
-        trustPollTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { [weak self] timer in
+        trustPollTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { [weak self] _ in
             MainActor.assumeIsolated {
                 guard AXIsProcessTrusted() else { return }
-                timer.invalidate()
+                self?.trustPollTimer?.invalidate()
                 self?.trustPollTimer = nil
                 self?.window?.orderOut(nil)
                 self?.onPermissionGranted?()
