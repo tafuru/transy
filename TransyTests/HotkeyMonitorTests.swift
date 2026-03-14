@@ -16,7 +16,7 @@ struct HotkeyMonitorTests {
     @MainActor
     func startStopNoCrash() {
         let monitor = HotkeyMonitor()
-        monitor.start(onDoubleCmdC: {})
+        monitor.start(onDoubleCmdC: { _ in })
         monitor.stop()
     }
 }

@@ -5,9 +5,14 @@ import ApplicationServices
 final class HotkeyMonitor {
     private var monitor: Any?
     private var detector = DoublePressDetector()
-    private var onDoubleCmdC: (@MainActor () -> Void)?
+    private let clipboardManager = ClipboardManager()
+    private var firstPressSnapshot: [NSPasteboardItem] = []
+    private var onDoubleCmdC: (@MainActor ([NSPasteboardItem]) -> Void)?
 
-    func start(onDoubleCmdC: @escaping @MainActor () -> Void) {
+    /// Start monitoring global Cmd+C events. The closure receives the clipboard snapshot
+    /// taken at the moment of the **first** Cmd+C press — before the source app overwrites
+    /// the clipboard with the selected text.
+    func start(onDoubleCmdC: @escaping @MainActor ([NSPasteboardItem]) -> Void) {
         guard AXIsProcessTrusted() else { return }
         self.onDoubleCmdC = onDoubleCmdC
         monitor = NSEvent.addGlobalMonitorForEvents(matching: .keyDown) { [weak self] event in
@@ -23,6 +28,7 @@ final class HotkeyMonitor {
             monitor = nil
         }
         detector = DoublePressDetector()   // reset state on stop
+        firstPressSnapshot = []
         onDoubleCmdC = nil
     }
 
@@ -32,8 +38,16 @@ final class HotkeyMonitor {
               event.keyCode == 8,
               !event.isARepeat else { return }
 
-        if detector.record() {
-            onDoubleCmdC?()
+        switch detector.record() {
+        case .firstPress:
+            // Snapshot the clipboard NOW, before the source app processes this Cmd+C and
+            // overwrites the clipboard with the selected text.
+            firstPressSnapshot = clipboardManager.saveCurrentContents()
+        case .doublePress:
+            // Pass the pre-copy snapshot so the caller can restore the original clipboard.
+            let snapshot = firstPressSnapshot
+            firstPressSnapshot = []
+            onDoubleCmdC?(snapshot)
         }
     }
 }

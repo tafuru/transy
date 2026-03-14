@@ -27,23 +27,26 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private func startMonitoringIfNeeded() {
         guard !isMonitoring, AXIsProcessTrusted() else { return }
 
-        hotkeyMonitor.start(onDoubleCmdC: { [weak self] in
-            self?.handleTrigger()
+        hotkeyMonitor.start(onDoubleCmdC: { [weak self] preSnapshot in
+            self?.handleTrigger(preSnapshot: preSnapshot)
         })
         isMonitoring = true
     }
 
     // MARK: - Trigger flow
 
-    private func handleTrigger() {
+    private func handleTrigger(preSnapshot: [NSPasteboardItem]) {
         // If permission was revoked after launch, show guidance and bail
         guard AXIsProcessTrusted() else {
             GuidanceWindowController.shared.showIfNeeded()
             return
         }
 
-        // Save clipboard BEFORE source app writes the selection (timing is critical)
-        let saved = clipboardManager.saveCurrentContents()
+        // preSnapshot was captured by HotkeyMonitor at the moment of the FIRST Cmd+C press,
+        // before the source app wrote the selected text to the clipboard. Using it here
+        // ensures we restore the user's original clipboard (e.g., "AAA"), not the selection
+        // that triggered the capture (e.g., "BBB").
+        let saved = preSnapshot
 
         Task { @MainActor in
             // 80ms delay: source app processes keyDown and writes selection to NSPasteboard.
