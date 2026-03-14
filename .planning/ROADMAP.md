@@ -28,11 +28,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. Transy has no icon in the Dock and does not appear in the Cmd+Tab app switcher
   3. The app launches on macOS 15+ without sandbox violations or entitlement errors
   4. Project compiles cleanly with SPM dependencies resolved and folder structure matching the architecture
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 01-01: Xcode project scaffold — Swift 6, macOS 15 target, `LSUIElement` in `Info.plist`, activation policy setup, SPM dependencies, folder structure, and monitoring/sandbox compatibility validation
-- [ ] 01-02: Menu bar item — NSStatusItem / MenuBarExtra with icon, Settings and Quit menu actions, no Dock icon verified
+- [ ] 01-01-PLAN.md — Xcode project scaffold: xcodegen spec, macOS 15 target, LSUIElement, no sandbox, Swift 6, folder structure, source stubs, test targets
+- [ ] 01-02-PLAN.md — Menu bar item: finalize MenuBarExtra icon + dropdown, Settings placeholder window, runtime smoke test
 
 ### Phase 2: Trigger & Popup
 **Goal**: Pressing Cmd+C twice in any app immediately opens a floating popup that shows the selected source text as a skeleton loading placeholder, without stealing focus, and restores the clipboard on completion
