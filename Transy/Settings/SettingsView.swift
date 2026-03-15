@@ -106,12 +106,25 @@ struct SettingsView: View {
     private func reconcileSelectedLanguage() {
         let storedID = settingsStore.targetLanguage.minimalIdentifier
         
-        // If the stored target is in the supported list, use it
+        // Exact match — stored ID is directly in the supported list
         if supportedLanguages.contains(where: { $0.id == storedID }) {
             selectedLanguageID = storedID
-        } else if !supportedLanguages.isEmpty {
-            // Otherwise, pick the first supported language and update the store
-            let fallback = supportedLanguages[0]
+            return
+        }
+        
+        // Fuzzy match — stored ID includes a region (e.g. "en-JP") but supported
+        // list uses the bare language code (e.g. "en"). Match by languageCode.
+        if let languageCode = settingsStore.targetLanguage.languageCode,
+           let match = supportedLanguages.first(where: {
+               $0.language.languageCode == languageCode
+           }) {
+            selectedLanguageID = match.id
+            settingsStore.updateTargetLanguage(match.language)
+            return
+        }
+        
+        // No match at all — fall back to first supported language
+        if let fallback = supportedLanguages.first {
             selectedLanguageID = fallback.id
             settingsStore.updateTargetLanguage(fallback.language)
         }
