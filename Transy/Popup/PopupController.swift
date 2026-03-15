@@ -41,6 +41,11 @@ final class PopupController {
         removeDismissMonitors()
         self.onDismiss = onDismiss
 
+        // Rapid re-trigger must tear down the old hosted SwiftUI subtree before installing the
+        // next one. Reusing the panel is fine; reusing the hosting tree can leave the previous
+        // translationTask/session alive long enough to make the new request feel queued behind it.
+        panel.contentView = nil
+
         let view = PopupView(translationCoordinator: translationCoordinator)
         panel.contentView = NSHostingView(rootView: view)
         panel.setFrameOrigin(topCenterOrigin(for: panel))

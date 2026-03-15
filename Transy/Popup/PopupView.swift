@@ -23,6 +23,7 @@ struct PopupView: View {
                 onResult: finishIfStillActive,
                 onError: failIfStillActive
             )
+            .id(requestID)
         case let .result(_, _, translatedText):
             PopupText(text: translatedText, isMuted: false)
         case let .error(_, _, message):
