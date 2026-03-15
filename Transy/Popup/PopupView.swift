@@ -8,7 +8,7 @@ struct PopupView: View {
 
     init(
         translationCoordinator: TranslationCoordinator,
-        availabilityClient: TranslationAvailabilityClient = TranslationAvailabilityClient()
+        availabilityClient: TranslationAvailabilityClient
     ) {
         self.translationCoordinator = translationCoordinator
         self.availabilityClient = availabilityClient

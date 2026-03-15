@@ -19,13 +19,16 @@
 		780C1255E3206502BC4CBF49 /* TransyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A08DBC760C4F5F1CC6378D /* TransyTests.swift */; };
 		7D4A0BBB9219E0E06451DE43 /* HotkeyMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5D4D938C6155102F8DFD9 /* HotkeyMonitorTests.swift */; };
 		7DFABD368286D3B56E50E88F /* DoublePressDetectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2235DE783B51BE6B13D1993 /* DoublePressDetectorTests.swift */; };
+		7EB2D150C6557F03D03EE672 /* SettingsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3FE03FD3BB8F70C1424BCA /* SettingsStoreTests.swift */; };
 		83ADDBAA20196C7AED7EDDF4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADCD09A92D4AC4AF67A3CE3 /* SettingsView.swift */; };
 		8C0375FD479C9642EC9F0A92 /* TranslationRaceGuardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FC79CA1B09F4378844F508 /* TranslationRaceGuardTests.swift */; };
 		9ADEE4B3B3252FABABAF0B51 /* GuidanceWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021F2003FD464D7C50FE3B6F /* GuidanceWindowController.swift */; };
+		9B88142989507F94F5A02C89 /* TargetLanguageSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60EB17A8A5F1F992BC90047 /* TargetLanguageSnapshotTests.swift */; };
 		9DA5CE1EDDA26F6501B86520 /* TransyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D819EE00E612AFCFF2C9FC8 /* TransyApp.swift */; };
 		A22EEA4AB5EFD7CDC0D6498B /* DoublePressDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12AAA728534FE1C2113D892 /* DoublePressDetector.swift */; };
 		A2FB8599B6B1B4F5BC41D43B /* TranslationTaskConfigurationReloaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E661331FEAC8733B0C9F23 /* TranslationTaskConfigurationReloaderTests.swift */; };
 		AAFA7FD602DEF26AC12C9B9F /* TranslationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7383317B9A12BC538EC8 /* TranslationCoordinator.swift */; };
+		AC26B804437DB031761E20D3 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DC9F4A18702B8B9A29CFC9 /* SettingsStore.swift */; };
 		C2963F73C4B9A205379716F1 /* ClipboardRestoreSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE6089F9FAC821751E8677 /* ClipboardRestoreSessionTests.swift */; };
 		C29AFB5BB3EAFC24BC779F0C /* TranslationAvailabilityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CA67A12F3A3538C3D60990 /* TranslationAvailabilityClient.swift */; };
 		C2CF2A3F817522BDF37D813B /* GuidanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B0D2ED8A83BDD6941EFEBB /* GuidanceView.swift */; };
@@ -55,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		021F2003FD464D7C50FE3B6F /* GuidanceWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceWindowController.swift; sourceTree = "<group>"; };
+		1A3FE03FD3BB8F70C1424BCA /* SettingsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStoreTests.swift; sourceTree = "<group>"; };
 		1B37DED22B25AA672F1F1C28 /* HotkeyMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyMonitor.swift; sourceTree = "<group>"; };
 		1FBE6089F9FAC821751E8677 /* ClipboardRestoreSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardRestoreSessionTests.swift; sourceTree = "<group>"; };
 		21E661331FEAC8733B0C9F23 /* TranslationTaskConfigurationReloaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationTaskConfigurationReloaderTests.swift; sourceTree = "<group>"; };
@@ -64,6 +68,7 @@
 		45A08DBC760C4F5F1CC6378D /* TransyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransyTests.swift; sourceTree = "<group>"; };
 		4A6419329179F1E05CAA17FA /* ClipboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardManager.swift; sourceTree = "<group>"; };
 		615771C52D62AEAC2E7F273C /* TranslationCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationCoordinatorTests.swift; sourceTree = "<group>"; };
+		73DC9F4A18702B8B9A29CFC9 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
 		77C5D4D938C6155102F8DFD9 /* HotkeyMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyMonitorTests.swift; sourceTree = "<group>"; };
 		7FE40CB96A1C0949349DCFD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8007AE0E9F8439938296AE4E /* TranslationErrorMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationErrorMapper.swift; sourceTree = "<group>"; };
@@ -83,6 +88,7 @@
 		DADCD09A92D4AC4AF67A3CE3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F2235DE783B51BE6B13D1993 /* DoublePressDetectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublePressDetectorTests.swift; sourceTree = "<group>"; };
 		F5B0D2ED8A83BDD6941EFEBB /* GuidanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceView.swift; sourceTree = "<group>"; };
+		F60EB17A8A5F1F992BC90047 /* TargetLanguageSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetLanguageSnapshotTests.swift; sourceTree = "<group>"; };
 		FB4416C4AFCA05548E910704 /* TransyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC11A83D27AECE8423CC2FFC /* ClipboardRestoreSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardRestoreSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,6 +149,8 @@
 				1FBE6089F9FAC821751E8677 /* ClipboardRestoreSessionTests.swift */,
 				F2235DE783B51BE6B13D1993 /* DoublePressDetectorTests.swift */,
 				77C5D4D938C6155102F8DFD9 /* HotkeyMonitorTests.swift */,
+				1A3FE03FD3BB8F70C1424BCA /* SettingsStoreTests.swift */,
+				F60EB17A8A5F1F992BC90047 /* TargetLanguageSnapshotTests.swift */,
 				C310B86E8705892C0E418D75 /* TranslationAvailabilityClientTests.swift */,
 				615771C52D62AEAC2E7F273C /* TranslationCoordinatorTests.swift */,
 				C4FC79CA1B09F4378844F508 /* TranslationRaceGuardTests.swift */,
@@ -182,6 +190,7 @@
 		CDF49B714D3263E606CA5225 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				73DC9F4A18702B8B9A29CFC9 /* SettingsStore.swift */,
 				DADCD09A92D4AC4AF67A3CE3 /* SettingsView.swift */,
 			);
 			path = Settings;
@@ -318,6 +327,8 @@
 				C2963F73C4B9A205379716F1 /* ClipboardRestoreSessionTests.swift in Sources */,
 				7DFABD368286D3B56E50E88F /* DoublePressDetectorTests.swift in Sources */,
 				7D4A0BBB9219E0E06451DE43 /* HotkeyMonitorTests.swift in Sources */,
+				7EB2D150C6557F03D03EE672 /* SettingsStoreTests.swift in Sources */,
+				9B88142989507F94F5A02C89 /* TargetLanguageSnapshotTests.swift in Sources */,
 				CFCA60109C1346EC9290DE53 /* TranslationAvailabilityClientTests.swift in Sources */,
 				C9B1B3F6BC1033CEFD7EA044 /* TranslationCoordinatorTests.swift in Sources */,
 				8C0375FD479C9642EC9F0A92 /* TranslationRaceGuardTests.swift in Sources */,
@@ -341,6 +352,7 @@
 				204F94D0D810F1E162F9E613 /* MenuBarView.swift in Sources */,
 				23528C1A8D6C4E3E817D396B /* PopupController.swift in Sources */,
 				47CFCB32F5FA2997EDDE2455 /* PopupView.swift in Sources */,
+				AC26B804437DB031761E20D3 /* SettingsStore.swift in Sources */,
 				83ADDBAA20196C7AED7EDDF4 /* SettingsView.swift in Sources */,
 				DB8EBF7032C96F568FF72EC1 /* TextNormalization.swift in Sources */,
 				C29AFB5BB3EAFC24BC779F0C /* TranslationAvailabilityClient.swift in Sources */,

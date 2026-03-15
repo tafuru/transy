@@ -44,7 +44,11 @@ struct TranslationTaskConfigurationReloaderTests {
         let coordinator = TranslationCoordinator()
         _ = coordinator.begin(sourceText: "とても長い原文です")
 
-        controller.show(translationCoordinator: coordinator) {}
+        let mockClient = TranslationAvailabilityClient(targetLanguage: Locale.Language(identifier: "en"))
+        controller.show(
+            translationCoordinator: coordinator,
+            availabilityClient: mockClient
+        ) {}
 
         #expect(controller.hasHostedPopupContent)
 

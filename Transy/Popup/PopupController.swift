@@ -35,6 +35,7 @@ final class PopupController {
     /// Show the popup with translation-driven content. If already visible, replaces content in-place (no stacking).
     func show(
         translationCoordinator: TranslationCoordinator,
+        availabilityClient: TranslationAvailabilityClient,
         onDismiss: @escaping () -> Void
     ) {
         // Replace content if popup is already visible (rapid re-trigger: reuse position, replace text)
@@ -46,7 +47,10 @@ final class PopupController {
         // translationTask/session alive long enough to make the new request feel queued behind it.
         panel.contentView = nil
 
-        let view = PopupView(translationCoordinator: translationCoordinator)
+        let view = PopupView(
+            translationCoordinator: translationCoordinator,
+            availabilityClient: availabilityClient
+        )
         panel.contentView = NSHostingView(rootView: view)
         panel.setFrameOrigin(topCenterOrigin(for: panel))
         panel.alphaValue = 0

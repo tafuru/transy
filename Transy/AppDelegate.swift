@@ -5,6 +5,7 @@ import ApplicationServices
 final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private let appState = AppState()
+    let settingsStore = SettingsStore()
     private let hotkeyMonitor = HotkeyMonitor()
     private let popupController = PopupController()
     private let clipboardManager = ClipboardManager()
@@ -76,7 +77,15 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
             _ = translationCoordinator.begin(sourceText: normalizedText)
             appState.isPopupVisible = true
-            popupController.show(translationCoordinator: translationCoordinator) { [weak self] in
+            
+            // Snapshot target language at trigger time — frozen for this request
+            let frozenTarget = settingsStore.snapshotTargetLanguage()
+            let availabilityClient = TranslationAvailabilityClient(targetLanguage: frozenTarget)
+            
+            popupController.show(
+                translationCoordinator: translationCoordinator,
+                availabilityClient: availabilityClient
+            ) { [weak self] in
                 guard let self else { return }
                 self.translationCoordinator.dismiss()
                 self.appState.isPopupVisible = false
