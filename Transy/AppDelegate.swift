@@ -8,6 +8,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private let hotkeyMonitor = HotkeyMonitor()
     private let popupController = PopupController()
     private let clipboardManager = ClipboardManager()
+    private let translationCoordinator = TranslationCoordinator()
     private var restoreSession = ClipboardRestoreSession()
     private var isMonitoring = false
 
@@ -64,9 +65,20 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 return
             }
 
+            let normalizedText = normalizedSourceText(text)
+            guard !normalizedText.isEmpty else {
+                if !appState.isPopupVisible,
+                   let restoreSnapshot = restoreSession.consumeRestoreSnapshot() {
+                    clipboardManager.restore(restoreSnapshot)
+                }
+                return
+            }
+
+            _ = translationCoordinator.begin(sourceText: normalizedText)
             appState.isPopupVisible = true
-            popupController.show(sourceText: text) { [weak self] in
+            popupController.show(translationCoordinator: translationCoordinator) { [weak self] in
                 guard let self else { return }
+                self.translationCoordinator.dismiss()
                 self.appState.isPopupVisible = false
                 if let restoreSnapshot = self.restoreSession.consumeRestoreSnapshot() {
                     self.clipboardManager.restore(restoreSnapshot)

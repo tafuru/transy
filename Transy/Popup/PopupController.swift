@@ -56,12 +56,6 @@ final class PopupController {
         attachDismissMonitors()
     }
 
-    func show(sourceText: String, onDismiss: @escaping () -> Void) {
-        let translationCoordinator = TranslationCoordinator()
-        _ = translationCoordinator.begin(sourceText: sourceText)
-        show(translationCoordinator: translationCoordinator, onDismiss: onDismiss)
-    }
-
     func dismiss() {
         removeDismissMonitors()
         panel.orderOut(nil)
