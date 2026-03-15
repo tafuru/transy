@@ -68,7 +68,7 @@ struct TranslationAvailabilityClientTests {
         #expect(message == "This language pair isn’t supported.")
     }
 
-    @Test("ambiguous source detection maps to couldnt-detect message")
+    @Test("ambiguous source detection maps to couldn't-detect message")
     func ambiguousSourceMapsToCouldNotDetectMessage() async throws {
         let client = TranslationAvailabilityClient { _, _ in
             throw FakeAvailabilityError.languageDetectionFailed

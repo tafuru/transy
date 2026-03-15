@@ -39,8 +39,8 @@ struct TranslationAvailabilityClient: Sendable {
             @unknown default:
                 return .unavailable(message: TranslationErrorMapper.translationFailed)
             }
-        } catch is CancellationError {
-            throw CancellationError()
+        } catch let error as CancellationError {
+            throw error
         } catch {
             return .unavailable(message: TranslationErrorMapper.message(for: error))
         }

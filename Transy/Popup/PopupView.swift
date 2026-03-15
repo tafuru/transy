@@ -102,38 +102,53 @@ private struct LoadingPopupText: View {
                     targetLanguage: availabilityClient.targetLanguage
                 )
             }
-            .translationTask(translationConfiguration) { session in
-                nonisolated(unsafe) let session = session
+            .translationTask(
+                translationConfiguration,
+                action: Self.translationAction(
+                    requestContext: requestContext,
+                    availabilityClient: availabilityClient,
+                    onResult: onResult,
+                    onError: onError
+                )
+            )
+    }
 
-                do {
-                    let preflightResult = try await availabilityClient.preflight(
-                        for: requestContext.sourceText
-                    )
+    private nonisolated static func translationAction(
+        requestContext: LoadingRequestContext,
+        availabilityClient: TranslationAvailabilityClient,
+        onResult: @escaping @Sendable (UUID, String, String) async -> Void,
+        onError: @escaping @Sendable (UUID, String, String) async -> Void
+    ) -> (TranslationSession) async -> Void {
+        { session in
+            do {
+                let preflightResult = try await availabilityClient.preflight(
+                    for: requestContext.sourceText
+                )
 
-                    switch preflightResult {
-                    case .ready:
-                        break
-                    case let .unavailable(message):
-                        await onError(requestContext.requestID, requestContext.sourceText, message)
-                        return
-                    }
-
-                    let response = try await session.translate(requestContext.sourceText)
-                    await onResult(
-                        requestContext.requestID,
-                        requestContext.sourceText,
-                        response.targetText
-                    )
-                } catch is CancellationError {
+                switch preflightResult {
+                case .ready:
+                    break
+                case let .unavailable(message):
+                    await onError(requestContext.requestID, requestContext.sourceText, message)
                     return
-                } catch {
-                    await onError(
-                        requestContext.requestID,
-                        requestContext.sourceText,
-                        TranslationErrorMapper.message(for: error)
-                    )
                 }
+
+                let response = try await session.translate(requestContext.sourceText)
+                await onResult(
+                    requestContext.requestID,
+                    requestContext.sourceText,
+                    response.targetText
+                )
+            } catch is CancellationError {
+                return
+            } catch {
+                await onError(
+                    requestContext.requestID,
+                    requestContext.sourceText,
+                    TranslationErrorMapper.message(for: error)
+                )
             }
+        }
     }
 }
 
