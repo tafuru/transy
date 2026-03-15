@@ -27,11 +27,13 @@
 		9DA5CE1EDDA26F6501B86520 /* TransyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D819EE00E612AFCFF2C9FC8 /* TransyApp.swift */; };
 		A22EEA4AB5EFD7CDC0D6498B /* DoublePressDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12AAA728534FE1C2113D892 /* DoublePressDetector.swift */; };
 		A2FB8599B6B1B4F5BC41D43B /* TranslationTaskConfigurationReloaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E661331FEAC8733B0C9F23 /* TranslationTaskConfigurationReloaderTests.swift */; };
+		A71FF47E595B1940683C5EC3 /* TranslationModelGuidance.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC20026A344AD22D1C269C0 /* TranslationModelGuidance.swift */; };
 		AAFA7FD602DEF26AC12C9B9F /* TranslationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7383317B9A12BC538EC8 /* TranslationCoordinator.swift */; };
 		AC26B804437DB031761E20D3 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DC9F4A18702B8B9A29CFC9 /* SettingsStore.swift */; };
 		C2963F73C4B9A205379716F1 /* ClipboardRestoreSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE6089F9FAC821751E8677 /* ClipboardRestoreSessionTests.swift */; };
 		C29AFB5BB3EAFC24BC779F0C /* TranslationAvailabilityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CA67A12F3A3538C3D60990 /* TranslationAvailabilityClient.swift */; };
 		C2CF2A3F817522BDF37D813B /* GuidanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B0D2ED8A83BDD6941EFEBB /* GuidanceView.swift */; };
+		C50D0D97A63C5B2F9882C60A /* TranslationModelGuidanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7076942C003E932835F67F0 /* TranslationModelGuidanceTests.swift */; };
 		C9B1B3F6BC1033CEFD7EA044 /* TranslationCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615771C52D62AEAC2E7F273C /* TranslationCoordinatorTests.swift */; };
 		CFCA60109C1346EC9290DE53 /* TranslationAvailabilityClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C310B86E8705892C0E418D75 /* TranslationAvailabilityClientTests.swift */; };
 		DB8EBF7032C96F568FF72EC1 /* TextNormalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524A77BC83DDE3C480C0F14 /* TextNormalization.swift */; };
@@ -80,6 +82,7 @@
 		995D1B48CD36755DAA5C8B67 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
 		9D819EE00E612AFCFF2C9FC8 /* TransyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransyApp.swift; sourceTree = "<group>"; };
 		A12AAA728534FE1C2113D892 /* DoublePressDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublePressDetector.swift; sourceTree = "<group>"; };
+		B7076942C003E932835F67F0 /* TranslationModelGuidanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationModelGuidanceTests.swift; sourceTree = "<group>"; };
 		C1B00BA499960D4DE3272F9B /* ClipboardManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardManagerTests.swift; sourceTree = "<group>"; };
 		C310B86E8705892C0E418D75 /* TranslationAvailabilityClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationAvailabilityClientTests.swift; sourceTree = "<group>"; };
 		C4FC79CA1B09F4378844F508 /* TranslationRaceGuardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationRaceGuardTests.swift; sourceTree = "<group>"; };
@@ -91,6 +94,7 @@
 		F60EB17A8A5F1F992BC90047 /* TargetLanguageSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetLanguageSnapshotTests.swift; sourceTree = "<group>"; };
 		FB4416C4AFCA05548E910704 /* TransyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC11A83D27AECE8423CC2FFC /* ClipboardRestoreSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardRestoreSession.swift; sourceTree = "<group>"; };
+		FFC20026A344AD22D1C269C0 /* TranslationModelGuidance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationModelGuidance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -153,6 +157,7 @@
 				F60EB17A8A5F1F992BC90047 /* TargetLanguageSnapshotTests.swift */,
 				C310B86E8705892C0E418D75 /* TranslationAvailabilityClientTests.swift */,
 				615771C52D62AEAC2E7F273C /* TranslationCoordinatorTests.swift */,
+				B7076942C003E932835F67F0 /* TranslationModelGuidanceTests.swift */,
 				C4FC79CA1B09F4378844F508 /* TranslationRaceGuardTests.swift */,
 				21E661331FEAC8733B0C9F23 /* TranslationTaskConfigurationReloaderTests.swift */,
 				45A08DBC760C4F5F1CC6378D /* TransyTests.swift */,
@@ -192,6 +197,7 @@
 			children = (
 				73DC9F4A18702B8B9A29CFC9 /* SettingsStore.swift */,
 				DADCD09A92D4AC4AF67A3CE3 /* SettingsView.swift */,
+				FFC20026A344AD22D1C269C0 /* TranslationModelGuidance.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -331,6 +337,7 @@
 				9B88142989507F94F5A02C89 /* TargetLanguageSnapshotTests.swift in Sources */,
 				CFCA60109C1346EC9290DE53 /* TranslationAvailabilityClientTests.swift in Sources */,
 				C9B1B3F6BC1033CEFD7EA044 /* TranslationCoordinatorTests.swift in Sources */,
+				C50D0D97A63C5B2F9882C60A /* TranslationModelGuidanceTests.swift in Sources */,
 				8C0375FD479C9642EC9F0A92 /* TranslationRaceGuardTests.swift in Sources */,
 				A2FB8599B6B1B4F5BC41D43B /* TranslationTaskConfigurationReloaderTests.swift in Sources */,
 				780C1255E3206502BC4CBF49 /* TransyTests.swift in Sources */,
@@ -358,6 +365,7 @@
 				C29AFB5BB3EAFC24BC779F0C /* TranslationAvailabilityClient.swift in Sources */,
 				AAFA7FD602DEF26AC12C9B9F /* TranslationCoordinator.swift in Sources */,
 				F3DEA91AAA877AC3FE7F4E2F /* TranslationErrorMapper.swift in Sources */,
+				A71FF47E595B1940683C5EC3 /* TranslationModelGuidance.swift in Sources */,
 				9DA5CE1EDDA26F6501B86520 /* TransyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
