@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: App Shell** - Runnable menu bar app with no Dock icon, correct entitlements, and project scaffold (completed 2026-03-14)
 - [x] **Phase 2: Trigger & Popup** - Double-Cmd+C fires a non-focus-stealing popup showing source text in a muted loading state (completed 2026-03-14)
 - [x] **Phase 3: Translation Loop** - Skeleton resolves to an on-device Apple Translation result in the same popup (completed 2026-03-15)
-- [ ] **Phase 4: Settings** - Target language and model availability are configurable from a dedicated settings window
+- [x] **Phase 4: Settings** - Target language and model availability are configurable from a dedicated settings window (completed 2026-03-15)
 
 ## Phase Details
 
@@ -80,7 +80,7 @@ Plans:
 
 Plans:
 - [x] 04-01-PLAN.md — SettingsStore: defaults-backed target-language store, Settings scene injection, and request-time snapshot wiring
-- [ ] 04-02-PLAN.md — SettingsWindow: compact SwiftUI settings pane, supported-language picker, conditional model guidance, and manual behavior validation
+- [x] 04-02-PLAN.md — SettingsWindow: compact SwiftUI settings pane, supported-language picker, conditional model guidance, and manual behavior validation
 
 ## Progress
 
@@ -92,4 +92,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. App Shell | 2/2 | Complete   | 2026-03-14 |
 | 2. Trigger & Popup | 3/3 | Complete   | 2026-03-14 |
 | 3. Translation Loop | 2/2 | Complete | 2026-03-15 |
-| 4. Settings | 1/2 | In progress | - |
+| 4. Settings | 2/2 | Complete | 2026-03-15 |

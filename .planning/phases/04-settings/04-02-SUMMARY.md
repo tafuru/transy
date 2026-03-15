@@ -97,43 +97,49 @@ Replaced the placeholder Settings screen with a real compact native pane showing
 
 **What was done:**
 - Added `selectedLanguageID` @State to manage picker selection independently of stored target
-- Implemented `reconcileSelectedLanguage()` to reconcile stored target with supported options after language list loads
+- Implemented `reconcileSelectedLanguage()` with three-tier matching: exact ID → languageCode fuzzy → first-supported fallback
 - Added fallback logic: if stored target not in supported list, select first supported language and update store
 - Disabled picker while `supportedLanguages` is empty (during loading)
 - Updated guidance copy to include explicit path: "System Settings → General → Language & Region → Translation Languages"
 - Renamed button from "Open System Settings" to "Open Language & Region" for clarity
-- Added detailed comment explaining URL scheme compatibility across macOS versions
+- Fixed System Settings URL scheme to use `.extension` suffix required on macOS 13+
+- Added languageCode-based fuzzy matching for OS preferred languages with region codes (e.g. `en-JP` → `en`)
 
-**Commit:** `090f763`
+**Commits:** `090f763`, `3d5f3d6`, `851f3c6`
 
-**Verification:** Full test suite passes (37 tests), build succeeds
+**Verification:** Full test suite passes (37 tests), build succeeds, human checkpoint approved
 
-**Reason for fix:** User feedback from checkpoint verification identified two issues:
-1. Blank picker on first launch when stored target doesn't match supported options
-2. System Settings action opens to last-viewed pane rather than Language & Region
+**Issues found and fixed (3 rounds of checkpoint feedback):**
+1. Blank picker on first launch — SwiftUI couldn't match selection to any tag before async load
+2. System Settings landing on wrong pane — URL scheme missing `.extension` suffix for macOS 13+
+3. Arabic as default instead of English — OS locale `en-JP` didn't match supported `en`; added languageCode fuzzy match
 
 **Resolution:**
-1. Picker reconciliation ensures valid selection after async language loading
-2. Explicit guidance copy makes the next step obvious even if System Settings doesn't land in Translation Languages sub-section
+1. Picker reconciliation with three-tier fallback ensures valid selection after async loading
+2. `.extension` suffix on pane ID reliably opens Language & Region
+3. languageCode-based fuzzy match correctly resolves region-qualified OS preferences
 
 ## Deviations from Plan
 
 ### Auto-fixed Issues
 
 **1. [Rule 1 - Bug] Blank picker on first launch**
-- **Found during:** Checkpoint verification (Task 3)
-- **Issue:** Picker appeared blank on first launch because binding used `settingsStore.targetLanguage.minimalIdentifier` before `supportedLanguages` loaded, and SwiftUI couldn't match the selection to any tag
-- **Fix:** Added `selectedLanguageID` @State, implemented reconciliation logic after language loading, and disabled picker during empty state
-- **Files modified:** `Transy/Settings/SettingsView.swift`
+- **Found during:** Checkpoint verification round 1
+- **Issue:** Picker appeared blank because binding used `settingsStore.targetLanguage.minimalIdentifier` before `supportedLanguages` loaded
+- **Fix:** Added `selectedLanguageID` @State with reconciliation logic after async language loading
 - **Commit:** `090f763`
 
-**2. [Rule 2 - Missing functionality] Explicit System Settings guidance path**
-- **Found during:** Checkpoint verification (Task 3)
-- **Issue:** Generic guidance copy "Download it in System Settings" was too vague; System Settings action opened to last-viewed pane instead of Language & Region
-- **Fix:** Updated guidance copy to include explicit navigation path: "System Settings → General → Language & Region → Translation Languages"
-- **Files modified:** `Transy/Settings/SettingsView.swift`
-- **Commit:** `090f763`
-- **Note:** URL scheme `x-apple.systempreferences:com.apple.Localization-Settings` does open Language & Region, but cannot deep-link to Translation Languages sub-section; explicit copy compensates for this macOS limitation
+**2. [Rule 2 - Bug] System Settings opened to wrong pane**
+- **Found during:** Checkpoint verification round 1
+- **Issue:** URL scheme missing `.extension` suffix for macOS 13+; opened to last-viewed pane
+- **Fix:** Changed to `com.apple.Localization-Settings.extension` and updated guidance copy with explicit path
+- **Commit:** `3d5f3d6`
+
+**3. [Rule 1 - Bug] Arabic shown as default instead of OS preferred language**
+- **Found during:** Checkpoint verification round 2
+- **Issue:** OS locale `en-JP` (`minimalIdentifier` = "en-JP") did not match supported "en"; fell through to first alphabetical (Arabic)
+- **Fix:** Added `languageCode`-based fuzzy match step in reconciliation before the fallback
+- **Commit:** `851f3c6`
 
 ## Verification Results
 
