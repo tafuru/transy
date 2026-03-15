@@ -76,11 +76,11 @@ Plans:
   2. The selected target language persists across app restarts
   3. When a required Apple Translation model for the selected language pair is not downloaded, the user sees a clear prompt guiding them to download it (via Apple's model download flow)
   4. The settings window does not cause the Dock icon to appear or the app to enter the regular activation policy
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 04-01: SettingsStore — Defaults-backed target language enum, @Observable, read by TranslationCoordinator
-- [ ] 04-02: SettingsWindow — SwiftUI Settings scene, language picker, Apple Translation model availability check + download guidance, single-instance guard, activation policy safety
+- [ ] 04-01-PLAN.md — SettingsStore: defaults-backed target-language store, Settings scene injection, and request-time snapshot wiring
+- [ ] 04-02-PLAN.md — SettingsWindow: compact SwiftUI settings pane, supported-language picker, conditional model guidance, and manual behavior validation
 
 ## Progress
 

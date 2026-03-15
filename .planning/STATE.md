@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: ready
-stopped_at: Phase 3 verified and accepted
-last_updated: "2026-03-15T03:45:47Z"
-last_activity: 2026-03-15 — Phase 3 verified and accepted
+stopped_at: Phase 4 plans verified
+last_updated: "2026-03-15T12:55:22Z"
+last_activity: 2026-03-15 — Phase 4 plans verified and checker-passed
 progress:
   total_phases: 4
   completed_phases: 3
-  total_plans: 7
+  total_plans: 9
   completed_plans: 7
   percent: 75
 ---
@@ -25,10 +25,10 @@ See: .planning/PROJECT.md (updated 2026-03-14)
 
 ## Current Position
 
-Phase: 3 of 4 complete (Translation Loop)
-Plan: 2 of 2 in completed phase (03-01 and 03-02 complete)
-Status: Phase 3 complete — popup translation loop verified with a recorded cancellation-latency limitation
-Last activity: 2026-03-15 — Phase 3 verified and accepted
+Phase: 3 of 4 complete (Phase 4 planned)
+Plan: Phase 4 planned — 2 of 2 plans ready to execute
+Status: Phase 4 planned and checker-passed — ready to execute Settings work
+Last activity: 2026-03-15 — Phase 4 plans verified and checker-passed
 
 Progress: [███████░░░] 75%
 
@@ -90,6 +90,10 @@ Recent decisions affecting current work:
 - [Phase 03]: Popup reuse stays at the NSPanel level, but the hosted SwiftUI subtree must be torn down on re-trigger and dismiss so translationTask restarts and cancels as quickly as AppKit allows
 - [Phase 03]: Phase 3 ships the macOS 15-compatible translationTask path only; a Tahoe-only TranslationSession.cancel() experiment was removed after it showed no meaningful user-visible improvement
 - [Phase 03]: Translation-framework cancellation latency remains a documented known limitation, not a hidden defect, while visible correctness requirements are considered satisfied
+- [Phase 04]: Settings stays a single compact native pane; guidance appears only when relevant and may modestly expand the window
+- [Phase 04]: Target-language choices come from Apple-supported languages with natural-language labels, default from OS preference, then persist independently afterward
+- [Phase 04]: Settings auto-save immediately; the next request uses the new target while any active popup/request stays frozen
+- [Phase 04]: Model guidance is absent when irrelevant, generic after a real missing-model event with unknown pair certainty, and only pair-specific when trusted known-pair context exists
 
 ### Pending Todos
 
@@ -98,18 +102,19 @@ Recent decisions affecting current work:
 - ✅ 02-03-PLAN.md complete (popup wiring + human smoke test)
 - ✅ 03-01-PLAN.md complete (translation foundation)
 - ✅ 03-02-PLAN.md complete (popup translation wiring + accepted live verification)
-- Execute Phase 4: Settings
-- Todo: add future guidance for installing Apple translation models from System Settings
+- Execute 04-01-PLAN.md (settings store + request snapshot wiring)
+- Execute 04-02-PLAN.md (settings UI + conditional model guidance)
 - Todo: track unresolved Translation framework cancellation latency across re-trigger/dismiss flows
 
 ### Blockers/Concerns
 
 - Phase 4: Add target-language selection and model-install guidance without regressing LSUIElement popup behavior
+- Phase 4: System Settings guidance action should prefer a conservative destination and still needs live validation for the exact Translation Languages landing behavior
 - Known limitation: Translation framework cancellation latency can still make a short request feel delayed after a longer one, even though stale overwrite and late reappearance are fixed
 - Phase 3: Apple Translation framework requires macOS 15+ — this remains the hard deployment-target floor
 
 ## Session Continuity
 
-Last session: 2026-03-15T03:45:47Z
-Stopped at: Phase 3 verified and accepted
+Last session: 2026-03-15T12:55:22Z
+Stopped at: Phase 4 plans verified
 Resume file: None
