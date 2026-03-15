@@ -1,7 +1,7 @@
 import Foundation
 import Translation
 
-final class TranslationAvailabilityClient {
+struct TranslationAvailabilityClient: Sendable {
     enum PreflightResult: Equatable, Sendable {
         case ready
         case unavailable(message: String)
@@ -39,6 +39,8 @@ final class TranslationAvailabilityClient {
             @unknown default:
                 return .unavailable(message: TranslationErrorMapper.translationFailed)
             }
+        } catch is CancellationError {
+            throw CancellationError()
         } catch {
             return .unavailable(message: TranslationErrorMapper.message(for: error))
         }

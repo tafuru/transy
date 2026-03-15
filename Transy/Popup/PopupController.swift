@@ -32,13 +32,16 @@ final class PopupController {
         return panel
     }
 
-    /// Show the popup with source text. If already visible, replaces content in-place (no stacking).
-    func show(sourceText: String, onDismiss: @escaping () -> Void) {
+    /// Show the popup with translation-driven content. If already visible, replaces content in-place (no stacking).
+    func show(
+        translationCoordinator: TranslationCoordinator,
+        onDismiss: @escaping () -> Void
+    ) {
         // Replace content if popup is already visible (rapid re-trigger: reuse position, replace text)
         removeDismissMonitors()
         self.onDismiss = onDismiss
 
-        let view = PopupView(sourceText: sourceText)
+        let view = PopupView(translationCoordinator: translationCoordinator)
         panel.contentView = NSHostingView(rootView: view)
         panel.setFrameOrigin(topCenterOrigin(for: panel))
         panel.alphaValue = 0
@@ -51,6 +54,12 @@ final class PopupController {
             panel.animator().alphaValue = 1
         }
         attachDismissMonitors()
+    }
+
+    func show(sourceText: String, onDismiss: @escaping () -> Void) {
+        let translationCoordinator = TranslationCoordinator()
+        _ = translationCoordinator.begin(sourceText: sourceText)
+        show(translationCoordinator: translationCoordinator, onDismiss: onDismiss)
     }
 
     func dismiss() {

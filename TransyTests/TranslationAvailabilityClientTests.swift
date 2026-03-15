@@ -83,6 +83,17 @@ struct TranslationAvailabilityClientTests {
 
         #expect(message == "Couldn't detect the source language.")
     }
+
+    @Test("preflight cancellation propagates for silent popup teardown")
+    func cancellationPropagates() async {
+        let client = TranslationAvailabilityClient { _, _ in
+            throw CancellationError()
+        }
+
+        await #expect(throws: CancellationError.self) {
+            _ = try await client.preflight(for: "こんにちは")
+        }
+    }
 }
 
 private enum FakeAvailabilityError: Error {
