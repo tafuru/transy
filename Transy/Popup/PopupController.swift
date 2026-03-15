@@ -32,13 +32,21 @@ final class PopupController {
         return panel
     }
 
-    /// Show the popup with source text. If already visible, replaces content in-place (no stacking).
-    func show(sourceText: String, onDismiss: @escaping () -> Void) {
+    /// Show the popup with translation-driven content. If already visible, replaces content in-place (no stacking).
+    func show(
+        translationCoordinator: TranslationCoordinator,
+        onDismiss: @escaping () -> Void
+    ) {
         // Replace content if popup is already visible (rapid re-trigger: reuse position, replace text)
         removeDismissMonitors()
         self.onDismiss = onDismiss
 
-        let view = PopupView(sourceText: sourceText)
+        // Rapid re-trigger must tear down the old hosted SwiftUI subtree before installing the
+        // next one. Reusing the panel is fine; reusing the hosting tree can leave the previous
+        // translationTask/session alive long enough to make the new request feel queued behind it.
+        panel.contentView = nil
+
+        let view = PopupView(translationCoordinator: translationCoordinator)
         panel.contentView = NSHostingView(rootView: view)
         panel.setFrameOrigin(topCenterOrigin(for: panel))
         panel.alphaValue = 0
@@ -55,9 +63,17 @@ final class PopupController {
 
     func dismiss() {
         removeDismissMonitors()
+        // Dismiss must tear down the hosted SwiftUI tree, not just hide the panel. The
+        // translationTask is view-scoped, so leaving the hosting view attached after an
+        // outside click / Escape can let the old request keep running until the next show.
+        panel.contentView = nil
         panel.orderOut(nil)
         onDismiss?()
         onDismiss = nil
+    }
+
+    var hasHostedPopupContent: Bool {
+        panel.contentView != nil
     }
 
     // MARK: - Dismiss monitors (global — panel is not key window, local monitors won't fire)

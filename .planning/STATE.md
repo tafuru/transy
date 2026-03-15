@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: ready
-stopped_at: Phase 2 verified and PR prepared
-last_updated: "2026-03-14T13:20:00Z"
-last_activity: 2026-03-14 — Phase 2 verified and PR prepared
+stopped_at: Phase 3 verified and accepted
+last_updated: "2026-03-15T03:45:47Z"
+last_activity: 2026-03-15 — Phase 3 verified and accepted
 progress:
   total_phases: 4
-  completed_phases: 2
-  total_plans: 5
-  completed_plans: 5
-  percent: 50
+  completed_phases: 3
+  total_plans: 7
+  completed_plans: 7
+  percent: 75
 ---
 
 # Project State
@@ -21,23 +21,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-14)
 
 **Core value:** Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
-**Current focus:** Phase 3 — Translation Loop (next)
+**Current focus:** Phase 4 — Settings (Phase 3 complete; model guidance and target-language settings next)
 
 ## Current Position
 
-Phase: 2 of 4 complete (Trigger & Popup)
-Plan: 3 of 3 in current phase (3 complete)
-Status: Phase 2 Complete — PR ready, Phase 3 next
-Last activity: 2026-03-14 — Phase 2 verified and PR prepared
+Phase: 3 of 4 complete (Translation Loop)
+Plan: 2 of 2 in completed phase (03-01 and 03-02 complete)
+Status: Phase 3 complete — popup translation loop verified with a recorded cancellation-latency limitation
+Last activity: 2026-03-15 — Phase 3 verified and accepted
 
-Progress: [█████░░░░░] 50%
+Progress: [███████░░░] 75%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
-- Average duration: 15.8 min
-- Total execution time: 79 min
+- Total plans completed: 7
+- Average duration: 27.9 min
+- Total execution time: 195 min
 
 **By Phase:**
 
@@ -45,12 +45,15 @@ Progress: [█████░░░░░] 50%
 |-------|-------|-------|----------|
 | 1. App Shell | 2 | 35 min | 17.5 min |
 | 2. Trigger & Popup | 3 | 44 min | 14.7 min |
+| 3. Translation Loop | 2 | 1h 56m | 58.0 min |
 
 **Recent Trend:**
-- Last 2 plans: 8 min, 35 min
-- Trend: Stable
+- Last 2 plans: 8 min, 1h 48m
+- Trend: Increased during live runtime validation
 
 *Updated after each plan completion*
+| Phase 03 P01 | 465 | 3 tasks | 8 files |
+| Phase 03 P02 | 1h 48m | 3 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -80,22 +83,33 @@ Recent decisions affecting current work:
 - [Phase 02-trigger-popup]: HotkeyMonitor uses .intersection(.deviceIndependentFlagsMask) == .command to exclude Cmd+Shift+C
 - [Phase 02-trigger-popup]: orderFrontRegardless() used for LSUIElement background-app popup visibility (orderFront(nil) is a silent no-op when app is not active)
 - [Phase 02-trigger-popup]: Clipboard snapshot taken at first Cmd+C keyDown (before Task.sleep(80ms)) so restore yields original clipboard, not trigger selection
+- [Phase 03]: Generic English preflight target is centralized as Locale.Language(identifier: 'en') until Phase 4 settings exist
+- [Phase 03]: Visible source text uses trim-only normalization while availability preflight uses a collapsed-whitespace detection sample
+- [Phase 03]: TranslationErrorMapper owns short inline copy so popup wiring never forwards raw framework descriptions
+- [Phase 03]: TranslationCoordinator guards finish/fail writes with activeRequestID so stale completions cannot overwrite newer popup state
+- [Phase 03]: Popup reuse stays at the NSPanel level, but the hosted SwiftUI subtree must be torn down on re-trigger and dismiss so translationTask restarts and cancels as quickly as AppKit allows
+- [Phase 03]: Phase 3 ships the macOS 15-compatible translationTask path only; a Tahoe-only TranslationSession.cancel() experiment was removed after it showed no meaningful user-visible improvement
+- [Phase 03]: Translation-framework cancellation latency remains a documented known limitation, not a hidden defect, while visible correctness requirements are considered satisfied
 
 ### Pending Todos
 
 - ✅ 02-01-PLAN.md complete (permissions guidance)
 - ✅ 02-02-PLAN.md complete (trigger subsystem)
 - ✅ 02-03-PLAN.md complete (popup wiring + human smoke test)
-- Execute Phase 3: Translation Loop plans when ready
+- ✅ 03-01-PLAN.md complete (translation foundation)
+- ✅ 03-02-PLAN.md complete (popup translation wiring + accepted live verification)
+- Execute Phase 4: Settings
+- Todo: add future guidance for installing Apple translation models from System Settings
+- Todo: track unresolved Translation framework cancellation latency across re-trigger/dismiss flows
 
 ### Blockers/Concerns
 
-- Phase 3: Translation Loop needs to preserve the non-focus-stealing popup behavior while swapping muted source text for translated output
-- Phase 3: Apple Translation integration still needs real runtime validation for model availability, failure handling, and request cancellation
+- Phase 4: Add target-language selection and model-install guidance without regressing LSUIElement popup behavior
+- Known limitation: Translation framework cancellation latency can still make a short request feel delayed after a longer one, even though stale overwrite and late reappearance are fixed
 - Phase 3: Apple Translation framework requires macOS 15+ — this remains the hard deployment-target floor
 
 ## Session Continuity
 
-Last session: 2026-03-14T13:20:00Z
-Stopped at: Phase 2 verified and PR prepared
+Last session: 2026-03-15T03:45:47Z
+Stopped at: Phase 3 verified and accepted
 Resume file: None

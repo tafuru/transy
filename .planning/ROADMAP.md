@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: App Shell** - Runnable menu bar app with no Dock icon, correct entitlements, and project scaffold (completed 2026-03-14)
 - [x] **Phase 2: Trigger & Popup** - Double-Cmd+C fires a non-focus-stealing popup showing source text in a muted loading state (completed 2026-03-14)
-- [ ] **Phase 3: Translation Loop** - Skeleton resolves to an on-device Apple Translation result in the same popup
+- [x] **Phase 3: Translation Loop** - Skeleton resolves to an on-device Apple Translation result in the same popup (completed 2026-03-15)
 - [ ] **Phase 4: Settings** - Target language and model availability are configurable from a dedicated settings window
 
 ## Phase Details
@@ -61,11 +61,11 @@ Plans:
   2. The user does not need to select or specify the source language; it is detected automatically
   3. If translation fails or a model is unavailable, the popup shows a readable error state (not a crash or silent blank)
   4. Rapid double-triggers do not display a stale translation from an earlier request (race condition handled)
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 03-01: TranslationService protocol + AppleTranslationClient — Translation framework integration, async translate(), cancellable Task with token pattern, auto language detection
-- [ ] 03-02: TranslationCoordinator wiring — source text → show popup (skeleton) → call service → push result/error back to popup; SwiftUI state machine (.loading → .result | .error); input normalization (trim, whitespace)
+- [x] 03-01-PLAN.md — Translation foundation: normalization, availability preflight, short error mapping, request-scoped coordinator, and Swift Testing coverage
+- [x] 03-02-PLAN.md — Popup translation wiring: view-scoped Apple Translation in PopupView, AppDelegate lifecycle integration, accepted live smoke verification, and known-limitation tracking
 
 ### Phase 4: Settings
 **Goal**: User can choose the target translation language in a dedicated settings window and is guided to download any required on-device Apple Translation models that are not yet available
@@ -91,5 +91,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. App Shell | 2/2 | Complete   | 2026-03-14 |
 | 2. Trigger & Popup | 3/3 | Complete   | 2026-03-14 |
-| 3. Translation Loop | 0/2 | Not started | - |
+| 3. Translation Loop | 2/2 | Complete | 2026-03-15 |
 | 4. Settings | 0/2 | Not started | - |

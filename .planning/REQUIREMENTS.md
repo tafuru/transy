@@ -21,9 +21,9 @@ Requirements for the initial release. Each maps to roadmap phases.
 
 ### Translation
 
-- [ ] **TRAN-01**: User receives an on-device Apple Translation framework translation of the selected text into the configured target language.
-- [ ] **TRAN-02**: User does not need to choose the source language manually; the source language is detected automatically.
-- [ ] **TRAN-03**: User sees the translated text replace the loading placeholder in the same popup when translation completes.
+- [x] **TRAN-01**: User receives an on-device Apple Translation framework translation of the selected text into the configured target language.
+- [x] **TRAN-02**: User does not need to choose the source language manually; the source language is detected automatically.
+- [x] **TRAN-03**: User sees the translated text replace the loading placeholder in the same popup when translation completes.
 
 ### App Shell & Settings
 
@@ -75,9 +75,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | POP-01 | Phase 2 — Trigger & Popup | Complete |
 | POP-02 | Phase 2 — Trigger & Popup | Complete |
 | POP-03 | Phase 2 — Trigger & Popup | Complete |
-| TRAN-01 | Phase 3 — Translation Loop | Pending |
-| TRAN-02 | Phase 3 — Translation Loop | Pending |
-| TRAN-03 | Phase 3 — Translation Loop | Pending |
+| TRAN-01 | Phase 3 — Translation Loop | Complete |
+| TRAN-02 | Phase 3 — Translation Loop | Complete |
+| TRAN-03 | Phase 3 — Translation Loop | Complete |
 | APP-02 | Phase 4 — Settings | Pending |
 | APP-03 | Phase 4 — Settings | Pending |
 
@@ -88,4 +88,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-03-14*
-*Last updated: 2026-03-14 after initial definition*
+*Last updated: 2026-03-15 after completing Phase 3*

@@ -20,12 +20,20 @@
 		7D4A0BBB9219E0E06451DE43 /* HotkeyMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5D4D938C6155102F8DFD9 /* HotkeyMonitorTests.swift */; };
 		7DFABD368286D3B56E50E88F /* DoublePressDetectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2235DE783B51BE6B13D1993 /* DoublePressDetectorTests.swift */; };
 		83ADDBAA20196C7AED7EDDF4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADCD09A92D4AC4AF67A3CE3 /* SettingsView.swift */; };
+		8C0375FD479C9642EC9F0A92 /* TranslationRaceGuardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FC79CA1B09F4378844F508 /* TranslationRaceGuardTests.swift */; };
 		9ADEE4B3B3252FABABAF0B51 /* GuidanceWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021F2003FD464D7C50FE3B6F /* GuidanceWindowController.swift */; };
 		9DA5CE1EDDA26F6501B86520 /* TransyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D819EE00E612AFCFF2C9FC8 /* TransyApp.swift */; };
 		A22EEA4AB5EFD7CDC0D6498B /* DoublePressDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12AAA728534FE1C2113D892 /* DoublePressDetector.swift */; };
+		A2FB8599B6B1B4F5BC41D43B /* TranslationTaskConfigurationReloaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E661331FEAC8733B0C9F23 /* TranslationTaskConfigurationReloaderTests.swift */; };
+		AAFA7FD602DEF26AC12C9B9F /* TranslationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7383317B9A12BC538EC8 /* TranslationCoordinator.swift */; };
 		C2963F73C4B9A205379716F1 /* ClipboardRestoreSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE6089F9FAC821751E8677 /* ClipboardRestoreSessionTests.swift */; };
+		C29AFB5BB3EAFC24BC779F0C /* TranslationAvailabilityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CA67A12F3A3538C3D60990 /* TranslationAvailabilityClient.swift */; };
 		C2CF2A3F817522BDF37D813B /* GuidanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B0D2ED8A83BDD6941EFEBB /* GuidanceView.swift */; };
+		C9B1B3F6BC1033CEFD7EA044 /* TranslationCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615771C52D62AEAC2E7F273C /* TranslationCoordinatorTests.swift */; };
+		CFCA60109C1346EC9290DE53 /* TranslationAvailabilityClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C310B86E8705892C0E418D75 /* TranslationAvailabilityClientTests.swift */; };
+		DB8EBF7032C96F568FF72EC1 /* TextNormalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524A77BC83DDE3C480C0F14 /* TextNormalization.swift */; };
 		DEDAA0798E3B1F676501EF2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE40CB96A1C0949349DCFD1 /* AppDelegate.swift */; };
+		F3DEA91AAA877AC3FE7F4E2F /* TranslationErrorMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8007AE0E9F8439938296AE4E /* TranslationErrorMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,11 +57,16 @@
 		021F2003FD464D7C50FE3B6F /* GuidanceWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceWindowController.swift; sourceTree = "<group>"; };
 		1B37DED22B25AA672F1F1C28 /* HotkeyMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyMonitor.swift; sourceTree = "<group>"; };
 		1FBE6089F9FAC821751E8677 /* ClipboardRestoreSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardRestoreSessionTests.swift; sourceTree = "<group>"; };
+		21E661331FEAC8733B0C9F23 /* TranslationTaskConfigurationReloaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationTaskConfigurationReloaderTests.swift; sourceTree = "<group>"; };
+		2524A77BC83DDE3C480C0F14 /* TextNormalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextNormalization.swift; sourceTree = "<group>"; };
+		3B1D7383317B9A12BC538EC8 /* TranslationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationCoordinator.swift; sourceTree = "<group>"; };
 		4277C7E00D8451B1A02EFEC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		45A08DBC760C4F5F1CC6378D /* TransyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransyTests.swift; sourceTree = "<group>"; };
 		4A6419329179F1E05CAA17FA /* ClipboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardManager.swift; sourceTree = "<group>"; };
+		615771C52D62AEAC2E7F273C /* TranslationCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationCoordinatorTests.swift; sourceTree = "<group>"; };
 		77C5D4D938C6155102F8DFD9 /* HotkeyMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyMonitorTests.swift; sourceTree = "<group>"; };
 		7FE40CB96A1C0949349DCFD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8007AE0E9F8439938296AE4E /* TranslationErrorMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationErrorMapper.swift; sourceTree = "<group>"; };
 		895E14D771A487A2C547A4BB /* TransyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransyUITests.swift; sourceTree = "<group>"; };
 		8D5AA159B41AD22A8AB861C4 /* Transy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Transy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91500453A398C8FCB016D0A4 /* TransyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,7 +76,10 @@
 		9D819EE00E612AFCFF2C9FC8 /* TransyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransyApp.swift; sourceTree = "<group>"; };
 		A12AAA728534FE1C2113D892 /* DoublePressDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublePressDetector.swift; sourceTree = "<group>"; };
 		C1B00BA499960D4DE3272F9B /* ClipboardManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardManagerTests.swift; sourceTree = "<group>"; };
+		C310B86E8705892C0E418D75 /* TranslationAvailabilityClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationAvailabilityClientTests.swift; sourceTree = "<group>"; };
+		C4FC79CA1B09F4378844F508 /* TranslationRaceGuardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationRaceGuardTests.swift; sourceTree = "<group>"; };
 		CE0F06D9CC4AACA6666A41CE /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		D6CA67A12F3A3538C3D60990 /* TranslationAvailabilityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationAvailabilityClient.swift; sourceTree = "<group>"; };
 		DADCD09A92D4AC4AF67A3CE3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F2235DE783B51BE6B13D1993 /* DoublePressDetectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublePressDetectorTests.swift; sourceTree = "<group>"; };
 		F5B0D2ED8A83BDD6941EFEBB /* GuidanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceView.swift; sourceTree = "<group>"; };
@@ -95,6 +111,7 @@
 				CBE8E291D5C848DEC9D093C5 /* Permissions */,
 				F7DAF462089262F957AB1225 /* Popup */,
 				CDF49B714D3263E606CA5225 /* Settings */,
+				E812C7FFD5FF99F2A6A62DC1 /* Translation */,
 				92BE44F66D967FF5D641739B /* Trigger */,
 			);
 			path = Transy;
@@ -126,6 +143,10 @@
 				1FBE6089F9FAC821751E8677 /* ClipboardRestoreSessionTests.swift */,
 				F2235DE783B51BE6B13D1993 /* DoublePressDetectorTests.swift */,
 				77C5D4D938C6155102F8DFD9 /* HotkeyMonitorTests.swift */,
+				C310B86E8705892C0E418D75 /* TranslationAvailabilityClientTests.swift */,
+				615771C52D62AEAC2E7F273C /* TranslationCoordinatorTests.swift */,
+				C4FC79CA1B09F4378844F508 /* TranslationRaceGuardTests.swift */,
+				21E661331FEAC8733B0C9F23 /* TranslationTaskConfigurationReloaderTests.swift */,
 				45A08DBC760C4F5F1CC6378D /* TransyTests.swift */,
 			);
 			path = TransyTests;
@@ -164,6 +185,17 @@
 				DADCD09A92D4AC4AF67A3CE3 /* SettingsView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		E812C7FFD5FF99F2A6A62DC1 /* Translation */ = {
+			isa = PBXGroup;
+			children = (
+				2524A77BC83DDE3C480C0F14 /* TextNormalization.swift */,
+				D6CA67A12F3A3538C3D60990 /* TranslationAvailabilityClient.swift */,
+				3B1D7383317B9A12BC538EC8 /* TranslationCoordinator.swift */,
+				8007AE0E9F8439938296AE4E /* TranslationErrorMapper.swift */,
+			);
+			path = Translation;
 			sourceTree = "<group>";
 		};
 		F7DAF462089262F957AB1225 /* Popup */ = {
@@ -286,6 +318,10 @@
 				C2963F73C4B9A205379716F1 /* ClipboardRestoreSessionTests.swift in Sources */,
 				7DFABD368286D3B56E50E88F /* DoublePressDetectorTests.swift in Sources */,
 				7D4A0BBB9219E0E06451DE43 /* HotkeyMonitorTests.swift in Sources */,
+				CFCA60109C1346EC9290DE53 /* TranslationAvailabilityClientTests.swift in Sources */,
+				C9B1B3F6BC1033CEFD7EA044 /* TranslationCoordinatorTests.swift in Sources */,
+				8C0375FD479C9642EC9F0A92 /* TranslationRaceGuardTests.swift in Sources */,
+				A2FB8599B6B1B4F5BC41D43B /* TranslationTaskConfigurationReloaderTests.swift in Sources */,
 				780C1255E3206502BC4CBF49 /* TransyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,6 +342,10 @@
 				23528C1A8D6C4E3E817D396B /* PopupController.swift in Sources */,
 				47CFCB32F5FA2997EDDE2455 /* PopupView.swift in Sources */,
 				83ADDBAA20196C7AED7EDDF4 /* SettingsView.swift in Sources */,
+				DB8EBF7032C96F568FF72EC1 /* TextNormalization.swift in Sources */,
+				C29AFB5BB3EAFC24BC779F0C /* TranslationAvailabilityClient.swift in Sources */,
+				AAFA7FD602DEF26AC12C9B9F /* TranslationCoordinator.swift in Sources */,
+				F3DEA91AAA877AC3FE7F4E2F /* TranslationErrorMapper.swift in Sources */,
 				9DA5CE1EDDA26F6501B86520 /* TransyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
