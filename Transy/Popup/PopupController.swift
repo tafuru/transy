@@ -36,6 +36,7 @@ final class PopupController {
     func show(
         translationCoordinator: TranslationCoordinator,
         availabilityClient: TranslationAvailabilityClient,
+        settingsStore: SettingsStore,
         onDismiss: @escaping () -> Void
     ) {
         // Replace content if popup is already visible (rapid re-trigger: reuse position, replace text)
@@ -49,7 +50,8 @@ final class PopupController {
 
         let view = PopupView(
             translationCoordinator: translationCoordinator,
-            availabilityClient: availabilityClient
+            availabilityClient: availabilityClient,
+            settingsStore: settingsStore
         )
         panel.contentView = NSHostingView(rootView: view)
         panel.setFrameOrigin(topCenterOrigin(for: panel))

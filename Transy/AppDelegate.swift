@@ -49,7 +49,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         // before the source app wrote the selected text to the clipboard. Using it here
         // ensures we restore the user's original clipboard (e.g., "AAA"), not the selection
         // that triggered the capture (e.g., "BBB").
-        let saved = restoreSession.snapshotForSession(preSnapshot)
+        _ = restoreSession.snapshotForSession(preSnapshot)
 
         Task { @MainActor in
             // 80ms delay: source app processes keyDown and writes selection to NSPasteboard.
@@ -84,7 +84,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             
             popupController.show(
                 translationCoordinator: translationCoordinator,
-                availabilityClient: availabilityClient
+                availabilityClient: availabilityClient,
+                settingsStore: settingsStore
             ) { [weak self] in
                 guard let self else { return }
                 self.translationCoordinator.dismiss()
