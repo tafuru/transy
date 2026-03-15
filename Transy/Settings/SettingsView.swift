@@ -118,11 +118,10 @@ struct SettingsView: View {
     }
     
     private func openSystemSettings() {
-        // Try to open the General > Language & Region pane in System Settings.
-        // On macOS 13+ (Ventura), the System Settings app replaced System Preferences,
-        // but the x-apple.systempreferences URL scheme is still supported for compatibility.
-        // The pane ID com.apple.Localization-Settings maps to Language & Region.
-        if let url = URL(string: "x-apple.systempreferences:com.apple.Localization-Settings") {
+        // Open General > Language & Region in System Settings.
+        // The .extension suffix is required on macOS 13+ (Ventura and later) to target
+        // the correct pane in the new System Settings app.
+        if let url = URL(string: "x-apple.systempreferences:com.apple.Localization-Settings.extension") {
             NSWorkspace.shared.open(url)
         }
     }
