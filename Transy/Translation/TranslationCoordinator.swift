@@ -4,7 +4,7 @@ import Observation
 @MainActor
 @Observable
 final class TranslationCoordinator {
-    enum PopupState {
+    enum PopupState: Equatable {
         case hidden
         case loading(requestID: UUID, sourceText: String)
         case result(requestID: UUID, sourceText: String, translatedText: String)
@@ -22,6 +22,7 @@ final class TranslationCoordinator {
     }
 
     func finish(requestID: UUID, sourceText: String, translatedText: String) {
+        guard activeRequestID == requestID else { return }
         popupState = .result(
             requestID: requestID,
             sourceText: sourceText,
@@ -30,6 +31,7 @@ final class TranslationCoordinator {
     }
 
     func fail(requestID: UUID, sourceText: String, message: String) {
+        guard activeRequestID == requestID else { return }
         popupState = .error(
             requestID: requestID,
             sourceText: sourceText,
