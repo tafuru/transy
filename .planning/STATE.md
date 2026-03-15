@@ -96,6 +96,7 @@ Recent decisions affecting current work:
 - 03-02-PLAN.md ready (popup translation wiring + smoke verification)
 - Execute Phase 3: Translation Loop
 - Todo: add future guidance for installing Apple translation models from System Settings
+- Todo: track unresolved Translation framework cancellation latency across re-trigger/dismiss flows
 
 ### Blockers/Concerns
 
