@@ -79,7 +79,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 04-01-PLAN.md — SettingsStore: defaults-backed target-language store, Settings scene injection, and request-time snapshot wiring
+- [x] 04-01-PLAN.md — SettingsStore: defaults-backed target-language store, Settings scene injection, and request-time snapshot wiring
 - [ ] 04-02-PLAN.md — SettingsWindow: compact SwiftUI settings pane, supported-language picker, conditional model guidance, and manual behavior validation
 
 ## Progress
@@ -92,4 +92,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. App Shell | 2/2 | Complete   | 2026-03-14 |
 | 2. Trigger & Popup | 3/3 | Complete   | 2026-03-14 |
 | 3. Translation Loop | 2/2 | Complete | 2026-03-15 |
-| 4. Settings | 0/2 | Not started | - |
+| 4. Settings | 1/2 | In progress | - |

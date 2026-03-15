@@ -25,19 +25,19 @@ See: .planning/PROJECT.md (updated 2026-03-14)
 
 ## Current Position
 
-Phase: 3 of 4 complete (Phase 4 planned)
-Plan: Phase 4 planned — 2 of 2 plans ready to execute
-Status: Phase 4 planned and checker-passed — ready to execute Settings work
-Last activity: 2026-03-15 — Phase 4 plans verified and checker-passed
+Phase: 4 in progress (1 of 2 plans complete)
+Plan: 04-01 complete, 04-02 remaining
+Status: Phase 4 in progress — target-language store and snapshot wiring complete
+Last activity: 2026-03-15 — Completed 04-01-PLAN.md (SettingsStore implementation)
 
-Progress: [███████░░░] 75%
+Progress: [████████░░] 80%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
-- Average duration: 27.9 min
-- Total execution time: 195 min
+- Total plans completed: 8
+- Average duration: 26.1 min
+- Total execution time: 199 min
 
 **By Phase:**
 
@@ -46,14 +46,16 @@ Progress: [███████░░░] 75%
 | 1. App Shell | 2 | 35 min | 17.5 min |
 | 2. Trigger & Popup | 3 | 44 min | 14.7 min |
 | 3. Translation Loop | 2 | 1h 56m | 58.0 min |
+| 4. Settings | 1 | 4 min | 4.0 min |
 
 **Recent Trend:**
-- Last 2 plans: 8 min, 1h 48m
-- Trend: Increased during live runtime validation
+- Last 3 plans: 8 min, 1h 48m, 4 min
+- Trend: Short Wave 0 TDD plan after intensive Phase 3 runtime validation
 
 *Updated after each plan completion*
-| Phase 03 P01 | 465 | 3 tasks | 8 files |
+| Phase 03 P01 | 8 min | 3 tasks | 8 files |
 | Phase 03 P02 | 1h 48m | 3 tasks | 10 files |
+| Phase 04 P01 | 4 min | 2 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -94,6 +96,9 @@ Recent decisions affecting current work:
 - [Phase 04]: Target-language choices come from Apple-supported languages with natural-language labels, default from OS preference, then persist independently afterward
 - [Phase 04]: Settings auto-save immediately; the next request uses the new target while any active popup/request stays frozen
 - [Phase 04]: Model guidance is absent when irrelevant, generic after a real missing-model event with unknown pair certainty, and only pair-specific when trusted known-pair context exists
+- [Phase 04-01]: SettingsStore persists only Locale.Language.minimalIdentifier in UserDefaults; reconstructs full Locale.Language on read to avoid serialization complexity
+- [Phase 04-01]: Target language defaults from OS preferred language on first run only; stored value wins over later OS language changes
+- [Phase 04-01]: Request-time snapshot freezes target language for popup lifecycle; AppDelegate passes frozen TranslationAvailabilityClient to PopupController
 
 ### Pending Todos
 
@@ -102,7 +107,7 @@ Recent decisions affecting current work:
 - ✅ 02-03-PLAN.md complete (popup wiring + human smoke test)
 - ✅ 03-01-PLAN.md complete (translation foundation)
 - ✅ 03-02-PLAN.md complete (popup translation wiring + accepted live verification)
-- Execute 04-01-PLAN.md (settings store + request snapshot wiring)
+- ✅ 04-01-PLAN.md complete (settings store + request snapshot wiring)
 - Execute 04-02-PLAN.md (settings UI + conditional model guidance)
 - Todo: track unresolved Translation framework cancellation latency across re-trigger/dismiss flows
 
@@ -115,6 +120,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-15T12:55:22Z
-Stopped at: Phase 4 plans verified
+Last session: 2026-03-15T13:21:39Z
+Stopped at: Completed 04-01-PLAN.md (SettingsStore implementation)
 Resume file: None

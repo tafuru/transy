@@ -78,7 +78,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TRAN-01 | Phase 3 — Translation Loop | Complete |
 | TRAN-02 | Phase 3 — Translation Loop | Complete |
 | TRAN-03 | Phase 3 — Translation Loop | Complete |
-| APP-02 | Phase 4 — Settings | Pending |
+| APP-02 | Phase 4 — Settings | In Progress (1/2) |
 | APP-03 | Phase 4 — Settings | Pending |
 
 **Coverage:**
