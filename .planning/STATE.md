@@ -95,6 +95,7 @@ Recent decisions affecting current work:
 - ✅ 03-01-PLAN.md complete (translation foundation)
 - 03-02-PLAN.md ready (popup translation wiring + smoke verification)
 - Execute Phase 3: Translation Loop
+- Todo: add future guidance for installing Apple translation models from System Settings
 
 ### Blockers/Concerns
 
