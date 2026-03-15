@@ -24,6 +24,7 @@
 		9ADEE4B3B3252FABABAF0B51 /* GuidanceWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021F2003FD464D7C50FE3B6F /* GuidanceWindowController.swift */; };
 		9DA5CE1EDDA26F6501B86520 /* TransyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D819EE00E612AFCFF2C9FC8 /* TransyApp.swift */; };
 		A22EEA4AB5EFD7CDC0D6498B /* DoublePressDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12AAA728534FE1C2113D892 /* DoublePressDetector.swift */; };
+		A2FB8599B6B1B4F5BC41D43B /* TranslationTaskConfigurationReloaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E661331FEAC8733B0C9F23 /* TranslationTaskConfigurationReloaderTests.swift */; };
 		AAFA7FD602DEF26AC12C9B9F /* TranslationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7383317B9A12BC538EC8 /* TranslationCoordinator.swift */; };
 		C2963F73C4B9A205379716F1 /* ClipboardRestoreSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE6089F9FAC821751E8677 /* ClipboardRestoreSessionTests.swift */; };
 		C29AFB5BB3EAFC24BC779F0C /* TranslationAvailabilityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CA67A12F3A3538C3D60990 /* TranslationAvailabilityClient.swift */; };
@@ -56,6 +57,7 @@
 		021F2003FD464D7C50FE3B6F /* GuidanceWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceWindowController.swift; sourceTree = "<group>"; };
 		1B37DED22B25AA672F1F1C28 /* HotkeyMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyMonitor.swift; sourceTree = "<group>"; };
 		1FBE6089F9FAC821751E8677 /* ClipboardRestoreSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardRestoreSessionTests.swift; sourceTree = "<group>"; };
+		21E661331FEAC8733B0C9F23 /* TranslationTaskConfigurationReloaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationTaskConfigurationReloaderTests.swift; sourceTree = "<group>"; };
 		2524A77BC83DDE3C480C0F14 /* TextNormalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextNormalization.swift; sourceTree = "<group>"; };
 		3B1D7383317B9A12BC538EC8 /* TranslationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationCoordinator.swift; sourceTree = "<group>"; };
 		4277C7E00D8451B1A02EFEC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				C310B86E8705892C0E418D75 /* TranslationAvailabilityClientTests.swift */,
 				615771C52D62AEAC2E7F273C /* TranslationCoordinatorTests.swift */,
 				C4FC79CA1B09F4378844F508 /* TranslationRaceGuardTests.swift */,
+				21E661331FEAC8733B0C9F23 /* TranslationTaskConfigurationReloaderTests.swift */,
 				45A08DBC760C4F5F1CC6378D /* TransyTests.swift */,
 			);
 			path = TransyTests;
@@ -318,6 +321,7 @@
 				CFCA60109C1346EC9290DE53 /* TranslationAvailabilityClientTests.swift in Sources */,
 				C9B1B3F6BC1033CEFD7EA044 /* TranslationCoordinatorTests.swift in Sources */,
 				8C0375FD479C9642EC9F0A92 /* TranslationRaceGuardTests.swift in Sources */,
+				A2FB8599B6B1B4F5BC41D43B /* TranslationTaskConfigurationReloaderTests.swift in Sources */,
 				780C1255E3206502BC4CBF49 /* TransyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

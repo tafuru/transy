@@ -36,4 +36,20 @@ struct TranslationTaskConfigurationReloaderTests {
         #expect(nextConfiguration.target == targetLanguage)
         #expect(nextConfiguration.version > initialConfiguration.version)
     }
+
+    @Test("popup dismiss tears down hosted content so translationTask can cancel immediately")
+    @MainActor
+    func popupDismissRemovesHostedContent() {
+        let controller = PopupController()
+        let coordinator = TranslationCoordinator()
+        _ = coordinator.begin(sourceText: "とても長い原文です")
+
+        controller.show(translationCoordinator: coordinator) {}
+
+        #expect(controller.hasHostedPopupContent)
+
+        controller.dismiss()
+
+        #expect(!controller.hasHostedPopupContent)
+    }
 }

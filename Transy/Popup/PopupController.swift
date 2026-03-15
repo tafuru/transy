@@ -63,9 +63,17 @@ final class PopupController {
 
     func dismiss() {
         removeDismissMonitors()
+        // Dismiss must tear down the hosted SwiftUI tree, not just hide the panel. The
+        // translationTask is view-scoped, so leaving the hosting view attached after an
+        // outside click / Escape can let the old request keep running until the next show.
+        panel.contentView = nil
         panel.orderOut(nil)
         onDismiss?()
         onDismiss = nil
+    }
+
+    var hasHostedPopupContent: Bool {
+        panel.contentView != nil
     }
 
     // MARK: - Dismiss monitors (global — panel is not key window, local monitors won't fire)
