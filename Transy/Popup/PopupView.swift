@@ -86,6 +86,7 @@ private struct LoadingPopupText: View {
     let availabilityClient: TranslationAvailabilityClient
     let onResult: @Sendable (UUID, String, String) async -> Void
     let onError: @Sendable (UUID, String, String) async -> Void
+    @State private var translationConfiguration: TranslationSession.Configuration?
 
     var body: some View {
         let requestContext = requestContext
@@ -94,7 +95,13 @@ private struct LoadingPopupText: View {
         let onError = onError
 
         return PopupText(text: requestContext.sourceText, isMuted: true)
-            .translationTask(source: nil, target: availabilityClient.targetLanguage) { session in
+            .onChange(of: requestContext.requestID, initial: true) { _, _ in
+                translationConfiguration = nextTranslationConfiguration(
+                    after: translationConfiguration,
+                    targetLanguage: availabilityClient.targetLanguage
+                )
+            }
+            .translationTask(translationConfiguration) { session in
                 nonisolated(unsafe) let session = session
 
                 do {
@@ -130,4 +137,21 @@ private struct LoadingPopupText: View {
 private struct LoadingRequestContext: Sendable {
     let requestID: UUID
     let sourceText: String
+}
+
+func nextTranslationConfiguration(
+    after existingConfiguration: TranslationSession.Configuration?,
+    targetLanguage: Locale.Language
+) -> TranslationSession.Configuration {
+    var configuration = existingConfiguration
+        ?? TranslationSession.Configuration(source: nil, target: targetLanguage)
+
+    configuration.source = nil
+    configuration.target = targetLanguage
+
+    if existingConfiguration != nil {
+        configuration.invalidate()
+    }
+
+    return configuration
 }
