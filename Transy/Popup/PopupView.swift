@@ -104,16 +104,25 @@ private struct LoadingPopupText: View {
             }
             .translationTask(translationConfiguration) { session in
                 nonisolated(unsafe) let session = session
-                let cancelHandle = TranslationSessionCancelHandle(session: session)
 
                 do {
-                    try await performTranslation(
-                        requestContext: requestContext,
-                        availabilityClient: availabilityClient,
-                        session: session,
-                        cancelHandle: cancelHandle,
-                        onResult: onResult,
-                        onError: onError
+                    let preflightResult = try await availabilityClient.preflight(
+                        for: requestContext.sourceText
+                    )
+
+                    switch preflightResult {
+                    case .ready:
+                        break
+                    case let .unavailable(message):
+                        await onError(requestContext.requestID, requestContext.sourceText, message)
+                        return
+                    }
+
+                    let response = try await session.translate(requestContext.sourceText)
+                    await onResult(
+                        requestContext.requestID,
+                        requestContext.sourceText,
+                        response.targetText
                     )
                 } catch is CancellationError {
                     return
@@ -131,64 +140,6 @@ private struct LoadingPopupText: View {
 private struct LoadingRequestContext: Sendable {
     let requestID: UUID
     let sourceText: String
-}
-
-private func performTranslation(
-    requestContext: LoadingRequestContext,
-    availabilityClient: TranslationAvailabilityClient,
-    session: TranslationSession,
-    cancelHandle: TranslationSessionCancelHandle,
-    onResult: @escaping @Sendable (UUID, String, String) async -> Void,
-    onError: @escaping @Sendable (UUID, String, String) async -> Void
-) async throws {
-    try await withTaskCancellationHandler(
-        operation: {
-            let preflightResult = try await availabilityClient.preflight(
-                for: requestContext.sourceText
-            )
-
-            switch preflightResult {
-            case .ready:
-                break
-            case let .unavailable(message):
-                await onError(requestContext.requestID, requestContext.sourceText, message)
-                return
-            }
-
-            try Task.checkCancellation()
-
-            let response = try await session.translate(requestContext.sourceText)
-            await onResult(
-                requestContext.requestID,
-                requestContext.sourceText,
-                response.targetText
-            )
-        },
-        onCancel: {
-            cancelHandle.cancelIfAvailable()
-        }
-    )
-}
-
-private struct TranslationSessionCancelHandle: @unchecked Sendable {
-    let session: TranslationSession
-
-    func cancelIfAvailable() {
-        // Tahoe adds TranslationSession.cancel(). Keep the handle scoped to the
-        // active translationTask cancellation path so we never retain the session
-        // beyond the view-owned lifecycle Apple documents.
-        cancelTranslationSessionIfAvailable(session)
-    }
-}
-
-private func cancelTranslationSessionIfAvailable(_ session: TranslationSession) {
-    guard #available(macOS 26.0, *) else { return }
-    cancelTranslationSession(session)
-}
-
-@available(macOS 26.0, *)
-private func cancelTranslationSession(_ session: TranslationSession) {
-    session.cancel()
 }
 
 func nextTranslationConfiguration(
