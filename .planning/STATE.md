@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: ready
-stopped_at: Phase 3 planning verified and ready for execution
-last_updated: "2026-03-14T15:45:00Z"
-last_activity: 2026-03-14 — Phase 3 planning verified
+status: executing
+stopped_at: Completed 03-01-PLAN.md
+last_updated: "2026-03-15T01:19:52.507Z"
+last_activity: 2026-03-15 — Completed Phase 3 Plan 01 translation foundation
 progress:
   total_phases: 4
   completed_phases: 2
   total_plans: 7
-  completed_plans: 5
-  percent: 50
+  completed_plans: 6
+  percent: 86
 ---
 
 # Project State
@@ -21,23 +21,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-14)
 
 **Core value:** Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
-**Current focus:** Phase 3 — Translation Loop (planned, ready to execute)
+**Current focus:** Phase 3 — Translation Loop (plan 01 complete, plan 02 next)
 
 ## Current Position
 
 Phase: 2 of 4 complete (Trigger & Popup)
-Plan: 0 of 2 in current phase (2 planned, execution not started)
-Status: Phase 3 Planned — ready to execute
-Last activity: 2026-03-14 — Phase 3 planning verified
+Plan: 1 of 2 in current phase (03-01 complete, 03-02 remaining)
+Status: Phase 3 executing — translation foundation complete
+Last activity: 2026-03-15 — Completed Phase 3 Plan 01 translation foundation
 
-Progress: [█████░░░░░] 50%
+Progress: [█████████░] 86%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
-- Average duration: 15.8 min
-- Total execution time: 79 min
+- Total plans completed: 6
+- Average duration: 14.5 min
+- Total execution time: 87 min
 
 **By Phase:**
 
@@ -45,12 +45,14 @@ Progress: [█████░░░░░] 50%
 |-------|-------|-------|----------|
 | 1. App Shell | 2 | 35 min | 17.5 min |
 | 2. Trigger & Popup | 3 | 44 min | 14.7 min |
+| 3. Translation Loop | 1 | 8 min | 8.0 min |
 
 **Recent Trend:**
-- Last 2 plans: 8 min, 35 min
+- Last 2 plans: 35 min, 8 min
 - Trend: Stable
 
 *Updated after each plan completion*
+| Phase 03 P01 | 465 | 3 tasks | 8 files |
 
 ## Accumulated Context
 
@@ -80,13 +82,17 @@ Recent decisions affecting current work:
 - [Phase 02-trigger-popup]: HotkeyMonitor uses .intersection(.deviceIndependentFlagsMask) == .command to exclude Cmd+Shift+C
 - [Phase 02-trigger-popup]: orderFrontRegardless() used for LSUIElement background-app popup visibility (orderFront(nil) is a silent no-op when app is not active)
 - [Phase 02-trigger-popup]: Clipboard snapshot taken at first Cmd+C keyDown (before Task.sleep(80ms)) so restore yields original clipboard, not trigger selection
+- [Phase 03]: Generic English preflight target is centralized as Locale.Language(identifier: 'en') until Phase 4 settings exist
+- [Phase 03]: Visible source text uses trim-only normalization while availability preflight uses a collapsed-whitespace detection sample
+- [Phase 03]: TranslationErrorMapper owns short inline copy so popup wiring never forwards raw framework descriptions
+- [Phase 03]: TranslationCoordinator guards finish/fail writes with activeRequestID so stale completions cannot overwrite newer popup state
 
 ### Pending Todos
 
 - ✅ 02-01-PLAN.md complete (permissions guidance)
 - ✅ 02-02-PLAN.md complete (trigger subsystem)
 - ✅ 02-03-PLAN.md complete (popup wiring + human smoke test)
-- 03-01-PLAN.md ready (translation foundation)
+- ✅ 03-01-PLAN.md complete (translation foundation)
 - 03-02-PLAN.md ready (popup translation wiring + smoke verification)
 - Execute Phase 3: Translation Loop
 
@@ -98,6 +104,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-14T15:45:00Z
-Stopped at: Phase 3 planning verified and ready for execution
+Last session: 2026-03-15T01:19:52.506Z
+Stopped at: Completed 03-01-PLAN.md
 Resume file: None

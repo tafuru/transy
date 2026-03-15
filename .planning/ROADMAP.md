@@ -64,7 +64,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — Translation foundation: normalization, availability preflight, short error mapping, request-scoped coordinator, and Swift Testing coverage
+- [x] 03-01-PLAN.md — Translation foundation: normalization, availability preflight, short error mapping, request-scoped coordinator, and Swift Testing coverage
 - [ ] 03-02-PLAN.md — Popup translation wiring: view-scoped Apple Translation in PopupView, AppDelegate lifecycle integration, and live smoke verification
 
 ### Phase 4: Settings
@@ -91,5 +91,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. App Shell | 2/2 | Complete   | 2026-03-14 |
 | 2. Trigger & Popup | 3/3 | Complete   | 2026-03-14 |
-| 3. Translation Loop | 0/2 | Not started | - |
+| 3. Translation Loop | 1/2 | In Progress | - |
 | 4. Settings | 0/2 | Not started | - |
