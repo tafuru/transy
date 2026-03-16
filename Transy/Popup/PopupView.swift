@@ -68,7 +68,7 @@ struct PopupView: View {
     }
 }
 
-private struct PopupText: View {
+struct PopupText: View {
     let text: String
     let isMuted: Bool
 
