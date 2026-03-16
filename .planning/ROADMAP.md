@@ -40,7 +40,10 @@ Full details: [milestones/v0.1.0-ROADMAP.md](milestones/v0.1.0-ROADMAP.md)
 2. User can scroll vertically when translated text exceeds the visible popup height
 3. User sees all translated content without manual window resizing (scrolling is automatic)
 
-**Plans**: TBD
+**Plans**: 1 plan
+
+Plans:
+- [ ] 05-01-PLAN.md — Implement multi-line wrapping and scrolling in PopupText
 
 ---
 
