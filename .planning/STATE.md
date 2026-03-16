@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v0.2.0
 milestone_name: Popup UX Polish
-status: ready_for_planning
-stopped_at: Roadmap created, ready to plan Phase 5
-last_updated: "2026-03-16T12:30:00.000Z"
-last_activity: 2026-03-16 — Roadmap created for v0.2.0 (Phases 5-6)
+status: in_progress
+stopped_at: Completed Phase 5 Plan 0 (PopupText Layout Tests)
+last_updated: "2026-03-16T14:55:14.000Z"
+last_activity: 2026-03-16 — Completed 05-00-PLAN.md (TDD RED phase tests)
 progress:
   total_phases: 2
   completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
-  percent: 0
+  total_plans: 4
+  completed_plans: 1
+  percent: 25
 ---
 
 # Project State
@@ -25,12 +25,12 @@ See: .planning/PROJECT.md (updated 2026-03-16)
 
 ## Current Position
 
-Phase: Phase 5 (Popup Layout) — ready for planning
-Plan: —
-Status: Roadmap complete, ready to plan Phase 5
-Last activity: 2026-03-16 — Roadmap created for v0.2.0 (Phases 5-6)
+Phase: Phase 5 (Popup Layout) — Plan 0 complete
+Plan: 05-00 (completed) / 05-01 (next)
+Status: TDD RED phase complete, ready for GREEN phase (05-01 implementation)
+Last activity: 2026-03-16 — Completed 05-00-PLAN.md (PopupText layout tests)
 
-Progress: [░░░░░░░░░░] 0% (0/2 phases)
+Progress: [██░░░░░░░░] 25% (1/4 plans complete)
 
 ## Performance Metrics
 
@@ -39,6 +39,15 @@ Progress: [░░░░░░░░░░] 0% (0/2 phases)
 - Average duration: 26.1 min
 - Total execution time: 199 min
 
+**Velocity (v0.2.0):**
+- Total plans completed: 1
+- Average duration: 1.7 min
+- Total execution time: 1.7 min
+
+| Phase | Plan | Duration | Tasks | Files | Completed |
+|-------|------|----------|-------|-------|-----------|
+| 05    | 00   | 103s (1.7m) | 1     | 3     | 2026-03-16T14:55:14Z |
+
 ## Accumulated Context
 
 ### Decisions
@@ -46,6 +55,7 @@ Progress: [░░░░░░░░░░] 0% (0/2 phases)
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
+- [v0.2.0 - Phase 5]: PopupText changed from private to internal for @testable import access in test suite
 - [v0.1.0]: Apple Translation framework chosen as backend — on-device speed, privacy, macOS-native integration
 - [v0.1.0]: LSUIElement set via Info.plist, not entitlements
 - [v0.1.0]: Popup is NSPanel with `.nonactivatingPanel` styleMask — SwiftUI `WindowGroup` is a hard anti-pattern
@@ -65,5 +75,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-03-16
-Stopped at: Milestone v0.2.0 — defining requirements
-Resume file: None
+Stopped at: Completed Phase 5 Plan 0 (PopupText Layout Tests)
+Resume file: .planning/phases/05-popup-layout/05-00-SUMMARY.md
