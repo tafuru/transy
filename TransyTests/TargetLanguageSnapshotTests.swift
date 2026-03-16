@@ -10,8 +10,9 @@ struct TargetLanguageSnapshotTests {
     // while a new snapshot taken after the update sees the new target.
     @Test("Request snapshot freezes target language at capture time")
     func snapshotFreezesTargetLanguage() async {
-        let mockDefaults = UserDefaults(suiteName: "test.snapshot.\(UUID().uuidString)")!
-        defer { mockDefaults.removePersistentDomain(forName: "test.snapshot") }
+        let suiteName = "test.snapshot.\(UUID().uuidString)"
+        let mockDefaults = UserDefaults(suiteName: suiteName)!
+        defer { mockDefaults.removePersistentDomain(forName: suiteName) }
         
         let initialResolver = { Locale.Language(identifier: "en") }
         let store = SettingsStore(userDefaults: mockDefaults, preferredLanguageResolver: initialResolver)

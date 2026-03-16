@@ -10,8 +10,9 @@ struct SettingsStoreTests {
     // seam and persists that minimalIdentifier into UserDefaults.
     @Test("First run persists OS preferred language to UserDefaults")
     func firstRunPersistsPreferredLanguage() async {
-        let mockDefaults = UserDefaults(suiteName: "test.first-run.\(UUID().uuidString)")!
-        defer { mockDefaults.removePersistentDomain(forName: "test.first-run") }
+        let suiteName = "test.first-run.\(UUID().uuidString)"
+        let mockDefaults = UserDefaults(suiteName: suiteName)!
+        defer { mockDefaults.removePersistentDomain(forName: suiteName) }
         
         let mockPreferredLanguage = Locale.Language(identifier: "ja")
         let resolver = { mockPreferredLanguage }
@@ -30,8 +31,9 @@ struct SettingsStoreTests {
     // seam do not overwrite it.
     @Test("Stored target language is not overwritten by later OS preference changes")
     func storedTargetNotOverwrittenByPreferenceChanges() async {
-        let mockDefaults = UserDefaults(suiteName: "test.stored-value.\(UUID().uuidString)")!
-        defer { mockDefaults.removePersistentDomain(forName: "test.stored-value") }
+        let suiteName = "test.stored-value.\(UUID().uuidString)"
+        let mockDefaults = UserDefaults(suiteName: suiteName)!
+        defer { mockDefaults.removePersistentDomain(forName: suiteName) }
         
         // First run: store French
         let firstResolver = { Locale.Language(identifier: "fr") }
