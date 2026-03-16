@@ -39,15 +39,15 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| POP-04 | — | Pending |
-| POP-05 | — | Pending |
-| POP-06 | — | Pending |
-| POP-07 | — | Pending |
+| POP-04 | Phase 5 | Pending |
+| POP-05 | Phase 5 | Pending |
+| POP-06 | Phase 6 | Pending |
+| POP-07 | Phase 6 | Pending |
 
 **Coverage:**
 - v0.2.0 requirements: 4 total
-- Mapped to phases: 0
-- Unmapped: 4 ⚠️
+- Mapped to phases: 4
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-03-16*

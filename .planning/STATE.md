@@ -2,12 +2,12 @@
 gsd_state_version: 1.0
 milestone: v0.2.0
 milestone_name: Popup UX Polish
-status: planning
-stopped_at: Defining requirements
-last_updated: "2026-03-16T12:25:00.000Z"
-last_activity: 2026-03-16 — Milestone v0.2.0 started
+status: ready_for_planning
+stopped_at: Roadmap created, ready to plan Phase 5
+last_updated: "2026-03-16T12:30:00.000Z"
+last_activity: 2026-03-16 — Roadmap created for v0.2.0 (Phases 5-6)
 progress:
-  total_phases: 0
+  total_phases: 2
   completed_phases: 0
   total_plans: 0
   completed_plans: 0
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-16)
 
 **Core value:** Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
-**Current focus:** Defining v0.2.0 requirements — popup UX improvements
+**Current focus:** v0.2.0 Popup UX Polish — multi-line scrollable popup with cursor-proximate positioning
 
 ## Current Position
 
-Phase: Not started (defining requirements)
+Phase: Phase 5 (Popup Layout) — ready for planning
 Plan: —
-Status: Defining requirements
-Last activity: 2026-03-16 — Milestone v0.2.0 started
+Status: Roadmap complete, ready to plan Phase 5
+Last activity: 2026-03-16 — Roadmap created for v0.2.0 (Phases 5-6)
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [░░░░░░░░░░] 0% (0/2 phases)
 
 ## Performance Metrics
 
