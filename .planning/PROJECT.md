@@ -2,7 +2,7 @@
 
 ## What This Is
 
-Transy is a lightweight macOS menu bar translator for personal Japanese/English reading assistance. When the user selects text and presses `Command+C` twice, the app captures the selection, opens a native-feeling popup, shows the original text in a skeleton-loading style while translation is in flight, and then replaces it with the translated result in a preconfigured target language using Apple's Translation framework when the required on-device models are available. It is motivated by a desire for a faster, more macOS-native alternative to DeepL for quick reading flow.
+Transy is a lightweight macOS menu bar translator for personal Japanese/English reading assistance. Select text in any app, press `Command+C` twice, and a native popup instantly shows the translation using Apple's on-device Translation framework. No network required, no focus stealing, clipboard is restored after capture.
 
 ## Core Value
 
@@ -12,14 +12,14 @@ Selected text turns into a natural translation almost instantly without breaking
 
 ### Validated
 
-(None yet — ship to validate)
+- ✓ Menu bar utility with no Dock icon — v0.1.0
+- ✓ Double ⌘C triggers translation of selected text — v0.1.0
+- ✓ Lightweight popup with loading placeholder then translated result — v0.1.0
+- ✓ Target language settings with model download guidance — v0.1.0
 
 ### Active
 
-- [ ] User can trigger translation of selected text by pressing `Command+C` twice.
-- [ ] User can see a lightweight popup that first reflects the source text as a loading placeholder and then swaps to the translated text.
-- [ ] User can run the app as a macOS menu bar utility without showing a Dock icon.
-- [ ] User can change the target translation language and manage any required on-device translation model availability from a separate settings window.
+(None yet — define in next milestone)
 
 ### Out of Scope
 
@@ -30,7 +30,10 @@ Selected text turns into a natural translation almost instantly without breaking
 
 ## Context
 
-The app is being built first for the creator's own day-to-day Japanese/English reading workflow on macOS. The reference experience is DeepL, but the main frustration is that DeepL feels too slow and its UI does not feel native enough on macOS. The desired UX is menu-bar-first, always available, visually lightweight, and optimized for fast "glance and continue reading" usage rather than a full translation workspace. After researching backend options, the initial translation strategy is to prefer Apple's Translation framework to maximize speed, privacy, and native integration, while keeping room for provider abstraction later if quality gaps emerge.
+Shipped v0.1.0 with 1,179 LOC Swift (app) + 710 LOC Swift (tests).
+Tech stack: SwiftUI, AppKit, Apple Translation.framework, XcodeGen.
+37 automated tests across 11 suites. 4 phases, 9 plans executed.
+Built in 3 days (2026-03-14 → 2026-03-16).
 
 ## Constraints
 
@@ -38,17 +41,18 @@ The app is being built first for the creator's own day-to-day Japanese/English r
 - **Compatibility**: macOS 15+ — Apple's Translation framework is the selected backend and sets the minimum supported OS version.
 - **Performance**: Near-immediate feedback for normal selected text — speed is the main reason this project exists.
 - **UX**: Native-feeling transient popup — the UI should feel lighter and more macOS-like than DeepL.
-- **Scope**: Focused v1 — only the selected-text translation loop and target-language settings are required initially.
 
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Menu bar-only app with no Dock presence | Keeps the tool ambient and available without feeling like a full app window | — Pending |
-| Double-press `Command+C` as the trigger | Reuses an existing selection-copy gesture with minimal friction | — Pending |
-| Popup shows the source text as a loading-state placeholder before replacement | Preserves context during translation and makes latency feel intentional | — Pending |
-| Use Apple's Translation framework as the initial translation engine | Prioritizes local speed, privacy, and native macOS integration over cloud-provider flexibility | — Pending |
-| Target language is configured in a separate settings window | Keeps the translation popup minimal and focused on the result | — Pending |
+| Menu bar-only app with no Dock presence | Keeps the tool ambient and available without feeling like a full app window | ✓ Good |
+| Double-press `Command+C` as the trigger | Reuses an existing selection-copy gesture with minimal friction | ✓ Good |
+| Popup shows the source text as a loading-state placeholder before replacement | Preserves context during translation and makes latency feel intentional | ✓ Good |
+| Use Apple's Translation framework as the initial translation engine | Prioritizes local speed, privacy, and native macOS integration over cloud-provider flexibility | ✓ Good |
+| Target language is configured in a separate settings window | Keeps the translation popup minimal and focused on the result | ✓ Good |
+| Three-tier language reconciliation (exact → languageCode → fallback) | Handles region-qualified OS locales like "en-JP" matching supported "en" | ✓ Good |
+| System Settings deep link with `.extension` suffix | Only reliable way to open Language & Region on macOS 13+ | ✓ Good |
 
 ---
-*Last updated: 2026-03-14 after requirements definition*
+*Last updated: 2026-03-16 after v0.1.0 milestone*
