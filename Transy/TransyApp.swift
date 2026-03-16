@@ -11,7 +11,7 @@ struct TransyApp: App {
         .menuBarExtraStyle(.menu)
 
         Settings {
-            SettingsView()
+            SettingsView(settingsStore: appDelegate.settingsStore)
         }
     }
 }

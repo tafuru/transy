@@ -36,51 +36,47 @@ struct TranslationAvailabilityClientTests {
         }
     }
 
-    @Test("supported-but-missing availability maps to model not installed")
-    func supportedMapsToModelNotInstalledMessage() async throws {
+    @Test("supported-but-missing availability maps to missingModel")
+    func supportedMapsToMissingModel() async throws {
         let client = TranslationAvailabilityClient { _, _ in
             .supported
         }
 
         let result = try await client.preflight(for: "こんにちは")
 
-        guard case let .unavailable(message) = result else {
-            Issue.record("Expected unavailable result")
+        guard case .missingModel = result else {
+            Issue.record("Expected .missingModel result, got \(String(describing: result))")
             return
         }
-
-        #expect(message == "Translation model not installed.")
     }
 
-    @Test("unsupported availability maps to unsupported message")
-    func unsupportedMapsToUnsupportedMessage() async throws {
+    @Test("unsupported availability maps to unsupported")
+    func unsupportedMapsToUnsupported() async throws {
         let client = TranslationAvailabilityClient { _, _ in
             .unsupported
         }
 
         let result = try await client.preflight(for: "こんにちは")
 
-        guard case let .unavailable(message) = result else {
-            Issue.record("Expected unavailable result")
+        guard case .unsupported = result else {
+            Issue.record("Expected .unsupported result, got \(String(describing: result))")
             return
         }
-
-        #expect(message == "This language pair isn’t supported.")
     }
 
-    @Test("ambiguous source detection maps to couldn't-detect message")
-    func ambiguousSourceMapsToCouldNotDetectMessage() async throws {
+    @Test("ambiguous source detection maps to failed with couldn't-detect message")
+    func ambiguousSourceMapsToFailed() async throws {
         let client = TranslationAvailabilityClient { _, _ in
             throw FakeAvailabilityError.languageDetectionFailed
         }
 
         let result = try await client.preflight(for: "??")
 
-        guard case let .unavailable(message) = result else {
-            Issue.record("Expected unavailable result")
+        guard case let .failed(message) = result else {
+            Issue.record("Expected .failed result, got \(String(describing: result))")
             return
         }
-
+        
         #expect(message == "Couldn't detect the source language.")
     }
 

@@ -28,8 +28,8 @@ Requirements for the initial release. Each maps to roadmap phases.
 ### App Shell & Settings
 
 - [x] **APP-01**: User can access Transy from the macOS menu bar without a Dock icon.
-- [ ] **APP-02**: User can choose the target translation language in a settings window.
-- [ ] **APP-03**: User is guided to download any Apple translation models required for the selected language pair when they are not yet available on the device.
+- [x] **APP-02**: User can choose the target translation language in a settings window.
+- [x] **APP-03**: User is guided to download any Apple translation models required for the selected language pair when they are not yet available on the device.
 
 ## v2 Requirements
 
@@ -78,8 +78,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TRAN-01 | Phase 3 — Translation Loop | Complete |
 | TRAN-02 | Phase 3 — Translation Loop | Complete |
 | TRAN-03 | Phase 3 — Translation Loop | Complete |
-| APP-02 | Phase 4 — Settings | Pending |
-| APP-03 | Phase 4 — Settings | Pending |
+| APP-02 | Phase 4 — Settings | Complete |
+| APP-03 | Phase 4 — Settings | Complete |
 
 **Coverage:**
 - v1 requirements: 12 total

@@ -44,7 +44,19 @@ struct TranslationTaskConfigurationReloaderTests {
         let coordinator = TranslationCoordinator()
         _ = coordinator.begin(sourceText: "とても長い原文です")
 
-        controller.show(translationCoordinator: coordinator) {}
+        let mockClient = TranslationAvailabilityClient(targetLanguage: Locale.Language(identifier: "en"))
+        let settingsSuiteName = "test-\(UUID())"
+        let settingsDefaults = UserDefaults(suiteName: settingsSuiteName)!
+        defer { settingsDefaults.removePersistentDomain(forName: settingsSuiteName) }
+        let mockSettingsStore = SettingsStore(
+            userDefaults: settingsDefaults,
+            preferredLanguageResolver: { Locale.Language(identifier: "en") }
+        )
+        controller.show(
+            translationCoordinator: coordinator,
+            availabilityClient: mockClient,
+            settingsStore: mockSettingsStore
+        ) {}
 
         #expect(controller.hasHostedPopupContent)
 

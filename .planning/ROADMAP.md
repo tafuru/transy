@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: App Shell** - Runnable menu bar app with no Dock icon, correct entitlements, and project scaffold (completed 2026-03-14)
 - [x] **Phase 2: Trigger & Popup** - Double-Cmd+C fires a non-focus-stealing popup showing source text in a muted loading state (completed 2026-03-14)
 - [x] **Phase 3: Translation Loop** - Skeleton resolves to an on-device Apple Translation result in the same popup (completed 2026-03-15)
-- [ ] **Phase 4: Settings** - Target language and model availability are configurable from a dedicated settings window
+- [x] **Phase 4: Settings** - Target language and model availability are configurable from a dedicated settings window (completed 2026-03-15)
 
 ## Phase Details
 
@@ -76,11 +76,11 @@ Plans:
   2. The selected target language persists across app restarts
   3. When a required Apple Translation model for the selected language pair is not downloaded, the user sees a clear prompt guiding them to download it (via Apple's model download flow)
   4. The settings window does not cause the Dock icon to appear or the app to enter the regular activation policy
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 04-01: SettingsStore — Defaults-backed target language enum, @Observable, read by TranslationCoordinator
-- [ ] 04-02: SettingsWindow — SwiftUI Settings scene, language picker, Apple Translation model availability check + download guidance, single-instance guard, activation policy safety
+- [x] 04-01-PLAN.md — SettingsStore: defaults-backed target-language store, Settings scene injection, and request-time snapshot wiring
+- [x] 04-02-PLAN.md — SettingsWindow: compact SwiftUI settings pane, supported-language picker, conditional model guidance, and manual behavior validation
 
 ## Progress
 
@@ -92,4 +92,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. App Shell | 2/2 | Complete   | 2026-03-14 |
 | 2. Trigger & Popup | 3/3 | Complete   | 2026-03-14 |
 | 3. Translation Loop | 2/2 | Complete | 2026-03-15 |
-| 4. Settings | 0/2 | Not started | - |
+| 4. Settings | 2/2 | Complete | 2026-03-15 |

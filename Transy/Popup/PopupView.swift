@@ -5,13 +5,16 @@ import Translation
 struct PopupView: View {
     let translationCoordinator: TranslationCoordinator
     let availabilityClient: TranslationAvailabilityClient
+    let settingsStore: SettingsStore
 
     init(
         translationCoordinator: TranslationCoordinator,
-        availabilityClient: TranslationAvailabilityClient = TranslationAvailabilityClient()
+        availabilityClient: TranslationAvailabilityClient,
+        settingsStore: SettingsStore
     ) {
         self.translationCoordinator = translationCoordinator
         self.availabilityClient = availabilityClient
+        self.settingsStore = settingsStore
     }
 
     var body: some View {
@@ -20,6 +23,7 @@ struct PopupView: View {
             LoadingPopupText(
                 requestContext: .init(requestID: requestID, sourceText: sourceText),
                 availabilityClient: availabilityClient,
+                settingsStore: settingsStore,
                 onResult: finishIfStillActive,
                 onError: failIfStillActive
             )
@@ -85,6 +89,7 @@ private struct PopupText: View {
 private struct LoadingPopupText: View {
     let requestContext: LoadingRequestContext
     let availabilityClient: TranslationAvailabilityClient
+    let settingsStore: SettingsStore
     let onResult: @Sendable (UUID, String, String) async -> Void
     let onError: @Sendable (UUID, String, String) async -> Void
     @State private var translationConfiguration: TranslationSession.Configuration?
@@ -92,6 +97,7 @@ private struct LoadingPopupText: View {
     var body: some View {
         let requestContext = requestContext
         let availabilityClient = availabilityClient
+        let settingsStore = settingsStore
         let onResult = onResult
         let onError = onError
 
@@ -107,6 +113,7 @@ private struct LoadingPopupText: View {
                 action: Self.translationAction(
                     requestContext: requestContext,
                     availabilityClient: availabilityClient,
+                    settingsStore: settingsStore,
                     onResult: onResult,
                     onError: onError
                 )
@@ -116,6 +123,7 @@ private struct LoadingPopupText: View {
     private nonisolated static func translationAction(
         requestContext: LoadingRequestContext,
         availabilityClient: TranslationAvailabilityClient,
+        settingsStore: SettingsStore,
         onResult: @escaping @Sendable (UUID, String, String) async -> Void,
         onError: @escaping @Sendable (UUID, String, String) async -> Void
     ) -> (TranslationSession) async -> Void {
@@ -128,7 +136,35 @@ private struct LoadingPopupText: View {
                 switch preflightResult {
                 case .ready:
                     break
-                case let .unavailable(message):
+                case .missingModel:
+                    // Record missing-model relevance in settings without mutating the active popup
+                    await MainActor.run {
+                        settingsStore.recordMissingModel(
+                            targetLanguage: availabilityClient.targetLanguage,
+                            knownSourceLanguage: nil
+                        )
+                    }
+                    await onError(
+                        requestContext.requestID,
+                        requestContext.sourceText,
+                        TranslationErrorMapper.modelNotInstalled
+                    )
+                    return
+                case .unsupported:
+                    await onError(
+                        requestContext.requestID,
+                        requestContext.sourceText,
+                        TranslationErrorMapper.unsupportedLanguagePair
+                    )
+                    return
+                case .couldNotDetect:
+                    await onError(
+                        requestContext.requestID,
+                        requestContext.sourceText,
+                        TranslationErrorMapper.couldNotDetectSourceLanguage
+                    )
+                    return
+                case let .failed(message):
                     await onError(requestContext.requestID, requestContext.sourceText, message)
                     return
                 }

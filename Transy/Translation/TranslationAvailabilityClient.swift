@@ -4,7 +4,10 @@ import Translation
 struct TranslationAvailabilityClient: Sendable {
     enum PreflightResult: Equatable, Sendable {
         case ready
-        case unavailable(message: String)
+        case missingModel
+        case unsupported
+        case couldNotDetect
+        case failed(message: String)
     }
 
     typealias StatusProvider = @Sendable (_ sampleText: String, _ targetLanguage: Locale.Language) async throws -> LanguageAvailability.Status
@@ -24,7 +27,7 @@ struct TranslationAvailabilityClient: Sendable {
     func preflight(for sourceText: String) async throws -> PreflightResult {
         let sampleText = detectionSample(from: sourceText)
         guard !sampleText.isEmpty else {
-            return .unavailable(message: TranslationErrorMapper.couldNotDetectSourceLanguage)
+            return .couldNotDetect
         }
 
         do {
@@ -33,16 +36,16 @@ struct TranslationAvailabilityClient: Sendable {
             case .installed:
                 return .ready
             case .supported:
-                return .unavailable(message: TranslationErrorMapper.modelNotInstalled)
+                return .missingModel
             case .unsupported:
-                return .unavailable(message: TranslationErrorMapper.unsupportedLanguagePair)
+                return .unsupported
             @unknown default:
-                return .unavailable(message: TranslationErrorMapper.translationFailed)
+                return .failed(message: TranslationErrorMapper.translationFailed)
             }
         } catch let error as CancellationError {
             throw error
         } catch {
-            return .unavailable(message: TranslationErrorMapper.message(for: error))
+            return .failed(message: TranslationErrorMapper.message(for: error))
         }
     }
 

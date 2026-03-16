@@ -5,6 +5,7 @@ import ApplicationServices
 final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private let appState = AppState()
+    let settingsStore = SettingsStore()
     private let hotkeyMonitor = HotkeyMonitor()
     private let popupController = PopupController()
     private let clipboardManager = ClipboardManager()
@@ -48,7 +49,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         // before the source app wrote the selected text to the clipboard. Using it here
         // ensures we restore the user's original clipboard (e.g., "AAA"), not the selection
         // that triggered the capture (e.g., "BBB").
-        let saved = restoreSession.snapshotForSession(preSnapshot)
+        _ = restoreSession.snapshotForSession(preSnapshot)
 
         Task { @MainActor in
             // 80ms delay: source app processes keyDown and writes selection to NSPasteboard.
@@ -76,7 +77,16 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
             _ = translationCoordinator.begin(sourceText: normalizedText)
             appState.isPopupVisible = true
-            popupController.show(translationCoordinator: translationCoordinator) { [weak self] in
+            
+            // Snapshot target language at trigger time — frozen for this request
+            let frozenTarget = settingsStore.snapshotTargetLanguage()
+            let availabilityClient = TranslationAvailabilityClient(targetLanguage: frozenTarget)
+            
+            popupController.show(
+                translationCoordinator: translationCoordinator,
+                availabilityClient: availabilityClient,
+                settingsStore: settingsStore
+            ) { [weak self] in
                 guard let self else { return }
                 self.translationCoordinator.dismiss()
                 self.appState.isPopupVisible = false
