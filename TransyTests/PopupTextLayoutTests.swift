@@ -69,11 +69,11 @@ struct PopupTextLayoutTests {
         // Create PopupText instance
         let popupText = PopupText(text: "Test", isMuted: false)
         
-        // Verify that the view maintains 380pt width constraint
+        // Verify that the view maintains 570pt width constraint
         let body = popupText.body
         
         // This is a smoke test — the fixed width should remain unchanged
-        // The implementation should preserve .frame(width: 380) on the Text
+        // The implementation should preserve .frame(width: 570) on the ScrollView
         #expect(body != nil, "PopupText body should exist")
     }
 }

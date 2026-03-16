@@ -78,11 +78,12 @@ struct PopupText: View {
                 .font(.body)
                 .foregroundStyle(isMuted ? .secondary : .primary)
                 .multilineTextAlignment(.leading)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 16)
                 .padding(.vertical, 12)
-                .frame(width: 380, alignment: .leading)
         }
-        .frame(maxHeight: 400)
+        .frame(width: 570)
+        .frame(maxHeight: 500)
         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 14))
     }
 }
