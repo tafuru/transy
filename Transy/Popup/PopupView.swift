@@ -73,16 +73,17 @@ struct PopupText: View {
     let isMuted: Bool
 
     var body: some View {
-        Text(text)
-            .font(.body)
-            .foregroundStyle(isMuted ? .secondary : .primary)
-            .lineLimit(4)
-            .truncationMode(.tail)
-            .multilineTextAlignment(.leading)
-            .padding(.horizontal, 16)
-            .padding(.vertical, 12)
-            .frame(width: 380, alignment: .leading)
-            .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 14))
+        ScrollView(.vertical) {
+            Text(text)
+                .font(.body)
+                .foregroundStyle(isMuted ? .secondary : .primary)
+                .multilineTextAlignment(.leading)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 12)
+                .frame(width: 380, alignment: .leading)
+        }
+        .frame(maxHeight: 400)
+        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 14))
     }
 }
 
