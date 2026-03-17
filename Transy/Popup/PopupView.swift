@@ -78,12 +78,13 @@ struct PopupText: View {
                 .font(.body)
                 .foregroundStyle(isMuted ? .secondary : .primary)
                 .multilineTextAlignment(.leading)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .fixedSize(horizontal: false, vertical: true)
                 .padding(.horizontal, 16)
                 .padding(.vertical, 12)
         }
-        .frame(width: 570)
-        .frame(maxHeight: 500)
+        .scrollBounceBehavior(.basedOnSize)
+        .frame(maxWidth: 570, maxHeight: 500)
+        .fixedSize()
         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 14))
     }
 }
