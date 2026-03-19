@@ -17,7 +17,7 @@ final class PopupController {
     private func makePanel() -> NSPanel {
         let styleMask: NSWindow.StyleMask = [.borderless, .nonActivatingPanel]
         let panel = NSPanel(
-            contentRect: NSRect(x: 0, y: 0, width: 380, height: 80),
+            contentRect: NSRect(x: 0, y: 0, width: 640, height: 80),
             styleMask: styleMask,
             backing: .buffered,
             defer: false
@@ -53,7 +53,9 @@ final class PopupController {
             availabilityClient: availabilityClient,
             settingsStore: settingsStore
         )
-        panel.contentView = NSHostingView(rootView: view)
+        let hostingView = NSHostingView(rootView: view)
+        hostingView.sizingOptions = .intrinsicContentSize
+        panel.contentView = hostingView
         panel.setFrameOrigin(topCenterOrigin(for: panel))
         panel.alphaValue = 0
         // orderFrontRegardless() is required for background/accessory apps (Transy never activates).

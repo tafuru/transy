@@ -68,21 +68,49 @@ struct PopupView: View {
     }
 }
 
-private struct PopupText: View {
+struct PopupText: View {
     let text: String
     let isMuted: Bool
 
+    private static let maxPopupWidth: CGFloat = 640
+    private static let maxPopupHeight: CGFloat = 200
+
+    @State private var contentHeight: CGFloat = 0
+
     var body: some View {
-        Text(text)
-            .font(.body)
-            .foregroundStyle(isMuted ? .secondary : .primary)
-            .lineLimit(4)
-            .truncationMode(.tail)
-            .multilineTextAlignment(.leading)
-            .padding(.horizontal, 16)
-            .padding(.vertical, 12)
-            .frame(width: 380, alignment: .leading)
-            .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 14))
+        ScrollView(.vertical) {
+            Text(text)
+                .font(.system(size: 15))
+                .foregroundStyle(isMuted ? .secondary : .primary)
+                .multilineTextAlignment(.leading)
+                .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 12)
+                .background(
+                    GeometryReader { geo in
+                        Color.clear.preference(
+                            key: ContentHeightPreferenceKey.self,
+                            value: geo.size.height
+                        )
+                    }
+                )
+        }
+        .scrollBounceBehavior(.basedOnSize)
+        .frame(maxWidth: Self.maxPopupWidth)
+        .frame(height: min(max(contentHeight, 1), Self.maxPopupHeight))
+        .fixedSize(horizontal: true, vertical: false)
+        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 14))
+        .onPreferenceChange(ContentHeightPreferenceKey.self) { height in
+            contentHeight = height
+        }
+    }
+}
+
+private struct ContentHeightPreferenceKey: PreferenceKey {
+    static let defaultValue: CGFloat = 0
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = max(value, nextValue())
     }
 }
 
