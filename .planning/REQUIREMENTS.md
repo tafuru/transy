@@ -9,8 +9,8 @@ Requirements for popup UX improvements. Each maps to roadmap phases.
 
 ### Popup Layout
 
-- [ ] **POP-04**: Popup displays translated text with word wrapping instead of single-line truncation (tests created, awaiting implementation)
-- [ ] **POP-05**: Popup supports vertical scrolling when translated text exceeds the visible area (tests created, awaiting implementation)
+- [x] **POP-04**: Popup displays translated text with word wrapping instead of single-line truncation
+- [x] **POP-05**: Popup supports vertical scrolling when translated text exceeds the visible area
 
 ### Popup Positioning
 
@@ -39,8 +39,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| POP-04 | Phase 5 | Tests created (05-00) |
-| POP-05 | Phase 5 | Tests created (05-00) |
+| POP-04 | Phase 5 | ✅ Complete |
+| POP-05 | Phase 5 | ✅ Complete |
 | POP-06 | Phase 6 | Pending |
 | POP-07 | Phase 6 | Pending |
 

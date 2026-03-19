@@ -1,17 +1,17 @@
 ---
 gsd_state_version: 1.0
-milestone: v0.1
-milestone_name: milestone
-status: completed
-stopped_at: Completed Phase 5 Plan 0 (PopupText Layout Tests)
+milestone: v0.2.0
+milestone_name: Popup UX Polish
+status: in_progress
+stopped_at: Completed Phase 5 (Popup Layout)
 last_updated: "2026-03-19T15:42:33.492Z"
-last_activity: 2026-03-16 — Completed 05-00-PLAN.md (PopupText layout tests)
+last_activity: 2026-03-19 — Completed Phase 5 Popup Layout
 progress:
   total_phases: 2
   completed_phases: 1
   total_plans: 2
   completed_plans: 2
-  percent: 25
+  percent: 50
 ---
 
 # Project State

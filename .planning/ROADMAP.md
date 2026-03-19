@@ -44,7 +44,7 @@ Full details: [milestones/v0.1.0-ROADMAP.md](milestones/v0.1.0-ROADMAP.md)
 
 Plans:
 - [x] 05-00-PLAN.md — Create automated tests for PopupText layout constraints (completed 2026-03-16)
-- [ ] 05-01-PLAN.md — Implement multi-line wrapping and scrolling in PopupText
+- [x] 05-01-PLAN.md — Implement multi-line wrapping and scrolling in PopupText
 
 ---
 

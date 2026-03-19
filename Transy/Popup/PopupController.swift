@@ -53,7 +53,9 @@ final class PopupController {
             availabilityClient: availabilityClient,
             settingsStore: settingsStore
         )
-        panel.contentView = NSHostingView(rootView: view)
+        let hostingView = NSHostingView(rootView: view)
+        hostingView.sizingOptions = .intrinsicContentSize
+        panel.contentView = hostingView
         panel.setFrameOrigin(topCenterOrigin(for: panel))
         panel.alphaValue = 0
         // orderFrontRegardless() is required for background/accessory apps (Transy never activates).

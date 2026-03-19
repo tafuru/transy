@@ -9,10 +9,10 @@ human_verification:
     expected: "Popup appears compact (~1-2 lines), no scrollbar visible, text is not truncated"
     why_human: "Visual compactness and scrollbar presence requires human observation"
   - test: "Test medium translation with multi-line wrap"
-    expected: "Popup grows taller to show all wrapped lines (up to ~500pt), no scrollbar, all text visible without truncation"
+    expected: "Popup grows taller to show all wrapped lines (up to ~200pt), no scrollbar, all text visible without truncation"
     why_human: "Visual wrapping behavior and height adaptation requires human observation"
   - test: "Test long translation with vertical scrolling"
-    expected: "Popup caps at maximum height (~500pt), vertical scrollbar appears on the right, all content accessible by scrolling"
+    expected: "Popup caps at maximum height (~200pt), vertical scrollbar appears on the right, all content accessible by scrolling"
     why_human: "Scrollbar appearance and scrolling behavior requires human interaction testing"
 ---
 
@@ -30,7 +30,7 @@ human_verification:
 | #   | Truth                                                                            | Status     | Evidence                                                                                     |
 | --- | -------------------------------------------------------------------------------- | ---------- | -------------------------------------------------------------------------------------------- |
 | 1   | User sees translated text wrap across multiple lines instead of truncating      | ✓ VERIFIED | `.lineLimit()` and `.truncationMode()` removed from Text, natural wrapping enabled           |
-| 2   | User can scroll vertically when translated text exceeds the visible popup height | ✓ VERIFIED | Text wrapped in `ScrollView(.vertical)`, `.frame(maxHeight: 500)` applied                    |
+| 2   | User can scroll vertically when translated text exceeds the visible popup height | ✓ VERIFIED | Text wrapped in `ScrollView(.vertical)`, `.frame(maxHeight: 200)` applied                    |
 | 3   | User sees all translated content without manual window resizing                  | ✓ VERIFIED | ScrollView provides automatic scrolling, no manual resize needed                             |
 | 4   | Test suite verifies PopupText has no lineLimit constraint                       | ✓ VERIFIED | `popupTextHasNoLineLimit()` test passes, confirms ScrollView structure                       |
 | 5   | Test suite verifies ScrollView is present in view hierarchy                     | ✓ VERIFIED | `popupTextUsesScrollView()` test passes, confirms ScrollView in body type                    |
@@ -77,7 +77,7 @@ human_verification:
 2. **PopupText → ScrollView (WIRED):**
    - Verified: Line 76 contains `ScrollView(.vertical)`
    - Verified: ScrollView wraps Text with all modifiers
-   - Verified: `.frame(maxHeight: 500)` applied to ScrollView container (line 86)
+   - Verified: `.frame(maxHeight: 200)` applied to ScrollView container (line 86)
 
 3. **Tests → PopupText (WIRED):**
    - Verified: `@testable import Transy` at line 4 in test file
@@ -94,20 +94,20 @@ human_verification:
 | Requirement | Source Plan | Description                                                               | Status      | Evidence                                                                  |
 | ----------- | ----------- | ------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------- |
 | POP-04      | 05-00, 05-01| Popup displays translated text with word wrapping instead of truncation   | ✓ SATISFIED | `.lineLimit()` removed, natural wrapping enabled, tests pass              |
-| POP-05      | 05-00, 05-01| Popup supports vertical scrolling when text exceeds visible area          | ✓ SATISFIED | `ScrollView(.vertical)` implemented, `maxHeight: 500` applied, tests pass |
+| POP-05      | 05-00, 05-01| Popup supports vertical scrolling when text exceeds visible area          | ✓ SATISFIED | `ScrollView(.vertical)` implemented, `maxHeight: 200` applied, tests pass |
 
 **Detailed Evidence:**
 
 **POP-04: Word wrapping instead of truncation**
 - Implementation: Lines 77-83 in PopupView.swift show Text without `.lineLimit()` or `.truncationMode()`
 - Testing: `popupTextHasNoLineLimit()` test verifies ScrollView structure (implies lineLimit removed)
-- Functional: Text naturally wraps within 570pt width using `.multilineTextAlignment(.leading)`
+- Functional: Text naturally wraps within 640pt width using `.multilineTextAlignment(.leading)`
 
 **POP-05: Vertical scrolling support**
 - Implementation: Line 76 shows `ScrollView(.vertical)` wrapping Text content
-- Implementation: Line 86 shows `.frame(maxHeight: 500)` constraining scroll region
+- Implementation: Line 86 shows `.frame(maxHeight: 200)` constraining scroll region
 - Testing: `popupTextUsesScrollView()` and `popupTextRespectsMaxHeight()` tests both pass
-- Functional: Scrollbar appears automatically when content exceeds 500pt height
+- Functional: Scrollbar appears automatically when content exceeds 200pt height
 
 **No orphaned requirements:** All requirements listed in phase 05 PLAN frontmatter (POP-04, POP-05) are accounted for and satisfied.
 
@@ -142,10 +142,10 @@ All automated checks pass, but visual and interaction behaviors require human ve
 **Test:** Select a medium paragraph (~100-150 words), press `Cmd+Shift+T` to trigger translation.
 
 **Expected:**
-- Popup grows taller to show all wrapped lines (dynamically sizes up to ~500pt)
+- Popup grows taller to show all wrapped lines (dynamically sizes up to ~200pt)
 - No scrollbar appears (content fits within max height)
 - All text visible without truncation or ellipsis
-- Natural word wrapping across multiple lines at 570pt width
+- Natural word wrapping across multiple lines at 640pt width
 
 **Why human:** Visual wrapping behavior and dynamic height adaptation requires human observation. Automated tests verify ScrollView structure but can't assess visual wrapping quality or confirm absence of truncation in actual rendered text.
 
@@ -154,7 +154,7 @@ All automated checks pass, but visual and interaction behaviors require human ve
 **Test:** Select a long paragraph or multiple paragraphs (300+ words), press `Cmd+Shift+T` to trigger translation.
 
 **Expected:**
-- Popup caps at maximum height (~500pt)
+- Popup caps at maximum height (~200pt)
 - Vertical scrollbar appears on the right side
 - User can scroll with mouse wheel or trackpad to see all content
 - All translated text is accessible (no content cut off or hidden)
@@ -200,7 +200,7 @@ Phase 05 goal is **technically achieved** based on code structure and automated 
 
 **Approved during execution (documented in 05-01-SUMMARY.md):**
 
-1. **Width changed from 380pt to 570pt** — User requested ~1.5x wider popup during UAT checkpoint for better readability
+1. **Width changed from 380pt to 640pt** — User requested ~1.5x wider popup during UAT checkpoint for better readability
 2. **Max height changed from 400pt to 500pt** — User preference during UAT for more visible content before scrolling
 3. **Layout approach adjusted** — Used `.frame(maxWidth: .infinity)` on Text + `.frame(width: 570)` on ScrollView (cleaner separation of content layout and container sizing)
 
@@ -220,7 +220,7 @@ All deviations were intentional UX improvements based on user feedback during Ta
 | ------- | --------------------------------------------------------------- | ------------- |
 | 779a398 | test(05-00): add PopupText layout verification tests            | 3             |
 | 5d1dc34 | feat(05-01): implement multi-line wrapping and scrolling        | 1             |
-| ad555a1 | feat(05-01): adjust popup dimensions to 570pt width and 500pt   | 1             |
+| ad555a1 | feat(05-01): adjust popup dimensions to 640pt width and 500pt   | 1             |
 | 88415a6 | docs(05-01): complete popup layout implementation               | 1             |
 
 All commits are well-documented, follow conventional commit format, and include clear descriptions. Commit history shows proper TDD flow (tests first in 05-00, implementation in 05-01).
