@@ -17,7 +17,7 @@ final class PopupController {
     private func makePanel() -> NSPanel {
         let styleMask: NSWindow.StyleMask = [.borderless, .nonActivatingPanel]
         let panel = NSPanel(
-            contentRect: NSRect(x: 0, y: 0, width: 570, height: 80),
+            contentRect: NSRect(x: 0, y: 0, width: 640, height: 80),
             styleMask: styleMask,
             backing: .buffered,
             defer: false
