@@ -14,8 +14,8 @@ Requirements for popup UX improvements. Each maps to roadmap phases.
 
 ### Popup Positioning
 
-- [ ] **POP-06**: Popup appears near the mouse cursor position at trigger time instead of a fixed screen location
-- [ ] **POP-07**: Popup stays fully visible on screen even when the cursor is near a screen edge (edge-clamping)
+- [x] **POP-06**: Popup appears near the mouse cursor position at trigger time instead of a fixed screen location
+- [x] **POP-07**: Popup stays fully visible on screen even when the cursor is near a screen edge (edge-clamping)
 
 ## Future Requirements
 
@@ -41,8 +41,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 |-------------|-------|--------|
 | POP-04 | Phase 5 | ✅ Complete |
 | POP-05 | Phase 5 | ✅ Complete |
-| POP-06 | Phase 6 | Pending |
-| POP-07 | Phase 6 | Pending |
+| POP-06 | Phase 6 | Complete |
+| POP-07 | Phase 6 | Complete |
 
 **Coverage:**
 - v0.2.0 requirements: 4 total
