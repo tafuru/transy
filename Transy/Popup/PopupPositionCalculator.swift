@@ -12,23 +12,37 @@ struct PopupPositionCalculator {
         margin: CGFloat = defaultMargin
     ) -> CGPoint {
         // 1. Horizontal: center on cursor X, clamp to screen edges
-        var x = cursorLocation.x - panelSize.width / 2
-        x = max(screenFrame.minX + margin, x)
-        x = min(screenFrame.maxX - panelSize.width - margin, x)
+        let availableWidth = screenFrame.width - 2 * margin
+        let x: CGFloat
+        if panelSize.width >= availableWidth {
+            x = screenFrame.minX + margin
+        } else {
+            var candidateX = cursorLocation.x - panelSize.width / 2
+            candidateX = max(screenFrame.minX + margin, candidateX)
+            candidateX = min(screenFrame.maxX - panelSize.width - margin, candidateX)
+            x = candidateX
+        }
 
         // 2. Vertical: try below cursor first
         let belowY = cursorLocation.y - offset - panelSize.height
+        let minY = screenFrame.minY + margin
+        let maxY = screenFrame.maxY - margin
 
         let y: CGFloat
-        if belowY >= screenFrame.minY + margin {
-            // Fits below cursor
+        if belowY >= minY && belowY + panelSize.height <= maxY {
+            // Fits below cursor within screen bounds
+            y = belowY
+        } else if belowY >= minY {
+            // Below fits at bottom but top overflows (cursor outside visibleFrame)
             y = belowY
         } else {
             // Flip above cursor
             var aboveY = cursorLocation.y + offset
-            // Clamp to top if flipped popup still overflows
-            if aboveY + panelSize.height > screenFrame.maxY - margin {
-                aboveY = screenFrame.maxY - panelSize.height - margin
+            let topLimit = maxY - panelSize.height
+            if topLimit >= minY {
+                aboveY = min(max(aboveY, minY), topLimit)
+            } else {
+                aboveY = minY
             }
             y = aboveY
         }

@@ -1,7 +1,7 @@
 ---
 gsd_state_version: 1.0
-milestone: v0.1
-milestone_name: milestone
+milestone: v0.2.0
+milestone_name: Popup UX Polish
 status: completed
 stopped_at: Completed 06-01-PLAN.md
 last_updated: "2026-03-20T17:03:17.402Z"
