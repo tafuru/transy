@@ -60,7 +60,11 @@ Plans:
 2. User sees popup stay fully visible when cursor is near screen edges (top, bottom, left, right)
 3. User never sees popup clipped or positioned off-screen regardless of cursor location
 
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 06-00-PLAN.md — TDD: Pure positioning calculator with edge-clamping unit tests
+- [ ] 06-01-PLAN.md — Wire cursor-proximate positioning into PopupController
 
 ---
 
@@ -69,7 +73,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 5. Popup Layout | 1/2 | In progress | - |
-| 6. Popup Positioning | 0/? | Not started | - |
+| 6. Popup Positioning | 0/2 | Not started | - |
 
 ---
 
