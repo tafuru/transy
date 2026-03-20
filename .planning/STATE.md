@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v0.1
 milestone_name: milestone
 status: completed
-stopped_at: Completed 06-00-PLAN.md
-last_updated: "2026-03-20T16:48:16.321Z"
-last_activity: 2026-03-20 — Completed 06-00-PLAN.md (PopupPositionCalculator TDD)
+stopped_at: Completed 06-01-PLAN.md
+last_updated: "2026-03-20T16:59:57.104Z"
+last_activity: 2026-03-20 — Completed 06-01-PLAN.md (cursor-proximate positioning integration)
 progress:
   total_phases: 2
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 4
-  completed_plans: 3
-  percent: 75
+  completed_plans: 4
+  percent: 100
 ---
 
 # Project State
@@ -25,12 +25,12 @@ See: .planning/PROJECT.md (updated 2026-03-16)
 
 ## Current Position
 
-Phase: Phase 6 (Popup Positioning) — Plan 0 complete
-Plan: 06-00 (completed) / 06-01 (next)
-Status: PopupPositionCalculator TDD complete, ready for integration
-Last activity: 2026-03-20 — Completed 06-00-PLAN.md (PopupPositionCalculator TDD)
+Phase: Phase 6 (Popup Positioning) — complete
+Plan: 06-01 (completed) — all plans in v0.2.0 complete
+Status: v0.2.0 Popup UX Polish milestone complete
+Last activity: 2026-03-20 — Completed 06-01-PLAN.md (cursor-proximate positioning integration)
 
-Progress: [████████░░] 75% (3/4 plans complete)
+Progress: [██████████] 100% (4/4 plans complete)
 
 ## Performance Metrics
 
@@ -40,14 +40,15 @@ Progress: [████████░░] 75% (3/4 plans complete)
 - Total execution time: 199 min
 
 **Velocity (v0.2.0):**
-- Total plans completed: 2
-- Average duration: 1.7 min
-- Total execution time: 3.3 min
+- Total plans completed: 4
+- Average duration: 3.5 min
+- Total execution time: 14.1 min
 
 | Phase | Plan | Duration | Tasks | Files | Completed |
 |-------|------|----------|-------|-------|-----------|
 | 05    | 00   | 103s (1.7m) | 1     | 3     | 2026-03-16T14:55:14Z |
 | 06    | 00   | 97s (1.6m)  | 2     | 2     | 2026-03-20T16:46:31Z |
+| 06    | 01   | 480s (8.0m) | 2     | 1     | 2026-03-20T16:58:43Z |
 
 ## Accumulated Context
 
@@ -65,6 +66,8 @@ Recent decisions affecting current work:
 - [v0.1.0]: Three-tier language reconciliation (exact → languageCode → fallback) for region-qualified OS locales
 - [v0.1.0]: System Settings deep link with `.extension` suffix for macOS 13+
 - [Phase 06]: PopupPositionCalculator uses Foundation types only — no AppKit dependency for testability
+- [Phase 06]: Cursor location captured once at trigger time (NSEvent.mouseLocation) — popup stays anchored to original cursor position through content changes
+- [Phase 06]: NSWindow.didResizeNotification used for content height change observation — lightweight, no KVO or Combine needed
 
 ### Pending Todos
 
@@ -77,6 +80,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-20T16:48:12.246Z
-Stopped at: Completed 06-00-PLAN.md
+Last session: 2026-03-20T16:59:57.102Z
+Stopped at: Completed 06-01-PLAN.md
 Resume file: None
