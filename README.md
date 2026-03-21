@@ -9,6 +9,8 @@ Built with SwiftUI and Apple's on-device [Translation framework](https://develop
 - **Menu bar app** — runs as a status-bar accessory with no Dock icon
 - **Double ⌘C trigger** — captures selected text from any app and translates it instantly
 - **Floating popup** — shows the translation result without stealing focus
+- **Smart popup placement** — popup appears near the cursor and stays fully visible with edge-clamping
+- **Word wrapping & scrolling** — long translations wrap naturally and scroll vertically
 - **Clipboard-safe** — saves and restores the original clipboard after capture
 - **Target language picker** — choose your preferred translation target in Settings
 - **Model download guidance** — detects missing translation models and guides you to System Settings
