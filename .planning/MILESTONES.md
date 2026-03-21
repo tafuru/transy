@@ -1,5 +1,22 @@
 # Milestones
 
+## v0.2.0 Popup UX Polish (Shipped: 2026-03-21)
+
+**Phases completed:** 2 phases, 4 plans
+**Timeline:** 5 days (2026-03-16 → 2026-03-21)
+**Codebase:** 2,183 LOC Swift (app + tests)
+
+**Key accomplishments:**
+- Word wrapping and vertical scrolling for long translations via ScrollView + dynamic height sizing
+- Pure PopupPositionCalculator with cursor-proximate placement, flip-above on bottom overflow, and edge-clamping
+- NSWindow.didResizeNotification-driven reposition on content size changes
+- 13 new tests (4 layout + 9 positioning), 50 total across 13 suites
+- PR review hardening: safe MainActor isolation, panel-wider-than-screen guard, cursor-outside-visibleFrame handling
+
+**Archives:** [milestones/v0.2.0-ROADMAP.md](milestones/v0.2.0-ROADMAP.md) · [milestones/v0.2.0-REQUIREMENTS.md](milestones/v0.2.0-REQUIREMENTS.md)
+
+---
+
 ## v0.1.0 MVP (Shipped: 2026-03-16)
 
 **Phases completed:** 4 phases, 9 plans

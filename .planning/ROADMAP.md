@@ -3,7 +3,7 @@
 ## Milestones
 
 - ✅ **v0.1.0 MVP** — Phases 1-4 (shipped 2026-03-16)
-- ✅ **v0.2.0 Popup UX Polish** — Phases 5-6 (complete)
+- ✅ **v0.2.0 Popup UX Polish** — Phases 5-6 (shipped 2026-03-21)
 
 ## Phases
 
@@ -19,62 +19,27 @@ Full details: [milestones/v0.1.0-ROADMAP.md](milestones/v0.1.0-ROADMAP.md)
 
 </details>
 
-### v0.2.0 Popup UX Polish
+<details>
+<summary>✅ v0.2.0 Popup UX Polish (Phases 5-6) — SHIPPED 2026-03-21</summary>
 
-- [x] **Phase 5: Popup Layout** - Multi-line wrapping and scrolling for long translations
-- [x] **Phase 6: Popup Positioning** - Cursor-proximate placement with edge-clamping
+- [x] Phase 5: Popup Layout (2/2 plans) — completed 2026-03-16
+- [x] Phase 6: Popup Positioning (2/2 plans) — completed 2026-03-20
 
----
+Full details: [milestones/v0.2.0-ROADMAP.md](milestones/v0.2.0-ROADMAP.md)
 
-## Phase Details
-
-### Phase 5: Popup Layout
-**Goal**: Popup displays long translations gracefully with word wrapping and vertical scrolling
-
-**Depends on**: Nothing (builds on existing popup infrastructure from v0.1.0)
-
-**Requirements**: POP-04, POP-05
-
-**Success Criteria** (what must be TRUE):
-1. User sees translated text wrap across multiple lines instead of truncating with ellipsis
-2. User can scroll vertically when translated text exceeds the visible popup height
-3. User sees all translated content without manual window resizing (scrolling is automatic)
-
-**Plans**: 2 plans
-
-Plans:
-- [x] 05-00-PLAN.md — Create automated tests for PopupText layout constraints (completed 2026-03-16)
-- [x] 05-01-PLAN.md — Implement multi-line wrapping and scrolling in PopupText
-
----
-
-### Phase 6: Popup Positioning
-**Goal**: Popup appears near the user's cursor and stays fully visible on screen
-
-**Depends on**: Nothing (independent of Phase 5)
-
-**Requirements**: POP-06, POP-07
-
-**Success Criteria** (what must be TRUE):
-1. User sees popup appear near the mouse cursor position where they triggered the translation
-2. User sees popup stay fully visible when cursor is near screen edges (top, bottom, left, right)
-3. User never sees popup clipped or positioned off-screen regardless of cursor location
-
-**Plans**: 2 plans
-
-Plans:
-- [x] 06-00-PLAN.md — TDD: Pure positioning calculator with edge-clamping unit tests
-- [x] 06-01-PLAN.md — Wire cursor-proximate positioning into PopupController
-
----
+</details>
 
 ## Progress
 
-| Phase | Plans Complete | Status | Completed |
-|-------|----------------|--------|-----------|
-| 5. Popup Layout | 2/2 | Complete | 2026-03-16 |
-| 6. Popup Positioning | 2/2 | Complete | 2026-03-20 |
+| Phase | Milestone | Plans Complete | Status | Completed |
+|-------|-----------|----------------|--------|-----------|
+| 1. App Shell | v0.1.0 | 2/2 | Complete | 2026-03-14 |
+| 2. Trigger & Popup | v0.1.0 | 3/3 | Complete | 2026-03-14 |
+| 3. Translation Loop | v0.1.0 | 2/2 | Complete | 2026-03-15 |
+| 4. Settings | v0.1.0 | 2/2 | Complete | 2026-03-15 |
+| 5. Popup Layout | v0.2.0 | 2/2 | Complete | 2026-03-16 |
+| 6. Popup Positioning | v0.2.0 | 2/2 | Complete | 2026-03-20 |
 
 ---
 
-*Last updated: 2026-03-20 — v0.2.0 milestone complete*
+*Last updated: 2026-03-21 — v0.2.0 milestone shipped*

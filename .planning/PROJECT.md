@@ -8,13 +8,9 @@ Transy is a lightweight macOS menu bar translator for personal Japanese/English 
 
 Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
 
-## Current Milestone: v0.2.0 Popup UX Polish
+## Current Milestone: v0.2.0 Popup UX Polish — ✅ SHIPPED
 
-**Goal:** Improve the translation popup so it handles long text gracefully and appears near the user's cursor instead of a fixed screen position.
-
-**Target features:**
-- Multi-line scrollable popup that wraps long text instead of truncating with ellipsis
-- Cursor-proximate popup positioning near the text selection area
+**Delivered:** Popup now wraps long text with vertical scrolling and appears near the user's cursor with intelligent edge-clamping.
 
 ## Requirements
 
@@ -24,11 +20,12 @@ Selected text turns into a natural translation almost instantly without breaking
 - ✓ Double ⌘C triggers translation of selected text — v0.1.0
 - ✓ Lightweight popup with loading placeholder then translated result — v0.1.0
 - ✓ Target language settings with model download guidance — v0.1.0
+- ✓ Popup displays translated text with word wrapping and scrolling — v0.2.0
+- ✓ Popup appears near cursor with edge-clamping — v0.2.0
 
 ### Active
 
-- [ ] Popup displays translated text with word wrapping and scrolling for long content
-- [ ] Popup appears near the cursor / text selection position instead of a fixed screen location
+(None — next milestone not yet planned)
 
 ### Out of Scope
 
@@ -39,10 +36,10 @@ Selected text turns into a natural translation almost instantly without breaking
 
 ## Context
 
-Shipped v0.1.0 with 1,179 LOC Swift (app) + 710 LOC Swift (tests).
+Shipped v0.2.0 with 2,183 LOC Swift (app + tests).
 Tech stack: SwiftUI, AppKit, Apple Translation.framework, XcodeGen.
-37 automated tests across 11 suites. 4 phases, 9 plans executed.
-Built in 3 days (2026-03-14 → 2026-03-16).
+50 automated tests across 13 suites. 6 phases, 13 plans executed across 2 milestones.
+Built in 8 days (2026-03-14 → 2026-03-21).
 
 ## Constraints
 
@@ -62,6 +59,9 @@ Built in 3 days (2026-03-14 → 2026-03-16).
 | Target language is configured in a separate settings window | Keeps the translation popup minimal and focused on the result | ✓ Good |
 | Three-tier language reconciliation (exact → languageCode → fallback) | Handles region-qualified OS locales like "en-JP" matching supported "en" | ✓ Good |
 | System Settings deep link with `.extension` suffix | Only reliable way to open Language & Region on macOS 13+ | ✓ Good |
+| Pure Foundation PopupPositionCalculator | No AppKit dependency — fully unit testable with CGPoint/CGSize/CGRect | ✓ Good |
+| NSWindow.didResizeNotification for content changes | Lightweight observation without KVO or Combine; triggers reposition on dynamic sizing | ✓ Good |
+| Cursor captured once at trigger time | Popup stays anchored to original cursor position through content changes | ✓ Good |
 
 ---
-*Last updated: 2026-03-16 after v0.2.0 milestone start*
+*Last updated: 2026-03-21 after v0.2.0 milestone*
