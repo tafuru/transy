@@ -39,9 +39,9 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| OBD-01 | — | Pending |
-| OBD-02 | — | Pending |
-| SET-01 | — | Pending |
-| SET-02 | — | Pending |
-| SET-03 | — | Pending |
-| SET-04 | — | Pending |
+| OBD-01 | Phase 8 | Pending |
+| OBD-02 | Phase 8 | Pending |
+| SET-01 | Phase 7 | Pending |
+| SET-02 | Phase 7 | Pending |
+| SET-03 | Phase 9 | Pending |
+| SET-04 | Phase 9 | Pending |

@@ -2,12 +2,12 @@
 gsd_state_version: 1.0
 milestone: v0.3.0
 milestone_name: Onboarding & Settings
-status: defining_requirements
-stopped_at: Defining requirements
+status: ready_to_plan
+stopped_at: Roadmap created, ready to plan Phase 7
 last_updated: "2026-03-21"
-last_activity: 2026-03-21 — Milestone v0.3.0 started
+last_activity: 2026-03-21 — Roadmap created (3 phases, 6 requirements mapped)
 progress:
-  total_phases: 0
+  total_phases: 3
   completed_phases: 0
   total_plans: 0
   completed_plans: 0
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-21)
 
 **Core value:** Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
-**Current focus:** v0.3.0 Onboarding & Settings — first-launch guidance, tabbed settings, launch at login, auto-dismiss
+**Current focus:** v0.3.0 Onboarding & Settings — Phase 7 (Settings UI Modernization) ready to plan
 
 ## Current Position
 
-Phase: Not started (defining requirements)
+Phase: 7 of 9 (Settings UI Modernization)
 Plan: —
-Status: Defining requirements
-Last activity: 2026-03-21 — Milestone v0.3.0 started
+Status: Ready to plan
+Last activity: 2026-03-21 — Roadmap created (3 phases, 6 requirements mapped)
 
 ## Performance Metrics
 
