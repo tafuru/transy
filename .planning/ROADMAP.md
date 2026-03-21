@@ -3,7 +3,7 @@
 ## Milestones
 
 - ✅ **v0.1.0 MVP** — Phases 1-4 (shipped 2026-03-16)
-- 🚧 **v0.2.0 Popup UX Polish** — Phases 5-6 (in progress)
+- ✅ **v0.2.0 Popup UX Polish** — Phases 5-6 (complete)
 
 ## Phases
 
@@ -21,8 +21,8 @@ Full details: [milestones/v0.1.0-ROADMAP.md](milestones/v0.1.0-ROADMAP.md)
 
 ### v0.2.0 Popup UX Polish
 
-- [ ] **Phase 5: Popup Layout** - Multi-line wrapping and scrolling for long translations
-- [ ] **Phase 6: Popup Positioning** - Cursor-proximate placement with edge-clamping
+- [x] **Phase 5: Popup Layout** - Multi-line wrapping and scrolling for long translations
+- [x] **Phase 6: Popup Positioning** - Cursor-proximate placement with edge-clamping
 
 ---
 
@@ -63,8 +63,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 06-00-PLAN.md — TDD: Pure positioning calculator with edge-clamping unit tests
-- [ ] 06-01-PLAN.md — Wire cursor-proximate positioning into PopupController
+- [x] 06-00-PLAN.md — TDD: Pure positioning calculator with edge-clamping unit tests
+- [x] 06-01-PLAN.md — Wire cursor-proximate positioning into PopupController
 
 ---
 
@@ -72,9 +72,9 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 5. Popup Layout | 1/2 | In progress | - |
-| 6. Popup Positioning | 0/2 | Not started | - |
+| 5. Popup Layout | 2/2 | Complete | 2026-03-16 |
+| 6. Popup Positioning | 2/2 | Complete | 2026-03-20 |
 
 ---
 
-*Last updated: 2026-03-16 for v0.2.0 milestone*
+*Last updated: 2026-03-20 — v0.2.0 milestone complete*

@@ -10,6 +10,7 @@
 		1D7E99A2EF7F5C18C3BAE48E /* ClipboardRestoreSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC11A83D27AECE8423CC2FFC /* ClipboardRestoreSession.swift */; };
 		204F94D0D810F1E162F9E613 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D1B48CD36755DAA5C8B67 /* MenuBarView.swift */; };
 		23528C1A8D6C4E3E817D396B /* PopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A903E7EC95F736D96FDA48 /* PopupController.swift */; };
+		2A462835DB11A8E7C0466126 /* PopupPositioningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88A7A5D6B25972BC5CE7475 /* PopupPositioningTests.swift */; };
 		322E587F4D84EAAFF6FB26D4 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F06D9CC4AACA6666A41CE /* AppState.swift */; };
 		3DEE1277FF710809E66CD471 /* ClipboardManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B00BA499960D4DE3272F9B /* ClipboardManagerTests.swift */; };
 		47CFCB32F5FA2997EDDE2455 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D36133B86B37DA3B2E3B98 /* PopupView.swift */; };
@@ -39,6 +40,7 @@
 		CBB7A7141F49E1A7095D6372 /* SupportedLanguageOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE6B67971BD2B40E2F946A /* SupportedLanguageOption.swift */; };
 		CFCA60109C1346EC9290DE53 /* TranslationAvailabilityClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C310B86E8705892C0E418D75 /* TranslationAvailabilityClientTests.swift */; };
 		DB8EBF7032C96F568FF72EC1 /* TextNormalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524A77BC83DDE3C480C0F14 /* TextNormalization.swift */; };
+		DC3FB1ED9C6A4B8610EB118A /* PopupPositionCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9499F0FC1EB29A2694E99AA4 /* PopupPositionCalculator.swift */; };
 		DEDAA0798E3B1F676501EF2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE40CB96A1C0949349DCFD1 /* AppDelegate.swift */; };
 		F3DEA91AAA877AC3FE7F4E2F /* TranslationErrorMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8007AE0E9F8439938296AE4E /* TranslationErrorMapper.swift */; };
 /* End PBXBuildFile section */
@@ -83,10 +85,12 @@
 		91500453A398C8FCB016D0A4 /* TransyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91A903E7EC95F736D96FDA48 /* PopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupController.swift; sourceTree = "<group>"; };
 		93D36133B86B37DA3B2E3B98 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
+		9499F0FC1EB29A2694E99AA4 /* PopupPositionCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupPositionCalculator.swift; sourceTree = "<group>"; };
 		995D1B48CD36755DAA5C8B67 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
 		9D819EE00E612AFCFF2C9FC8 /* TransyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransyApp.swift; sourceTree = "<group>"; };
 		A12AAA728534FE1C2113D892 /* DoublePressDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublePressDetector.swift; sourceTree = "<group>"; };
 		B7076942C003E932835F67F0 /* TranslationModelGuidanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationModelGuidanceTests.swift; sourceTree = "<group>"; };
+		B88A7A5D6B25972BC5CE7475 /* PopupPositioningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupPositioningTests.swift; sourceTree = "<group>"; };
 		C1B00BA499960D4DE3272F9B /* ClipboardManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardManagerTests.swift; sourceTree = "<group>"; };
 		C310B86E8705892C0E418D75 /* TranslationAvailabilityClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationAvailabilityClientTests.swift; sourceTree = "<group>"; };
 		C4FC79CA1B09F4378844F508 /* TranslationRaceGuardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationRaceGuardTests.swift; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 				1FBE6089F9FAC821751E8677 /* ClipboardRestoreSessionTests.swift */,
 				F2235DE783B51BE6B13D1993 /* DoublePressDetectorTests.swift */,
 				77C5D4D938C6155102F8DFD9 /* HotkeyMonitorTests.swift */,
+				B88A7A5D6B25972BC5CE7475 /* PopupPositioningTests.swift */,
 				4E11588B37785CBBB800DC5E /* PopupTextLayoutTests.swift */,
 				1A3FE03FD3BB8F70C1424BCA /* SettingsStoreTests.swift */,
 				F60EB17A8A5F1F992BC90047 /* TargetLanguageSnapshotTests.swift */,
@@ -223,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				91A903E7EC95F736D96FDA48 /* PopupController.swift */,
+				9499F0FC1EB29A2694E99AA4 /* PopupPositionCalculator.swift */,
 				93D36133B86B37DA3B2E3B98 /* PopupView.swift */,
 			);
 			path = Popup;
@@ -339,6 +345,7 @@
 				C2963F73C4B9A205379716F1 /* ClipboardRestoreSessionTests.swift in Sources */,
 				7DFABD368286D3B56E50E88F /* DoublePressDetectorTests.swift in Sources */,
 				7D4A0BBB9219E0E06451DE43 /* HotkeyMonitorTests.swift in Sources */,
+				2A462835DB11A8E7C0466126 /* PopupPositioningTests.swift in Sources */,
 				8DD499688FF5E3D9DB130C1E /* PopupTextLayoutTests.swift in Sources */,
 				7EB2D150C6557F03D03EE672 /* SettingsStoreTests.swift in Sources */,
 				9B88142989507F94F5A02C89 /* TargetLanguageSnapshotTests.swift in Sources */,
@@ -365,6 +372,7 @@
 				4B63656FAA41CE78F78098F9 /* HotkeyMonitor.swift in Sources */,
 				204F94D0D810F1E162F9E613 /* MenuBarView.swift in Sources */,
 				23528C1A8D6C4E3E817D396B /* PopupController.swift in Sources */,
+				DC3FB1ED9C6A4B8610EB118A /* PopupPositionCalculator.swift in Sources */,
 				47CFCB32F5FA2997EDDE2455 /* PopupView.swift in Sources */,
 				AC26B804437DB031761E20D3 /* SettingsStore.swift in Sources */,
 				83ADDBAA20196C7AED7EDDF4 /* SettingsView.swift in Sources */,

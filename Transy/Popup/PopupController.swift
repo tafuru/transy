@@ -13,6 +13,8 @@ final class PopupController {
     private lazy var panel: NSPanel = makePanel()
     private var dismissMonitors: [Any] = []
     private var onDismiss: (() -> Void)?
+    private var cursorAtTrigger: CGPoint = .zero
+    private var resizeObserver: (any NSObjectProtocol)?
 
     private func makePanel() -> NSPanel {
         let styleMask: NSWindow.StyleMask = [.borderless, .nonActivatingPanel]
@@ -56,7 +58,23 @@ final class PopupController {
         let hostingView = NSHostingView(rootView: view)
         hostingView.sizingOptions = .intrinsicContentSize
         panel.contentView = hostingView
-        panel.setFrameOrigin(topCenterOrigin(for: panel))
+
+        // Remove old resize observer from previous show() (handles rapid re-trigger)
+        removeResizeObserver()
+
+        cursorAtTrigger = NSEvent.mouseLocation
+        repositionPanel()
+
+        resizeObserver = NotificationCenter.default.addObserver(
+            forName: NSWindow.didResizeNotification,
+            object: panel,
+            queue: .main
+        ) { [weak self] _ in
+            Task { @MainActor [weak self] in
+                self?.repositionPanel()
+            }
+        }
+
         panel.alphaValue = 0
         // orderFrontRegardless() is required for background/accessory apps (Transy never activates).
         // orderFront(nil) is a documented no-op when the app is not active.
@@ -71,6 +89,7 @@ final class PopupController {
 
     func dismiss() {
         removeDismissMonitors()
+        removeResizeObserver()
         // Dismiss must tear down the hosted SwiftUI tree, not just hide the panel. The
         // translationTask is view-scoped, so leaving the hosting view attached after an
         // outside click / Escape can let the old request keep running until the next show.
@@ -112,21 +131,25 @@ final class PopupController {
 
     // MARK: - Screen placement
 
-    /// Returns the top-center origin for the panel on the screen containing the mouse cursor.
-    /// Uses mouse cursor (not NSScreen.main) because Transy is not frontmost at trigger time.
-    private func topCenterOrigin(for panel: NSPanel) -> NSPoint {
-        let screen = activeScreen()
-        let sf = screen.visibleFrame   // excludes menu bar at top (visibleFrame.maxY = just below menu bar)
-        let pw = panel.frame.width
-        let ph = panel.frame.height
-        let x = sf.midX - pw / 2
-        let y = sf.maxY - ph - 24    // 24pt inset below the menu bar
-        return NSPoint(x: x, y: y)
+    private func repositionPanel() {
+        let screen = screen(containing: cursorAtTrigger)
+        let origin = PopupPositionCalculator.calculateOrigin(
+            cursorLocation: cursorAtTrigger,
+            panelSize: panel.frame.size,
+            screenFrame: screen.visibleFrame
+        )
+        panel.setFrameOrigin(origin)
     }
 
-    private func activeScreen() -> NSScreen {
-        let cursor = NSEvent.mouseLocation
-        if let screen = NSScreen.screens.first(where: { NSMouseInRect(cursor, $0.frame, false) }) {
+    private func removeResizeObserver() {
+        if let observer = resizeObserver {
+            NotificationCenter.default.removeObserver(observer)
+            resizeObserver = nil
+        }
+    }
+
+    private func screen(containing point: CGPoint) -> NSScreen {
+        if let screen = NSScreen.screens.first(where: { NSMouseInRect(point, $0.frame, false) }) {
             return screen
         }
         if let screen = NSScreen.main ?? NSScreen.screens.first {
