@@ -1,17 +1,17 @@
 ---
 gsd_state_version: 1.0
-milestone: v0.2.0
-milestone_name: Popup UX Polish
-status: completed
-stopped_at: Milestone v0.2.0 archived
+milestone: v0.3.0
+milestone_name: Onboarding & Settings
+status: defining_requirements
+stopped_at: Defining requirements
 last_updated: "2026-03-21"
-last_activity: 2026-03-21 — Milestone v0.2.0 shipped and archived
+last_activity: 2026-03-21 — Milestone v0.3.0 started
 progress:
-  total_phases: 2
-  completed_phases: 2
-  total_plans: 4
-  completed_plans: 4
-  percent: 100
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
@@ -21,16 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-21)
 
 **Core value:** Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
-**Current focus:** Planning next milestone
+**Current focus:** v0.3.0 Onboarding & Settings — first-launch guidance, tabbed settings, launch at login, auto-dismiss
 
 ## Current Position
 
-Phase: All v0.2.0 phases complete
-Plan: All plans complete
-Status: v0.2.0 Popup UX Polish milestone shipped and archived
-Last activity: 2026-03-21 — Milestone v0.2.0 archived
-
-Progress: [██████████] 100% — Milestone complete
+Phase: Not started (defining requirements)
+Plan: —
+Status: Defining requirements
+Last activity: 2026-03-21 — Milestone v0.3.0 started
 
 ## Performance Metrics
 

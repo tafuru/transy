@@ -8,9 +8,15 @@ Transy is a lightweight macOS menu bar translator for personal Japanese/English 
 
 Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
 
-## Current Milestone: v0.2.0 Popup UX Polish — ✅ SHIPPED
+## Current Milestone: v0.3.0 Onboarding & Settings
 
-**Delivered:** Popup now wraps long text with vertical scrolling and appears near the user's cursor with intelligent edge-clamping.
+**Goal:** Improve first-run experience with automatic permission guidance and modernize the Settings UI to macOS standards with new features.
+
+**Target features:**
+- First-launch onboarding with automatic Accessibility permission guidance
+- macOS-standard tabbed Settings (General / About) with grouped sections
+- Launch at Login toggle via SMAppService
+- Popup auto-dismiss timer setting
 
 ## Requirements
 
@@ -25,7 +31,10 @@ Selected text turns into a natural translation almost instantly without breaking
 
 ### Active
 
-(None — next milestone not yet planned)
+- [ ] First-launch onboarding with Accessibility permission guidance
+- [ ] macOS-standard tabbed Settings UI (General / About)
+- [ ] Launch at Login toggle
+- [ ] Popup auto-dismiss timer
 
 ### Out of Scope
 
@@ -64,4 +73,4 @@ Built in 8 days (2026-03-14 → 2026-03-21).
 | Cursor captured once at trigger time | Popup stays anchored to original cursor position through content changes | ✓ Good |
 
 ---
-*Last updated: 2026-03-21 after v0.2.0 milestone*
+*Last updated: 2026-03-21 after v0.3.0 milestone start*
