@@ -70,7 +70,7 @@ final class PopupController {
             object: panel,
             queue: .main
         ) { [weak self] _ in
-            Task { @MainActor [weak self] in
+            Task { @MainActor in
                 self?.repositionPanel()
             }
         }
