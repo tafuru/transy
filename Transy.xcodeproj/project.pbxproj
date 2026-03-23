@@ -284,6 +284,7 @@
 			buildConfigurationList = E1016FDD8C6BB64B2C0C10C3 /* Build configuration list for PBXNativeTarget "Transy" */;
 			buildPhases = (
 				C8229835FD9E0E02B9347D30 /* Sources */,
+				DAD45DCBEDA28FB2751F49AF /* Set Version from Git Tag */,
 			);
 			buildRules = (
 			);
@@ -333,6 +334,28 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DAD45DCBEDA28FB2751F49AF /* Set Version from Git Tag */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Set Version from Git Tag";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "VERSION=$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//')\nif [ -n \"$VERSION\" ]; then\n  /usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString $VERSION\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		676E9E42908D2078999820C2 /* Sources */ = {
