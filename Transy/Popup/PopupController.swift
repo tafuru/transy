@@ -11,7 +11,7 @@ private extension NSWindow.StyleMask {
 final class PopupController {
 
     private lazy var panel: NSPanel = makePanel()
-    private var dismissMonitors: [Any] = []
+    private var dismissEventMonitors: [Any] = []
     private var onDismiss: (() -> Void)?
     private var cursorAtTrigger: CGPoint = .zero
     private var resizeObserver: (any NSObjectProtocol)?
@@ -42,7 +42,7 @@ final class PopupController {
         onDismiss: @escaping () -> Void
     ) {
         // Replace content if popup is already visible (rapid re-trigger: reuse position, replace text)
-        removeDismissMonitors()
+        removeDismissEventMonitors()
         self.onDismiss = onDismiss
 
         // Rapid re-trigger must tear down the old hosted SwiftUI subtree before installing the
@@ -84,11 +84,11 @@ final class PopupController {
             ctx.duration = 0.15   // subtle fade-in (CONTEXT.md: "subtle fade-in, not strong motion")
             panel.animator().alphaValue = 1
         }
-        attachDismissMonitors()
+        attachDismissEventMonitors()
     }
 
     func dismiss() {
-        removeDismissMonitors()
+        removeDismissEventMonitors()
         removeResizeObserver()
         // Dismiss must tear down the hosted SwiftUI tree, not just hide the panel. The
         // translationTask is view-scoped, so leaving the hosting view attached after an
@@ -105,7 +105,7 @@ final class PopupController {
 
     // MARK: - Dismiss monitors (global — panel is not key window, local monitors won't fire)
 
-    private func attachDismissMonitors() {
+    private func attachDismissEventMonitors() {
         let esc = NSEvent.addGlobalMonitorForEvents(matching: .keyDown) { [weak self] event in
             MainActor.assumeIsolated {
                 if event.keyCode == 53 { self?.dismiss() }   // 53 = Escape
@@ -121,12 +121,12 @@ final class PopupController {
                 }
             }
         }
-        dismissMonitors = [esc, click].compactMap { $0 }
+        dismissEventMonitors = [esc, click].compactMap { $0 }
     }
 
-    private func removeDismissMonitors() {
-        dismissMonitors.forEach { NSEvent.removeMonitor($0) }
-        dismissMonitors = []
+    private func removeDismissEventMonitors() {
+        dismissEventMonitors.forEach { NSEvent.removeMonitor($0) }
+        dismissEventMonitors = []
     }
 
     // MARK: - Screen placement
