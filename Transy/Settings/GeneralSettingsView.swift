@@ -17,7 +17,6 @@ struct GeneralSettingsView: View {
                             .tag(option.id)
                     }
                 }
-                .labelsHidden()
                 .disabled(supportedLanguages.isEmpty)
                 .onChange(of: selectedLanguageID) { _, newID in
                     if let option = supportedLanguages.first(where: { $0.id == newID }) {
