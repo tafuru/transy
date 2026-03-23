@@ -221,6 +221,7 @@ private struct LoadingRequestContext: Sendable {
     let sourceText: String
 }
 
+// internal (not private) so TranslationTaskConfigurationReloaderTests can verify behaviour
 func nextTranslationConfiguration(
     after existingConfiguration: TranslationSession.Configuration?,
     targetLanguage: Locale.Language
