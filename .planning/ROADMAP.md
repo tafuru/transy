@@ -48,7 +48,10 @@ Full details: [milestones/v0.2.0-ROADMAP.md](milestones/v0.2.0-ROADMAP.md)
   1. User sees General and About tabs in the Settings window, matching macOS Settings conventions
   2. User sees settings controls organized in bordered grouped sections within each tab
   3. Existing target language picker remains functional within the new General tab layout
-**Plans**: TBD
+**Plans**: 1 plan
+
+Plans:
+- [ ] 07-01-PLAN.md — Restructure Settings into macOS-standard tabbed window with General and About tabs using Form+Section grouped layout
 
 ### Phase 8: First-Launch Onboarding
 **Goal**: New users receive Accessibility permission guidance automatically without needing to discover it
