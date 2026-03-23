@@ -2,8 +2,8 @@
 
 ## Onboarding
 
-- [ ] **OBD-01**: User sees Accessibility permission guidance automatically on first launch without needing to open Settings
-- [ ] **OBD-02**: User is guided through permission setup with clear instructions and a button to open System Settings
+- [x] **OBD-01**: User sees Accessibility permission guidance automatically on first launch without needing to open Settings
+- [x] **OBD-02**: User is guided through permission setup with clear instructions and a button to open System Settings
 
 ## Settings UI
 
@@ -39,8 +39,8 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| OBD-01 | Phase 8 | Pending |
-| OBD-02 | Phase 8 | Pending |
+| OBD-01 | Phase 8 | Complete |
+| OBD-02 | Phase 8 | Complete |
 | SET-01 | Phase 7 | Pending |
 | SET-02 | Phase 7 | Pending |
 | SET-03 | Phase 9 | Pending |

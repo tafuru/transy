@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v0.3.0
 milestone_name: Onboarding & Settings
 status: executing
-stopped_at: Phase 7 complete, PR #9 under review
-last_updated: "2026-03-23T12:30:00.000Z"
-last_activity: 2026-03-23 — Phase 7 complete, PR #9 created
+stopped_at: Completed 08-01-PLAN.md
+last_updated: "2026-03-23T13:27:29.579Z"
+last_activity: 2026-03-23 — Phase 8 planned
 progress:
   total_phases: 3
-  completed_phases: 1
-  total_plans: 1
-  completed_plans: 1
+  completed_phases: 2
+  total_plans: 2
+  completed_plans: 2
 ---
 
 # Project State
@@ -25,9 +25,9 @@ See: .planning/PROJECT.md (updated 2026-03-21)
 ## Current Position
 
 Phase: 8 of 9 (First-Launch Onboarding)
-Plan: —
-Status: Ready to plan
-Last activity: 2026-03-23 — Phase 7 complete, PR #9 created
+Plan: 08-01 (1 plan, 1 wave)
+Status: Ready to execute
+Last activity: 2026-03-23 — Phase 8 planned
 
 ## Performance Metrics
 
@@ -46,6 +46,7 @@ Last activity: 2026-03-23 — Phase 7 complete, PR #9 created
 | 05    | 00   | 103s (1.7m) | 1     | 3     | 2026-03-16T14:55:14Z |
 | 06    | 00   | 97s (1.6m)  | 2     | 2     | 2026-03-20T16:46:31Z |
 | 06    | 01   | 480s (8.0m) | 2     | 1     | 2026-03-20T16:58:43Z |
+| 08    | 01   | 72s (1.2m)  | 2     | 2     | 2026-03-23T13:21:00Z |
 
 ## Accumulated Context
 
@@ -65,6 +66,7 @@ Recent decisions affecting current work:
 - [Phase 06]: PopupPositionCalculator uses Foundation types only — no AppKit dependency for testability
 - [Phase 06]: Cursor location captured once at trigger time (NSEvent.mouseLocation) — popup stays anchored to original cursor position through content changes
 - [Phase 06]: NSWindow.didResizeNotification used for content height change observation — lightweight, no KVO or Combine needed
+- [Phase 08]: AX permission state is sole determinant for showing guidance — no UserDefaults flag
 
 ### Pending Todos
 
@@ -77,6 +79,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-23T12:30:00.000Z
-Stopped at: Phase 7 complete, PR #9 review
-Resume file: .planning/phases/07-settings-ui-modernization/07-01-SUMMARY.md
+Last session: 2026-03-23T13:19:19.049Z
+Stopped at: Completed 08-01-PLAN.md
+Resume file: None
