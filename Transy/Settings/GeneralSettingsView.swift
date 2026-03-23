@@ -1,3 +1,4 @@
+import ServiceManagement
 import SwiftUI
 import Translation
 
@@ -7,9 +8,23 @@ struct GeneralSettingsView: View {
     @State private var supportedLanguages: [SupportedLanguageOption] = []
     @State private var guidanceState: TranslationModelGuidance.GuidanceState = .none
     @State private var selectedLanguageID: String = ""
+    @State private var launchAtLogin: Bool = false
 
     var body: some View {
         Form {
+            Section("General") {
+                Toggle("Launch at Login", isOn: $launchAtLogin)
+                    .onChange(of: launchAtLogin) { _, newValue in
+                        if newValue {
+                            try? SMAppService.mainApp.register()
+                        } else {
+                            try? SMAppService.mainApp.unregister()
+                        }
+                        // Re-read actual state in case register/unregister failed
+                        launchAtLogin = SMAppService.mainApp.status == .enabled
+                    }
+            }
+
             Section("Translation") {
                 Picker("Target Language", selection: $selectedLanguageID) {
                     ForEach(supportedLanguages) { option in
@@ -70,6 +85,9 @@ struct GeneralSettingsView: View {
         }
         .formStyle(.grouped)
         .task {
+            // Initialize launch at login toggle from actual system state
+            launchAtLogin = SMAppService.mainApp.status == .enabled
+
             // Load supported languages on appear
             supportedLanguages = await SupportedLanguageOption.loadSupportedLanguages()
 
