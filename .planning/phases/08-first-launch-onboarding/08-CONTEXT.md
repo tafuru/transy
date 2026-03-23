@@ -33,7 +33,7 @@ created: 2026-03-23
 
 **Details:**
 - Keep current structure: title + body text + "Open System Settings" button
-- Add a brief explanation above or below the existing text: why Transy needs Accessibility access (to read selected text via clipboard for translation)
+- Add a brief explanation above or below the existing text: why Transy needs Accessibility access (to detect the global translation shortcut using a system-wide key event monitor)
 - No app icon, no multi-step wizard, no separate welcome screen
 - Single-page, single-purpose: explain need → provide action button
 - Keep it minimal per Apple HIG onboarding guidelines

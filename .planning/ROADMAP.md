@@ -60,7 +60,7 @@ Plans:
 **Success Criteria** (what must be TRUE):
   1. User launching Transy for the first time sees the Accessibility permission guidance window automatically
   2. User can click a button in the guidance to open System Settings directly to the Accessibility pane
-  3. User who has already launched Transy before does not see the guidance window again on subsequent launches
+  3. User who already has Accessibility permission granted does not see the guidance window on launch
 **Plans**: 1 plan
 
 Plans:

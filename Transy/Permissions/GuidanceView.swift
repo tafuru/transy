@@ -6,7 +6,7 @@ struct GuidanceView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Accessibility Access Required")
                 .font(.headline)
-            Text("Transy uses Accessibility access to detect the double ⌘C shortcut that triggers translations. This permission lets the app listen for your keyboard shortcut without accessing any other data.")
+            Text("Transy uses Accessibility access to detect the double ⌘C shortcut that triggers translations. This permission lets the app listen for your keyboard shortcut so it can provide translations.")
                 .font(.body)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
