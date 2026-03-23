@@ -21,11 +21,10 @@ struct AboutSettingsView: View {
                         .font(.body)
                         .foregroundStyle(.secondary)
 
-                    Link(
-                        "GitHub Repository",
-                        destination: URL(string: "https://github.com/tafuru/transy")!
-                    )
-                    .font(.body)
+                    if let url = URL(string: "https://github.com/tafuru/transy") {
+                        Link("GitHub Repository", destination: url)
+                            .font(.body)
+                    }
                 }
                 .frame(maxWidth: .infinity)
             }

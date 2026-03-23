@@ -36,7 +36,7 @@ targets:
         NSHumanReadableCopyright: ""
     postBuildScripts:
       - script: |
-          VERSION=$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//')
+          VERSION=$(git -C "$SRCROOT" describe --tags --abbrev=0 2>/dev/null | sed 's/^v//')
           if [ -n "$VERSION" ]; then
             /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION" "${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}"
           fi
