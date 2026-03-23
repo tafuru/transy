@@ -29,13 +29,11 @@ final class SettingsStore {
         self.preferredLanguageResolver = preferredLanguageResolver ?? Self.defaultPreferredLanguageResolver
         
         // Load stored target or resolve from OS preferred language on first run
-        let resolver = preferredLanguageResolver ?? Self.defaultPreferredLanguageResolver
-        
         if let storedIdentifier = userDefaults.string(forKey: Self.targetLanguageKey),
            !storedIdentifier.isEmpty {
             self.targetLanguage = Locale.Language(identifier: storedIdentifier)
         } else {
-            self.targetLanguage = resolver()
+            self.targetLanguage = self.preferredLanguageResolver()
             persistTargetLanguage()
         }
     }
