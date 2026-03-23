@@ -61,7 +61,10 @@ Plans:
   1. User launching Transy for the first time sees the Accessibility permission guidance window automatically
   2. User can click a button in the guidance to open System Settings directly to the Accessibility pane
   3. User who has already launched Transy before does not see the guidance window again on subsequent launches
-**Plans**: TBD
+**Plans**: 1 plan
+
+Plans:
+- [ ] 08-01-PLAN.md — Proactive AX guidance on launch + enhanced GuidanceView content
 
 ### Phase 9: General Settings Features
 **Goal**: Users can customize app behavior with launch-at-login and popup auto-dismiss settings
