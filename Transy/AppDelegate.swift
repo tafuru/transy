@@ -59,19 +59,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             guard let text = clipboardManager.readSelectedText(), !text.isEmpty else {
                 // Permissions are OK but nothing was captured — stay completely silent.
                 // CONTEXT.md locked decision: "if permissions are fine but capture fails, stay silent"
-                if !appState.isPopupVisible,
-                   let restoreSnapshot = restoreSession.consumeRestoreSnapshot() {
-                    clipboardManager.restore(restoreSnapshot)
-                }
+                restoreClipboardIfNeeded()
                 return
             }
 
             let normalizedText = normalizedSourceText(text)
             guard !normalizedText.isEmpty else {
-                if !appState.isPopupVisible,
-                   let restoreSnapshot = restoreSession.consumeRestoreSnapshot() {
-                    clipboardManager.restore(restoreSnapshot)
-                }
+                restoreClipboardIfNeeded()
                 return
             }
 
@@ -90,10 +84,16 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 guard let self else { return }
                 self.translationCoordinator.dismiss()
                 self.appState.isPopupVisible = false
-                if let restoreSnapshot = self.restoreSession.consumeRestoreSnapshot() {
-                    self.clipboardManager.restore(restoreSnapshot)
-                }
+                self.restoreClipboardIfNeeded()
             }
         }
+    }
+
+    // MARK: - Clipboard restore
+
+    private func restoreClipboardIfNeeded() {
+        guard !appState.isPopupVisible,
+              let restoreSnapshot = restoreSession.consumeRestoreSnapshot() else { return }
+        clipboardManager.restore(restoreSnapshot)
     }
 }
