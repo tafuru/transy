@@ -17,12 +17,15 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         // Belt-and-suspenders alongside LSUIElement in Info.plist (Phase 1 pattern)
         NSApp.setActivationPolicy(.accessory)
 
-        // Do not show guidance on first launch. MenuBarView.onAppear is the explicit
-        // fallback entry point when AX is missing. If the user later grants AX from
-        // System Settings, GuidanceWindowController notifies us so monitoring can start.
+        // Show Accessibility guidance immediately if permission is missing.
+        // GuidanceWindowController polls for trust changes and fires the
+        // callback once the user grants access.
         GuidanceWindowController.shared.onPermissionGranted = { [weak self] in
             self?.startMonitoringIfNeeded()
         }
+
+        // Proactively show guidance if AX is not trusted (no-op if already trusted).
+        GuidanceWindowController.shared.showIfNeeded()
 
         startMonitoringIfNeeded()
     }
