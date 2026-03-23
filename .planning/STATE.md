@@ -24,10 +24,10 @@ See: .planning/PROJECT.md (updated 2026-03-21)
 
 ## Current Position
 
-Phase: 8 of 9 (First-Launch Onboarding)
-Plan: 08-01 (1 plan, 1 wave)
+Phase: 9 of 9 (General Settings Features)
+Plan: 09-01 (1 plan, 1 wave)
 Status: Ready to execute
-Last activity: 2026-03-23 — Phase 8 planned
+Last activity: 2026-03-23 — Phase 9 planned
 
 ## Performance Metrics
 
