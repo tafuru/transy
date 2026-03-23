@@ -73,7 +73,10 @@ Plans:
 **Success Criteria** (what must be TRUE):
   1. User can toggle "Launch at Login" in General settings and Transy starts automatically on next macOS login
   2. Toggle reflects actual system state (SMAppService.mainApp.status)
-**Plans**: TBD
+**Plans**: 1 plan
+
+Plans:
+- [ ] 09-01-PLAN.md — Add Launch at Login toggle with ServiceManagement framework
 
 ## Progress
 
