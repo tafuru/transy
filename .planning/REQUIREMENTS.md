@@ -16,12 +16,13 @@
 
 ## Auto-Dismiss
 
-- [ ] **SET-04**: User can configure the popup to automatically dismiss after a chosen duration (e.g., 5s, 10s, 30s, or never)
+- [ ] **SET-04**: User can configure the popup to automatically dismiss after a chosen duration (e.g., 5s, 10s, 30s, or never) — **Deferred from v0.3.0**
 
 ---
 
 ## Future Requirements
 
+- SET-04: Popup auto-dismiss with configurable duration (deferred from v0.3.0)
 - Popup auto-dismiss with visual countdown indicator
 - Source text display toggle (show original text alongside translation)
 - Double ⌘C sensitivity adjustment
@@ -44,4 +45,4 @@
 | SET-01 | Phase 7 | Pending |
 | SET-02 | Phase 7 | Pending |
 | SET-03 | Phase 9 | Pending |
-| SET-04 | Phase 9 | Pending |
+| SET-04 | Deferred | Deferred |
