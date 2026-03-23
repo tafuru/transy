@@ -69,6 +69,7 @@ struct GeneralSettingsView: View {
                 }
             }
         }
+        .formStyle(.grouped)
         .task {
             // Load supported languages on appear
             supportedLanguages = await SupportedLanguageOption.loadSupportedLanguages()

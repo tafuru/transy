@@ -30,5 +30,6 @@ struct AboutSettingsView: View {
                 .frame(maxWidth: .infinity)
             }
         }
+        .formStyle(.grouped)
     }
 }
