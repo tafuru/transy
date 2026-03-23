@@ -3,7 +3,7 @@ import ApplicationServices
 
 @MainActor
 final class HotkeyMonitor {
-    private var monitor: Any?
+    private var eventMonitor: Any?
     private var detector = DoublePressDetector()
     private let clipboardManager = ClipboardManager()
     private var firstPressSnapshot: [NSPasteboardItem] = []
@@ -15,7 +15,7 @@ final class HotkeyMonitor {
     func start(onDoubleCmdC: @escaping @MainActor ([NSPasteboardItem]) -> Void) {
         guard AXIsProcessTrusted() else { return }
         self.onDoubleCmdC = onDoubleCmdC
-        monitor = NSEvent.addGlobalMonitorForEvents(matching: .keyDown) { [weak self] event in
+        eventMonitor = NSEvent.addGlobalMonitorForEvents(matching: .keyDown) { [weak self] event in
             MainActor.assumeIsolated {
                 self?.handle(event)
             }
@@ -23,9 +23,9 @@ final class HotkeyMonitor {
     }
 
     func stop() {
-        if let m = monitor {
+        if let m = eventMonitor {
             NSEvent.removeMonitor(m)
-            monitor = nil
+            eventMonitor = nil
         }
         detector = DoublePressDetector()   // reset state on stop
         firstPressSnapshot = []
