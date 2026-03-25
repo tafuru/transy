@@ -48,24 +48,24 @@ None deferred for this milestone.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| CI-01 | — | Pending |
-| CI-02 | — | Pending |
-| CI-03 | — | Pending |
-| CI-04 | — | Pending |
-| REL-01 | — | Pending |
-| REL-02 | — | Pending |
-| REL-03 | — | Pending |
-| CLB-01 | — | Pending |
-| CLB-02 | — | Pending |
-| CLB-03 | — | Pending |
-| CLB-04 | — | Pending |
-| TDL-01 | — | Pending |
+| CI-01 | Phase 10 | Pending |
+| CI-02 | Phase 10 | Pending |
+| CI-03 | Phase 10 | Pending |
+| CI-04 | Phase 10 | Pending |
+| REL-01 | Phase 11 | Pending |
+| REL-02 | Phase 11 | Pending |
+| REL-03 | Phase 11 | Pending |
+| CLB-01 | Phase 12 | Pending |
+| CLB-02 | Phase 12 | Pending |
+| CLB-03 | Phase 12 | Pending |
+| CLB-04 | Phase 12 | Pending |
+| TDL-01 | Phase 13 | Pending |
 
 **Coverage:**
 - v0.4.0 requirements: 12 total
-- Mapped to phases: 0
-- Unmapped: 12 ⚠️
+- Mapped to phases: 12
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-03-25*
-*Last updated: 2026-03-25 after initial definition*
+*Last updated: 2026-03-25 after roadmap creation*

@@ -2,12 +2,12 @@
 gsd_state_version: 1.0
 milestone: v0.4.0
 milestone_name: DevOps & Improvements
-status: requirements
-stopped_at: Defining requirements
-last_updated: "2026-03-25T15:12:00.000Z"
-last_activity: 2026-03-25 — Milestone v0.4.0 started
+status: roadmap
+stopped_at: Roadmap created, ready to plan Phase 10
+last_updated: "2026-03-25T16:00:00.000Z"
+last_activity: 2026-03-25 — v0.4.0 roadmap created (4 phases, 12 requirements)
 progress:
-  total_phases: 0
+  total_phases: 4
   completed_phases: 0
   total_plans: 0
   completed_plans: 0
@@ -25,10 +25,12 @@ See: .planning/PROJECT.md (updated 2026-03-25)
 ## Current Position
 
 Milestone: v0.4.0 DevOps & Improvements
-Phase: Not started (defining requirements)
+Phase: 10 of 13 (CI Pipeline) — ready to plan
 Plan: —
-Status: Defining requirements
-Last activity: 2026-03-25 — Milestone v0.4.0 started
+Status: Ready to plan Phase 10
+Last activity: 2026-03-25 — v0.4.0 roadmap created
+
+Progress: [░░░░░░░░░░] 0%
 
 ## Performance Metrics
 
