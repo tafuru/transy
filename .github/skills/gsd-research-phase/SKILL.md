@@ -33,6 +33,7 @@ Normalize phase input in step 1 before any directory lookups.
 
 ```bash
 INIT=$(node ".github/get-shit-done/bin/gsd-tools.cjs" init phase-op "$ARGUMENTS")
+if [[ "$INIT" == @file:* ]]; then INIT=$(cat "${INIT#@file:}"); fi
 ```
 
 Extract from init JSON: `phase_dir`, `phase_number`, `phase_name`, `phase_found`, `commit_docs`, `has_research`, `state_path`, `requirements_path`, `context_path`, `research_path`.
@@ -87,7 +88,7 @@ For this phase, discover:
 - What's the established architecture pattern?
 - What libraries form the standard stack?
 - What problems do people commonly hit?
-- What's SOTA vs what Claude's training thinks is SOTA?
+- What's SOTA vs what the agent's training thinks is SOTA?
 - What should NOT be hand-rolled?
 </key_insight>
 
