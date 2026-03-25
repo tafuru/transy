@@ -8,15 +8,9 @@ Transy is a lightweight macOS menu bar translator for personal Japanese/English 
 
 Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
 
-## Current Milestone: v0.3.0 Onboarding & Settings
+## Current Milestone: Planning next milestone
 
-**Goal:** Improve first-run experience with automatic permission guidance and modernize the Settings UI to macOS standards with new features.
-
-**Target features:**
-- First-launch onboarding with automatic Accessibility permission guidance
-- macOS-standard tabbed Settings (General / About) with grouped sections
-- Launch at Login toggle via SMAppService
-- Popup auto-dismiss timer setting
+**Shipped v0.3.0** (2026-03-25): Onboarding & Settings — macOS-standard tabbed Settings, first-launch AX guidance, Launch at Login.
 
 ## Requirements
 
@@ -28,13 +22,13 @@ Selected text turns into a natural translation almost instantly without breaking
 - ✓ Target language settings with model download guidance — v0.1.0
 - ✓ Popup displays translated text with word wrapping and scrolling — v0.2.0
 - ✓ Popup appears near cursor with edge-clamping — v0.2.0
+- ✓ First-launch onboarding with Accessibility permission guidance — v0.3.0
+- ✓ macOS-standard tabbed Settings UI (General / About) — v0.3.0
+- ✓ Launch at Login toggle — v0.3.0
 
 ### Active
 
-- [ ] First-launch onboarding with Accessibility permission guidance
-- [ ] macOS-standard tabbed Settings UI (General / About)
-- [ ] Launch at Login toggle
-- [ ] Popup auto-dismiss timer
+- [ ] Popup auto-dismiss timer (deferred from v0.3.0)
 
 ### Out of Scope
 
@@ -45,10 +39,10 @@ Selected text turns into a natural translation almost instantly without breaking
 
 ## Context
 
-Shipped v0.2.0 with 2,183 LOC Swift (app + tests).
-Tech stack: SwiftUI, AppKit, Apple Translation.framework, XcodeGen.
-50 automated tests across 13 suites. 6 phases, 13 plans executed across 2 milestones.
-Built in 8 days (2026-03-14 → 2026-03-21).
+Shipped v0.3.0 with 2,258 LOC Swift (app + tests).
+Tech stack: SwiftUI, AppKit, Apple Translation.framework, ServiceManagement.framework, XcodeGen.
+50 automated tests across 13 suites. 9 phases, 16 plans executed across 3 milestones.
+Built in 12 days (2026-03-14 → 2026-03-25).
 
 ## Constraints
 
@@ -71,6 +65,10 @@ Built in 8 days (2026-03-14 → 2026-03-21).
 | Pure Foundation PopupPositionCalculator | No AppKit dependency — fully unit testable with CGPoint/CGSize/CGRect | ✓ Good |
 | NSWindow.didResizeNotification for content changes | Lightweight observation without KVO or Combine; triggers reposition on dynamic sizing | ✓ Good |
 | Cursor captured once at trigger time | Popup stays anchored to original cursor position through content changes | ✓ Good |
+| macOS-standard TabView for Settings | Follows platform conventions, scales to more tabs naturally | ✓ Good |
+| SMAppService.mainApp for Login Items | System state as source of truth, no UserDefaults needed | ✓ Good |
+| Proactive AX guidance on launch | Users never wonder why the app isn't working — guidance appears immediately | ✓ Good |
+| Custom Binding for SMAppService toggle | Prevents onChange re-entry and initial side effects during .task | ✓ Good |
 
 ---
-*Last updated: 2026-03-21 after v0.3.0 milestone start*
+*Last updated: 2026-03-25 after v0.3.0 milestone*

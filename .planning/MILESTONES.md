@@ -1,5 +1,22 @@
 # Milestones
 
+## v0.3.0 Onboarding & Settings (Shipped: 2026-03-25)
+
+**Phases completed:** 3 phases, 3 plans
+**Timeline:** 5 days (2026-03-21 → 2026-03-25)
+**Codebase:** 2,258 LOC Swift (app + tests)
+
+**Key accomplishments:**
+- macOS-standard tabbed Settings window (General/About) with Form+Section grouped layout
+- Git tag-based version automation via post-build script
+- Proactive Accessibility permission guidance on first launch with why-explanation
+- Launch at Login toggle backed by SMAppService.mainApp (system state as source of truth)
+- 5/5 requirements satisfied, 10/10 cross-phase integrations verified
+
+**Archives:** [milestones/v0.3.0-ROADMAP.md](milestones/v0.3.0-ROADMAP.md) · [milestones/v0.3.0-REQUIREMENTS.md](milestones/v0.3.0-REQUIREMENTS.md)
+
+---
+
 ## v0.2.0 Popup UX Polish (Shipped: 2026-03-21)
 
 **Phases completed:** 2 phases, 4 plans
