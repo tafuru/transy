@@ -60,7 +60,7 @@ Full details: [milestones/v0.3.0-ROADMAP.md](milestones/v0.3.0-ROADMAP.md)
 **Success Criteria** (what must be TRUE):
   1. Opening a PR to main triggers SwiftLint and SwiftFormat checks that report violations as inline annotations on the PR diff
   2. Opening a PR to main triggers an xcodebuild build that catches compilation errors
-  3. Opening a PR to main triggers xcodebuild tests that catch test failures
+  3. Opening a PR to main triggers `xcodebuild test` that catches test failures
   4. CI workflow uses concurrency groups to cancel stale runs and completes with clear pass/fail status
 **Plans**: TBD
 

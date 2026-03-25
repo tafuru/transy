@@ -22,7 +22,7 @@ Requirements for DevOps & Improvements milestone. Each maps to roadmap phases.
 
 ### Clipboard Monitoring
 
-- [ ] **CLB-01**: Clipboard monitoring detects new text via NSPasteboard.general changeCount polling
+- [ ] **CLB-01**: Clipboard monitoring detects new text via NSPasteboard.general.changeCount polling
 - [ ] **CLB-02**: User can select trigger mode in Settings (clipboard monitoring vs double ⌘C)
 - [ ] **CLB-03**: Clipboard monitoring skips concealed and transient pasteboard types
 - [ ] **CLB-04**: Self-originated clipboard changes are ignored to prevent re-trigger loops
