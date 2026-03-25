@@ -8,7 +8,7 @@ It is referenced from `copilot-instructions.md` and persists across GSD updates.
 ### Branch Strategy
 
 - **Never push directly to `main`**. All changes must go through a Pull Request.
-- Use feature branches with the naming pattern: `phase/{phase_number}-{slug}` (e.g., `phase/10-feature-name`).
+- Use feature branches with the naming pattern: `phase/{phase}-{slug}` (e.g., `phase/03-feature-name`, where `{phase}` is zero-padded).
 - PRs should be **squash-merged** to keep the main branch history clean.
 - After squash merge, sync local main with `git reset --hard origin/main` (not rebase).
 
