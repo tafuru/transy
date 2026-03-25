@@ -36,7 +36,7 @@ Full details: [milestones/v0.2.0-ROADMAP.md](milestones/v0.2.0-ROADMAP.md)
 
 - [ ] **Phase 7: Settings UI Modernization** - Restructure Settings into macOS-standard tabbed window with grouped sections
 - [ ] **Phase 8: First-Launch Onboarding** - Automatically guide new users through Accessibility permission setup
-- [ ] **Phase 9: General Settings Features** - Add Launch at Login and popup auto-dismiss settings
+- [ ] **Phase 9: General Settings Features** - Add Launch at Login setting
 
 ## Phase Details
 

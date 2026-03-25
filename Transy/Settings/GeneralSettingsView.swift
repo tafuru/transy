@@ -10,19 +10,24 @@ struct GeneralSettingsView: View {
     @State private var selectedLanguageID: String = ""
     @State private var launchAtLogin: Bool = false
 
+    private var launchAtLoginBinding: Binding<Bool> {
+        Binding(
+            get: { launchAtLogin },
+            set: { newValue in
+                if newValue {
+                    try? SMAppService.mainApp.register()
+                } else {
+                    try? SMAppService.mainApp.unregister()
+                }
+                launchAtLogin = SMAppService.mainApp.status == .enabled
+            }
+        )
+    }
+
     var body: some View {
         Form {
             Section("General") {
-                Toggle("Launch at Login", isOn: $launchAtLogin)
-                    .onChange(of: launchAtLogin) { _, newValue in
-                        if newValue {
-                            try? SMAppService.mainApp.register()
-                        } else {
-                            try? SMAppService.mainApp.unregister()
-                        }
-                        // Re-read actual state in case register/unregister failed
-                        launchAtLogin = SMAppService.mainApp.status == .enabled
-                    }
+                Toggle("Launch at Login", isOn: launchAtLoginBinding)
             }
 
             Section("Translation") {
