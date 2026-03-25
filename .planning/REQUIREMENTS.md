@@ -7,12 +7,12 @@
 
 ## Settings UI
 
-- [ ] **SET-01**: User sees a tabbed Settings window with General and About tabs following macOS design conventions
-- [ ] **SET-02**: User sees settings organized in grouped sections with bordered containers (macOS Form style)
+- [x] **SET-01**: User sees a tabbed Settings window with General and About tabs following macOS design conventions
+- [x] **SET-02**: User sees settings organized in grouped sections with bordered containers (macOS Form style)
 
 ## Launch at Login
 
-- [ ] **SET-03**: User can toggle "Launch at Login" in General settings to have Transy start automatically on macOS login
+- [x] **SET-03**: User can toggle "Launch at Login" in General settings to have Transy start automatically on macOS login
 
 ## Auto-Dismiss
 
@@ -42,7 +42,7 @@
 |-------------|-------|--------|
 | OBD-01 | Phase 8 | Complete |
 | OBD-02 | Phase 8 | Complete |
-| SET-01 | Phase 7 | Pending |
-| SET-02 | Phase 7 | Pending |
-| SET-03 | Phase 9 | Pending |
+| SET-01 | Phase 7 | Complete |
+| SET-02 | Phase 7 | Complete |
+| SET-03 | Phase 9 | Complete |
 | SET-04 | Deferred | Deferred |
