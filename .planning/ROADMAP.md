@@ -36,7 +36,7 @@ Full details: [milestones/v0.2.0-ROADMAP.md](milestones/v0.2.0-ROADMAP.md)
 
 - [ ] **Phase 7: Settings UI Modernization** - Restructure Settings into macOS-standard tabbed window with grouped sections
 - [ ] **Phase 8: First-Launch Onboarding** - Automatically guide new users through Accessibility permission setup
-- [ ] **Phase 9: General Settings Features** - Add Launch at Login and popup auto-dismiss settings
+- [ ] **Phase 9: General Settings Features** - Add Launch at Login setting
 
 ## Phase Details
 
@@ -67,14 +67,16 @@ Plans:
 - [ ] 08-01-PLAN.md — Proactive AX guidance on launch + enhanced GuidanceView content
 
 ### Phase 9: General Settings Features
-**Goal**: Users can customize app behavior with launch-at-login and popup auto-dismiss settings
+**Goal**: Users can customize app behavior with launch-at-login setting
 **Depends on**: Phase 7
-**Requirements**: SET-03, SET-04
+**Requirements**: SET-03
 **Success Criteria** (what must be TRUE):
   1. User can toggle "Launch at Login" in General settings and Transy starts automatically on next macOS login
-  2. User can select a popup auto-dismiss duration (e.g., 5s, 10s, 30s, or never) in General settings
-  3. Popup automatically dismisses after the configured duration when auto-dismiss is enabled
-**Plans**: TBD
+  2. Toggle reflects actual system state (SMAppService.mainApp.status)
+**Plans**: 1 plan
+
+Plans:
+- [ ] 09-01-PLAN.md — Add Launch at Login toggle with ServiceManagement framework
 
 ## Progress
 

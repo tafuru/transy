@@ -31,6 +31,7 @@
 		A22EEA4AB5EFD7CDC0D6498B /* DoublePressDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12AAA728534FE1C2113D892 /* DoublePressDetector.swift */; };
 		A2FB8599B6B1B4F5BC41D43B /* TranslationTaskConfigurationReloaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E661331FEAC8733B0C9F23 /* TranslationTaskConfigurationReloaderTests.swift */; };
 		A71FF47E595B1940683C5EC3 /* TranslationModelGuidance.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC20026A344AD22D1C269C0 /* TranslationModelGuidance.swift */; };
+		A7841A9549872BE29E48257F /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D1C108BF83E076CCC1BBA26 /* ServiceManagement.framework */; };
 		AAFA7FD602DEF26AC12C9B9F /* TranslationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D7383317B9A12BC538EC8 /* TranslationCoordinator.swift */; };
 		AC26B804437DB031761E20D3 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DC9F4A18702B8B9A29CFC9 /* SettingsStore.swift */; };
 		B1EB76E4610AD4BDF6EBC9B7 /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A40B5997CA8261D6C13685A /* GeneralSettingsView.swift */; };
@@ -81,6 +82,7 @@
 		615771C52D62AEAC2E7F273C /* TranslationCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationCoordinatorTests.swift; sourceTree = "<group>"; };
 		73DC9F4A18702B8B9A29CFC9 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
 		77C5D4D938C6155102F8DFD9 /* HotkeyMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyMonitorTests.swift; sourceTree = "<group>"; };
+		7D1C108BF83E076CCC1BBA26 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		7FE40CB96A1C0949349DCFD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8007AE0E9F8439938296AE4E /* TranslationErrorMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationErrorMapper.swift; sourceTree = "<group>"; };
 		895E14D771A487A2C547A4BB /* TransyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransyUITests.swift; sourceTree = "<group>"; };
@@ -109,6 +111,17 @@
 		FFC20026A344AD22D1C269C0 /* TranslationModelGuidance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationModelGuidance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFrameworksBuildPhase section */
+		7B703090E48D7370F9A2B6E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7841A9549872BE29E48257F /* ServiceManagement.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
 		038E99AA6A6ADC92CF08DC4F = {
 			isa = PBXGroup;
@@ -116,6 +129,7 @@
 				24468B74DC769E65A05B9580 /* Transy */,
 				9580D0521C0CCD109F281C00 /* TransyTests */,
 				BE4990502FA3C95963EE1B43 /* TransyUITests */,
+				2CC18EF96D57B0368C9DCD7B /* Frameworks */,
 				B87897352AA80E8425F7F9F1 /* Products */,
 			);
 			indentWidth = 4;
@@ -137,6 +151,14 @@
 				92BE44F66D967FF5D641739B /* Trigger */,
 			);
 			path = Transy;
+			sourceTree = "<group>";
+		};
+		2CC18EF96D57B0368C9DCD7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7D1C108BF83E076CCC1BBA26 /* ServiceManagement.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		495047D65C6D9F570C1F1557 /* MenuBar */ = {
@@ -284,6 +306,7 @@
 			buildConfigurationList = E1016FDD8C6BB64B2C0C10C3 /* Build configuration list for PBXNativeTarget "Transy" */;
 			buildPhases = (
 				C8229835FD9E0E02B9347D30 /* Sources */,
+				7B703090E48D7370F9A2B6E0 /* Frameworks */,
 				DAD45DCBEDA28FB2751F49AF /* Set Version from Git Tag */,
 			);
 			buildRules = (

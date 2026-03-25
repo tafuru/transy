@@ -34,6 +34,8 @@ targets:
         LSMinimumSystemVersion: "15.0"
         LSUIElement: true
         NSHumanReadableCopyright: ""
+    dependencies:
+      - sdk: ServiceManagement.framework
     postBuildScripts:
       - script: |
           VERSION=$(git -C "$SRCROOT" describe --tags --abbrev=0 2>/dev/null | sed 's/^v//')
