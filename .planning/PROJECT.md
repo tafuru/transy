@@ -8,9 +8,15 @@ Transy is a lightweight macOS menu bar translator for personal Japanese/English 
 
 Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
 
-## Current Milestone: Planning next milestone
+## Current Milestone: v0.4.0 DevOps & Improvements
 
-**Shipped v0.3.0** (2026-03-25): Onboarding & Settings — macOS-standard tabbed Settings, first-launch AX guidance, Launch at Login.
+**Goal:** Establish CI/CD pipeline, automate releases with DMG packaging, add permission-free clipboard monitoring trigger, and simplify translation model downloads using framework-native UI.
+
+**Target features:**
+- GitHub Actions CI (SwiftLint + SwiftFormat + build + test)
+- Automated release workflow (tag → DMG → GitHub Release)
+- Clipboard monitoring trigger mode (no Accessibility permission required)
+- Translation model download via framework-native UI
 
 ## Requirements
 
@@ -28,10 +34,11 @@ Selected text turns into a natural translation almost instantly without breaking
 
 ### Active
 
-- [ ] Popup auto-dismiss timer (deferred from v0.3.0)
+(Requirements defined in REQUIREMENTS.md for v0.4.0)
 
 ### Out of Scope
 
+- Popup auto-dismiss timer — deprioritized; clipboard monitoring mode makes auto-dismiss less relevant.
 - Translation history or clipboard-management features — v1 should stay focused on instant translation of the current selection.
 - Manual text entry or compose flows — the primary interaction is translating text selected in other apps.
 - Shortcut remapping and extensive UI customization — defer until the core translation loop proves valuable.
@@ -71,4 +78,23 @@ Built in 12 days (2026-03-14 → 2026-03-25).
 | Custom Binding for SMAppService toggle | Prevents onChange re-entry and initial side effects during .task | ✓ Good |
 
 ---
-*Last updated: 2026-03-25 after v0.3.0 milestone*
+
+## Evolution
+
+This document evolves at phase transitions and milestone boundaries.
+
+**After each phase transition** (via `/gsd-transition`):
+1. Requirements invalidated? → Move to Out of Scope with reason
+2. Requirements validated? → Move to Validated with phase reference
+3. New requirements emerged? → Add to Active
+4. Decisions to log? → Add to Key Decisions
+5. "What This Is" still accurate? → Update if drifted
+
+**After each milestone** (via `/gsd-complete-milestone`):
+1. Full review of all sections
+2. Core Value check — still the right priority?
+3. Audit Out of Scope — reasons still valid?
+4. Update Context with current state
+
+---
+*Last updated: 2026-03-25 after v0.4.0 milestone started*

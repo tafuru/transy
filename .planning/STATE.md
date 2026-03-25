@@ -1,16 +1,16 @@
 ---
 gsd_state_version: 1.0
-milestone: v0.3.0
-milestone_name: Onboarding & Settings
-status: completed
-stopped_at: Milestone v0.3.0 shipped
-last_updated: "2026-03-25T13:54:49.284Z"
-last_activity: 2026-03-25 — v0.3.0 milestone complete
+milestone: v0.4.0
+milestone_name: DevOps & Improvements
+status: roadmap
+stopped_at: Defining requirements for v0.4.0
+last_updated: "2026-03-25T16:00:00.000Z"
+last_activity: 2026-03-25 — v0.4.0 roadmap created (4 phases, 12 requirements)
 progress:
-  total_phases: 9
-  completed_phases: 9
-  total_plans: 16
-  completed_plans: 16
+  total_phases: 4
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
 ---
 
 # Project State
@@ -20,13 +20,17 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-25)
 
 **Core value:** Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
-**Current focus:** Planning next milestone
+**Current focus:** v0.4.0 DevOps & Improvements — CI/CD, release automation, clipboard monitoring, translation model DL UI
 
 ## Current Position
 
-Milestone: v0.3.0 Onboarding & Settings — SHIPPED 2026-03-25
-All 9 phases across 3 milestones complete.
-Next: `/gsd-new-milestone` to start next version.
+Milestone: v0.4.0 DevOps & Improvements
+Phase: 1 of 4 in v0.4.0 (Phase 10: CI Pipeline) — ready to plan
+Plan: —
+Status: Ready to plan Phase 10
+Last activity: 2026-03-25 — v0.4.0 roadmap created
+
+Progress: [░░░░░░░░░░] 0%
 
 ## Performance Metrics
 

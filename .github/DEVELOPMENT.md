@@ -45,6 +45,12 @@ When phases are defined in the roadmap:
 2. When a phase PR is merged, **close the phase Issue** (use `Closes #N` in the PR body).
 3. If requirements change (e.g., scope deferred), **update the affected Issues** to reflect the change.
 
+### Closing Rules
+
+- **Phase Issues** → closed automatically via `Closes #N` in the phase PR body.
+- **Milestone Issues** → closed manually after all phases are complete (via `/gsd-complete-milestone`). Never use `Closes #N` for milestone Issues in a PR.
+- **Non-phase PRs** (docs, planning, chores) → use `Relates to #N` to link without closing.
+
 ### Labels
 
 Ensure these labels exist in the repository:
