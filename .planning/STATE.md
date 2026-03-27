@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v0.4.0
 milestone_name: DevOps & Improvements
 status: Phase complete — ready for verification
-stopped_at: Completed 10-02-PLAN.md
-last_updated: "2026-03-27T22:47:39.844Z"
+stopped_at: Completed 10-01-PLAN.md
+last_updated: "2026-03-27T22:48:05.686Z"
 progress:
   total_phases: 4
   completed_phases: 1
@@ -47,6 +47,7 @@ Plan: 2 of 2
 | 06    | 01   | 480s (8.0m) | 2     | 1     | 2026-03-20T16:58:43Z |
 | 08    | 01   | 72s (1.2m)  | 2     | 2     | 2026-03-23T13:21:00Z |
 | Phase 10-ci-pipeline P02 | 65 | 1 tasks | 1 files |
+| Phase 10 P01 | 88 | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -69,6 +70,8 @@ Recent decisions affecting current work:
 - [Phase 08]: AX permission state is sole determinant for showing guidance — no UserDefaults flag
 - [Phase 10-ci-pipeline]: Two parallel CI jobs (lint, build-and-test) on macos-15 with no dependency between them
 - [Phase 10-ci-pipeline]: fetch-depth: 0 only on build-and-test job for git describe --tags version script
+- [Phase 10]: D-01: Strict SwiftLint with 150-char line limit and 17 opt-in rules
+- [Phase 10]: D-05: SwiftFormat disables redundantSelf/trailingCommas to avoid SwiftLint conflicts
 
 ### Pending Todos
 
@@ -81,6 +84,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-27T22:47:28.351Z
-Stopped at: Completed 10-02-PLAN.md
+Last session: 2026-03-27T22:48:05.684Z
+Stopped at: Completed 10-01-PLAN.md
 Resume file: None
