@@ -46,7 +46,7 @@ Full details: [milestones/v0.3.0-ROADMAP.md](milestones/v0.3.0-ROADMAP.md)
 
 **Milestone Goal:** Establish CI/CD pipeline, automate releases with DMG packaging, add permission-free clipboard monitoring trigger, and simplify translation model downloads.
 
-- [ ] **Phase 10: CI Pipeline** - GitHub Actions workflow with SwiftLint, SwiftFormat, build, and test on PRs
+- [x] **Phase 10: CI Pipeline** - GitHub Actions workflow with SwiftLint, SwiftFormat, build, and test on PRs (completed 2026-03-27)
 - [ ] **Phase 11: Release Automation** - Release-triggered workflow that builds, packages DMG, and uploads to GitHub Release
 - [ ] **Phase 12: Clipboard Monitoring** - Permission-free trigger mode via NSPasteboard polling with Settings UI
 - [ ] **Phase 13: Translation Download UI** - Framework-native model download prompt replaces manual System Settings guidance
@@ -65,8 +65,8 @@ Full details: [milestones/v0.3.0-ROADMAP.md](milestones/v0.3.0-ROADMAP.md)
 **Plans**: 2 plans
 
 Plans:
-- [ ] 10-01-PLAN.md — Lint configuration (.swiftlint.yml, .swiftformat) and code compliance fixes
-- [ ] 10-02-PLAN.md — GitHub Actions CI workflow with lint and build-and-test jobs
+- [x] 10-01-PLAN.md — Lint configuration (.swiftlint.yml, .swiftformat) and code compliance fixes
+- [x] 10-02-PLAN.md — GitHub Actions CI workflow with lint and build-and-test jobs
 
 ### Phase 11: Release Automation
 **Goal**: Creating a GitHub Release automatically builds a DMG and uploads it as a release asset
@@ -113,7 +113,7 @@ Plans:
 | 7. Settings UI Modernization | v0.3.0 | 1/1 | Complete | 2026-03-23 |
 | 8. First-Launch Onboarding | v0.3.0 | 1/1 | Complete | 2026-03-23 |
 | 9. General Settings Features | v0.3.0 | 1/1 | Complete | 2026-03-25 |
-| 10. CI Pipeline | v0.4.0 | 0/? | Not started | - |
+| 10. CI Pipeline | v0.4.0 | 2/2 | Complete   | 2026-03-27 |
 | 11. Release Automation | v0.4.0 | 0/? | Not started | - |
 | 12. Clipboard Monitoring | v0.4.0 | 0/? | Not started | - |
 | 13. Translation Download UI | v0.4.0 | 0/? | Not started | - |

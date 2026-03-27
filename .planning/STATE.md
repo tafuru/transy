@@ -2,16 +2,14 @@
 gsd_state_version: 1.0
 milestone: v0.4.0
 milestone_name: DevOps & Improvements
-status: planning
-stopped_at: Phase 10 context gathered
-last_updated: "2026-03-27T15:43:10.085Z"
-last_activity: 2026-03-25 — v0.4.0 roadmap created
+status: Phase complete — ready for verification
+stopped_at: Completed 10-02-PLAN.md
+last_updated: "2026-03-27T22:47:39.844Z"
 progress:
   total_phases: 4
-  completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
-  percent: 0
+  completed_phases: 1
+  total_plans: 2
+  completed_plans: 2
 ---
 
 # Project State
@@ -21,17 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-25)
 
 **Core value:** Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
-**Current focus:** v0.4.0 DevOps & Improvements — CI/CD, release automation, clipboard monitoring, translation model DL UI
+**Current focus:** Phase 10 — ci-pipeline
 
 ## Current Position
 
-Milestone: v0.4.0 DevOps & Improvements
-Phase: 1 of 4 in v0.4.0 (Phase 10: CI Pipeline) — ready to plan
-Plan: —
-Status: Ready to plan Phase 10
-Last activity: 2026-03-25 — v0.4.0 roadmap created
-
-Progress: [░░░░░░░░░░] 0%
+Phase: 10 (ci-pipeline) — EXECUTING
+Plan: 2 of 2
 
 ## Performance Metrics
 
@@ -53,6 +46,7 @@ Progress: [░░░░░░░░░░] 0%
 | 06    | 00   | 97s (1.6m)  | 2     | 2     | 2026-03-20T16:46:31Z |
 | 06    | 01   | 480s (8.0m) | 2     | 1     | 2026-03-20T16:58:43Z |
 | 08    | 01   | 72s (1.2m)  | 2     | 2     | 2026-03-23T13:21:00Z |
+| Phase 10-ci-pipeline P02 | 65 | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -73,6 +67,8 @@ Recent decisions affecting current work:
 - [Phase 06]: Cursor location captured once at trigger time (NSEvent.mouseLocation) — popup stays anchored to original cursor position through content changes
 - [Phase 06]: NSWindow.didResizeNotification used for content height change observation — lightweight, no KVO or Combine needed
 - [Phase 08]: AX permission state is sole determinant for showing guidance — no UserDefaults flag
+- [Phase 10-ci-pipeline]: Two parallel CI jobs (lint, build-and-test) on macos-15 with no dependency between them
+- [Phase 10-ci-pipeline]: fetch-depth: 0 only on build-and-test job for git describe --tags version script
 
 ### Pending Todos
 
@@ -85,6 +81,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-27T15:43:10.082Z
-Stopped at: Phase 10 context gathered
-Resume file: .planning/phases/10-ci-pipeline/10-CONTEXT.md
+Last session: 2026-03-27T22:47:28.351Z
+Stopped at: Completed 10-02-PLAN.md
+Resume file: None
