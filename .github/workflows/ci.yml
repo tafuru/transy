@@ -20,6 +20,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install SwiftLint & SwiftFormat
+        run: brew install swiftlint swiftformat
+
       - name: SwiftLint
         run: swiftlint lint --strict --reporter github-actions-logging
 
