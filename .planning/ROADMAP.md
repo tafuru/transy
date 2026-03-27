@@ -62,7 +62,11 @@ Full details: [milestones/v0.3.0-ROADMAP.md](milestones/v0.3.0-ROADMAP.md)
   2. Opening a PR to main triggers an xcodebuild build that catches compilation errors
   3. Opening a PR to main triggers `xcodebuild test` that catches test failures
   4. CI workflow uses concurrency groups to cancel stale runs and completes with clear pass/fail status
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 10-01-PLAN.md — Lint configuration (.swiftlint.yml, .swiftformat) and code compliance fixes
+- [ ] 10-02-PLAN.md — GitHub Actions CI workflow with lint and build-and-test jobs
 
 ### Phase 11: Release Automation
 **Goal**: Creating a GitHub Release automatically builds a DMG and uploads it as a release asset
