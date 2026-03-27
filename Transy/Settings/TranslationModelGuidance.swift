@@ -50,7 +50,8 @@ struct TranslationModelGuidance {
         return .generic
     }
     
-    private static let liveStatusProvider: @Sendable (Locale.Language, Locale.Language) async throws -> LanguageAvailability.Status = { source, target in
+    private static let liveStatusProvider:
+        @Sendable (Locale.Language, Locale.Language) async throws -> LanguageAvailability.Status = { source, target in
         let availability = LanguageAvailability()
         return try await availability.status(from: source, to: target)
     }
