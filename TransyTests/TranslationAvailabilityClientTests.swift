@@ -3,9 +3,7 @@ import Testing
 import Translation
 @testable import Transy
 
-@Suite("TranslationAvailabilityClient")
 struct TranslationAvailabilityClientTests {
-
     @Test("normalizedSourceText trims only surrounding whitespace and newlines")
     func normalizedSourceTextTrimsEdgesOnly() {
         let source = "\n  こんにちは   world  \n"
@@ -76,7 +74,7 @@ struct TranslationAvailabilityClientTests {
             Issue.record("Expected .failed result, got \(String(describing: result))")
             return
         }
-        
+
         #expect(message == "Couldn't detect the source language.")
     }
 

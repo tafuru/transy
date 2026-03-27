@@ -3,7 +3,6 @@ import ApplicationServices
 
 @MainActor
 final class AppDelegate: NSObject, NSApplicationDelegate {
-
     private let appState = AppState()
     let settingsStore = SettingsStore()
     private let hotkeyMonitor = HotkeyMonitor()
@@ -74,11 +73,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
             _ = translationCoordinator.begin(sourceText: normalizedText)
             appState.isPopupVisible = true
-            
+
             // Snapshot target language at trigger time — frozen for this request
             let frozenTarget = settingsStore.snapshotTargetLanguage()
             let availabilityClient = TranslationAvailabilityClient(targetLanguage: frozenTarget)
-            
+
             popupController.show(
                 translationCoordinator: translationCoordinator,
                 availabilityClient: availabilityClient,

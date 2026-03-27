@@ -10,7 +10,7 @@ enum PressResult: Equatable {
 
 /// Stateful value type. Thread-safety is the caller's responsibility (used only on @MainActor).
 struct DoublePressDetector {
-    var lastPressDate: Date?          // internal (not private) for test-visibility
+    var lastPressDate: Date? // internal (not private) for test-visibility
     let threshold: TimeInterval = 0.4
 
     /// Records a press and returns whether it is the first press of a new sequence or the
@@ -24,7 +24,7 @@ struct DoublePressDetector {
         }
         let elapsed = now.timeIntervalSince(last)
         if elapsed < threshold {
-            lastPressDate = nil   // reset so third press starts a new sequence
+            lastPressDate = nil // reset so third press starts a new sequence
             return .doublePress
         }
         lastPressDate = now

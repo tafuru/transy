@@ -4,7 +4,6 @@ import SwiftUI
 
 @MainActor
 final class GuidanceWindowController: NSWindowController {
-
     static let shared = GuidanceWindowController()
     var onPermissionGranted: (() -> Void)?
 
@@ -14,7 +13,10 @@ final class GuidanceWindowController: NSWindowController {
         super.init(window: nil)
     }
 
-    required init?(coder: NSCoder) { fatalError("not used") }
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("not used")
+    }
 
     func showIfNeeded() {
         guard !AXIsProcessTrusted() else { return }
@@ -27,7 +29,7 @@ final class GuidanceWindowController: NSWindowController {
             win.title = "Transy — Accessibility Access"
             win.styleMask = [.titled, .closable]
             win.level = .floating
-            win.isReleasedWhenClosed = false   // retain for reuse
+            win.isReleasedWhenClosed = false // retain for reuse
             self.window = win
         }
 

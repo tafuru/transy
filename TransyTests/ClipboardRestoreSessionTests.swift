@@ -2,9 +2,7 @@ import AppKit
 import Testing
 @testable import Transy
 
-@Suite("ClipboardRestoreSession")
 struct ClipboardRestoreSessionTests {
-
     @Test("first trigger stores its snapshot")
     @MainActor
     func firstTriggerStoresSnapshot() {

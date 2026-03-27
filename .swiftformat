@@ -19,6 +19,8 @@
 # Disable rules that conflict with SwiftLint (D-05)
 --disable redundantSelf
 --disable trailingCommas
+--disable wrapMultilineStatementBraces
+--disable modifierOrder
 
 # Disable potentially aggressive rules
 --disable acronyms

@@ -4,7 +4,6 @@ import AppKit
 /// All methods run on @MainActor and are used from HotkeyMonitor/AppDelegate during the trigger flow.
 @MainActor
 final class ClipboardManager {
-
     /// Snapshot the current clipboard contents before the source app writes the selection.
     /// Call this on the first Cmd+C keyDown so the user's original clipboard is preserved.
     func saveCurrentContents() -> [NSPasteboardItem] {

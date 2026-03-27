@@ -1,8 +1,8 @@
 import Foundation
 import Translation
 
-struct TranslationAvailabilityClient: Sendable {
-    enum PreflightResult: Equatable, Sendable {
+struct TranslationAvailabilityClient {
+    enum PreflightResult: Equatable {
         case ready
         case missingModel
         case unsupported

@@ -2,9 +2,7 @@ import Foundation
 import Testing
 @testable import Transy
 
-@Suite("TranslationCoordinator")
 struct TranslationCoordinatorTests {
-
     @Test("begin starts loading and finish publishes result for active request")
     @MainActor
     func finishMovesLoadingToResult() {

@@ -2,9 +2,7 @@ import Foundation
 import Testing
 @testable import Transy
 
-@Suite("PopupPositionCalculator")
 struct PopupPositioningTests {
-
     // MARK: - Test 1: Below cursor, centered horizontally (happy path)
 
     @Test("Places popup below cursor with 8pt offset, horizontally centered on cursor X")

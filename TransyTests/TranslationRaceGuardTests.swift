@@ -2,9 +2,7 @@ import Foundation
 import Testing
 @testable import Transy
 
-@Suite("Translation race guards")
 struct TranslationRaceGuardTests {
-
     @Test("stale success completion is ignored after a newer request begins")
     @MainActor
     func staleSuccessIsIgnored() {

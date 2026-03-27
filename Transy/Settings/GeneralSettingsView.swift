@@ -59,8 +59,8 @@ struct GeneralSettingsView: View {
                                 "Download the required translation model in System Settings "
                                     + "→ General → Language & Region → Translation Languages."
                             )
-                                .font(.body)
-                                .foregroundStyle(.secondary)
+                            .font(.body)
+                            .foregroundStyle(.secondary)
 
                             Button("Open Language & Region") {
                                 openSystemSettings()
@@ -83,8 +83,8 @@ struct GeneralSettingsView: View {
                                 "Download the \(sourceName) → \(targetName) model in "
                                     + "System Settings → General → Language & Region → Translation Languages."
                             )
-                                .font(.body)
-                                .foregroundStyle(.secondary)
+                            .font(.body)
+                            .foregroundStyle(.secondary)
 
                             Button("Open Language & Region") {
                                 openSystemSettings()
