@@ -31,6 +31,8 @@ Selected text turns into a natural translation almost instantly without breaking
 - ✓ First-launch onboarding with Accessibility permission guidance — v0.3.0
 - ✓ macOS-standard tabbed Settings UI (General / About) — v0.3.0
 - ✓ Launch at Login toggle — v0.3.0
+- ✓ CI pipeline with SwiftLint, SwiftFormat, build and test — Phase 10
+- ✓ Automated release workflow with DMG packaging — Phase 11
 
 ### Active
 
