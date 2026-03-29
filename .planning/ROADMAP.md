@@ -117,7 +117,7 @@ Plans:
 | 8. First-Launch Onboarding | v0.3.0 | 1/1 | Complete | 2026-03-23 |
 | 9. General Settings Features | v0.3.0 | 1/1 | Complete | 2026-03-25 |
 | 10. CI Pipeline | v0.4.0 | 2/2 | Complete    | 2026-03-27 |
-| 11. Release Automation | v0.4.0 | 1/1 | Complete   | 2026-03-29 |
+| 11. Release Automation | v0.4.0 | 1/1 | Complete    | 2026-03-29 |
 | 12. Clipboard Monitoring | v0.4.0 | 0/? | Not started | - |
 | 13. Translation Download UI | v0.4.0 | 0/? | Not started | - |
 
