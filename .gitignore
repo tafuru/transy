@@ -2,5 +2,8 @@
 *.xcodeproj/xcuserdata/
 *.xcodeproj/project.xcworkspace/xcuserdata/
 
+# Build artifacts
+.build/
+
 # macOS
 .DS_Store

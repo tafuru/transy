@@ -14,6 +14,9 @@ targets:
     deploymentTarget: "15.0"
     sources:
       - path: Transy
+    configFiles:
+      Debug: Config/Version.xcconfig
+      Release: Config/Version.xcconfig
     settings:
       base:
         SWIFT_VERSION: 6.0
@@ -29,18 +32,18 @@ targets:
         CFBundleName: Transy
         CFBundleDisplayName: Transy
         CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
-        CFBundleShortVersionString: "0.0.0"
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
         CFBundleVersion: "1"
         LSMinimumSystemVersion: "15.0"
         LSUIElement: true
         NSHumanReadableCopyright: ""
     dependencies:
       - sdk: ServiceManagement.framework
-    postBuildScripts:
+    preBuildScripts:
       - script: |
           VERSION=$(git -C "$SRCROOT" describe --tags --abbrev=0 2>/dev/null | sed 's/^v//')
           if [ -n "$VERSION" ]; then
-            /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION" "${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}"
+            echo "MARKETING_VERSION = $VERSION" > "$SRCROOT/Config/Version.xcconfig"
           fi
         name: Set Version from Git Tag
         basedOnDependencyAnalysis: false
