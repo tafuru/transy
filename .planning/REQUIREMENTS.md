@@ -16,7 +16,7 @@ Requirements for DevOps & Improvements milestone. Each maps to roadmap phases.
 
 ### Release Automation
 
-- [x] **REL-01**: Creating a GitHub Release triggers automated build and DMG creation workflow
+- [x] **REL-01**: Pushing a version tag to GitHub triggers automated build and DMG creation workflow, which then creates a GitHub Release
 - [x] **REL-02**: Release workflow creates DMG with drag-to-Applications layout
 - [x] **REL-03**: Release workflow uploads DMG as a Release asset
 

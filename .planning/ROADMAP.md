@@ -47,7 +47,7 @@ Full details: [milestones/v0.3.0-ROADMAP.md](milestones/v0.3.0-ROADMAP.md)
 **Milestone Goal:** Establish CI/CD pipeline, automate releases with DMG packaging, add permission-free clipboard monitoring trigger, and simplify translation model downloads.
 
 - [x] **Phase 10: CI Pipeline** - GitHub Actions workflow with SwiftLint, SwiftFormat, build, and test on PRs (completed 2026-03-27)
-- [x] **Phase 11: Release Automation** - Release-triggered workflow that builds, packages DMG, and uploads to GitHub Release (1 plan) (completed 2026-03-29)
+- [x] **Phase 11: Release Automation** - Tag-push-triggered workflow that builds, packages a DMG, and creates/uploads a GitHub Release (1 plan) (completed 2026-03-29)
 - [ ] **Phase 12: Clipboard Monitoring** - Permission-free trigger mode via NSPasteboard polling with Settings UI
 - [ ] **Phase 13: Translation Download UI** - Framework-native model download prompt replaces manual System Settings guidance
 
