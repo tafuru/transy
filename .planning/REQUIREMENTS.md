@@ -16,9 +16,9 @@ Requirements for DevOps & Improvements milestone. Each maps to roadmap phases.
 
 ### Release Automation
 
-- [ ] **REL-01**: Creating a GitHub Release triggers automated build and DMG creation workflow
-- [ ] **REL-02**: Release workflow creates DMG with drag-to-Applications layout
-- [ ] **REL-03**: Release workflow uploads DMG as a Release asset
+- [x] **REL-01**: Pushing a version tag to GitHub triggers automated build and DMG creation workflow, which then creates a GitHub Release
+- [x] **REL-02**: Release workflow creates DMG with drag-to-Applications layout
+- [x] **REL-03**: Release workflow uploads DMG as a Release asset
 
 ### Clipboard Monitoring
 
@@ -52,9 +52,9 @@ None deferred for this milestone.
 | CI-02 | Phase 10 | Complete |
 | CI-03 | Phase 10 | Complete |
 | CI-04 | Phase 10 | Complete |
-| REL-01 | Phase 11 | Pending |
-| REL-02 | Phase 11 | Pending |
-| REL-03 | Phase 11 | Pending |
+| REL-01 | Phase 11 | Complete |
+| REL-02 | Phase 11 | Complete |
+| REL-03 | Phase 11 | Complete |
 | CLB-01 | Phase 12 | Pending |
 | CLB-02 | Phase 12 | Pending |
 | CLB-03 | Phase 12 | Pending |

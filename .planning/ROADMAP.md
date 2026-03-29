@@ -47,7 +47,7 @@ Full details: [milestones/v0.3.0-ROADMAP.md](milestones/v0.3.0-ROADMAP.md)
 **Milestone Goal:** Establish CI/CD pipeline, automate releases with DMG packaging, add permission-free clipboard monitoring trigger, and simplify translation model downloads.
 
 - [x] **Phase 10: CI Pipeline** - GitHub Actions workflow with SwiftLint, SwiftFormat, build, and test on PRs (completed 2026-03-27)
-- [ ] **Phase 11: Release Automation** - Release-triggered workflow that builds, packages DMG, and uploads to GitHub Release
+- [x] **Phase 11: Release Automation** - Tag-push-triggered workflow that builds, packages a DMG, and creates/uploads a GitHub Release (1 plan) (completed 2026-03-29)
 - [ ] **Phase 12: Clipboard Monitoring** - Permission-free trigger mode via NSPasteboard polling with Settings UI
 - [ ] **Phase 13: Translation Download UI** - Framework-native model download prompt replaces manual System Settings guidance
 
@@ -76,7 +76,10 @@ Plans:
   1. Creating a GitHub Release from the UI triggers an automated workflow that builds the app in Release configuration
   2. The workflow produces a DMG containing Transy.app with a drag-to-Applications layout
   3. The DMG is uploaded as an asset on the GitHub Release with auto-generated release notes
-**Plans**: TBD
+**Plans**: 1 plan
+
+Plans:
+- [x] 11-01-PLAN.md — Release workflow and release notes config (tag trigger → Release build → DMG → GitHub Release)
 
 ### Phase 12: Clipboard Monitoring
 **Goal**: Users can translate copied text without Accessibility permission by enabling clipboard monitoring as an alternative trigger mode
@@ -114,7 +117,7 @@ Plans:
 | 8. First-Launch Onboarding | v0.3.0 | 1/1 | Complete | 2026-03-23 |
 | 9. General Settings Features | v0.3.0 | 1/1 | Complete | 2026-03-25 |
 | 10. CI Pipeline | v0.4.0 | 2/2 | Complete    | 2026-03-27 |
-| 11. Release Automation | v0.4.0 | 0/? | Not started | - |
+| 11. Release Automation | v0.4.0 | 1/1 | Complete    | 2026-03-29 |
 | 12. Clipboard Monitoring | v0.4.0 | 0/? | Not started | - |
 | 13. Translation Download UI | v0.4.0 | 0/? | Not started | - |
 

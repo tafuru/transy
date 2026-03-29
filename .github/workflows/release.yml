@@ -1,0 +1,100 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+env:
+  HOMEBREW_NO_AUTO_UPDATE: 1
+  HOMEBREW_NO_INSTALL_CLEANUP: 1
+
+jobs:
+  release:
+    name: Build & Release
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extract version from tag
+        id: version
+        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Install tools
+        run: brew install xcodegen create-dmg
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: Build Release
+        run: |
+          xcodebuild build \
+            -scheme Transy \
+            -configuration Release \
+            -destination 'platform=macOS' \
+            -derivedDataPath ./DerivedData \
+            CODE_SIGN_IDENTITY="-" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            | xcbeautify --renderer github-actions
+
+      - name: Verify .app exists
+        run: |
+          APP_PATH="./DerivedData/Build/Products/Release/Transy.app"
+          if [ ! -d "$APP_PATH" ]; then
+            echo "::error::Transy.app not found at $APP_PATH"
+            exit 1
+          fi
+          echo "✅ Transy.app found"
+          VERSION=$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" "$APP_PATH/Contents/Info.plist")
+          echo "📦 App version: $VERSION"
+
+      - name: Create DMG
+        run: |
+          mkdir -p dmg-source
+          cp -R ./DerivedData/Build/Products/Release/Transy.app ./dmg-source/
+
+          set +e
+          create-dmg \
+            --volname "Transy" \
+            --window-pos 200 120 \
+            --window-size 600 400 \
+            --icon-size 100 \
+            --icon "Transy.app" 150 190 \
+            --hide-extension "Transy.app" \
+            --app-drop-link 450 190 \
+            --no-internet-enable \
+            "Transy-${{ steps.version.outputs.version }}.dmg" \
+            ./dmg-source/
+          EXIT_CODE=$?
+          set -e
+
+          if [ $EXIT_CODE -ne 0 ] && [ $EXIT_CODE -ne 2 ]; then
+            echo "::error::create-dmg failed with exit code $EXIT_CODE"
+            exit $EXIT_CODE
+          fi
+
+          ls -la "Transy-${{ steps.version.outputs.version }}.dmg"
+          echo "✅ DMG created successfully"
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PRERELEASE_FLAG=""
+          if [[ "${{ github.ref_name }}" == *"-"* ]]; then
+            PRERELEASE_FLAG="--prerelease"
+          fi
+
+          gh release create "${{ github.ref_name }}" \
+            "Transy-${{ steps.version.outputs.version }}.dmg#Transy ${{ steps.version.outputs.version }} (macOS)" \
+            --title "Transy ${{ steps.version.outputs.version }}" \
+            --generate-notes \
+            --verify-tag \
+            $PRERELEASE_FLAG
