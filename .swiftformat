@@ -1,0 +1,28 @@
+# .swiftformat
+
+--swiftversion 6.0
+--indent 4
+--indentcase false
+--maxwidth 150
+--semicolons never
+--commas always
+--stripunusedargs closure-only
+--self init-only
+--header strip
+--wrapcollections before-first
+--wraparguments before-first
+--wrapparameters before-first
+
+# Exclude non-source directories
+--exclude Transy.xcodeproj,.build,DerivedData
+
+# Disable rules that conflict with SwiftLint (D-05)
+--disable redundantSelf
+--disable trailingCommas
+--disable wrapMultilineStatementBraces
+--disable modifierOrder
+
+# Disable potentially aggressive rules
+--disable acronyms
+--disable blankLineAfterSwitchCase
+--disable wrapSwitchCases

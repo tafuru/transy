@@ -23,11 +23,11 @@ final class HotkeyMonitor {
     }
 
     func stop() {
-        if let m = eventMonitor {
-            NSEvent.removeMonitor(m)
+        if let monitor = eventMonitor {
+            NSEvent.removeMonitor(monitor)
             eventMonitor = nil
         }
-        detector = DoublePressDetector()   // reset state on stop
+        detector = DoublePressDetector() // reset state on stop
         firstPressSnapshot = []
         onDoubleCmdC = nil
     }

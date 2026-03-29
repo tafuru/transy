@@ -9,10 +9,10 @@ Requirements for DevOps & Improvements milestone. Each maps to roadmap phases.
 
 ### CI (Continuous Integration)
 
-- [ ] **CI-01**: PR to main triggers SwiftLint check on project sources
-- [ ] **CI-02**: PR to main triggers SwiftFormat check on project sources
-- [ ] **CI-03**: PR to main triggers xcodebuild build for macOS
-- [ ] **CI-04**: PR to main triggers xcodebuild test for macOS
+- [x] **CI-01**: PR to main triggers SwiftLint check on project sources
+- [x] **CI-02**: PR to main triggers SwiftFormat check on project sources
+- [x] **CI-03**: PR to main triggers xcodebuild build for macOS
+- [x] **CI-04**: PR to main triggers xcodebuild test for macOS
 
 ### Release Automation
 
@@ -48,10 +48,10 @@ None deferred for this milestone.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| CI-01 | Phase 10 | Pending |
-| CI-02 | Phase 10 | Pending |
-| CI-03 | Phase 10 | Pending |
-| CI-04 | Phase 10 | Pending |
+| CI-01 | Phase 10 | Complete |
+| CI-02 | Phase 10 | Complete |
+| CI-03 | Phase 10 | Complete |
+| CI-04 | Phase 10 | Complete |
 | REL-01 | Phase 11 | Pending |
 | REL-02 | Phase 11 | Pending |
 | REL-03 | Phase 11 | Pending |

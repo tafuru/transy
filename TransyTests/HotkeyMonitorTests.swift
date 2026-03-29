@@ -1,9 +1,7 @@
 import Testing
 @testable import Transy
 
-@Suite("HotkeyMonitor")
 struct HotkeyMonitorTests {
-
     @Test("HotkeyMonitor can be instantiated")
     @MainActor
     func canInstantiate() {

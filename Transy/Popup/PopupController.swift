@@ -1,7 +1,7 @@
 import AppKit
 import SwiftUI
 
-// NSWindowStyleMaskNonactivatingPanel (1<<7) is not exposed as a named Swift member.
+/// NSWindowStyleMaskNonactivatingPanel (1<<7) is not exposed as a named Swift member.
 private extension NSWindow.StyleMask {
     static let nonActivatingPanel = NSWindow.StyleMask(rawValue: 1 << 7)
 }
@@ -9,7 +9,6 @@ private extension NSWindow.StyleMask {
 /// Hosts the popup NSPanel. Non-activating, floating, fade-in, dismiss on Escape or outside click.
 @MainActor
 final class PopupController {
-
     private lazy var panel: NSPanel = makePanel()
     private var dismissEventMonitors: [Any] = []
     private var onDismiss: (() -> Void)?
@@ -27,7 +26,7 @@ final class PopupController {
         panel.level = NSWindow.Level.floating
         panel.collectionBehavior = NSWindow.CollectionBehavior([.canJoinAllSpaces, .stationary, .ignoresCycle])
         panel.isMovableByWindowBackground = true
-        panel.hidesOnDeactivate = false   // CRITICAL: without this, panel vanishes when source app regains focus
+        panel.hidesOnDeactivate = false // CRITICAL: without this, panel vanishes when source app regains focus
         panel.backgroundColor = NSColor.clear
         panel.isOpaque = false
         panel.hasShadow = true
@@ -81,7 +80,7 @@ final class PopupController {
         // orderFrontRegardless() shows the panel without making it key or activating the app (POP-01).
         panel.orderFrontRegardless()
         NSAnimationContext.runAnimationGroup { ctx in
-            ctx.duration = 0.15   // subtle fade-in (CONTEXT.md: "subtle fade-in, not strong motion")
+            ctx.duration = 0.15 // subtle fade-in (CONTEXT.md: "subtle fade-in, not strong motion")
             panel.animator().alphaValue = 1
         }
         attachDismissEventMonitors()
@@ -108,12 +107,12 @@ final class PopupController {
     private func attachDismissEventMonitors() {
         let esc = NSEvent.addGlobalMonitorForEvents(matching: .keyDown) { [weak self] event in
             MainActor.assumeIsolated {
-                if event.keyCode == 53 { self?.dismiss() }   // 53 = Escape
+                if event.keyCode == 53 { self?.dismiss() } // 53 = Escape
             }
         }
         let click = NSEvent.addGlobalMonitorForEvents(
             matching: [.leftMouseDown, .rightMouseDown]
-        ) { [weak self] event in
+        ) { [weak self] _ in
             MainActor.assumeIsolated {
                 guard let self else { return }
                 if !self.panel.frame.contains(NSEvent.mouseLocation) {
@@ -121,7 +120,7 @@ final class PopupController {
                 }
             }
         }
-        dismissEventMonitors = [esc, click].compactMap { $0 }
+        dismissEventMonitors = [esc, click].compactMap(\.self)
     }
 
     private func removeDismissEventMonitors() {

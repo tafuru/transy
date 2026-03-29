@@ -1,6 +1,6 @@
 import Foundation
 
-struct PopupPositionCalculator {
+enum PopupPositionCalculator {
     static let defaultOffset: CGFloat = 8
     static let defaultMargin: CGFloat = 8
 
@@ -29,7 +29,7 @@ struct PopupPositionCalculator {
         let maxY = screenFrame.maxY - margin
 
         let y: CGFloat
-        if belowY >= minY && belowY + panelSize.height <= maxY {
+        if belowY >= minY, belowY + panelSize.height <= maxY {
             // Fits below cursor within screen bounds
             y = belowY
         } else if belowY >= minY {

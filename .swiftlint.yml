@@ -1,0 +1,58 @@
+# .swiftlint.yml
+
+included:
+  - Transy
+  - TransyTests
+  - TransyUITests
+
+excluded:
+  - Transy.xcodeproj
+
+disabled_rules:
+  - type_body_length          # D-02: SwiftUI views are naturally long
+  - function_body_length      # D-02: SwiftUI body property can be lengthy
+
+opt_in_rules:
+  - empty_count               # Prefer .isEmpty over .count == 0
+  - empty_string              # Prefer .isEmpty over == ""
+  - first_where               # Prefer .first(where:) over .filter{}.first
+  - last_where                # Prefer .last(where:) over .filter{}.last
+  - sorted_first_last         # Use .min()/.max() over .sorted().first/.last
+  - contains_over_filter_count
+  - contains_over_filter_is_empty
+  - contains_over_first_not_nil
+  - contains_over_range_nil_comparison
+  - flatmap_over_map_reduce
+  - modifier_order            # Consistent modifier order (good for SwiftUI)
+  - closure_spacing           # Consistent closure spacing
+  - overridden_super_call
+  - discouraged_optional_boolean
+  - prefer_self_in_static_references
+  - prefer_self_type_over_type_of_self
+  - unavailable_function
+  - unowned_variable_capture
+  - vertical_whitespace_closing_braces
+  - private_action
+  - private_outlet
+
+line_length:
+  warning: 150
+  error: 200
+  ignores_comments: true
+  ignores_urls: true
+
+identifier_name:
+  min_length:
+    warning: 2
+    error: 1
+  excluded:
+    - id
+    - x
+    - y
+    - i
+
+nesting:
+  type_level:
+    warning: 3
+
+reporter: xcode

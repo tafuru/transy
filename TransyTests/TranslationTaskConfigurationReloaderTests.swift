@@ -3,9 +3,7 @@ import Testing
 import Translation
 @testable import Transy
 
-@Suite("Translation task configuration reloader")
-struct TranslationTaskConfigurationReloaderTests {
-
+struct TranslationConfigReloaderTests {
     @Test("first configuration uses auto-detected source and requested target")
     func firstConfigurationUsesAutoDetectedSource() {
         let targetLanguage = Locale.Language(identifier: "en")
@@ -39,14 +37,14 @@ struct TranslationTaskConfigurationReloaderTests {
 
     @Test("popup dismiss tears down hosted content so translationTask can cancel immediately")
     @MainActor
-    func popupDismissRemovesHostedContent() {
+    func popupDismissRemovesHostedContent() throws {
         let controller = PopupController()
         let coordinator = TranslationCoordinator()
         _ = coordinator.begin(sourceText: "とても長い原文です")
 
         let mockClient = TranslationAvailabilityClient(targetLanguage: Locale.Language(identifier: "en"))
         let settingsSuiteName = "test-\(UUID())"
-        let settingsDefaults = UserDefaults(suiteName: settingsSuiteName)!
+        let settingsDefaults = try #require(UserDefaults(suiteName: settingsSuiteName))
         defer { settingsDefaults.removePersistentDomain(forName: settingsSuiteName) }
         let mockSettingsStore = SettingsStore(
             userDefaults: settingsDefaults,

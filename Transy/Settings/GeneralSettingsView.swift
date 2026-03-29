@@ -55,9 +55,12 @@ struct GeneralSettingsView: View {
                             Text("Translation Model Required")
                                 .font(.headline)
 
-                            Text("Download the required translation model in System Settings → General → Language & Region → Translation Languages.")
-                                .font(.body)
-                                .foregroundStyle(.secondary)
+                            Text(
+                                "Download the required translation model in System Settings "
+                                    + "→ General → Language & Region → Translation Languages."
+                            )
+                            .font(.body)
+                            .foregroundStyle(.secondary)
 
                             Button("Open Language & Region") {
                                 openSystemSettings()
@@ -76,9 +79,12 @@ struct GeneralSettingsView: View {
                                 forIdentifier: target.minimalIdentifier
                             ) ?? target.minimalIdentifier
 
-                            Text("Download the \(sourceName) → \(targetName) model in System Settings → General → Language & Region → Translation Languages.")
-                                .font(.body)
-                                .foregroundStyle(.secondary)
+                            Text(
+                                "Download the \(sourceName) → \(targetName) model in "
+                                    + "System Settings → General → Language & Region → Translation Languages."
+                            )
+                            .font(.body)
+                            .foregroundStyle(.secondary)
 
                             Button("Open Language & Region") {
                                 openSystemSettings()

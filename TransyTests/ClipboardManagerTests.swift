@@ -1,10 +1,8 @@
-import Testing
 import AppKit
+import Testing
 @testable import Transy
 
-@Suite("ClipboardManager")
 struct ClipboardManagerTests {
-
     @Test("save and restore preserves string content")
     @MainActor
     func saveRestorePreservesString() {
@@ -53,16 +51,16 @@ struct ClipboardManagerTests {
         pb.clearContents()
         pb.setString("something", forType: .string)
 
-        mgr.restore([])    // restore to empty state
+        mgr.restore([]) // restore to empty state
 
         // After clearing and writing nothing, string should be nil
         #expect(pb.string(forType: .string) == nil)
     }
 
-    // Regression test for the first-press clipboard snapshot bug:
-    // The snapshot must be taken BEFORE the source app overwrites the clipboard (first Cmd+C),
-    // not after (second Cmd+C). This test verifies that a snapshot captured before the source app
-    // copies the selection correctly restores the original clipboard — not the selected text.
+    /// Regression test for the first-press clipboard snapshot bug:
+    /// The snapshot must be taken BEFORE the source app overwrites the clipboard (first Cmd+C),
+    /// not after (second Cmd+C). This test verifies that a snapshot captured before the source app
+    /// copies the selection correctly restores the original clipboard — not the selected text.
     @Test("snapshot taken before source-app copy restores original clipboard (regression)")
     @MainActor
     func snapshotBeforeSourceAppCopyRestoresOriginal() {
@@ -90,7 +88,9 @@ struct ClipboardManagerTests {
         mgr.restore(firstPressSnapshot)
 
         // 6. Clipboard must be back to "AAA", not "BBB"
-        #expect(pb.string(forType: .string) == "AAA",
-                "restore must use first-press snapshot (AAA), not the selection (BBB)")
+        #expect(
+            pb.string(forType: .string) == "AAA",
+            "restore must use first-press snapshot (AAA), not the selection (BBB)"
+        )
     }
 }

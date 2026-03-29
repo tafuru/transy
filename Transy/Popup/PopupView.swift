@@ -7,16 +7,6 @@ struct PopupView: View {
     let availabilityClient: TranslationAvailabilityClient
     let settingsStore: SettingsStore
 
-    init(
-        translationCoordinator: TranslationCoordinator,
-        availabilityClient: TranslationAvailabilityClient,
-        settingsStore: SettingsStore
-    ) {
-        self.translationCoordinator = translationCoordinator
-        self.availabilityClient = availabilityClient
-        self.settingsStore = settingsStore
-    }
-
     var body: some View {
         switch translationCoordinator.popupState {
         case let .loading(requestID, sourceText):
@@ -148,7 +138,7 @@ private struct LoadingPopupText: View {
             )
     }
 
-    private nonisolated static func translationAction(
+    nonisolated private static func translationAction(
         requestContext: LoadingRequestContext,
         availabilityClient: TranslationAvailabilityClient,
         settingsStore: SettingsStore,
@@ -216,12 +206,12 @@ private struct LoadingPopupText: View {
     }
 }
 
-private struct LoadingRequestContext: Sendable {
+private struct LoadingRequestContext {
     let requestID: UUID
     let sourceText: String
 }
 
-// internal (not private) so TranslationTaskConfigurationReloaderTests can verify behavior
+/// internal (not private) so TranslationTaskConfigurationReloaderTests can verify behavior
 func nextTranslationConfiguration(
     after existingConfiguration: TranslationSession.Configuration?,
     targetLanguage: Locale.Language

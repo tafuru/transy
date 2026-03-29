@@ -1,15 +1,19 @@
-import SwiftUI
 import AppKit
+import SwiftUI
 
 struct GuidanceView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Accessibility Access Required")
                 .font(.headline)
-            Text("Transy uses Accessibility access to detect the double ⌘C shortcut that triggers translations. This permission lets the app listen for your keyboard shortcut so it can provide translations.")
-                .font(.body)
-                .foregroundStyle(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
+            Text(
+                "Transy uses Accessibility access to detect the double ⌘C shortcut "
+                    + "that triggers translations. This permission lets the app listen for "
+                    + "your keyboard shortcut so it can provide translations."
+            )
+            .font(.body)
+            .foregroundStyle(.secondary)
+            .fixedSize(horizontal: false, vertical: true)
             Text("Open System Settings → Privacy & Security → Accessibility and enable Transy.")
                 .font(.body)
                 .foregroundStyle(.secondary)
