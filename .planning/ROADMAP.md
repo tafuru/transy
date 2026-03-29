@@ -47,7 +47,7 @@ Full details: [milestones/v0.3.0-ROADMAP.md](milestones/v0.3.0-ROADMAP.md)
 **Milestone Goal:** Establish CI/CD pipeline, automate releases with DMG packaging, add permission-free clipboard monitoring trigger, and simplify translation model downloads.
 
 - [x] **Phase 10: CI Pipeline** - GitHub Actions workflow with SwiftLint, SwiftFormat, build, and test on PRs (completed 2026-03-27)
-- [ ] **Phase 11: Release Automation** - Release-triggered workflow that builds, packages DMG, and uploads to GitHub Release
+- [ ] **Phase 11: Release Automation** - Release-triggered workflow that builds, packages DMG, and uploads to GitHub Release (1 plan)
 - [ ] **Phase 12: Clipboard Monitoring** - Permission-free trigger mode via NSPasteboard polling with Settings UI
 - [ ] **Phase 13: Translation Download UI** - Framework-native model download prompt replaces manual System Settings guidance
 
@@ -76,7 +76,10 @@ Plans:
   1. Creating a GitHub Release from the UI triggers an automated workflow that builds the app in Release configuration
   2. The workflow produces a DMG containing Transy.app with a drag-to-Applications layout
   3. The DMG is uploaded as an asset on the GitHub Release with auto-generated release notes
-**Plans**: TBD
+**Plans**: 1 plan
+
+Plans:
+- [ ] 11-01-PLAN.md — Release workflow and release notes config (tag trigger → Release build → DMG → GitHub Release)
 
 ### Phase 12: Clipboard Monitoring
 **Goal**: Users can translate copied text without Accessibility permission by enabling clipboard monitoring as an alternative trigger mode
