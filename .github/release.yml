@@ -1,0 +1,14 @@
+# Release notes categorization for auto-generated notes
+# Used by GitHub when --generate-notes is passed to gh release create
+changelog:
+  categories:
+    - title: "✨ Features"
+      labels: ["enhancement"]
+    - title: "🐛 Bug Fixes"
+      labels: ["bug"]
+    - title: "🔧 Maintenance"
+      labels: ["chore", "ci", "dependencies"]
+    - title: "📖 Documentation"
+      labels: ["documentation"]
+    - title: "Other Changes"
+      labels: ["*"]
