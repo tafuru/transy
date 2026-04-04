@@ -16,15 +16,15 @@ progress:
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-03-25)
+See: .planning/PROJECT.md (updated 2026-04-04)
 
 **Core value:** Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
-**Current focus:** Phase 13 — translation-download-ui
+**Current focus:** v0.4.0 complete — awaiting next milestone
 
 ## Current Position
 
-Phase: 13
-Plan: Not started
+Milestone v0.4.0 archived. No active phase.
+Next step: `/gsd-new-milestone` to start v0.5.0.
 
 ## Performance Metrics
 

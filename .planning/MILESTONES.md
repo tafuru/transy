@@ -1,5 +1,22 @@
 # Milestones
 
+## v0.4.0 DevOps & Improvements (Shipped: 2026-04-04)
+
+**Phases completed:** 4 phases, 6 plans
+**Timeline:** 10 days (2026-03-25 → 2026-04-04)
+**Codebase:** ~1,700 LOC Swift (app + tests)
+
+**Key accomplishments:**
+- CI pipeline with SwiftLint, SwiftFormat, build and test on every PR (macos-15)
+- Release automation: git tag push → Release build → DMG → GitHub Release with auto-generated notes
+- Permission-free clipboard monitoring (NSPasteboard changeCount polling) replaces Double ⌘C — no Accessibility permission needed
+- Framework-native translation model download UI removes manual System Settings guidance
+- Preflight language detection removed — eliminated redundant ML inference per translation
+
+**Archives:** [milestones/v0.4.0-ROADMAP.md](milestones/v0.4.0-ROADMAP.md) · [milestones/v0.4.0-REQUIREMENTS.md](milestones/v0.4.0-REQUIREMENTS.md)
+
+---
+
 ## v0.3.0 Onboarding & Settings (Shipped: 2026-03-25)
 
 **Phases completed:** 3 phases, 3 plans
