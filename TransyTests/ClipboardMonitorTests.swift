@@ -50,6 +50,29 @@ struct ClipboardMonitorTests {
         #expect(receivedText == "test text")
     }
 
+    @Test("triggers on fast double copy within single poll interval")
+    @MainActor
+    func triggersOnFastDoubleCopy() async throws {
+        let saved = savePasteboard()
+        defer { restorePasteboard(saved) }
+
+        var receivedText: String?
+        let monitor = ClipboardMonitor()
+        monitor.start { text in receivedText = text }
+        defer { monitor.stop() }
+
+        let pb = NSPasteboard.general
+
+        // Both copies happen rapidly (within one poll interval)
+        pb.clearContents()
+        pb.setString("fast text", forType: .string)
+        pb.clearContents()
+        pb.setString("fast text", forType: .string)
+
+        try await Task.sleep(for: .milliseconds(400))
+        #expect(receivedText == "fast text")
+    }
+
     @Test("does not trigger on single copy")
     @MainActor
     func doesNotTriggerOnSingleCopy() async throws {

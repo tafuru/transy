@@ -30,14 +30,14 @@ final class ClipboardMonitor {
         )
 
         timer = Timer.scheduledTimer(
-            withTimeInterval: 0.5,
+            withTimeInterval: 0.25,
             repeats: true
         ) { [weak self] _ in
             MainActor.assumeIsolated {
                 self?.poll()
             }
         }
-        timer?.tolerance = 0.1
+        timer?.tolerance = 0.05
     }
 
     func stop() {
@@ -62,6 +62,7 @@ final class ClipboardMonitor {
         let currentCount = pb.changeCount
 
         guard currentCount != lastChangeCount else { return }
+        let delta = currentCount - lastChangeCount
         lastChangeCount = currentCount
 
         guard let types = pb.types, types.contains(.string) else {
@@ -82,11 +83,19 @@ final class ClipboardMonitor {
 
         let now = Date()
 
-        if let firstTime = firstCopyTime,
-           now.timeIntervalSince(firstTime) <= doubleCopyWindow {
+        // Fast double-copy: two clearContents() calls within one poll interval
+        // produce a changeCount delta ≥ 2 — trigger immediately.
+        let isDoubleCopyInSinglePoll = delta >= 2
+
+        if isDoubleCopyInSinglePoll {
+            firstCopyTime = nil
+            guard text != lastProcessedText else { return }
+            lastProcessedText = text
+            onNewText?(text)
+        } else if let firstTime = firstCopyTime,
+                  now.timeIntervalSince(firstTime) <= doubleCopyWindow {
             // Second copy within window — trigger!
             firstCopyTime = nil
-
             guard text != lastProcessedText else { return }
             lastProcessedText = text
             onNewText?(text)
