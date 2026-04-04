@@ -6,6 +6,7 @@
 - ✅ **v0.2.0 Popup UX Polish** — Phases 5-6 (shipped 2026-03-21)
 - ✅ **v0.3.0 Onboarding & Settings** — Phases 7-9 (shipped 2026-03-25)
 - ✅ **v0.4.0 DevOps & Improvements** — Phases 10-13 (shipped 2026-04-04)
+- 🚧 **v0.5.0 Translation Quality** — Phases 14-16 (in progress)
 
 ## Phases
 
@@ -54,9 +55,50 @@ Full details: [milestones/v0.4.0-ROADMAP.md](milestones/v0.4.0-ROADMAP.md)
 
 </details>
 
+### 🚧 v0.5.0 Translation Quality
+
+- [ ] **Phase 14: Shimmer Animation** — Animated skeleton shimmer during translation loading state
+- [ ] **Phase 15: Chunked Translation** — Split long text at sentence boundaries and translate as a batch
+- [ ] **Phase 16: Pivot Translation** — Chain source→EN→target when language pair is unsupported
+
 ## Phase Details
 
-<!-- Next milestone phases will be added here -->
+### 🚧 v0.5.0 Translation Quality
+
+### Phase 14: Shimmer Animation
+**Goal**: Users see a smooth animated skeleton shimmer while translation is in progress, with no jarring layout shifts
+**Depends on**: Phase 13
+**Requirements**: SHM-01, SHM-02, SHM-03
+**Success Criteria** (what must be TRUE):
+  1. A shimmer animation plays over the loading-state text from the moment translation begins until the result appears
+  2. Showing or hiding the shimmer does not change the popup's layout dimensions (no resize notification storm)
+  3. When System Preferences → Accessibility → Reduce Motion is enabled, the shimmer is replaced with a static placeholder — no animation plays
+**Plans**: TBD (estimated 2 plans)
+**UI hint**: yes
+
+---
+
+### Phase 15: Chunked Translation
+**Goal**: Texts longer than 200 characters are split at sentence boundaries and translated as a single batch, returning a correctly ordered result
+**Depends on**: Phase 14
+**Requirements**: CHK-01, CHK-02, CHK-03
+**Success Criteria** (what must be TRUE):
+  1. A text of 201+ characters is split into sentence-boundary chunks via `NLTokenizer` and all chunks are submitted as one `translations(from:)` batch call
+  2. The translated chunks are recombined in input order — the result reads as continuous prose regardless of chunk count
+  3. A text of ≤200 characters is translated directly without any chunking (single-call path, no overhead)
+**Plans**: TBD (estimated 2 plans)
+
+---
+
+### Phase 16: Pivot Translation
+**Goal**: When Apple Translation reports an unsupported language pair, the app silently chains two translations through English so the user still gets a result
+**Depends on**: Phase 15
+**Requirements**: PIV-01, PIV-02, PIV-03
+**Success Criteria** (what must be TRUE):
+  1. Translating a language pair not supported by Apple Translation (e.g. JP→DE) produces a correct result via the source→EN→target chain — no error shown to the user
+  2. The shimmer animation plays continuously across both pivot legs — the popup never flickers or shows a partial state between legs
+  3. When the pivot path also fails (EN→target unsupported), a clear error message is displayed instead of a blank or crashed popup
+**Plans**: TBD (estimated 2 plans)
 
 ## Progress
 
@@ -75,7 +117,10 @@ Full details: [milestones/v0.4.0-ROADMAP.md](milestones/v0.4.0-ROADMAP.md)
 | 11. Release Automation | v0.4.0 | 1/1 | Complete | 2026-03-29 |
 | 12. Clipboard Monitoring | v0.4.0 | 2/2 | Complete | 2026-04-04 |
 | 13. Translation Download UI | v0.4.0 | 1/1 | Complete | 2026-04-04 |
+| 14. Shimmer Animation | v0.5.0 | 0/2 | Not started | — |
+| 15. Chunked Translation | v0.5.0 | 0/2 | Not started | — |
+| 16. Pivot Translation | v0.5.0 | 0/2 | Not started | — |
 
 ---
 
-*Last updated: 2026-04-04 — v0.4.0 shipped*
+*Last updated: 2026-04-04 — v0.5.0 roadmap created (phases 14-16)*

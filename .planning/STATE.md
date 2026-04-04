@@ -1,16 +1,88 @@
 ---
 gsd_state_version: 1.0
-milestone: v0.4.0
-milestone_name: DevOps & Improvements
-status: "v0.4.0 SHIPPED — milestone complete"
-stopped_at: Milestone archived
-last_updated: "2026-04-04T08:00:00.000Z"
+milestone: v0.5.0
+milestone_name: Translation Quality
+status: "Defining requirements"
+stopped_at: Milestone started
+last_updated: "2026-04-04T09:00:00.000Z"
 progress:
-  total_phases: 4
-  completed_phases: 4
-  total_plans: 6
-  completed_plans: 6
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
 ---
+
+# Project State
+
+## Project Reference
+
+See: .planning/PROJECT.md (updated 2026-04-04)
+
+**Core value:** Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
+**Current focus:** v0.5.0 Translation Quality — defining requirements
+
+## Current Position
+
+Phase: Not started (defining requirements)
+Plan: —
+Status: Defining requirements
+Last activity: 2026-04-04 — Milestone v0.5.0 started
+
+## Performance Metrics
+
+**Velocity (v0.1.0):**
+
+- Total plans completed: 9
+- Average duration: 26.1 min
+- Total execution time: 199 min
+
+**Velocity (v0.2.0):**
+
+- Total plans completed: 4
+- Average duration: 3.5 min
+- Total execution time: 14.1 min
+
+| Phase | Plan | Duration | Tasks | Files | Completed |
+|-------|------|----------|-------|-------|-----------|
+| 05    | 00   | 103s (1.7m) | 1     | 3     | 2026-03-16T14:55:14Z |
+| 06    | 00   | 97s (1.6m)  | 2     | 2     | 2026-03-20T16:46:31Z |
+| 06    | 01   | 480s (8.0m) | 2     | 1     | 2026-03-20T16:58:43Z |
+| 08    | 01   | 72s (1.2m)  | 2     | 2     | 2026-03-23T13:21:00Z |
+| Phase 10-ci-pipeline P02 | 65 | 1 tasks | 1 files |
+| Phase 10 P01 | 88 | 2 tasks | 5 files |
+| Phase 11 P01 | 98 | 2 tasks | 2 files |
+| Phase 13 P01 | 348 | 2 tasks | 11 files |
+
+## Accumulated Context
+
+### Decisions
+
+Decisions are logged in PROJECT.md Key Decisions table.
+Recent decisions affecting current work:
+
+- [v0.4.0]: Clipboard monitoring replaces Double ⌘C — no Accessibility permission required
+- [v0.4.0]: Framework-native translation model download — no manual System Settings guidance
+- [v0.4.0]: Preflight LanguageAvailability.status() removed — TranslationErrorMapper handles all errors
+- [v0.4.0]: TextNormalization as enum namespace (normalized(), detectionSample(from:))
+- [v0.1.0]: Apple Translation framework chosen as backend — on-device speed, privacy, macOS-native integration
+- [v0.1.0]: Popup is NSPanel with `.nonactivatingPanel` styleMask — SwiftUI `WindowGroup` is a hard anti-pattern
+- [v0.1.0]: `project.yml` managed by xcodegen is the single source of truth for `Transy.xcodeproj`
+
+### Pending Todos
+
+- Todo: track unresolved Translation framework cancellation latency across re-trigger/dismiss flows (deferred — Apple framework limitation on macOS 15; revisit when macOS 26 adoption grows)
+
+### Blockers/Concerns
+
+- Known limitation: Translation framework cancellation latency can still make a short request feel delayed after a longer one (macOS 15 limitation)
+- Apple Translation framework requires macOS 15+ — hard deployment-target floor
+- Not all language pairs supported by Apple Translation — v0.5.0 addresses this with English pivot
+
+## Session Continuity
+
+Last session: 2026-04-04
+Stopped at: v0.5.0 milestone started — defining requirements
+Resume file: None
 
 # Project State
 
