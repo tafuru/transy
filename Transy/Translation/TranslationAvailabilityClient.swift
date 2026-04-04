@@ -4,7 +4,6 @@ import Translation
 struct TranslationAvailabilityClient {
     enum PreflightResult: Equatable {
         case ready
-        case missingModel
         case unsupported
         case couldNotDetect
         case failed(message: String)
@@ -33,10 +32,8 @@ struct TranslationAvailabilityClient {
         do {
             let status = try await statusProvider(sampleText, targetLanguage)
             switch status {
-            case .installed:
+            case .installed, .supported:
                 return .ready
-            case .supported:
-                return .missingModel
             case .unsupported:
                 return .unsupported
             @unknown default:

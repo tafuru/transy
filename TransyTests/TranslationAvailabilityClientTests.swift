@@ -34,16 +34,16 @@ struct TranslationAvailabilityClientTests {
         }
     }
 
-    @Test("supported-but-missing availability maps to missingModel")
-    func supportedMapsToMissingModel() async throws {
+    @Test("supported availability maps to ready for framework-native download")
+    func supportedMapsToReady() async throws {
         let client = TranslationAvailabilityClient { _, _ in
             .supported
         }
 
         let result = try await client.preflight(for: "こんにちは")
 
-        guard case .missingModel = result else {
-            Issue.record("Expected .missingModel result, got \(String(describing: result))")
+        guard case .ready = result else {
+            Issue.record("Expected .ready result, got \(String(describing: result))")
             return
         }
     }

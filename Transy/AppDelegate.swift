@@ -29,8 +29,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         popupController.show(
             translationCoordinator: translationCoordinator,
-            availabilityClient: availabilityClient,
-            settingsStore: settingsStore
+            availabilityClient: availabilityClient
         ) { [weak self] in
             guard let self else { return }
             self.translationCoordinator.dismiss()

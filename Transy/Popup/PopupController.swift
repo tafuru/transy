@@ -37,7 +37,6 @@ final class PopupController {
     func show(
         translationCoordinator: TranslationCoordinator,
         availabilityClient: TranslationAvailabilityClient,
-        settingsStore: SettingsStore,
         onDismiss: @escaping () -> Void
     ) {
         // Replace content if popup is already visible (rapid re-trigger: reuse position, replace text)
@@ -51,8 +50,7 @@ final class PopupController {
 
         let view = PopupView(
             translationCoordinator: translationCoordinator,
-            availabilityClient: availabilityClient,
-            settingsStore: settingsStore
+            availabilityClient: availabilityClient
         )
         let hostingView = NSHostingView(rootView: view)
         hostingView.sizingOptions = .intrinsicContentSize
