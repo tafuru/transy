@@ -19,6 +19,8 @@ final class ClipboardMonitor {
     private static let transientType = NSPasteboard.PasteboardType("org.nspasteboard.TransientType")
 
     func start(onNewText: @escaping (String) -> Void) {
+        stop()
+
         self.onNewText = onNewText
         lastChangeCount = NSPasteboard.general.changeCount
         lastProcessedText = nil

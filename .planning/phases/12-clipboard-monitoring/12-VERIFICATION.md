@@ -1,6 +1,6 @@
 ---
 phase: 12-clipboard-monitoring
-verified: 2025-07-18T12:00:00Z
+verified: 2026-04-04T06:00:00Z
 status: passed
 score: 12/12 must-haves verified
 re_verification: false
@@ -9,7 +9,7 @@ re_verification: false
 # Phase 12: Clipboard Monitoring Verification Report
 
 **Phase Goal:** Users can translate copied text without any permission requirements — clipboard monitoring replaces Double ⌘C as the sole, always-on trigger
-**Verified:** 2025-07-18T12:00:00Z
+**Verified:** 2026-04-04T06:00:00Z
 **Status:** passed
 **Re-verification:** No — initial verification
 
@@ -21,7 +21,7 @@ re_verification: false
 
 | # | Truth | Status | Evidence |
 |---|-------|--------|----------|
-| 1 | ClipboardMonitor polls NSPasteboard.general.changeCount every 500ms via Timer.scheduledTimer | ✓ VERIFIED | `Timer.scheduledTimer(withTimeInterval: 0.5` at line 24-25 of ClipboardMonitor.swift |
+| 1 | ClipboardMonitor polls NSPasteboard.general.changeCount every 250ms via Timer.scheduledTimer | ✓ VERIFIED | `Timer.scheduledTimer(withTimeInterval: 0.25` at line 25-26 of ClipboardMonitor.swift |
 | 2 | Concealed pasteboard types (org.nspasteboard.ConcealedType) are silently skipped | ✓ VERIFIED | `guard !types.contains(Self.concealedType)` at line 60; static type defined at line 11 |
 | 3 | Transient pasteboard types (org.nspasteboard.TransientType) are silently skipped | ✓ VERIFIED | `guard !types.contains(Self.transientType)` at line 61; static type defined at line 12 |
 | 4 | Duplicate clipboard text (same as last processed) does not re-trigger | ✓ VERIFIED | `guard text != lastProcessedText` at line 65; test validates at ClipboardMonitorTests line 86-109 |

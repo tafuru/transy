@@ -13,13 +13,13 @@ tasks_total: 2
 
 ## What Was Built
 
-Created `ClipboardMonitor` class that polls `NSPasteboard.general.changeCount` every 500ms to detect new clipboard text. Includes comprehensive content filtering pipeline and 6 unit tests.
+Created `ClipboardMonitor` class that polls `NSPasteboard.general.changeCount` every 250ms to detect new clipboard text via double-copy detection. Includes comprehensive content filtering pipeline and 8 unit tests.
 
 ## Key Files
 
 ### Created
 - `Transy/Trigger/ClipboardMonitor.swift` — Core clipboard polling class with `start(onNewText:)`, `stop()`, `recordSelfWrite()` API
-- `TransyTests/ClipboardMonitorTests.swift` — 6 serialized tests covering all filtering behaviors
+- `TransyTests/ClipboardMonitorTests.swift` — 8 serialized tests covering double-copy detection and all filtering behaviors
 
 ## Task Results
 

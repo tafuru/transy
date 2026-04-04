@@ -19,7 +19,7 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-25)
 
 **Core value:** Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
-**Current focus:** Phase 12 — clipboard-monitoring
+**Current focus:** Phase 13 — translation-download-ui
 
 ## Current Position
 
