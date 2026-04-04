@@ -1,31 +1,33 @@
 # Transy
 
-A lightweight macOS menu bar translator. Select text in any app, press **⌘C** twice, and get an instant translation popup — without leaving your current window.
+A lightweight macOS menu bar translator. Copy text in any app and get an instant translation popup — without leaving your current window.
 
 Built with SwiftUI and Apple's on-device [Translation framework](https://developer.apple.com/documentation/translation).
 
 ## Features
 
 - **Menu bar app** — runs as a status-bar accessory with no Dock icon
-- **Double ⌘C trigger** — captures selected text from any app and translates it instantly
+- **Clipboard monitoring** — detects copied text automatically and translates it instantly, no extra keystrokes needed
+- **No permission required** — works without Accessibility access
 - **Floating popup** — shows the translation result without stealing focus
 - **Smart popup placement** — popup appears near the cursor and stays fully visible with edge-clamping
 - **Word wrapping & scrolling** — long translations wrap naturally and scroll vertically
-- **Clipboard-safe** — saves and restores the original clipboard after capture
 - **Target language picker** — choose your preferred translation target in Settings
-- **Model download guidance** — detects missing translation models and guides you to System Settings
-- **Accessibility permission flow** — prompts for Accessibility access on first launch with a guided walkthrough
+- **Automatic model downloads** — missing translation models are downloaded on-demand by the system
 - **Fully on-device** — all translation happens locally via Apple Translation; no network required
 
 ## Requirements
 
 - macOS 15.0 (Sequoia) or later
-- Accessibility permission (required for global hotkey monitoring)
-- Apple Translation language models (downloaded via System Settings → General → Language & Region)
+- Apple Translation language models (downloaded automatically on first translation)
 
 ## Installation
 
-### Prerequisites
+Download the latest DMG from [Releases](https://github.com/tafuru/transy/releases) and drag Transy.app to your Applications folder.
+
+### Build from source
+
+#### Prerequisites
 
 - Xcode 16.0+
 - [XcodeGen](https://github.com/yonaskolb/XcodeGen)
@@ -34,7 +36,7 @@ Built with SwiftUI and Apple's on-device [Translation framework](https://develop
 brew install xcodegen
 ```
 
-### Build
+#### Build
 
 ```sh
 git clone https://github.com/tafuru/transy.git
@@ -49,7 +51,7 @@ Build and run with **⌘R** in Xcode, or from the command line:
 xcodebuild build -scheme Transy -destination 'platform=macOS'
 ```
 
-### Run tests
+#### Run tests
 
 ```sh
 xcodebuild test -scheme Transy -destination 'platform=macOS'
@@ -58,10 +60,9 @@ xcodebuild test -scheme Transy -destination 'platform=macOS'
 ## Usage
 
 1. Launch Transy — it appears as a bubble icon (💬) in the menu bar
-2. Grant Accessibility permission when prompted
-3. Select text in any app and press **⌘C** twice quickly
-4. A popup appears near the cursor with the translated text
-5. Press **Escape** or click outside to dismiss
+2. Copy text in any app (**⌘C**)
+3. A popup appears near the cursor with the translated text
+4. Press **Escape** or click outside to dismiss
 
 To change the target language, click the menu bar icon → **Settings…**.
 
@@ -70,16 +71,15 @@ To change the target language, click the menu bar icon → **Settings…**.
 ```
 Transy/
 ├── TransyApp.swift            # @main entry point (SwiftUI App + MenuBarExtra)
-├── AppDelegate.swift          # Orchestrates trigger → capture → translate → popup flow
+├── AppDelegate.swift          # Orchestrates clipboard trigger → translate → popup flow
 ├── MenuBar/                   # Menu bar dropdown UI
-├── Settings/                  # Target language picker and model guidance
-├── Translation/               # TranslationCoordinator, availability checks, error mapping
+├── Settings/                  # Target language picker and app preferences
+├── Translation/               # TranslationCoordinator, text normalization, error mapping
 ├── Popup/                     # Floating popup window and view
-├── Trigger/                   # Double ⌘C detection, clipboard capture/restore
-└── Permissions/               # Accessibility permission guidance
+└── Trigger/                   # ClipboardMonitor (changeCount polling) and ClipboardManager
 ```
 
-**Key technologies:** SwiftUI · AppKit · Translation.framework · UserDefaults · NSPasteboard · CGEvent
+**Key technologies:** SwiftUI · AppKit · Translation.framework · UserDefaults · NSPasteboard
 
 ## License
 
