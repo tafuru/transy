@@ -181,18 +181,18 @@ TextChunker (new, in TextChunker.swift):
 `translationAction` in `LoadingPopupText` becomes:
 ```swift
 let chunks = TextChunker.chunks(from: requestContext.sourceText)
-var assembled: [String] = []
-for chunk in chunks {
-    let response = try await session.translate(chunk)
-    assembled.append(response.targetText)
+let requests = chunks.enumerated().map { idx, chunk in
+    TranslationSession.Request(sourceText: chunk, clientIdentifier: String(idx))
 }
-await onResult(requestID, sourceText, assembled.joined(separator: " "))
+let responses = try await session.translations(from: requests)
+let assembled = responses.map(\.targetText).joined(separator: " ")
+await onResult(requestID, sourceText, assembled)
 ```
 
-Sequential (not parallel) because:
-1. It is undocumented whether multiple concurrent `session.translate()` calls on the same `TranslationSession` are safe — Apple docs show single-call examples only (confidence: LOW that parallel is safe)
-2. Sequential preserves insertion order trivially
-3. Apple's on-device ML pipeline may internally batch — actual latency gain from parallelism is unclear
+Uses the batch API because:
+1. Single network/inference round-trip regardless of chunk count — avoids N× latency of sequential `translate()` calls
+2. Results are returned as `[Response]` in the same order as the input array — no `clientIdentifier` mapping needed
+3. Cleaner, shorter call site
 
 #### Integration with pivot (combined path)
 When both pivot and chunking apply (text > 200 chars AND unsupported language pair):

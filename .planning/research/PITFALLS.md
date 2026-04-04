@@ -83,7 +83,9 @@ Implementing chunked translation as a `for chunk in chunks { let r = try await s
 `session.translate(_ string: String)` is the familiar API from existing code. The batch API (`session.translations(from: [TranslationSession.Request])`) requires learning a different call signature and response stream, so developers default to what they know.
 
 **How to avoid:**
-Use `TranslationSession.translations(from: [TranslationSession.Request])` which returns an `AsyncThrowingStream<TranslationSession.Response, Error>`. Assign a unique `clientIdentifier` to each `TranslationSession.Request` (e.g., chunk index as string). Collect responses from the stream into a dictionary keyed by `clientIdentifier`, then join in index order after the stream closes. Do not assume stream emission order equals input order — always use `clientIdentifier` to reconstruct ordering.
+Use `TranslationSession.translations(from: [TranslationSession.Request])` which returns `async throws -> [TranslationSession.Response]`. The response array is in the same order as the input request array — no `clientIdentifier` reordering is needed. Simply map the responses to their `targetText` and join in array order.
+
+Note: `translate(batch:)` is the `AsyncThrowingStream` variant whose emission order is NOT guaranteed. Do not confuse these two APIs.
 
 **Warning signs:**
 Chunked translation of a 600-char text is measurably slower than the v0.4.0 single-call translation of the same text.

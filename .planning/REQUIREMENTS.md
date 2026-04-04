@@ -9,21 +9,21 @@ Requirements for Translation Quality milestone. Each maps to roadmap phases.
 
 ### Shimmer Animation
 
-- [ ] **SHM-01**: 翻訳中（loading状態）にshimmer/skeleton animationが表示される
-- [ ] **SHM-02**: Shimmerはzero-layout-impact（NSPanelのリサイズを誘発しない）
-- [ ] **SHM-03**: Reduce Motionが有効な場合はshimmerを無効化し静的表示にフォールバック
+- [ ] **SHM-01**: Translation loading state shows a shimmer/skeleton animation
+- [ ] **SHM-02**: Shimmer is zero-layout-impact (does not trigger NSPanel resize)
+- [ ] **SHM-03**: Shimmer is disabled and falls back to static display when Reduce Motion is enabled
 
 ### Chunked Translation
 
-- [ ] **CHK-01**: テキストが200文字を超える場合、文章境界で分割して翻訳する（NLTokenizer使用）
-- [ ] **CHK-02**: translations(from:) バッチAPIを使用し、結果を入力順に結合する
-- [ ] **CHK-03**: 200文字以下のテキストは分割せず直接翻訳する（short-text bypass）
+- [ ] **CHK-01**: Text longer than 200 characters is split at sentence boundaries (NLTokenizer) before translation
+- [ ] **CHK-02**: Batch `translations(from:)` API is used; results are joined in input order
+- [ ] **CHK-03**: Text of 200 characters or fewer bypasses chunking and is translated directly (short-text bypass)
 
 ### Pivot Translation
 
-- [ ] **PIV-01**: unsupportedLanguagePairingエラー検出時に、source→EN→targetの2段階翻訳にフォールバックする
-- [ ] **PIV-02**: Pivot中もshimmerが継続表示される（ユーザーにはシームレスに見える）
-- [ ] **PIV-03**: Pivot失敗（EN経由でも不可）の場合は適切なエラーメッセージを表示する
+- [ ] **PIV-01**: On `unsupportedLanguagePairing` error, automatically falls back to a source→EN→target two-leg chain
+- [ ] **PIV-02**: Shimmer continues throughout the entire pivot sequence (seamless to the user)
+- [ ] **PIV-03**: If the pivot also fails (EN path unavailable), an appropriate error message is shown
 
 ## Future Requirements
 

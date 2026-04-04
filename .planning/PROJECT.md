@@ -26,12 +26,12 @@ Selected text turns into a natural translation almost instantly without breaking
 
 ## Current Milestone: v0.5.0 Translation Quality
 
-**Goal:** すべての言語ペアで翻訳を動作させ、体感速度と視覚的フィードバックを改善する
+**Goal:** Make all language pairs work and improve perceived speed and visual feedback during translation
 
 **Target features:**
-- English pivot translation — Apple Translation がサポートしないペア（例：JP→DE）をEN経由で中継
-- Shimmer animation — 翻訳中のロード状態をskeleton shimmerで視覚化
-- Chunked translation — 200文字単位で分割して並列翻訳、長文の高速化
+- English pivot translation — relay unsupported pairs (e.g. JP→DE) through English when Apple Translation has no direct model
+- Shimmer animation — visualize translation loading state with a skeleton shimmer overlay
+- Chunked translation — batch-translate up to 200-char sentence chunks via `translations(from:)`, speeding up long texts
 
 ## Constraints
 
