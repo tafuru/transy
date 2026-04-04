@@ -17,10 +17,6 @@ final class SettingsStore {
         }
     }
 
-    /// Missing-model context recorded from real runtime outcomes.
-    /// nil = no relevant runtime state yet; non-nil = a missing-model event occurred.
-    private(set) var missingModelContext: MissingModelContext?
-
     init(
         userDefaults: UserDefaults = .standard,
         preferredLanguageResolver: (() -> Locale.Language)? = nil
@@ -44,18 +40,6 @@ final class SettingsStore {
 
     func snapshotTargetLanguage() -> Locale.Language {
         targetLanguage
-    }
-
-    /// Record a missing-model event from a real runtime outcome.
-    /// Called from popup/runtime when preflight returns .missingModel.
-    func recordMissingModel(
-        targetLanguage: Locale.Language,
-        knownSourceLanguage: Locale.Language? = nil
-    ) {
-        missingModelContext = MissingModelContext(
-            targetLanguage: targetLanguage,
-            knownSourceLanguage: knownSourceLanguage
-        )
     }
 
     private func persistTargetLanguage() {

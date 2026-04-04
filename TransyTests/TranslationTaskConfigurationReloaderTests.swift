@@ -37,23 +37,15 @@ struct TranslationConfigReloaderTests {
 
     @Test("popup dismiss tears down hosted content so translationTask can cancel immediately")
     @MainActor
-    func popupDismissRemovesHostedContent() throws {
+    func popupDismissRemovesHostedContent() {
         let controller = PopupController()
         let coordinator = TranslationCoordinator()
         _ = coordinator.begin(sourceText: "とても長い原文です")
 
         let mockClient = TranslationAvailabilityClient(targetLanguage: Locale.Language(identifier: "en"))
-        let settingsSuiteName = "test-\(UUID())"
-        let settingsDefaults = try #require(UserDefaults(suiteName: settingsSuiteName))
-        defer { settingsDefaults.removePersistentDomain(forName: settingsSuiteName) }
-        let mockSettingsStore = SettingsStore(
-            userDefaults: settingsDefaults,
-            preferredLanguageResolver: { Locale.Language(identifier: "en") }
-        )
         controller.show(
             translationCoordinator: coordinator,
-            availabilityClient: mockClient,
-            settingsStore: mockSettingsStore
+            availabilityClient: mockClient
         ) {}
 
         #expect(controller.hasHostedPopupContent)
