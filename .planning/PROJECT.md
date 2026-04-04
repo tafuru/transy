@@ -24,15 +24,14 @@ Selected text turns into a natural translation almost instantly without breaking
 **Tech stack:** SwiftUI, AppKit, Apple Translation.framework, ServiceManagement.framework, XcodeGen
 **Code:** ~1,700 LOC Swift (app + tests), 50+ automated tests
 
-## Next Milestone Goals
+## Current Milestone: v0.5.0 Translation Quality
 
-TBD — to be defined with `/gsd-new-milestone`
+**Goal:** すべての言語ペアで翻訳を動作させ、体感速度と視覚的フィードバックを改善する
 
-Candidates from backlog:
-- Multi-language support (language pairs beyond JP/EN)
-- Translation history / recent translations
-- Code signing and notarization for broader distribution
-- Popup customization (font size, theme)
+**Target features:**
+- English pivot translation — Apple Translation がサポートしないペア（例：JP→DE）をEN経由で中継
+- Shimmer animation — 翻訳中のロード状態をskeleton shimmerで視覚化
+- Chunked translation — 200文字単位で分割して並列翻訳、長文の高速化
 
 ## Constraints
 
