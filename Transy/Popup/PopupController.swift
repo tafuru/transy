@@ -36,8 +36,7 @@ final class PopupController {
     /// Show the popup with translation-driven content. If already visible, replaces content in-place (no stacking).
     func show(
         translationCoordinator: TranslationCoordinator,
-        availabilityClient: TranslationAvailabilityClient,
-        settingsStore: SettingsStore,
+        targetLanguage: Locale.Language,
         onDismiss: @escaping () -> Void
     ) {
         // Replace content if popup is already visible (rapid re-trigger: reuse position, replace text)
@@ -51,8 +50,7 @@ final class PopupController {
 
         let view = PopupView(
             translationCoordinator: translationCoordinator,
-            availabilityClient: availabilityClient,
-            settingsStore: settingsStore
+            targetLanguage: targetLanguage
         )
         let hostingView = NSHostingView(rootView: view)
         hostingView.sizingOptions = .intrinsicContentSize

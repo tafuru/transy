@@ -4,16 +4,14 @@ import Translation
 /// Popup content stays compact and quiet while swapping between loading, result, and error states.
 struct PopupView: View {
     let translationCoordinator: TranslationCoordinator
-    let availabilityClient: TranslationAvailabilityClient
-    let settingsStore: SettingsStore
+    let targetLanguage: Locale.Language
 
     var body: some View {
         switch translationCoordinator.popupState {
         case let .loading(requestID, sourceText):
             LoadingPopupText(
                 requestContext: .init(requestID: requestID, sourceText: sourceText),
-                availabilityClient: availabilityClient,
-                settingsStore: settingsStore,
+                targetLanguage: targetLanguage,
                 onResult: finishIfStillActive,
                 onError: failIfStillActive
             )
@@ -106,16 +104,14 @@ private struct ContentHeightPreferenceKey: PreferenceKey {
 
 private struct LoadingPopupText: View {
     let requestContext: LoadingRequestContext
-    let availabilityClient: TranslationAvailabilityClient
-    let settingsStore: SettingsStore
+    let targetLanguage: Locale.Language
     let onResult: @Sendable (UUID, String, String) async -> Void
     let onError: @Sendable (UUID, String, String) async -> Void
     @State private var translationConfiguration: TranslationSession.Configuration?
 
     var body: some View {
         let requestContext = requestContext
-        let availabilityClient = availabilityClient
-        let settingsStore = settingsStore
+        let targetLanguage = targetLanguage
         let onResult = onResult
         let onError = onError
 
@@ -123,15 +119,13 @@ private struct LoadingPopupText: View {
             .onChange(of: requestContext.requestID, initial: true) { _, _ in
                 translationConfiguration = nextTranslationConfiguration(
                     after: translationConfiguration,
-                    targetLanguage: availabilityClient.targetLanguage
+                    targetLanguage: targetLanguage
                 )
             }
             .translationTask(
                 translationConfiguration,
                 action: Self.translationAction(
                     requestContext: requestContext,
-                    availabilityClient: availabilityClient,
-                    settingsStore: settingsStore,
                     onResult: onResult,
                     onError: onError
                 )
@@ -140,53 +134,11 @@ private struct LoadingPopupText: View {
 
     nonisolated private static func translationAction(
         requestContext: LoadingRequestContext,
-        availabilityClient: TranslationAvailabilityClient,
-        settingsStore: SettingsStore,
         onResult: @escaping @Sendable (UUID, String, String) async -> Void,
         onError: @escaping @Sendable (UUID, String, String) async -> Void
     ) -> (TranslationSession) async -> Void {
         { session in
             do {
-                let preflightResult = try await availabilityClient.preflight(
-                    for: requestContext.sourceText
-                )
-
-                switch preflightResult {
-                case .ready:
-                    break
-                case .missingModel:
-                    // Record missing-model relevance in settings without mutating the active popup
-                    await MainActor.run {
-                        settingsStore.recordMissingModel(
-                            targetLanguage: availabilityClient.targetLanguage,
-                            knownSourceLanguage: nil
-                        )
-                    }
-                    await onError(
-                        requestContext.requestID,
-                        requestContext.sourceText,
-                        TranslationErrorMapper.modelNotInstalled
-                    )
-                    return
-                case .unsupported:
-                    await onError(
-                        requestContext.requestID,
-                        requestContext.sourceText,
-                        TranslationErrorMapper.unsupportedLanguagePair
-                    )
-                    return
-                case .couldNotDetect:
-                    await onError(
-                        requestContext.requestID,
-                        requestContext.sourceText,
-                        TranslationErrorMapper.couldNotDetectSourceLanguage
-                    )
-                    return
-                case let .failed(message):
-                    await onError(requestContext.requestID, requestContext.sourceText, message)
-                    return
-                }
-
                 let response = try await session.translate(requestContext.sourceText)
                 await onResult(
                     requestContext.requestID,

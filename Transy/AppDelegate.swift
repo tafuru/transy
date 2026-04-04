@@ -18,19 +18,17 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: - Trigger flow
 
     private func handleTrigger(text: String) {
-        let normalizedText = normalizedSourceText(text)
+        let normalizedText = TextNormalization.normalized(text)
         guard !normalizedText.isEmpty else { return }
 
         _ = translationCoordinator.begin(sourceText: normalizedText)
         appState.isPopupVisible = true
 
-        let frozenTarget = settingsStore.snapshotTargetLanguage()
-        let availabilityClient = TranslationAvailabilityClient(targetLanguage: frozenTarget)
+        let targetLanguage = settingsStore.snapshotTargetLanguage()
 
         popupController.show(
             translationCoordinator: translationCoordinator,
-            availabilityClient: availabilityClient,
-            settingsStore: settingsStore
+            targetLanguage: targetLanguage
         ) { [weak self] in
             guard let self else { return }
             self.translationCoordinator.dismiss()

@@ -2,7 +2,6 @@ import Foundation
 import Translation
 
 enum TranslationErrorMapper {
-    static let modelNotInstalled = "Translation model not installed."
     static let unsupportedLanguagePair = "This language pair isn’t supported."
     static let couldNotDetectSourceLanguage = "Couldn't detect the source language."
     static let translationFailed = "Translation failed."
