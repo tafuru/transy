@@ -1,7 +1,7 @@
 import AppKit
 
 /// Saves, reads, and restores NSPasteboard.general contents around a trigger capture.
-/// All methods run on @MainActor and are used from HotkeyMonitor/AppDelegate during the trigger flow.
+/// All methods run on @MainActor and are used from AppDelegate during the trigger flow.
 @MainActor
 final class ClipboardManager {
     /// Snapshot the current clipboard contents before the source app writes the selection.
