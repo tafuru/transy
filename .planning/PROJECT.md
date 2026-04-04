@@ -2,57 +2,37 @@
 
 ## What This Is
 
-Transy is a lightweight macOS menu bar translator for personal Japanese/English reading assistance. Select text in any app, press `Command+C` twice, and a native popup instantly shows the translation using Apple's on-device Translation framework. No network required, no focus stealing, clipboard is restored after capture.
+Transy is a lightweight macOS menu bar translator for personal Japanese/English reading assistance. Copy text in any app and a native popup instantly shows the translation using Apple's on-device Translation framework. No network required, no focus stealing, no Accessibility permission required.
 
 ## Core Value
 
 Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
 
-## Current Milestone: v0.4.0 DevOps & Improvements
+## Current State: v0.4.0 SHIPPED
 
-**Goal:** Establish CI/CD pipeline, automate releases with DMG packaging, add permission-free clipboard monitoring trigger, and simplify translation model downloads using framework-native UI.
+**Shipped:** 2026-04-04 — 13 phases, 22 plans, 4 milestones
 
-**Target features:**
-- GitHub Actions CI (SwiftLint + SwiftFormat + build + test)
-- Automated release workflow (tag → DMG → GitHub Release)
-- Clipboard monitoring trigger mode (no Accessibility permission required)
-- Translation model download via framework-native UI
+**What works:**
+- Copy text in any app → translation popup appears within ~500ms (clipboard monitoring, no permission required)
+- On-device translation via Apple Translation framework (no network, private)
+- Framework prompts for model downloads automatically when needed
+- macOS-standard tabbed Settings (target language, launch at login)
+- First-launch Accessibility onboarding removed (no longer needed)
+- Full CI pipeline (SwiftLint + SwiftFormat + build + test on every PR)
+- Automated releases (tag → DMG → GitHub Release)
 
-## Requirements
+**Tech stack:** SwiftUI, AppKit, Apple Translation.framework, ServiceManagement.framework, XcodeGen
+**Code:** ~1,700 LOC Swift (app + tests), 50+ automated tests
 
-### Validated
+## Next Milestone Goals
 
-- ✓ Menu bar utility with no Dock icon — v0.1.0
-- ✓ Double ⌘C triggers translation of selected text — v0.1.0
-- ✓ Lightweight popup with loading placeholder then translated result — v0.1.0
-- ✓ Target language settings with model download guidance — v0.1.0
-- ✓ Popup displays translated text with word wrapping and scrolling — v0.2.0
-- ✓ Popup appears near cursor with edge-clamping — v0.2.0
-- ✓ First-launch onboarding with Accessibility permission guidance — v0.3.0
-- ✓ macOS-standard tabbed Settings UI (General / About) — v0.3.0
-- ✓ Launch at Login toggle — v0.3.0
-- ✓ CI pipeline with SwiftLint, SwiftFormat, build and test — Phase 10
-- ✓ Automated release workflow with DMG packaging — Phase 11
-- ✓ Permission-free clipboard monitoring trigger (replaces Double ⌘C) — Phase 12
+TBD — to be defined with `/gsd-new-milestone`
 
-### Active
-
-(Requirements defined in REQUIREMENTS.md for v0.4.0)
-
-### Out of Scope
-
-- Popup auto-dismiss timer — deprioritized; clipboard monitoring mode makes auto-dismiss less relevant.
-- Translation history or clipboard-management features — v1 should stay focused on instant translation of the current selection.
-- Manual text entry or compose flows — the primary interaction is translating text selected in other apps.
-- Shortcut remapping and extensive UI customization — defer until the core translation loop proves valuable.
-- Team/shared workflows — this is currently optimized for the creator's personal reading workflow.
-
-## Context
-
-Shipped v0.3.0 with 2,258 LOC Swift (app + tests).
-Tech stack: SwiftUI, AppKit, Apple Translation.framework, ServiceManagement.framework, XcodeGen.
-50 automated tests across 13 suites. 9 phases, 16 plans executed across 3 milestones.
-Built in 12 days (2026-03-14 → 2026-03-25).
+Candidates from backlog:
+- Multi-language support (language pairs beyond JP/EN)
+- Translation history / recent translations
+- Code signing and notarization for broader distribution
+- Popup customization (font size, theme)
 
 ## Constraints
 
@@ -66,7 +46,7 @@ Built in 12 days (2026-03-14 → 2026-03-25).
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
 | Menu bar-only app with no Dock presence | Keeps the tool ambient and available without feeling like a full app window | ✓ Good |
-| Double-press `Command+C` as the trigger | Reuses an existing selection-copy gesture with minimal friction | ✓ Good |
+| ~~Double-press Command+C as the trigger~~ → Clipboard monitoring | Originally used Double ⌘C; replaced in v0.4.0 with clipboard monitoring — no Accessibility permission, simpler UX | ✓ Better |
 | Popup shows the source text as a loading-state placeholder before replacement | Preserves context during translation and makes latency feel intentional | ✓ Good |
 | Use Apple's Translation framework as the initial translation engine | Prioritizes local speed, privacy, and native macOS integration over cloud-provider flexibility | ✓ Good |
 | Target language is configured in a separate settings window | Keeps the translation popup minimal and focused on the result | ✓ Good |
@@ -77,8 +57,11 @@ Built in 12 days (2026-03-14 → 2026-03-25).
 | Cursor captured once at trigger time | Popup stays anchored to original cursor position through content changes | ✓ Good |
 | macOS-standard TabView for Settings | Follows platform conventions, scales to more tabs naturally | ✓ Good |
 | SMAppService.mainApp for Login Items | System state as source of truth, no UserDefaults needed | ✓ Good |
-| Proactive AX guidance on launch | Users never wonder why the app isn't working — guidance appears immediately | ✓ Good |
+| Proactive AX guidance on launch → removed in v0.4.0 | No longer needed: clipboard monitoring requires no Accessibility permission | ✓ Simplified |
 | Custom Binding for SMAppService toggle | Prevents onChange re-entry and initial side effects during .task | ✓ Good |
+| NSPasteboard.general.changeCount polling at 500ms | Lightweight, no entitlements, works in all apps | ✓ Good |
+| Framework-native translation model download | Removed manual System Settings guidance — framework handles download prompts natively | ✓ Simpler |
+| Removed preflight LanguageAvailability.status() call | Was causing double ML inference per translation; TranslationErrorMapper covers all error cases | ✓ Faster |
 
 ---
 
@@ -100,4 +83,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-04 after Phase 13 completion*
+*Last updated: 2026-04-04 after v0.4.0 milestone completion*
