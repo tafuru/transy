@@ -24,12 +24,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         _ = translationCoordinator.begin(sourceText: normalizedText)
         appState.isPopupVisible = true
 
-        let frozenTarget = settingsStore.snapshotTargetLanguage()
-        let availabilityClient = TranslationAvailabilityClient(targetLanguage: frozenTarget)
+        let targetLanguage = settingsStore.snapshotTargetLanguage()
 
         popupController.show(
             translationCoordinator: translationCoordinator,
-            availabilityClient: availabilityClient
+            targetLanguage: targetLanguage
         ) { [weak self] in
             guard let self else { return }
             self.translationCoordinator.dismiss()
