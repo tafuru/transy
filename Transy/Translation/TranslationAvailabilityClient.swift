@@ -24,7 +24,7 @@ struct TranslationAvailabilityClient {
     }
 
     func preflight(for sourceText: String) async throws -> PreflightResult {
-        let sampleText = detectionSample(from: sourceText)
+        let sampleText = TextNormalization.detectionSample(from: sourceText)
         guard !sampleText.isEmpty else {
             return .couldNotDetect
         }

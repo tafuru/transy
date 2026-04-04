@@ -18,7 +18,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: - Trigger flow
 
     private func handleTrigger(text: String) {
-        let normalizedText = normalizedSourceText(text)
+        let normalizedText = TextNormalization.normalized(text)
         guard !normalizedText.isEmpty else { return }
 
         _ = translationCoordinator.begin(sourceText: normalizedText)

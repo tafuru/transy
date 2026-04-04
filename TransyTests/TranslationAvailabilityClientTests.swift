@@ -4,18 +4,18 @@ import Translation
 @testable import Transy
 
 struct TranslationAvailabilityClientTests {
-    @Test("normalizedSourceText trims only surrounding whitespace and newlines")
+    @Test("TextNormalization.normalized trims only surrounding whitespace and newlines")
     func normalizedSourceTextTrimsEdgesOnly() {
         let source = "\n  こんにちは   world  \n"
 
-        #expect(normalizedSourceText(source) == "こんにちは   world")
+        #expect(TextNormalization.normalized(source) == "こんにちは   world")
     }
 
-    @Test("detectionSample collapses repeated whitespace for preflight only")
+    @Test("TextNormalization.detectionSample collapses repeated whitespace for preflight only")
     func detectionSampleCollapsesWhitespace() {
         let source = "\n  こ ん に ち は \n\n world \t\t test  "
 
-        #expect(detectionSample(from: source) == "こ ん に ち は world test")
+        #expect(TextNormalization.detectionSample(from: source) == "こ ん に ち は world test")
     }
 
     @Test("installed availability maps to ready")
