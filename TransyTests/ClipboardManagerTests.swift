@@ -74,7 +74,7 @@ struct ClipboardManagerTests {
         pb.clearContents()
         pb.setString("AAA", forType: .string)
 
-        // 2. HotkeyMonitor fires on first Cmd+C — snapshot captured here (clipboard still "AAA")
+        // 2. Snapshot captured before source app writes selection (clipboard still "AAA")
         let firstPressSnapshot = mgr.saveCurrentContents()
 
         // 3. Source app processes first Cmd+C and writes selection ("BBB") to clipboard

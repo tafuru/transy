@@ -18,8 +18,5 @@ struct MenuBarView: View {
             }
             .keyboardShortcut("q", modifiers: .command)
         }
-        .onAppear {
-            GuidanceWindowController.shared.showIfNeeded()
-        }
     }
 }

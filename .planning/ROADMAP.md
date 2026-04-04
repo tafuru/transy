@@ -48,7 +48,7 @@ Full details: [milestones/v0.3.0-ROADMAP.md](milestones/v0.3.0-ROADMAP.md)
 
 - [x] **Phase 10: CI Pipeline** - GitHub Actions workflow with SwiftLint, SwiftFormat, build, and test on PRs (completed 2026-03-27)
 - [x] **Phase 11: Release Automation** - Tag-push-triggered workflow that builds, packages a DMG, and creates/uploads a GitHub Release (1 plan) (completed 2026-03-29)
-- [ ] **Phase 12: Clipboard Monitoring** - Permission-free trigger mode via NSPasteboard polling with Settings UI
+- [x] **Phase 12: Clipboard Monitoring** - Permission-free clipboard monitoring trigger replacing Double ⌘C (2 plans) (completed 2026-04-04)
 - [ ] **Phase 13: Translation Download UI** - Framework-native model download prompt replaces manual System Settings guidance
 
 ## Phase Details
@@ -82,16 +82,19 @@ Plans:
 - [x] 11-01-PLAN.md — Release workflow and release notes config (tag trigger → Release build → DMG → GitHub Release)
 
 ### Phase 12: Clipboard Monitoring
-**Goal**: Users can translate copied text without Accessibility permission by enabling clipboard monitoring as an alternative trigger mode
+**Goal**: Users can translate copied text without any permission requirements — clipboard monitoring replaces Double ⌘C as the sole, always-on trigger
 **Depends on**: Nothing (independent app feature)
 **Requirements**: CLB-01, CLB-02, CLB-03, CLB-04
 **Success Criteria** (what must be TRUE):
   1. With clipboard monitoring enabled, copying text in any app triggers a translation popup within ~500ms
-  2. User can switch between "Double ⌘C" and "Clipboard monitoring" trigger modes in Settings
+  2. Clipboard monitoring is the sole trigger mode — no Accessibility permission required, no mode picker in Settings
   3. Password manager entries (concealed type) and transient clipboard content are silently skipped
   4. Transy's own clipboard writes do not re-trigger translation
-**Plans**: TBD
-**UI hint**: yes
+**Plans**: 2 plans
+
+Plans:
+- [x] 12-01-PLAN.md — Create ClipboardMonitor with polling timer, content filtering, and unit tests
+- [x] 12-02-PLAN.md — Delete legacy trigger/permission code, wire ClipboardMonitor into AppDelegate
 
 ### Phase 13: Translation Download UI
 **Goal**: Missing translation models are handled by the framework's built-in download prompt instead of manual System Settings navigation
@@ -118,7 +121,7 @@ Plans:
 | 9. General Settings Features | v0.3.0 | 1/1 | Complete | 2026-03-25 |
 | 10. CI Pipeline | v0.4.0 | 2/2 | Complete    | 2026-03-27 |
 | 11. Release Automation | v0.4.0 | 1/1 | Complete    | 2026-03-29 |
-| 12. Clipboard Monitoring | v0.4.0 | 0/? | Not started | - |
+| 12. Clipboard Monitoring | v0.4.0 | 2/2 | Complete    | 2026-04-04 |
 | 13. Translation Download UI | v0.4.0 | 0/? | Not started | - |
 
 ---
