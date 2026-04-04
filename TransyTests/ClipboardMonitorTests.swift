@@ -4,7 +4,6 @@ import Testing
 
 @Suite(.serialized)
 struct ClipboardMonitorTests {
-
     private func savePasteboard() -> [NSPasteboardItem] {
         let pb = NSPasteboard.general
         return (pb.pasteboardItems ?? []).compactMap { item in
