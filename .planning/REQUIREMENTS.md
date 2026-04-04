@@ -29,7 +29,7 @@ Requirements for DevOps & Improvements milestone. Each maps to roadmap phases.
 
 ### Translation Download UI
 
-- [ ] **TDL-01**: Translation framework's built-in download UI replaces manual System Settings guidance
+- [x] **TDL-01**: Translation framework's built-in download UI replaces manual System Settings guidance
 
 ## Future Requirements
 
@@ -59,7 +59,7 @@ None deferred for this milestone.
 | CLB-02 | Phase 12 | Pending |
 | CLB-03 | Phase 12 | Pending |
 | CLB-04 | Phase 12 | Pending |
-| TDL-01 | Phase 13 | Pending |
+| TDL-01 | Phase 13 | Complete |
 
 **Coverage:**
 - v0.4.0 requirements: 12 total

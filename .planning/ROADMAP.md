@@ -49,7 +49,7 @@ Full details: [milestones/v0.3.0-ROADMAP.md](milestones/v0.3.0-ROADMAP.md)
 - [x] **Phase 10: CI Pipeline** - GitHub Actions workflow with SwiftLint, SwiftFormat, build, and test on PRs (completed 2026-03-27)
 - [x] **Phase 11: Release Automation** - Tag-push-triggered workflow that builds, packages a DMG, and creates/uploads a GitHub Release (1 plan) (completed 2026-03-29)
 - [x] **Phase 12: Clipboard Monitoring** - Permission-free clipboard monitoring trigger replacing Double ⌘C (2 plans) (completed 2026-04-04)
-- [ ] **Phase 13: Translation Download UI** - Framework-native model download prompt replaces manual System Settings guidance (1 plan)
+- [x] **Phase 13: Translation Download UI** - Framework-native model download prompt replaces manual System Settings guidance (1 plan) (completed 2026-04-04)
 
 ## Phase Details
 
@@ -106,7 +106,7 @@ Plans:
 **Plans**: 1 plan
 
 Plans:
-- [ ] 13-01-PLAN.md — Remove .missingModel short-circuit, delete guidance infrastructure, let framework handle model downloads
+- [x] 13-01-PLAN.md — Remove .missingModel short-circuit, delete guidance infrastructure, let framework handle model downloads
 **UI hint**: yes
 
 ## Progress
@@ -125,7 +125,7 @@ Plans:
 | 10. CI Pipeline | v0.4.0 | 2/2 | Complete    | 2026-03-27 |
 | 11. Release Automation | v0.4.0 | 1/1 | Complete    | 2026-03-29 |
 | 12. Clipboard Monitoring | v0.4.0 | 2/2 | Complete    | 2026-04-04 |
-| 13. Translation Download UI | v0.4.0 | 0/? | Not started | - |
+| 13. Translation Download UI | v0.4.0 | 1/1 | Complete   | 2026-04-04 |
 
 ---
 
