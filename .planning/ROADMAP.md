@@ -71,7 +71,12 @@ Full details: [milestones/v0.4.0-ROADMAP.md](milestones/v0.4.0-ROADMAP.md)
   1. A shimmer animation plays over the loading-state text from the moment translation begins until the result appears
   2. Showing or hiding the shimmer does not change the popup's layout dimensions (no resize notification storm)
   3. When System Preferences → Accessibility → Reduce Motion is enabled, the shimmer is replaced with a static placeholder — no animation plays
-**Plans**: TBD (estimated 2 plans)
+**Plans**: 2 plans
+
+Plans:
+- [ ] 14-01-PLAN.md — Create ShimmerModifier ViewModifier + unit tests
+- [ ] 14-02-PLAN.md — Wire shimmer into popup loading state + visual verification
+
 **UI hint**: yes
 
 ---
