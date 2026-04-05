@@ -63,8 +63,6 @@ Full details: [milestones/v0.4.0-ROADMAP.md](milestones/v0.4.0-ROADMAP.md)
 
 ## Phase Details
 
-### 🚧 v0.5.0 Translation Quality
-
 ### Phase 14: Shimmer Animation
 **Goal**: Users see a smooth animated skeleton shimmer while translation is in progress, with no jarring layout shifts
 **Depends on**: Phase 13
