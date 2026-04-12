@@ -92,7 +92,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 15-01-PLAN.md — TextChunker TDD: sentence-boundary chunking with separator recording
+- [x] 15-01-PLAN.md — TextChunker TDD: sentence-boundary chunking with separator recording
 - [ ] 15-02-PLAN.md — Wire chunked batch translation into PopupView
 
 ---
@@ -125,7 +125,7 @@ Plans:
 | 12. Clipboard Monitoring | v0.4.0 | 2/2 | Complete | 2026-04-04 |
 | 13. Translation Download UI | v0.4.0 | 1/1 | Complete | 2026-04-04 |
 | 14. Shimmer Animation | v0.5.0 | 2/2 | Complete    | 2026-04-12 |
-| 15. Chunked Translation | v0.5.0 | 0/2 | Not started | — |
+| 15. Chunked Translation | v0.5.0 | 1/2 | In Progress|  |
 | 16. Pivot Translation | v0.5.0 | 0/2 | Not started | — |
 
 ---
