@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v0.5.0
 milestone_name: Translation Quality
-status: "Defining requirements"
-stopped_at: Milestone started
-last_updated: "2026-04-04T09:00:00.000Z"
+status: Ready to execute
+stopped_at: Completed 14-01-PLAN.md
+last_updated: "2026-04-12T09:57:55.463Z"
 progress:
-  total_phases: 0
+  total_phases: 3
   completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
+  total_plans: 2
+  completed_plans: 1
 ---
 
 # Project State
@@ -19,14 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-04)
 
 **Core value:** Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
-**Current focus:** v0.5.0 Translation Quality — defining requirements
+**Current focus:** Phase 14 — shimmer-animation
 
 ## Current Position
 
-Phase: Not started (defining requirements)
-Plan: —
-Status: Defining requirements
-Last activity: 2026-04-04 — Milestone v0.5.0 started
+Phase: 14 (shimmer-animation) — EXECUTING
+Plan: 2 of 2
 
 ## Performance Metrics
 
@@ -52,6 +50,7 @@ Last activity: 2026-04-04 — Milestone v0.5.0 started
 | Phase 10 P01 | 88 | 2 tasks | 5 files |
 | Phase 11 P01 | 98 | 2 tasks | 2 files |
 | Phase 13 P01 | 348 | 2 tasks | 11 files |
+| Phase 14 P01 | 323 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -67,6 +66,8 @@ Recent decisions affecting current work:
 - [v0.1.0]: Apple Translation framework chosen as backend — on-device speed, privacy, macOS-native integration
 - [v0.1.0]: Popup is NSPanel with `.nonactivatingPanel` styleMask — SwiftUI `WindowGroup` is a hard anti-pattern
 - [v0.1.0]: `project.yml` managed by xcodegen is the single source of truth for `Transy.xcodeproj`
+- [Phase 14]: ShimmerModifier uses .overlay (not ZStack) for zero layout impact on PopupText GeometryReader
+- [Phase 14]: Reduce Motion guard returns raw content with no overlay — per CONTEXT.md locked decision
 
 ### Pending Todos
 
@@ -80,8 +81,8 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-04-04
-Stopped at: v0.5.0 milestone started — defining requirements
+Last session: 2026-04-12T09:57:55.461Z
+Stopped at: Completed 14-01-PLAN.md
 Resume file: None
 
 # Project State
