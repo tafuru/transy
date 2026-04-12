@@ -116,6 +116,7 @@ private struct LoadingPopupText: View {
         let onError = onError
 
         return PopupText(text: requestContext.sourceText, isMuted: true)
+            .shimmer()
             .onChange(of: requestContext.requestID, initial: true) { _, _ in
                 translationConfiguration = nextTranslationConfiguration(
                     after: translationConfiguration,
