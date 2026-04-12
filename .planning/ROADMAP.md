@@ -89,7 +89,11 @@ Plans:
   1. A text of 201+ characters is split into sentence-boundary chunks via `NLTokenizer` and all chunks are submitted as one `translations(from:)` batch call
   2. The translated chunks are recombined in input order — the result reads as continuous prose regardless of chunk count
   3. A text of ≤200 characters is translated directly without any chunking (single-call path, no overhead)
-**Plans**: TBD (estimated 2 plans)
+**Plans**: 2 plans
+
+Plans:
+- [ ] 15-01-PLAN.md — TextChunker TDD: sentence-boundary chunking with separator recording
+- [ ] 15-02-PLAN.md — Wire chunked batch translation into PopupView
 
 ---
 
