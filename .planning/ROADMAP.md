@@ -58,7 +58,7 @@ Full details: [milestones/v0.4.0-ROADMAP.md](milestones/v0.4.0-ROADMAP.md)
 ### 🚧 v0.5.0 Translation Quality
 
 - [x] **Phase 14: Shimmer Animation** — Animated skeleton shimmer during translation loading state (completed 2026-04-12)
-- [ ] **Phase 15: Chunked Translation** — Split long text at sentence boundaries and translate as a batch
+- [x] **Phase 15: Chunked Translation** — Split long text at sentence boundaries and translate as a batch (completed 2026-04-12)
 - [ ] **Phase 16: Pivot Translation** — Chain source→EN→target when language pair is unsupported
 
 ## Phase Details
@@ -93,7 +93,7 @@ Plans:
 
 Plans:
 - [x] 15-01-PLAN.md — TextChunker TDD: sentence-boundary chunking with separator recording
-- [ ] 15-02-PLAN.md — Wire chunked batch translation into PopupView
+- [x] 15-02-PLAN.md — Wire chunked batch translation into PopupView
 
 ---
 
@@ -125,7 +125,7 @@ Plans:
 | 12. Clipboard Monitoring | v0.4.0 | 2/2 | Complete | 2026-04-04 |
 | 13. Translation Download UI | v0.4.0 | 1/1 | Complete | 2026-04-04 |
 | 14. Shimmer Animation | v0.5.0 | 2/2 | Complete    | 2026-04-12 |
-| 15. Chunked Translation | v0.5.0 | 1/2 | In Progress|  |
+| 15. Chunked Translation | v0.5.0 | 2/2 | Complete   | 2026-04-12 |
 | 16. Pivot Translation | v0.5.0 | 0/2 | Not started | — |
 
 ---
