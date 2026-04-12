@@ -9,9 +9,9 @@ Requirements for Translation Quality milestone. Each maps to roadmap phases.
 
 ### Shimmer Animation
 
-- [ ] **SHM-01**: Translation loading state shows a shimmer/skeleton animation
-- [ ] **SHM-02**: Shimmer is zero-layout-impact (does not trigger NSPanel resize)
-- [ ] **SHM-03**: Shimmer is disabled and falls back to static display when Reduce Motion is enabled
+- [x] **SHM-01**: Translation loading state shows a shimmer/skeleton animation
+- [x] **SHM-02**: Shimmer is zero-layout-impact (does not trigger NSPanel resize)
+- [x] **SHM-03**: Shimmer is disabled and falls back to static display when Reduce Motion is enabled
 
 ### Chunked Translation
 
@@ -45,9 +45,9 @@ Requirements for Translation Quality milestone. Each maps to roadmap phases.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SHM-01 | Phase 14 | Pending |
-| SHM-02 | Phase 14 | Pending |
-| SHM-03 | Phase 14 | Pending |
+| SHM-01 | Phase 14 | Complete |
+| SHM-02 | Phase 14 | Complete |
+| SHM-03 | Phase 14 | Complete |
 | CHK-01 | Phase 15 | Pending |
 | CHK-02 | Phase 15 | Pending |
 | CHK-03 | Phase 15 | Pending |

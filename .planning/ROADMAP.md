@@ -57,13 +57,11 @@ Full details: [milestones/v0.4.0-ROADMAP.md](milestones/v0.4.0-ROADMAP.md)
 
 ### 🚧 v0.5.0 Translation Quality
 
-- [ ] **Phase 14: Shimmer Animation** — Animated skeleton shimmer during translation loading state
+- [x] **Phase 14: Shimmer Animation** — Animated skeleton shimmer during translation loading state (completed 2026-04-12)
 - [ ] **Phase 15: Chunked Translation** — Split long text at sentence boundaries and translate as a batch
 - [ ] **Phase 16: Pivot Translation** — Chain source→EN→target when language pair is unsupported
 
 ## Phase Details
-
-### 🚧 v0.5.0 Translation Quality
 
 ### Phase 14: Shimmer Animation
 **Goal**: Users see a smooth animated skeleton shimmer while translation is in progress, with no jarring layout shifts
@@ -73,7 +71,12 @@ Full details: [milestones/v0.4.0-ROADMAP.md](milestones/v0.4.0-ROADMAP.md)
   1. A shimmer animation plays over the loading-state text from the moment translation begins until the result appears
   2. Showing or hiding the shimmer does not change the popup's layout dimensions (no resize notification storm)
   3. When System Preferences → Accessibility → Reduce Motion is enabled, the shimmer is replaced with a static placeholder — no animation plays
-**Plans**: TBD (estimated 2 plans)
+**Plans**: 2 plans
+
+Plans:
+- [x] 14-01-PLAN.md — Create ShimmerModifier ViewModifier + unit tests
+- [x] 14-02-PLAN.md — Wire shimmer into popup loading state + visual verification
+
 **UI hint**: yes
 
 ---
@@ -117,7 +120,7 @@ Full details: [milestones/v0.4.0-ROADMAP.md](milestones/v0.4.0-ROADMAP.md)
 | 11. Release Automation | v0.4.0 | 1/1 | Complete | 2026-03-29 |
 | 12. Clipboard Monitoring | v0.4.0 | 2/2 | Complete | 2026-04-04 |
 | 13. Translation Download UI | v0.4.0 | 1/1 | Complete | 2026-04-04 |
-| 14. Shimmer Animation | v0.5.0 | 0/2 | Not started | — |
+| 14. Shimmer Animation | v0.5.0 | 2/2 | Complete    | 2026-04-12 |
 | 15. Chunked Translation | v0.5.0 | 0/2 | Not started | — |
 | 16. Pivot Translation | v0.5.0 | 0/2 | Not started | — |
 
