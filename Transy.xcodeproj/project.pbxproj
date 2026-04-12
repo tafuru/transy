@@ -31,11 +31,13 @@
 		B1EB76E4610AD4BDF6EBC9B7 /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A40B5997CA8261D6C13685A /* GeneralSettingsView.swift */; };
 		C9B1B3F6BC1033CEFD7EA044 /* TranslationCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615771C52D62AEAC2E7F273C /* TranslationCoordinatorTests.swift */; };
 		CBB7A7141F49E1A7095D6372 /* SupportedLanguageOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE6B67971BD2B40E2F946A /* SupportedLanguageOption.swift */; };
+		D7873F0DC83895715B11BAC9 /* ShimmerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571781F5ACF1EB7FBE63EBC /* ShimmerModifier.swift */; };
 		DB8EBF7032C96F568FF72EC1 /* TextNormalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524A77BC83DDE3C480C0F14 /* TextNormalization.swift */; };
 		DC3FB1ED9C6A4B8610EB118A /* PopupPositionCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9499F0FC1EB29A2694E99AA4 /* PopupPositionCalculator.swift */; };
 		DEDAA0798E3B1F676501EF2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE40CB96A1C0949349DCFD1 /* AppDelegate.swift */; };
 		EB38AEDA0830C16E5E5BC236 /* ClipboardMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDD6A5AE29D81643B8B59A1 /* ClipboardMonitorTests.swift */; };
 		F3DEA91AAA877AC3FE7F4E2F /* TranslationErrorMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8007AE0E9F8439938296AE4E /* TranslationErrorMapper.swift */; };
+		FA11E29553C4FB989AB0CB4B /* ShimmerModifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC8394AFE49268B2F159F4F /* ShimmerModifierTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		0A40B5997CA8261D6C13685A /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
+		1571781F5ACF1EB7FBE63EBC /* ShimmerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerModifier.swift; sourceTree = "<group>"; };
 		1A3FE03FD3BB8F70C1424BCA /* SettingsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStoreTests.swift; sourceTree = "<group>"; };
 		21E661331FEAC8733B0C9F23 /* TranslationTaskConfigurationReloaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationTaskConfigurationReloaderTests.swift; sourceTree = "<group>"; };
 		2524A77BC83DDE3C480C0F14 /* TextNormalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextNormalization.swift; sourceTree = "<group>"; };
@@ -67,6 +70,7 @@
 		47FE6B67971BD2B40E2F946A /* SupportedLanguageOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedLanguageOption.swift; sourceTree = "<group>"; };
 		4A6419329179F1E05CAA17FA /* ClipboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardManager.swift; sourceTree = "<group>"; };
 		4E11588B37785CBBB800DC5E /* PopupTextLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupTextLayoutTests.swift; sourceTree = "<group>"; };
+		5FC8394AFE49268B2F159F4F /* ShimmerModifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerModifierTests.swift; sourceTree = "<group>"; };
 		615771C52D62AEAC2E7F273C /* TranslationCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationCoordinatorTests.swift; sourceTree = "<group>"; };
 		73DC9F4A18702B8B9A29CFC9 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
 		7D1C108BF83E076CCC1BBA26 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
@@ -175,6 +179,7 @@
 				B88A7A5D6B25972BC5CE7475 /* PopupPositioningTests.swift */,
 				4E11588B37785CBBB800DC5E /* PopupTextLayoutTests.swift */,
 				1A3FE03FD3BB8F70C1424BCA /* SettingsStoreTests.swift */,
+				5FC8394AFE49268B2F159F4F /* ShimmerModifierTests.swift */,
 				F60EB17A8A5F1F992BC90047 /* TargetLanguageSnapshotTests.swift */,
 				615771C52D62AEAC2E7F273C /* TranslationCoordinatorTests.swift */,
 				C4FC79CA1B09F4378844F508 /* TranslationRaceGuardTests.swift */,
@@ -230,6 +235,7 @@
 				91A903E7EC95F736D96FDA48 /* PopupController.swift */,
 				9499F0FC1EB29A2694E99AA4 /* PopupPositionCalculator.swift */,
 				93D36133B86B37DA3B2E3B98 /* PopupView.swift */,
+				1571781F5ACF1EB7FBE63EBC /* ShimmerModifier.swift */,
 			);
 			path = Popup;
 			sourceTree = "<group>";
@@ -370,6 +376,7 @@
 				2A462835DB11A8E7C0466126 /* PopupPositioningTests.swift in Sources */,
 				8DD499688FF5E3D9DB130C1E /* PopupTextLayoutTests.swift in Sources */,
 				7EB2D150C6557F03D03EE672 /* SettingsStoreTests.swift in Sources */,
+				FA11E29553C4FB989AB0CB4B /* ShimmerModifierTests.swift in Sources */,
 				9B88142989507F94F5A02C89 /* TargetLanguageSnapshotTests.swift in Sources */,
 				C9B1B3F6BC1033CEFD7EA044 /* TranslationCoordinatorTests.swift in Sources */,
 				8C0375FD479C9642EC9F0A92 /* TranslationRaceGuardTests.swift in Sources */,
@@ -394,6 +401,7 @@
 				47CFCB32F5FA2997EDDE2455 /* PopupView.swift in Sources */,
 				AC26B804437DB031761E20D3 /* SettingsStore.swift in Sources */,
 				83ADDBAA20196C7AED7EDDF4 /* SettingsView.swift in Sources */,
+				D7873F0DC83895715B11BAC9 /* ShimmerModifier.swift in Sources */,
 				CBB7A7141F49E1A7095D6372 /* SupportedLanguageOption.swift in Sources */,
 				DB8EBF7032C96F568FF72EC1 /* TextNormalization.swift in Sources */,
 				AAFA7FD602DEF26AC12C9B9F /* TranslationCoordinator.swift in Sources */,
