@@ -7,7 +7,7 @@ struct TextChunkerTests {
         let result = TextChunker.chunk(text: "Hello world.", threshold: 200)
         #expect(result.count == 1)
         #expect(result.first?.chunk == "Hello world.")
-        #expect(result.first?.separator == "")
+        #expect(result.first?.separator.isEmpty == true)
     }
 
     @Test("text exactly at threshold returns single segment")
@@ -16,7 +16,7 @@ struct TextChunkerTests {
         let result = TextChunker.chunk(text: text, threshold: 200)
         #expect(result.count == 1)
         #expect(result.first?.chunk == text)
-        #expect(result.first?.separator == "")
+        #expect(result.first?.separator.isEmpty == true)
     }
 
     @Test("splits at sentence boundaries when text exceeds threshold")
