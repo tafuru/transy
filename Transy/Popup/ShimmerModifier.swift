@@ -10,7 +10,7 @@ struct ShimmerModifier: ViewModifier {
         } else {
             content
                 .overlay { shimmerOverlay }
-                .clipped()
+                .clipShape(RoundedRectangle(cornerRadius: 14))
         }
     }
 
