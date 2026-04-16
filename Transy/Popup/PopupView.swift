@@ -114,6 +114,7 @@ private struct LoadingPopupText: View {
         let targetLanguage = targetLanguage
         let onResult = onResult
         let onError = onError
+        let segments = TextChunker.chunk(text: requestContext.sourceText)
 
         return PopupText(text: requestContext.sourceText, isMuted: true)
             .shimmer()
@@ -127,6 +128,7 @@ private struct LoadingPopupText: View {
                 translationConfiguration,
                 action: Self.translationAction(
                     requestContext: requestContext,
+                    segments: segments,
                     onResult: onResult,
                     onError: onError
                 )
@@ -135,16 +137,35 @@ private struct LoadingPopupText: View {
 
     nonisolated private static func translationAction(
         requestContext: LoadingRequestContext,
+        segments: [TextChunker.ChunkedSegment],
         onResult: @escaping @Sendable (UUID, String, String) async -> Void,
         onError: @escaping @Sendable (UUID, String, String) async -> Void
     ) -> (TranslationSession) async -> Void {
         { session in
             do {
-                let response = try await session.translate(requestContext.sourceText)
+                let translatedText: String
+
+                if segments.count <= 1 {
+                    let response = try await session.translate(
+                        segments.first?.chunk ?? requestContext.sourceText
+                    )
+                    translatedText = response.targetText
+                } else {
+                    let requests = segments.map { segment in
+                        TranslationSession.Request(sourceText: segment.chunk)
+                    }
+                    let responses = try await session.translations(from: requests)
+                    translatedText = zip(responses, segments)
+                        .map { response, segment in
+                            response.targetText + segment.separator
+                        }
+                        .joined()
+                }
+
                 await onResult(
                     requestContext.requestID,
                     requestContext.sourceText,
-                    response.targetText
+                    translatedText
                 )
             } catch is CancellationError {
                 return
