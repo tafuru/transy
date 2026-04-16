@@ -1,7 +1,7 @@
 import NaturalLanguage
 
 enum TextChunker {
-    struct ChunkedSegment: Sendable, Equatable {
+    struct ChunkedSegment: Equatable {
         let chunk: String
         let separator: String
     }
@@ -54,11 +54,10 @@ enum TextChunker {
         for (index, group) in groups.enumerated() {
             var chunkText = String(text[group.first.lowerBound ..< group.last.upperBound])
 
-            let separatorEnd: String.Index
-            if index + 1 < groups.count {
-                separatorEnd = groups[index + 1].first.lowerBound
+            let separatorEnd = if index + 1 < groups.count {
+                groups[index + 1].first.lowerBound
             } else {
-                separatorEnd = text.endIndex
+                text.endIndex
             }
             var separator = String(text[group.last.upperBound ..< separatorEnd])
 
