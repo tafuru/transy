@@ -80,4 +80,25 @@ struct TextChunkerTests {
         #expect(result.count == 1)
         #expect(result.first?.chunk == text)
     }
+
+    @Test("blank lines between paragraphs preserved as separators in long text")
+    func blankLinesPreservedInLongText() {
+        let text = """
+        First paragraph sentence one. First paragraph sentence two. First paragraph keeps going here.
+
+        Second paragraph starts here. It also has multiple sentences. And it continues further onward.
+
+        Third paragraph with additional content. More sentences follow here for testing purposes.
+        """
+        let result = TextChunker.chunk(text: text, threshold: 100)
+        let reconstructed = result.map { $0.chunk + $0.separator }.joined()
+        #expect(reconstructed == text)
+        // Blank lines must be in separators, not in chunks
+        let hasSeparatorWithBlankLine = result.contains { $0.separator.contains("\n\n") }
+        #expect(hasSeparatorWithBlankLine, "At least one separator should contain a blank line")
+        // No chunk should start or end with blank lines
+        for segment in result {
+            #expect(!segment.chunk.hasPrefix("\n\n"))
+        }
+    }
 }

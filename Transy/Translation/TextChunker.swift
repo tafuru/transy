@@ -17,10 +17,16 @@ enum TextChunker {
         let tokenizer = NLTokenizer(unit: .sentence)
         tokenizer.string = text
 
-        var sentenceRanges: [Range<String.Index>] = []
+        var allRanges: [Range<String.Index>] = []
         tokenizer.enumerateTokens(in: text.startIndex ..< text.endIndex) { range, _ in
-            sentenceRanges.append(range)
+            allRanges.append(range)
             return true
+        }
+
+        // Filter whitespace-only "sentences" (NLTokenizer treats blank lines as sentences).
+        // Keeping only real sentences ensures blank lines fall into inter-range gaps (separators).
+        let sentenceRanges = allRanges.filter { range in
+            !text[range].allSatisfy(\.isWhitespace)
         }
 
         guard !sentenceRanges.isEmpty else {
@@ -46,11 +52,7 @@ enum TextChunker {
 
         var segments: [ChunkedSegment] = []
         for (index, group) in groups.enumerated() {
-            let chunkText = String(text[group.first.lowerBound ..< group.last.upperBound])
-
-            if chunkText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                continue
-            }
+            var chunkText = String(text[group.first.lowerBound ..< group.last.upperBound])
 
             let separatorEnd: String.Index
             if index + 1 < groups.count {
@@ -58,9 +60,31 @@ enum TextChunker {
             } else {
                 separatorEnd = text.endIndex
             }
-            let separator = String(text[group.last.upperBound ..< separatorEnd])
+            var separator = String(text[group.last.upperBound ..< separatorEnd])
+
+            // Move trailing whitespace from chunk to separator so translation
+            // cannot strip newlines that separate paragraphs.
+            let trimmedChunk = chunkText.replacingOccurrences(
+                of: "\\s+$", with: "", options: .regularExpression
+            )
+            if trimmedChunk.count < chunkText.count {
+                let trailingWS = String(chunkText[chunkText.index(chunkText.startIndex, offsetBy: trimmedChunk.count)...])
+                separator = trailingWS + separator
+                chunkText = trimmedChunk
+            }
 
             segments.append(ChunkedSegment(chunk: chunkText, separator: separator))
+        }
+
+        // Handle leading whitespace before first sentence
+        if let firstRange = sentenceRanges.first,
+           firstRange.lowerBound > text.startIndex,
+           !segments.isEmpty {
+            let leading = String(text[text.startIndex ..< firstRange.lowerBound])
+            segments[0] = ChunkedSegment(
+                chunk: leading + segments[0].chunk,
+                separator: segments[0].separator
+            )
         }
 
         if segments.isEmpty {
