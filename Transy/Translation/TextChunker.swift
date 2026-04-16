@@ -6,7 +6,7 @@ enum TextChunker {
         let separator: String
     }
 
-    static func chunk(
+    @MainActor static func chunk(
         text: String,
         threshold: Int = 200
     ) -> [ChunkedSegment] {
@@ -84,10 +84,6 @@ enum TextChunker {
                 chunk: leading + segments[0].chunk,
                 separator: segments[0].separator
             )
-        }
-
-        if segments.isEmpty {
-            return [ChunkedSegment(chunk: text, separator: "")]
         }
 
         return segments

@@ -1,6 +1,7 @@
 import Testing
 @testable import Transy
 
+@MainActor
 struct TextChunkerTests {
     @Test("short text bypass returns single segment without splitting")
     func shortTextBypass() {
@@ -99,6 +100,7 @@ struct TextChunkerTests {
         // No chunk should start or end with blank lines
         for segment in result {
             #expect(!segment.chunk.hasPrefix("\n\n"))
+            #expect(!segment.chunk.hasSuffix("\n\n"))
         }
     }
 }
