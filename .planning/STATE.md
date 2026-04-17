@@ -2,9 +2,9 @@
 gsd_state_version: 1.0
 milestone: v0.5.0
 milestone_name: Translation Quality
-status: Milestone complete
-stopped_at: Phase 16 complete — all phases delivered
-last_updated: "2026-04-17T18:10:00.000Z"
+status: v0.5.0 milestone archived
+stopped_at: Milestone complete — archived and tagged
+last_updated: "2026-04-17T18:40:00.000Z"
 progress:
   total_phases: 3
   completed_phases: 3
@@ -16,10 +16,10 @@ progress:
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-04-12)
+See: .planning/PROJECT.md (updated 2026-04-18)
 
 **Core value:** Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
-**Current focus:** v0.5.0 milestone complete — all 3 phases (14, 15, 16) delivered
+**Current focus:** v0.5.0 archived — planning next milestone
 
 ## Current Position
 

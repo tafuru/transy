@@ -8,30 +8,28 @@ Transy is a lightweight macOS menu bar translator for personal Japanese/English 
 
 Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
 
-## Current State: v0.5.0 IN PROGRESS — Phase 15 complete (chunked translation)
+## Current State: v0.5.0 SHIPPED — Translation Quality milestone complete
 
-**Shipped:** 2026-04-04 — 13 phases, 22 plans, 4 milestones
+**Shipped:** 2026-04-18 — 16 phases, 27 plans, 5 milestones
+**Tests:** 60+ automated tests across 16 suites
 
 **What works:**
 - Copy text in any app → translation popup appears within ~500ms (clipboard monitoring, no permission required)
 - On-device translation via Apple Translation framework (no network, private)
+- Long texts (>200 chars) split at sentence boundaries and batch-translated
+- Unsupported language pairs automatically pivot through English (source→EN→target)
+- Shimmer animation during translation loading with Reduce Motion compliance
 - Framework prompts for model downloads automatically when needed
 - macOS-standard tabbed Settings (target language, launch at login)
-- First-launch Accessibility onboarding removed (no longer needed)
 - Full CI pipeline (SwiftLint + SwiftFormat + build + test on every PR)
 - Automated releases (tag → DMG → GitHub Release)
 
-**Tech stack:** SwiftUI, AppKit, Apple Translation.framework, ServiceManagement.framework, XcodeGen
-**Code:** ~1,700 LOC Swift (app + tests), 50+ automated tests
+**Tech stack:** SwiftUI, AppKit, Apple Translation.framework, NaturalLanguage.framework, ServiceManagement.framework, XcodeGen
+**Code:** ~2,000 LOC Swift (app + tests), 60+ automated tests
 
-## Current Milestone: v0.5.0 Translation Quality
+## Next Milestone
 
-**Goal:** Make all language pairs work and improve perceived speed and visual feedback during translation
-
-**Target features:**
-- English pivot translation — relay unsupported pairs (e.g. JP→DE) through English when Apple Translation has no direct model
-- Shimmer animation — visualize translation loading state with a skeleton shimmer overlay
-- Chunked translation — batch-translate up to 200-char sentence chunks via `translations(from:)`, speeding up long texts
+Planning next milestone. Use `/gsd-new-milestone` to define scope and requirements.
 
 ## Constraints
 
@@ -61,6 +59,11 @@ Selected text turns into a natural translation almost instantly without breaking
 | NSPasteboard.general.changeCount polling at 500ms | Lightweight, no entitlements, works in all apps | ✓ Good |
 | Framework-native translation model download | Removed manual System Settings guidance — framework handles download prompts natively | ✓ Simpler |
 | Removed preflight LanguageAvailability.status() call | Was causing double ML inference per translation; TranslationErrorMapper covers all error cases | ✓ Faster |
+| ShimmerModifier uses .overlay (not ZStack) | Zero layout impact on PopupText GeometryReader height measurement | ✓ Good |
+| NLTokenizer sentence-boundary splitting with greedy grouping | Preserves natural sentence breaks while maximizing chunk fill | ✓ Good |
+| Nonisolated static func + @Sendable closure pattern | Resolves Swift 6 strict concurrency in .translationTask() closures | ✓ Good |
+| English as sole pivot relay language | Simplifies architecture; Apple Translation has broadest EN support | ✓ Good |
+| Dual .translationTask() for pivot legs | SwiftUI-native: each task modifier manages its own TranslationSession lifecycle | ✓ Good |
 
 ---
 
@@ -82,4 +85,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-12 after Phase 15 chunked translation completion*
+*Last updated: 2026-04-18 after v0.5.0 Translation Quality milestone completion*
