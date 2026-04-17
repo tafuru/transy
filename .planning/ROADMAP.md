@@ -59,7 +59,7 @@ Full details: [milestones/v0.4.0-ROADMAP.md](milestones/v0.4.0-ROADMAP.md)
 
 - [x] **Phase 14: Shimmer Animation** — Animated skeleton shimmer during translation loading state (completed 2026-04-12)
 - [x] **Phase 15: Chunked Translation** — Split long text at sentence boundaries and translate as a batch (completed 2026-04-12)
-- [ ] **Phase 16: Pivot Translation** — Chain source→EN→target when language pair is unsupported
+- [x] **Phase 16: Pivot Translation** — Chain source→EN→target when language pair is unsupported (completed 2026-04-17)
 
 ## Phase Details
 
@@ -105,7 +105,10 @@ Plans:
   1. Translating a language pair not supported by Apple Translation (e.g. JP→DE) produces a correct result via the source→EN→target chain — no error shown to the user
   2. The shimmer animation plays continuously across both pivot legs — the popup never flickers or shows a partial state between legs
   3. When the pivot path also fails (EN→target unsupported), a clear error message is displayed instead of a blank or crashed popup
-**Plans**: TBD (estimated 2 plans)
+**Plans**: 1 plan
+
+Plans:
+- [x] 16-01-PLAN.md — Pivot translation with PivotTranslationState + dual .translationTask() + tests
 
 ## Progress
 
@@ -126,7 +129,7 @@ Plans:
 | 13. Translation Download UI | v0.4.0 | 1/1 | Complete | 2026-04-04 |
 | 14. Shimmer Animation | v0.5.0 | 2/2 | Complete    | 2026-04-12 |
 | 15. Chunked Translation | v0.5.0 | 2/2 | Complete    | 2026-04-12 |
-| 16. Pivot Translation | v0.5.0 | 0/2 | Not started | — |
+| 16. Pivot Translation | v0.5.0 | 1/1 | Complete    | 2026-04-17 |
 
 ---
 

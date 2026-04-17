@@ -108,6 +108,9 @@ private struct LoadingPopupText: View {
     let onResult: @Sendable (UUID, String, String) async -> Void
     let onError: @Sendable (UUID, String, String) async -> Void
     @State private var translationConfiguration: TranslationSession.Configuration?
+    @State private var pivotConfiguration: TranslationSession.Configuration?
+    @State private var pivotNeeded = false
+    @State private var pivotIntermediateText: String?
 
     var body: some View {
         let requestContext = requestContext
@@ -115,10 +118,41 @@ private struct LoadingPopupText: View {
         let onResult = onResult
         let onError = onError
         let segments = TextChunker.chunk(text: requestContext.sourceText)
+        let isPivoting = pivotNeeded
+        let intermediateText = pivotIntermediateText
+        let callbacks = PivotCallbacks(
+            onPivotLeg1Complete: { [self] translatedText in
+                await MainActor.run {
+                    pivotIntermediateText = translatedText
+                    pivotConfiguration = TranslationSession.Configuration(
+                        source: Locale.Language(identifier: "en"),
+                        target: targetLanguage
+                    )
+                }
+            },
+            onStartPivot: { [self] in
+                await MainActor.run {
+                    pivotNeeded = true
+                    var config = translationConfiguration
+                        ?? TranslationSession.Configuration(
+                            source: nil,
+                            target: Locale.Language(identifier: "en")
+                        )
+                    config.target = Locale.Language(identifier: "en")
+                    config.invalidate()
+                    translationConfiguration = config
+                }
+            },
+            onResult: onResult,
+            onError: onError
+        )
 
         return PopupText(text: requestContext.sourceText, isMuted: true)
             .shimmer()
             .onChange(of: requestContext.requestID, initial: true) { _, _ in
+                pivotNeeded = false
+                pivotIntermediateText = nil
+                pivotConfiguration = nil
                 translationConfiguration = nextTranslationConfiguration(
                     after: translationConfiguration,
                     targetLanguage: targetLanguage
@@ -126,51 +160,72 @@ private struct LoadingPopupText: View {
             }
             .translationTask(
                 translationConfiguration,
-                action: Self.translationAction(
+                action: Self.primaryAction(
                     requestContext: requestContext,
+                    targetLanguage: targetLanguage,
                     segments: segments,
-                    onResult: onResult,
-                    onError: onError
+                    isPivoting: isPivoting,
+                    callbacks: callbacks
+                )
+            )
+            .translationTask(
+                pivotConfiguration,
+                action: Self.pivotAction(
+                    requestContext: requestContext,
+                    intermediateText: intermediateText,
+                    callbacks: callbacks
                 )
             )
     }
 
-    nonisolated private static func translationAction(
+    nonisolated private static func primaryAction(
         requestContext: LoadingRequestContext,
+        targetLanguage: Locale.Language,
         segments: [TextChunker.ChunkedSegment],
-        onResult: @escaping @Sendable (UUID, String, String) async -> Void,
-        onError: @escaping @Sendable (UUID, String, String) async -> Void
-    ) -> (TranslationSession) async -> Void {
+        isPivoting: Bool,
+        callbacks: PivotCallbacks
+    ) -> @Sendable (TranslationSession) async -> Void {
         { session in
             do {
-                let translatedText: String
-
-                if segments.count <= 1 {
-                    let response = try await session.translate(
-                        segments.first?.chunk ?? requestContext.sourceText
-                    )
-                    translatedText = response.targetText
-                } else {
-                    let requests = segments.map { segment in
-                        TranslationSession.Request(sourceText: segment.chunk)
-                    }
-                    let responses = try await session.translations(from: requests)
-                    translatedText = zip(responses, segments)
-                        .map { response, segment in
-                            response.targetText + segment.separator
-                        }
-                        .joined()
-                }
-
-                await onResult(
-                    requestContext.requestID,
-                    requestContext.sourceText,
-                    translatedText
+                let translatedText = try await translateSegments(
+                    session: session,
+                    segments: segments,
+                    fallbackText: requestContext.sourceText
                 )
+
+                if isPivoting {
+                    await callbacks.onPivotLeg1Complete(translatedText)
+                } else {
+                    await callbacks.onResult(
+                        requestContext.requestID,
+                        requestContext.sourceText,
+                        translatedText
+                    )
+                }
             } catch is CancellationError {
                 return
+            } catch where TranslationError.unableToIdentifyLanguage ~= error && segments.count > 1 {
+                // D-08: Retry with individual chunks for language detection
+                await retryChunksForDetection(
+                    session: session,
+                    segments: segments,
+                    requestContext: requestContext,
+                    isPivoting: isPivoting,
+                    callbacks: callbacks
+                )
+            } catch where TranslationErrorMapper.isPivotTrigger(error) {
+                // Re-pivot guard: if already in pivot mode, source→EN also failed
+                guard !isPivoting else {
+                    await callbacks.onError(
+                        requestContext.requestID,
+                        requestContext.sourceText,
+                        TranslationErrorMapper.unsupportedLanguagePair
+                    )
+                    return
+                }
+                await callbacks.onStartPivot()
             } catch {
-                await onError(
+                await callbacks.onError(
                     requestContext.requestID,
                     requestContext.sourceText,
                     TranslationErrorMapper.message(for: error)
@@ -178,11 +233,134 @@ private struct LoadingPopupText: View {
             }
         }
     }
+
+    nonisolated private static func pivotAction(
+        requestContext: LoadingRequestContext,
+        intermediateText: String?,
+        callbacks: PivotCallbacks
+    ) -> @Sendable (TranslationSession) async -> Void {
+        { session in
+            guard let intermediateText else { return }
+            do {
+                let pivotSegments = await MainActor.run {
+                    TextChunker.chunk(text: intermediateText)
+                }
+                let translatedText = try await translateSegments(
+                    session: session,
+                    segments: pivotSegments,
+                    fallbackText: intermediateText
+                )
+
+                await callbacks.onResult(
+                    requestContext.requestID,
+                    requestContext.sourceText,
+                    translatedText
+                )
+            } catch is CancellationError {
+                return
+            } catch {
+                // Pivot leg 2 failed — show unsupported pair message (D-10)
+                await callbacks.onError(
+                    requestContext.requestID,
+                    requestContext.sourceText,
+                    TranslationErrorMapper.unsupportedLanguagePair
+                )
+            }
+        }
+    }
+
+    nonisolated private static func translateSegments(
+        session: TranslationSession,
+        segments: [TextChunker.ChunkedSegment],
+        fallbackText: String
+    ) async throws -> String {
+        if segments.count <= 1 {
+            let response = try await session.translate(
+                segments.first?.chunk ?? fallbackText
+            )
+            return response.targetText
+        } else {
+            let requests = segments.map { segment in
+                TranslationSession.Request(sourceText: segment.chunk)
+            }
+            let responses = try await session.translations(from: requests)
+            return zip(responses, segments)
+                .map { response, segment in
+                    response.targetText + segment.separator
+                }
+                .joined()
+        }
+    }
+
+    nonisolated private static func retryChunksForDetection(
+        session: TranslationSession,
+        segments: [TextChunker.ChunkedSegment],
+        requestContext: LoadingRequestContext,
+        isPivoting: Bool,
+        callbacks: PivotCallbacks
+    ) async {
+        let startIndex = min(1, segments.count)
+        let endIndex = min(startIndex + 3, segments.count)
+        for i in startIndex ..< endIndex {
+            do {
+                _ = try await session.translate(segments[i].chunk)
+                // Detection succeeded — retry full batch
+                let translatedText = try await translateSegments(
+                    session: session,
+                    segments: segments,
+                    fallbackText: requestContext.sourceText
+                )
+
+                if isPivoting {
+                    await callbacks.onPivotLeg1Complete(translatedText)
+                } else {
+                    await callbacks.onResult(
+                        requestContext.requestID,
+                        requestContext.sourceText,
+                        translatedText
+                    )
+                }
+                return
+            } catch where TranslationError.unableToIdentifyLanguage ~= error {
+                continue
+            } catch where TranslationErrorMapper.isPivotTrigger(error) {
+                guard !isPivoting else {
+                    await callbacks.onError(
+                        requestContext.requestID,
+                        requestContext.sourceText,
+                        TranslationErrorMapper.unsupportedLanguagePair
+                    )
+                    return
+                }
+                await callbacks.onStartPivot()
+                return
+            } catch {
+                await callbacks.onError(
+                    requestContext.requestID,
+                    requestContext.sourceText,
+                    TranslationErrorMapper.message(for: error)
+                )
+                return
+            }
+        }
+        await callbacks.onError(
+            requestContext.requestID,
+            requestContext.sourceText,
+            TranslationErrorMapper.couldNotDetectSourceLanguage
+        )
+    }
 }
 
 private struct LoadingRequestContext {
     let requestID: UUID
     let sourceText: String
+}
+
+private struct PivotCallbacks {
+    let onPivotLeg1Complete: @Sendable (String) async -> Void
+    let onStartPivot: @Sendable () async -> Void
+    let onResult: @Sendable (UUID, String, String) async -> Void
+    let onError: @Sendable (UUID, String, String) async -> Void
 }
 
 /// internal (not private) so TranslationTaskConfigurationReloaderTests can verify behavior

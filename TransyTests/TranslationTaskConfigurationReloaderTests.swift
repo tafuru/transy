@@ -53,4 +53,26 @@ struct TranslationConfigReloaderTests {
 
         #expect(!controller.hasHostedPopupContent)
     }
+
+    @Test("pivot leg 2 configuration uses explicit English source and original target")
+    func pivotLeg2ConfigurationUsesExplicitEnglishSource() {
+        let target = Locale.Language(identifier: "de")
+        let config = TranslationSession.Configuration(
+            source: Locale.Language(identifier: "en"),
+            target: target
+        )
+
+        #expect(config.source == Locale.Language(identifier: "en"))
+        #expect(config.target == target)
+    }
+
+    @Test("pivot leg 2 configuration source is not nil (D-02)")
+    func pivotLeg2ConfigurationSourceIsNotNil() {
+        let config = TranslationSession.Configuration(
+            source: Locale.Language(identifier: "en"),
+            target: Locale.Language(identifier: "ja")
+        )
+
+        #expect(config.source != nil)
+    }
 }

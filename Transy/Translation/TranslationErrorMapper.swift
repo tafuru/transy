@@ -6,14 +6,18 @@ enum TranslationErrorMapper {
     static let couldNotDetectSourceLanguage = "Couldn't detect the source language."
     static let translationFailed = "Translation failed."
 
+    static func isPivotTrigger(_ error: any Error) -> Bool {
+        TranslationError.unsupportedLanguagePairing ~= error
+            || TranslationError.unsupportedSourceLanguage ~= error
+            || TranslationError.unsupportedTargetLanguage ~= error
+    }
+
     static func message(for error: any Error) -> String {
         if TranslationError.unableToIdentifyLanguage ~= error || isDetectionFailure(error) {
             return couldNotDetectSourceLanguage
         }
 
-        if TranslationError.unsupportedLanguagePairing ~= error
-            || TranslationError.unsupportedSourceLanguage ~= error
-            || TranslationError.unsupportedTargetLanguage ~= error {
+        if isPivotTrigger(error) {
             return unsupportedLanguagePair
         }
 
