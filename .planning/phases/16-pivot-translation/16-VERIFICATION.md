@@ -12,9 +12,9 @@ gaps_closed:
 # Phase 16: Pivot Translation Verification Report
 
 **Phase Goal:** When Apple Translation reports an unsupported language pair, the app silently chains two translations through English so the user still gets a result
-**Verified:** 2026-04-17T23:35:00+09:00
-**Status:** gaps_found
-**Re-verification:** No — initial verification
+**Verified:** 2026-04-18T03:00:00+09:00
+**Status:** passed
+**Re-verification:** Yes — gaps closed (commit 458f0d5)
 
 ## Goal Achievement
 
@@ -36,8 +36,8 @@ gaps_closed:
 |----------|----------|--------|---------|
 | `Transy/Translation/TranslationErrorMapper.swift` | Error classification for pivot detection | ✓ VERIFIED | `isPivotTrigger(_:)` at L9 checks `unsupportedLanguagePairing`, `unsupportedSourceLanguage`, `unsupportedTargetLanguage`. Note: PLAN specified name `isUnsupportedPairError`; implementation used `isPivotTrigger` — functionally equivalent |
 | `Transy/Popup/PopupView.swift` | Dual .translationTask(), pivot state, pivotAction | ✓ VERIFIED | Two `.translationTask()` modifiers (L135, L168), `@State pivotConfiguration` (L111), `pivotAction` (L240). Note: PLAN specified `PivotTranslationState` type; implementation uses individual @State vars — functionally equivalent, simpler |
-| `TransyTests/TranslationErrorMapperTests.swift` | Unit tests for error classification | ✗ MISSING | File does not exist. No test coverage for `isPivotTrigger` function |
-| `TransyTests/TranslationTaskConfigurationReloaderTests.swift` | Unit tests for pivot configuration factory | ⚠️ INCOMPLETE | File exists (from Phase 15, dated Apr 4) but contains zero pivot-related tests. No `pivotLeg2Configuration` test as specified in must_haves |
+| `TransyTests/TranslationErrorMapperTests.swift` | Unit tests for error classification | ✓ VERIFIED | 8 tests covering isPivotTrigger (3 positive, 2 negative) and message(for:) (3 mapping tests) |
+| `TransyTests/TranslationTaskConfigurationReloaderTests.swift` | Unit tests for pivot configuration factory | ✓ VERIFIED | 2 pivot config tests added (D-02 explicit EN source + non-nil check) |
 
 ### Key Link Verification
 
@@ -113,15 +113,15 @@ gaps_closed:
 
 **All 5 functional truths are verified** — the pivot translation implementation is complete and correctly wired. The production code in `PopupView.swift` and `TranslationErrorMapper.swift` fully delivers PIV-01, PIV-02, and PIV-03.
 
-**2 test artifacts are missing/incomplete:**
+**All test gaps closed:**
 
-1. **TranslationErrorMapperTests.swift** — Entirely missing. The `isPivotTrigger` function has no unit test coverage. This is a testability gap, not a functional gap.
+1. **TranslationErrorMapperTests.swift** — Created with 8 tests covering `isPivotTrigger` and `message(for:)` (commit 458f0d5).
 
-2. **TranslationTaskConfigurationReloaderTests.swift** — Exists from Phase 15 but was not updated with pivot configuration tests. Contains no `pivotLeg2Configuration` test as the PLAN specified.
+2. **TranslationTaskConfigurationReloaderTests.swift** — Updated with 2 pivot configuration tests verifying explicit EN source and non-nil source for D-02 (commit 458f0d5).
 
 **Implementation deviations (non-blocking):** The PLAN specified a `PivotTranslationState` type and function name `isUnsupportedPairError`. The implementation chose individual `@State` vars and `isPivotTrigger` as the function name. These are naming/architecture deviations that don't affect correctness — the Summary documents the Swift 6 concurrency reasons for the architectural change.
 
-**Root cause:** The SUMMARY reports only 2 files modified (the production files). The test files listed in `files_modified` of the PLAN were not created/updated, likely deprioritized due to time spent resolving Swift 6 strict concurrency issues during implementation.
+**Root cause (historical):** The initial execution prioritized resolving Swift 6 strict concurrency issues, deferring test creation. Tests were added in the gap closure commit (458f0d5).
 
 ---
 

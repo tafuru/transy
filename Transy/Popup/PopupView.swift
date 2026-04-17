@@ -299,8 +299,9 @@ private struct LoadingPopupText: View {
         isPivoting: Bool,
         callbacks: PivotCallbacks
     ) async {
-        let maxRetryChunks = min(3, segments.count)
-        for i in 0 ..< maxRetryChunks {
+        let startIndex = min(1, segments.count)
+        let endIndex = min(startIndex + 3, segments.count)
+        for i in startIndex ..< endIndex {
             do {
                 _ = try await session.translate(segments[i].chunk)
                 // Detection succeeded — retry full batch
@@ -322,6 +323,17 @@ private struct LoadingPopupText: View {
                 return
             } catch where TranslationError.unableToIdentifyLanguage ~= error {
                 continue
+            } catch where TranslationErrorMapper.isPivotTrigger(error) {
+                guard !isPivoting else {
+                    await callbacks.onError(
+                        requestContext.requestID,
+                        requestContext.sourceText,
+                        TranslationErrorMapper.unsupportedLanguagePair
+                    )
+                    return
+                }
+                await callbacks.onStartPivot()
+                return
             } catch {
                 await callbacks.onError(
                     requestContext.requestID,

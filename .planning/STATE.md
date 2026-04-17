@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v0.5.0
 milestone_name: Translation Quality
 status: Milestone complete
-stopped_at: Phase 16 context gathered
-last_updated: "2026-04-17T17:58:25.942Z"
+stopped_at: Phase 16 complete — all phases delivered
+last_updated: "2026-04-17T18:10:00.000Z"
 progress:
   total_phases: 3
   completed_phases: 3
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-12)
 
 **Core value:** Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
-**Current focus:** Phase 16 — pivot-translation
+**Current focus:** v0.5.0 milestone complete — all 3 phases (14, 15, 16) delivered
 
 ## Current Position
 
-Phase: 16
-Plan: Not started
+Phase: 16 (complete)
+Plan: Complete (1/1)
 
 ## Performance Metrics
 

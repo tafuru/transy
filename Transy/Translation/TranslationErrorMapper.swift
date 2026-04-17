@@ -17,9 +17,7 @@ enum TranslationErrorMapper {
             return couldNotDetectSourceLanguage
         }
 
-        if TranslationError.unsupportedLanguagePairing ~= error
-            || TranslationError.unsupportedSourceLanguage ~= error
-            || TranslationError.unsupportedTargetLanguage ~= error {
+        if isPivotTrigger(error) {
             return unsupportedLanguagePair
         }
 
