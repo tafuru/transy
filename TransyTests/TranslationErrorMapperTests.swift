@@ -51,4 +51,3 @@ struct TranslationErrorMapperTests {
         #expect(TranslationErrorMapper.message(for: UnknownError()) == TranslationErrorMapper.translationFailed)
     }
 }
-
