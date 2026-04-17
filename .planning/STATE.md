@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v0.5.0
 milestone_name: Translation Quality
-status: "Phase 15 shipped — PR #34, awaiting merge"
+status: Milestone complete
 stopped_at: Phase 16 context gathered
-last_updated: "2026-04-17T14:03:44.393Z"
+last_updated: "2026-04-17T17:58:25.942Z"
 progress:
   total_phases: 3
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 5
-  completed_plans: 4
+  completed_plans: 5
 ---
 
 # Project State
@@ -19,7 +19,7 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-12)
 
 **Core value:** Selected text turns into a natural translation almost instantly without breaking the user's reading flow.
-**Current focus:** Phase 15 shipped (PR #34) — next: Phase 16 pivot-translation
+**Current focus:** Phase 16 — pivot-translation
 
 ## Current Position
 

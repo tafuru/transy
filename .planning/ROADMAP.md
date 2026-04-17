@@ -129,7 +129,7 @@ Plans:
 | 13. Translation Download UI | v0.4.0 | 1/1 | Complete | 2026-04-04 |
 | 14. Shimmer Animation | v0.5.0 | 2/2 | Complete    | 2026-04-12 |
 | 15. Chunked Translation | v0.5.0 | 2/2 | Complete    | 2026-04-12 |
-| 16. Pivot Translation | v0.5.0 | 1/1 | Complete   | 2026-04-17 |
+| 16. Pivot Translation | v0.5.0 | 1/1 | Complete    | 2026-04-17 |
 
 ---
 
