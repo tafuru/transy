@@ -15,15 +15,15 @@ Requirements for Translation Quality milestone. Each maps to roadmap phases.
 
 ### Chunked Translation
 
-- [ ] **CHK-01**: Text longer than 200 characters is split at sentence boundaries (NLTokenizer) before translation
-- [ ] **CHK-02**: Batch `translations(from:)` API is used; results are joined in input order
-- [ ] **CHK-03**: Text of 200 characters or fewer bypasses chunking and is translated directly (short-text bypass)
+- [x] **CHK-01**: Text longer than 200 characters is split at sentence boundaries (NLTokenizer) before translation
+- [x] **CHK-02**: Batch `translations(from:)` API is used; results are joined in input order
+- [x] **CHK-03**: Text of 200 characters or fewer bypasses chunking and is translated directly (short-text bypass)
 
 ### Pivot Translation
 
-- [ ] **PIV-01**: On `unsupportedLanguagePairing` error, automatically falls back to a source→EN→target two-leg chain
-- [ ] **PIV-02**: Shimmer continues throughout the entire pivot sequence (seamless to the user)
-- [ ] **PIV-03**: If the pivot also fails (EN path unavailable), an appropriate error message is shown
+- [x] **PIV-01**: On `unsupportedLanguagePairing` error, automatically falls back to a source→EN→target two-leg chain
+- [x] **PIV-02**: Shimmer continues throughout the entire pivot sequence (seamless to the user)
+- [x] **PIV-03**: If the pivot also fails (EN path unavailable), an appropriate error message is shown
 
 ## Future Requirements
 
@@ -48,12 +48,12 @@ Requirements for Translation Quality milestone. Each maps to roadmap phases.
 | SHM-01 | Phase 14 | Complete |
 | SHM-02 | Phase 14 | Complete |
 | SHM-03 | Phase 14 | Complete |
-| CHK-01 | Phase 15 | Pending |
-| CHK-02 | Phase 15 | Pending |
-| CHK-03 | Phase 15 | Pending |
-| PIV-01 | Phase 16 | Pending |
-| PIV-02 | Phase 16 | Pending |
-| PIV-03 | Phase 16 | Pending |
+| CHK-01 | Phase 15 | Complete |
+| CHK-02 | Phase 15 | Complete |
+| CHK-03 | Phase 15 | Complete |
+| PIV-01 | Phase 16 | Complete |
+| PIV-02 | Phase 16 | Complete |
+| PIV-03 | Phase 16 | Complete |
 
 **Coverage:**
 - v0.5.0 requirements: 9 total
