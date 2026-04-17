@@ -107,6 +107,9 @@ Plans:
   3. When the pivot path also fails (EN→target unsupported), a clear error message is displayed instead of a blank or crashed popup
 **Plans**: 1 plan
 
+Plans:
+- [ ] 16-01-PLAN.md — Pivot translation with PivotTranslationState + dual .translationTask() + tests
+
 ## Progress
 
 | Phase | Milestone | Plans Complete | Status | Completed |
